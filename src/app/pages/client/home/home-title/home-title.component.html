@@ -1,5 +1,11 @@
 <div class="home-title">
-  <div class="home-title_title" *ngIf="title">{{title}}</div>
-  <div class="home-title_description" [ngClass]="{'noactive': active}">{{description}}</div>
+  <div
+    class="home-title_title fnt-bold-2"
+    *ngIf="title"
+  >{{title}}</div>
+  <div
+    class="home-title_description fnt-normal-1"
+    [ngClass]="{'noactive': active}"
+  >{{description}}</div>
 </div>
 

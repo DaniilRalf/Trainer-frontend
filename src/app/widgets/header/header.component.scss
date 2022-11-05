@@ -1,0 +1,21 @@
+@import "../../../assets/scss/index";
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0px;
+
+  &_back{
+    width: 30%;
+    cursor: pointer;
+  }
+  &_title{
+    width: 30%;
+    text-align: center;
+  }
+  &_logout{
+    width: 30%;
+    cursor: pointer;
+  }
+}

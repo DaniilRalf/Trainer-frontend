@@ -1,1 +1,11 @@
-<p>products works!</p>
+<div class="products">
+  <div class="container">
+    <app-header [title]="'Услуги'"></app-header>
+    <div class="" *ngFor="let item of products; let index = index">
+      <app-product-item
+        [product]="item"
+        [number]="index + 1"
+      ></app-product-item>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,12 @@
+@import "../../../../assets/scss/index";
+
 .home{
   width: 100%;
   height: 100vh;
   background-image: url("../../../../assets/img/client/bg.png");
-  background-size: 100% auto;
+  background-size: auto 100%;
   background-repeat: no-repeat;
+  background-position: left;
 
   &_content{
     display: grid;
@@ -13,8 +16,8 @@
 
     &__item-1{
       cursor: pointer;
-      border-right: 1px solid black;
-      border-bottom: 1px solid black;
+      border-right: 1px solid $black;
+      border-bottom: 1px solid $black;
       position: relative;
 
       .logo-container{
@@ -26,8 +29,8 @@
     }
     &__item-2{
       cursor: pointer;
-      border-left: 1px solid black;
-      border-bottom: 1px solid black;
+      border-left: 1px solid $black;
+      border-bottom: 1px solid $black;
       background-image: url("../../../../assets/img/client/gim.png");
       background-size: 100% 100%;
       position: relative;
@@ -40,8 +43,8 @@
     }
     &__item-3 {
       cursor: pointer;
-      border-right: 1px solid black;
-      border-top: 1px solid black;
+      border-right: 1px solid $black;
+      border-top: 1px solid $black;
       background-image: url("../../../../assets/img/client/dumbbels.png");
       background-size: 100% 100%;
       position: relative;
@@ -54,8 +57,8 @@
     }
     &__item-4{
       cursor: pointer;
-      border-left: 1px solid black;
-      border-top: 1px solid black;
+      border-left: 1px solid $black;
+      border-top: 1px solid $black;
       position: relative;
     }
   }

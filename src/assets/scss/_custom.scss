@@ -1,20 +1,37 @@
 
-//Padding/Margin======================
-//.pd-20{
-//  padding: 20px;
-//}
-//Padding/Margin======================
+//VARIABLES==========================
+  $border-radius-1: 25px;
+  $border-radius-2: 15px;
 
-
-//Color===============================
-//$black: #454545;
-//$beige: #FFF7CA;
-//$beige-light: rgba(255, 240, 202, 0.8);
-//Color===============================
+  $black: #343434;
+  $grey: #d9d9d9;
+  $pink: rgba(255, 0, 138, 0.23);
+  $yellow: rgba(255, 192, 0, 0.44);
+//VARIABLES===========================
 
 
 //CUSTOM==============================
-//.bg-main{
-//  background-color: $beige-light;
-//}
+  .container{
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+    padding: 0px 20px;
+  }
+
+  .mb-10{
+    margin-bottom: 10px;
+  }
+  .mb-15{
+    margin-bottom: 15px;
+  }
+  .mb-20{
+    margin-bottom: 20px;
+  }
+  .mb-40{
+    margin-bottom: 40px;
+  }
+
+  .mt-20{
+    margin-top: 20px;
+  }
 //CUSTOM==============================
