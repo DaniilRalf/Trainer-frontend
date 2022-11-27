@@ -1,0 +1,32 @@
+@import "../../../../assets/scss/index";
+
+.personal{
+
+  &-box {
+    width: 100%;
+    min-height: 300px;
+    background-color: transparent;
+
+    &__content {
+      display: flex;
+      min-height: 300px;
+
+      &-btn{}
+      &-rout{
+        padding: 0px 20px;
+        width: 100%;
+      }
+    }
+    &__sidenav {
+      border: none;
+    }
+  }
+}
+
+.mat-button-toggle-checked {
+  background-color: $blue;
+  color: $white;
+}
+
+
+

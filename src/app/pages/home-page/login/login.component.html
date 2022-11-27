@@ -1,0 +1,30 @@
+<div class="login">
+  <div class="container">
+
+    <app-header [title]="'Авторизация'"></app-header>
+
+    <form class="login_form" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+      <mat-form-field class="login_form__item" appearance="fill">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="login_form__item" appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button
+                matSuffix (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button class="login_form__item" mat-raised-button color="primary">Войти</button>
+    </form>
+
+
+
+  </div>
+</div>
+
+

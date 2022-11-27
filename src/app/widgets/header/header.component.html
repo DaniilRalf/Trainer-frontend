@@ -5,7 +5,10 @@
   <div class="header_title fnt-bold-2">
     {{title}}
   </div>
-  <div class="header_logout fnt-bold-1">
-    <p *ngIf="false"></p>
+  <div
+    class="header_logout fnt-bold-1"
+    (click)="deleteUserData()"
+  >
+    {{logout}}
   </div>
 </div>

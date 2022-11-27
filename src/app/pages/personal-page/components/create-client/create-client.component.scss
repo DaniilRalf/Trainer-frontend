@@ -1,0 +1,18 @@
+@import "../../../../../assets/scss/index";
+
+.create-client{
+  width: 100%;
+
+  &_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .create-client__item{
+      width: 450px;
+      border-radius: $border-radius-2;
+    }
+  }
+}
+
+//====поправить названия классов

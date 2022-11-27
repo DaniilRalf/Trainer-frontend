@@ -1,0 +1,41 @@
+<h2>Таблица замеров параметров тела</h2>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="userParameters">
+
+    <ng-container matColumnDef="date_metering">
+      <th mat-header-cell *matHeaderCellDef>Дата замера</th>
+      <td mat-cell *matCellDef="let element">{{element.date_metering | date:'longDate'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="shoulder_bust">
+      <th mat-header-cell *matHeaderCellDef>Обхват груди</th>
+      <td mat-cell *matCellDef="let element">{{element.shoulder_bust}}</td>
+    </ng-container>
+    <ng-container matColumnDef="shoulder_girth">
+      <th mat-header-cell *matHeaderCellDef>Бицепс</th>
+      <td mat-cell *matCellDef="let element">{{element.shoulder_girth}}</td>
+    </ng-container>
+    <ng-container matColumnDef="shoulder_hip">
+      <th mat-header-cell *matHeaderCellDef>Обхват бедра</th>
+      <td mat-cell *matCellDef="let element">{{element.shoulder_hip}}</td>
+    </ng-container>
+    <ng-container matColumnDef="shoulder_hips">
+      <th mat-header-cell *matHeaderCellDef>Обхват бедер</th>
+      <td mat-cell *matCellDef="let element">{{element.shoulder_hips}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedKey"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedKey;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+
+<h2>Графики замеров параметров тела</h2>
+<div class="mat-elevation-z8">
+  <plotly-plot [data]="graph.data"
+               [layout]="graph.layout"
+               [updateOnDataChange]="true">
+  </plotly-plot>
+</div>
+
+

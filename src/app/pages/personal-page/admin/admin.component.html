@@ -1,0 +1,18 @@
+<!--сделать спиннер отдельным компонентом-->
+
+<div class="admin">
+
+  <div class="spinner" *ngIf="!user.value.parameters && !user.value.personal">
+    <mat-spinner class="spinner-active"></mat-spinner>
+  </div>
+
+
+  <app-create-client
+    *ngIf="StoreService.TabsPage === TabsPage.createClient"
+    [user]="user">
+  </app-create-client>
+  <app-update-parameters-client
+    *ngIf="StoreService.TabsPage === TabsPage.updateParameters"
+    [user]="user">
+  </app-update-parameters-client>
+</div>

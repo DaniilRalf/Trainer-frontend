@@ -1,0 +1,59 @@
+<div class="create-client">
+
+  <form class="create-client_form" [formGroup]="createForm" (ngSubmit)="onSubmitLogin()">
+
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="first_name">
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Фамилия</mat-label>
+      <input matInput formControlName="last_name">
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Никнейм</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Пароль</mat-label>
+      <input matInput formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Роль пользователя</mat-label>
+      <mat-select formControlName="roleId">
+        <mat-option type="number" value="{{RoleEnum.user}}">Клиент</mat-option>
+        <mat-option type="number" value="{{RoleEnum.admin}}">Администратор</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Гендер</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option type="number" value="{{GenderEnum.female}}">Мужчина</mat-option>
+        <mat-option type="number" value="{{GenderEnum.male}}">Женщина</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Рост (см)</mat-label>
+      <input type="number" matInput formControlName="height">
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>День рождения</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="birth_day">
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Дата начала тренировок</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="start_train">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <button class="create-client__item" mat-raised-button color="primary">Сохранить</button>
+  </form>
+
+
+</div>
+
