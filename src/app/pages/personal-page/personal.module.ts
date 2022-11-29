@@ -8,7 +8,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
-
 import { PersonalComponent } from './personal/personal.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
@@ -27,6 +26,8 @@ import { CreateClientComponent } from './components/create-client/create-client.
 import { UpdateParametersClientComponent } from './components/update-parameters-client/update-parameters-client.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ModalParametersComponent } from './components/update-parameters-client/modal-parameters/modal-parameters.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MyParametersComponent,
     BeforeAfterComponent,
     CreateClientComponent,
-    UpdateParametersClientComponent
+    UpdateParametersClientComponent,
+    ModalParametersComponent
   ],
     imports: [
         CommonModule,
@@ -61,6 +63,7 @@ import {MatNativeDateModule} from "@angular/material/core";
         MatPaginatorModule,
         MatDatepickerModule,
         MatNativeDateModule,
-    ]
+        MatDialogModule
+    ],
 })
 export class PersonalModule { }

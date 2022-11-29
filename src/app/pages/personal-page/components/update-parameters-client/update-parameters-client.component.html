@@ -1,6 +1,8 @@
 <!-- ====поправить расположение иконок в таблице -->
+<!-- ====добавить slide togle для запроса показывать ли ушедих клиентов -->
 
 <h2>Все клиенты</h2>
+
 <div class="mat-elevation-z8" *ngIf="allClients.length > 0">
   <table mat-table [dataSource]="allClients">
 
@@ -18,7 +20,7 @@
     </ng-container>
     <ng-container matColumnDef="parameters">
       <th mat-header-cell *matHeaderCellDef>Параметры</th>
-      <td mat-cell *matCellDef="let element"><mat-icon>donut_large</mat-icon></td>
+      <td mat-cell *matCellDef="let element" (click)="openModal(element.parameters)"><mat-icon>donut_large</mat-icon></td>
     </ng-container>
     <ng-container matColumnDef="personal">
       <th mat-header-cell *matHeaderCellDef>Персональные данные</th>
