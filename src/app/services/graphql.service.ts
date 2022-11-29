@@ -77,38 +77,34 @@ export class GraphqlService {
     })
   }
 
+  getAllClients(){
+    return this.apollo.query({
+        query: gql`
+          query {
+            getAllClients {
+              username
+              first_name
+              last_name
+              roleId
+              personal {
+                gender
+                height
+                birth_day
+                start_train
+              }
+              parameters {
+                weight
+                shoulder_bust
+                shoulder_girth
+                shoulder_hips
+                shoulder_hip
+                date_metering
+              }
+            }
+          }
+        `
+    })
+  }
 
-  //==== удалить лишние коменты
-
-  // getAllUsers(){
-  //   return this.apollo.query({
-  //       query: gql`
-  //         query {
-  //           getAllUsers {
-  //             id
-  //             first_name
-  //             role {
-  //                 id
-  //                 value
-  //             }
-  //           }
-  //         }
-  //       `
-  //   })
-  // }
-  //
-  // createUser(){
-  //   return this.apollo.mutate({
-  //     mutation: gql`
-  //         mutation {
-  //           createUser(input: {
-  //             first_name: "test10", last_name: "test10", password: "test10"
-  //           }){
-  //           first_name
-  //           last_name
-  //         }
-  //       }
-  //     `
-  //   })
-  // }
+  
 }

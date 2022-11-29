@@ -14,6 +14,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
 export class MyParametersComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
 
+  //====поправить ипизацию эни
   userParameters: any = [];
   displayedKey = ['date_metering', 'shoulder_bust', 'shoulder_girth', 'shoulder_hip', 'shoulder_hips'];
 
