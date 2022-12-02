@@ -1,0 +1,39 @@
+
+<!-- ====добавить expansion panel material -->
+<!-- ====поправить пайп даты -->
+<!-- ====добавить возможность изменять сущетвуюшие параметры -->
+<ng-container *ngIf="data.tag === 'parameters'">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of data.personal">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{item.date_metering | date}}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="personal-data_list mt-10">
+            <div>Обхват груди</div><div class="text-right">{{item.shoulder_bust}} см.</div>
+            <div>Обхват плеч</div><div class="text-right">{{item.shoulder_girth}} см.</div>
+            <div>Обхват берда</div><div class="text-right">{{item.shoulder_hip}} см.</div>
+            <div>Обхват бедер</div><div class="text-right">{{item.shoulder_hips}} см.</div>
+            <div>Вес</div><div class="text-right">{{item.weight}} кг.</div>
+          </div>
+          <div class="flex-center mt-10">
+            <button mat-raised-button color="primary">Сохранить изменения</button>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <div class="flex-center mt-10">
+        <button mat-raised-button color="primary">Добавить замер</button>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="data.tag === 'personal'">
+    <div class="personal-data_list mt-10">
+        <div>День рождения</div><div class="text-right">{{data.personal.birth_day | date}}</div>
+        <div>Гендер</div><div class="text-right">{{data.personal.gender}}</div>
+        <div>Рост</div><div class="text-right">{{data.personal.height}}</div>
+        <div>Дата начала тренировок</div><div class="text-right">{{data.personal.start_train | date}}</div>
+    </div>
+    <div class="flex-center mt-10">
+        <button mat-raised-button color="primary">Сохранить изменения</button>
+    </div>
+</ng-container>

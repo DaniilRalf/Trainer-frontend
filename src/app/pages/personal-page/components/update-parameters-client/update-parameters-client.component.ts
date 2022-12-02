@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import { GraphqlService } from 'src/app/services/graphql.service';
 import {User} from "../../../../models/types/user";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ModalParametersComponent } from './modal-parameters/modal-parameters.component';
+import { ModalClientDataComponent } from './modal-client-data/modal-client-data.component';
 
 @Component({
   selector: 'app-update-parameters-client',
@@ -32,17 +32,16 @@ export class UpdateParametersClientComponent implements OnInit {
     this.qraphqlService.getAllClients()
     .subscribe(({data}: any) => {
       this.allClients = data.getAllClients
-      console.log(data);
+      console.log(this.allClients);
+      
     })
   }
 
   //====поправить типизацию event
-  openModal(event: any): void {
-    console.log(event);
-    
-    this.dialog.open(ModalParametersComponent, {
+  openModal(username: string, event: any, tag: string): void {
+    this.dialog.open(ModalClientDataComponent, {
       width: '550px',
-      data: {name: 'test'},
+      data: {personal: event, username: username, tag: tag},
     }).afterClosed().subscribe(result => {
       // console.log(result);
     });
