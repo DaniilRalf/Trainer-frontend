@@ -9,10 +9,48 @@ import {User} from "../../../../models/types/user";
 })
 export class TrainingScheduleComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
+  //====поправить типизацию, отменить все подписки
+  calendarData: any[] = []
 
   constructor() { }
 
   ngOnInit(): void {
+    this.user.subscribe((i: any) => {
+      this.generateCalendarData(i)
+    })
+  }
+
+  //====типизироватьвсе нормально
+  generateCalendarData(data: any) {
+    const nowYear = new Date().getFullYear()
+    const nextMonth = new Date().getMonth() + 1
+    const lastDayInMonth = new Date(nowYear, nextMonth, 0).getDate()
+    const indexFirstDayInMonth = new Date(nowYear, new Date().getMonth(), 1).getDay()
+
+    let actualDay = 1
+    let actualData = 0
+    for (let i = 1; i <= 42; i++) {
+        if (i >= indexFirstDayInMonth && actualData < lastDayInMonth) {
+          actualData++
+          this.calendarData.push({data: actualData, day: actualDay})
+        } else {
+          this.calendarData.push({})
+        }
+      actualDay++
+      actualDay === 8 ? actualDay = 1 : ''
+    }
+
+    data.schedules.forEach((itemDay: any) => {
+      this.calendarData.forEach(i => {
+        if (new Date(itemDay.date).getDate() == i.data) {
+          i.description = itemDay.description
+        }
+      })
+    })
+
+
+    console.log(this.calendarData)
+
   }
 
 }

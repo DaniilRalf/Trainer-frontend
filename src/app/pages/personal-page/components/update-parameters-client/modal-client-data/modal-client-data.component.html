@@ -2,6 +2,7 @@
 <!-- ====добавить expansion panel material -->
 <!-- ====поправить пайп даты -->
 <!-- ====добавить возможность изменять сущетвуюшие параметры -->
+<!-- ====измененить минимальную высоту модального окна -->
 <ng-container *ngIf="data.tag === 'parameters'">
     <mat-accordion>
         <mat-expansion-panel *ngFor="let item of data.personal">
@@ -21,9 +22,48 @@
         </mat-expansion-panel>
     </mat-accordion>
     <div class="flex-center mt-10">
-        <button mat-raised-button color="primary">Добавить замер</button>
+        <button (click)="changeTag('parameters_add')" mat-raised-button color="primary">Добавить замер</button>
     </div>
 </ng-container>
+
+
+
+
+
+<div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
+    <form class="create-parameters_form" [formGroup]="createForm" (ngSubmit)="onCreateParameter()">
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Вес</mat-label>
+          <input matInput formControlName="weight">
+        </mat-form-field>
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Обхват груди</mat-label>
+          <input matInput formControlName="shoulder_bust">
+        </mat-form-field>
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Обхват плеч</mat-label>
+          <input matInput formControlName="shoulder_girth">
+        </mat-form-field>
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Обхват бедер</mat-label>
+          <input matInput formControlName="shoulder_hips">
+        </mat-form-field>
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Обхват бедра</mat-label>
+          <input matInput formControlName="shoulder_hip">
+        </mat-form-field>
+        <mat-form-field class="create-parameters__item" appearance="fill">
+          <mat-label>Дата замера</mat-label>
+          <input matInput formControlName="date_metering">
+        </mat-form-field>
+      <div class="flex-center mt-10">
+          <button mat-raised-button color="primary">Сохранить замер</button>
+      </div>
+    </form>
+</div>
+
+
+
 
 
 <ng-container *ngIf="data.tag === 'personal'">
@@ -36,4 +76,45 @@
     <div class="flex-center mt-10">
         <button mat-raised-button color="primary">Сохранить изменения</button>
     </div>
+</ng-container>
+
+
+
+
+
+
+<ng-container *ngIf="data.tag === 'schedule'">
+  расписание
+  <div class="flex-center mt-10">
+    <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить замер</button>
+  </div>
+</ng-container>
+
+
+
+
+
+<ng-container *ngIf="data.tag === 'schedule_add'">
+  Добавить расписание
+  <div (click)="$event.stopPropagation()">
+    <mat-calendar #calendar
+                  (selectedChange)="select($event,calendar)"
+                  [dateClass]="isSelected"
+    ></mat-calendar>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Выбрать тип тренировки</mat-label>
+    <mat-select [(ngModel)]="trainSelected" required>
+      <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.value">
+        {{train.value}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="!trainSelected">Необходимо выбрать тип тренироки</mat-error>
+  </mat-form-field>
+  <div class="flex-center mt-10">
+    <button [disabled]="!trainSelected || daysSelected.length == 0"
+            mat-raised-button color="primary"
+            (click)="createTrainingDays()"
+    >Сохранить тренировочные дни</button>
+  </div>
 </ng-container>

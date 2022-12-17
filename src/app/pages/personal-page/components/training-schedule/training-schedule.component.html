@@ -1,1 +1,11 @@
-<p>training-schedule works!</p>
+<h2>Мой график</h2>
+
+<!--====Добавить смайлики там где есть тренировки-->
+<!--====Добавить  график дни енедели месяц и год-->
+<div class="mat-elevation-z8">
+  <div class="calendar">
+    <div class="calendar_item" *ngFor="let i of calendarData"
+         [ngClass]="i.description ? 'calendar_item-full' : ''"
+    >{{i.data}}</div>
+  </div>
+</div>

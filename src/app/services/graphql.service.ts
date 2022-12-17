@@ -28,6 +28,8 @@ export class GraphqlService {
     })
   }
 
+  //====переделать с юзернэймв на айди
+  //====переименовать с учетом того что тут есть график
   getUserPersonalParameters(username: string | null){
     return this.apollo.query({
       query : gql`
@@ -46,6 +48,10 @@ export class GraphqlService {
               shoulder_hips
               shoulder_hip
               date_metering
+            }
+            schedules {
+              date
+              description
             }
           }
         }
@@ -77,11 +83,33 @@ export class GraphqlService {
     })
   }
 
+  createParametersClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createParametersClient($input: UserInput){
+          createParametersClient(input: $input){
+            id
+            parameters {
+              weight
+              shoulder_bust
+              shoulder_girth
+              shoulder_hips
+              shoulder_hip
+              date_metering
+            }
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+
   getAllClients(){
     return this.apollo.query({
         query: gql`
           query {
             getAllClients {
+              id
               username
               first_name
               last_name
@@ -100,11 +128,33 @@ export class GraphqlService {
                 shoulder_hip
                 date_metering
               }
+              schedules {
+                date
+                description
+              }
             }
           }
         `
     })
   }
 
-  
+  createTrainingDays(data: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createTrainingDays($input: UserInput){
+          createTrainingDays(input: $input){
+            id
+            schedules {
+              id
+              date
+              description
+            }
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+
+
 }

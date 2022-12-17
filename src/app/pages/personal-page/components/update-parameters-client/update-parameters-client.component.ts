@@ -15,7 +15,7 @@ export class UpdateParametersClientComponent implements OnInit {
 
   //====поправить ипизацию эни
   allClients: any = [];
-  displayedKey = ['first_name', 'last_name', 'username', 'parameters', 'personal'];
+  displayedKey = ['first_name', 'last_name', 'username', 'parameters', 'personal', 'schedule'];
 
 
   constructor(
@@ -33,17 +33,19 @@ export class UpdateParametersClientComponent implements OnInit {
     .subscribe(({data}: any) => {
       this.allClients = data.getAllClients
       console.log(this.allClients);
-      
+      console.log(data);
     })
   }
 
   //====поправить типизацию event
-  openModal(username: string, event: any, tag: string): void {
+  openModal(id: number, event: any, tag: string): void {
     this.dialog.open(ModalClientDataComponent, {
       width: '550px',
-      data: {personal: event, username: username, tag: tag},
+      data: {personal: event, id: id, tag: tag},
     }).afterClosed().subscribe(result => {
       // console.log(result);
+      //====сделать отписки от сабскрайбов
+      this.getAllClients()
     });
   }
 

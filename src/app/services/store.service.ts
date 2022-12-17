@@ -56,6 +56,7 @@ export class StoreService {
   saveUserDetalization(data: User){
     this.USER.parameters = data.parameters;
     this.USER.personal = data.personal;
+    this.USER.schedules = data.schedules
   }
 
 }

@@ -7,3 +7,29 @@
     grid-column-gap: 0px;
     grid-row-gap: 8px;
 }
+
+.create-parameters{
+    width: 100%;
+
+    &_form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .create-parameters__item{
+        width: 450px;
+        border-radius: $border-radius-2;
+      }
+    }
+  }
+
+
+
+.mat-calendar-body-cell.test
+{
+  background-color: $yellow !important;
+  border-radius: 50%
+}
+.mat-form-field{
+  width: 100%;
+}

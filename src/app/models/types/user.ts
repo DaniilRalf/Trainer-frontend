@@ -7,6 +7,7 @@ export interface User{
 
   personal?: Personal;
   parameters?: Parameters[];
+  schedules? : Schedules[];
 }
 
 export interface Personal {
@@ -23,4 +24,9 @@ export interface Parameters {
   shoulder_hips: string;
   shoulder_hip: string;
   date_metering: string;
+}
+
+export interface Schedules {
+  day: number;
+  description: string;
 }
