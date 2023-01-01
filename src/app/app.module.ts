@@ -18,6 +18,7 @@ import {PersonalModule} from "./pages/personal-page/personal.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     HomeModule,
     PersonalModule,

@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, take} from "rxjs";
 import { GraphqlService } from 'src/app/services/graphql.service';
 import {User} from "../../../../models/types/user";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ModalClientDataComponent } from './modal-client-data/modal-client-data.component';
+import { ModalClientDataComponent } from './modal-update-parameters-client/modal-client-data.component';
 
 @Component({
   selector: 'app-update-parameters-client',
@@ -41,10 +41,9 @@ export class UpdateParametersClientComponent implements OnInit {
   openModal(id: number, event: any, tag: string): void {
     this.dialog.open(ModalClientDataComponent, {
       width: '550px',
-      data: {personal: event, id: id, tag: tag},
-    }).afterClosed().subscribe(result => {
+      data: {eventData: event, id: id, tag: tag},
+    }).afterClosed().pipe(take(1)).subscribe(result => {
       // console.log(result);
-      //====сделать отписки от сабскрайбов
       this.getAllClients()
     });
   }

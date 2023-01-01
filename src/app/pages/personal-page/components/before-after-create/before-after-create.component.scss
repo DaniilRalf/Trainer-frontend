@@ -1,0 +1,12 @@
+@import '../../../../../assets/scss/index.scss';
+
+.before-after-create{
+
+  &__photo-item{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    border-radius: $border-radius-3;
+  }
+}
+

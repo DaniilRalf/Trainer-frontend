@@ -15,4 +15,8 @@
     *ngIf="StoreService.TabsPage === TabsPage.updateParameters"
     [user]="user">
   </app-update-parameters-client>
+  <app-before-after-create
+    *ngIf="StoreService.TabsPage === TabsPage.beforeAfterCreate"
+    [user]="user">
+  </app-before-after-create>
 </div>

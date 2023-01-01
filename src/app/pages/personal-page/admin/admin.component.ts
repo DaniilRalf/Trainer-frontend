@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     this.getUserFromStore();
   }
 
-  getUserFromStore(){
+  getUserFromStore(): void{
     this.user.next(this.StoreService.USER)
   }
 

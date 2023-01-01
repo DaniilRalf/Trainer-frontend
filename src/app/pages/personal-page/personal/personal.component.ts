@@ -25,6 +25,7 @@ export class PersonalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.GraphqlService.getUserPersonalParameters(this.StoreService.getUser().username)
       .subscribe((i: any) => {
+        console.log(i)
         this.StoreService.saveUserDetalization(i.data.getUserPersonalParameters)
         this.navigate();
     })
@@ -33,7 +34,7 @@ export class PersonalComponent implements OnInit, OnDestroy {
 
   //====переделать на свич-кейс
   //====добавить роли в енамы
-  navigate(){
+  navigate(): void{
     if(this.StoreService.USER.roleId === 1){
       this.router.navigate(['/personal', 'client-online']);
     }
@@ -47,7 +48,7 @@ export class PersonalComponent implements OnInit, OnDestroy {
   }
 
   //====менять таб в зависимости от роли
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // this.StoreService.TabsPage = TabsPage.personalData
   }
 

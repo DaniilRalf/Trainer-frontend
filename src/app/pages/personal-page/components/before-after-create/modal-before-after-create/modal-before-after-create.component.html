@@ -1,0 +1,19 @@
+<div class="modal-before-after-create">
+
+
+
+    <input type="file" (change)="setPhoto($event)" multiple>
+
+    <mat-form-field class="create-client__item" appearance="fill">
+      <mat-label>Дата создания фоот</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dateNewPhoto">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="flex-center mt-10">
+      <button mat-raised-button color="primary" (click)="test()">Сохранить замер</button>
+    </div>
+
+
+</div>

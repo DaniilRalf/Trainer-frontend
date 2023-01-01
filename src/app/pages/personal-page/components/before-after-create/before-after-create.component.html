@@ -1,0 +1,31 @@
+<div class="before-after-create">
+
+  <mat-accordion>
+
+
+    <mat-expansion-panel *ngFor="let item of allClients" (opened)="openedItemPanel(item.id)" [hideToggle]="hideToggle">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="before-after-create__header">{{item.first_name}} {{item.last_name}}</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+
+      <div class="mt-10">
+        <img class="before-after-create__photo-item"
+             *ngFor="let photo of allPhotos"
+             src="http://localhost:4300/{{photo.file_name}}">
+      </div>
+
+      <div class="flex-center mt-10">
+        <button mat-raised-button color="primary"
+                (click)="openModal(item.id)"
+        >Добавить фото</button>
+      </div>
+
+    </mat-expansion-panel>
+
+
+  </mat-accordion>
+
+</div>

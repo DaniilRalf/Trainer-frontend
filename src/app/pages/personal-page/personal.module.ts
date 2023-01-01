@@ -26,11 +26,13 @@ import { CreateClientComponent } from './components/create-client/create-client.
 import { UpdateParametersClientComponent } from './components/update-parameters-client/update-parameters-client.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import { ModalClientDataComponent } from './components/update-parameters-client/modal-client-data/modal-client-data.component';
+import { ModalClientDataComponent } from './components/update-parameters-client/modal-update-parameters-client/modal-client-data.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from "@angular/material/menu";
+import { BeforeAfterCreateComponent } from './components/before-after-create/before-after-create.component';
+import { ModalBeforeAfterCreateComponent } from './components/before-after-create/modal-before-after-create/modal-before-after-create.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import {MatMenuModule} from "@angular/material/menu";
     BeforeAfterComponent,
     CreateClientComponent,
     UpdateParametersClientComponent,
-    ModalClientDataComponent
+    ModalClientDataComponent,
+    BeforeAfterCreateComponent,
+    ModalBeforeAfterCreateComponent
   ],
     imports: [
         CommonModule,

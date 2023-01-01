@@ -137,6 +137,21 @@ export class GraphqlService {
         `
     })
   }
+  getAllClientsWithPhoto(){
+    return this.apollo.query({
+      query: gql`
+          query {
+            getAllClients {
+              id
+              username
+              first_name
+              last_name
+              roleId
+            }
+          }
+        `
+    })
+  }
 
   createTrainingDays(data: any) {
     return this.apollo.mutate({

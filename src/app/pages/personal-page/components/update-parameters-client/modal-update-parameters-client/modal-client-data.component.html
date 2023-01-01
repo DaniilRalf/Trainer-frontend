@@ -5,7 +5,7 @@
 <!-- ====измененить минимальную высоту модального окна -->
 <ng-container *ngIf="data.tag === 'parameters'">
     <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of data.personal">
+        <mat-expansion-panel *ngFor="let item of data.eventData">
           <mat-expansion-panel-header>
             <mat-panel-title>{{item.date_metering | date}}</mat-panel-title>
           </mat-expansion-panel-header>
@@ -68,10 +68,10 @@
 
 <ng-container *ngIf="data.tag === 'personal'">
     <div class="personal-data_list mt-10">
-        <div>День рождения</div><div class="text-right">{{data.personal.birth_day | date}}</div>
-        <div>Гендер</div><div class="text-right">{{data.personal.gender}}</div>
-        <div>Рост</div><div class="text-right">{{data.personal.height}}</div>
-        <div>Дата начала тренировок</div><div class="text-right">{{data.personal.start_train | date}}</div>
+        <div>День рождения</div><div class="text-right">{{data.eventData.birth_day | date}}</div>
+        <div>Гендер</div><div class="text-right">{{data.eventData.gender}}</div>
+        <div>Рост</div><div class="text-right">{{data.eventData.height}}</div>
+        <div>Дата начала тренировок</div><div class="text-right">{{data.eventData.start_train | date}}</div>
     </div>
     <div class="flex-center mt-10">
         <button mat-raised-button color="primary">Сохранить изменения</button>
@@ -84,9 +84,23 @@
 
 
 <ng-container *ngIf="data.tag === 'schedule'">
-  расписание
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of data.eventData">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{item.date| date:'dd-MM-YYY'}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="mt-10">
+        <div>Длбавить изменить день тренировки</div>
+        <div>Длбавить изменить вид тренировки</div>
+        <div>Длбавить сохранение тренировки</div>
+        <div>Длбавить удаление тренировки</div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <div class="flex-center mt-10">
-    <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить замер</button>
+    <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить тренировочные дни</button>
   </div>
 </ng-container>
 

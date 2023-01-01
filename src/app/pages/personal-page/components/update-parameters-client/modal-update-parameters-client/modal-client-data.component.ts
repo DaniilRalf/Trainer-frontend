@@ -6,7 +6,7 @@ import {MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {TrainingEnum} from "../../../../../models/enums/training-enum";
 
 @Component({
-  selector: 'app-modal-client-data',
+  selector: 'app-modal-update-parameters-client',
   templateUrl: './modal-client-data.component.html',
   styleUrls: ['./modal-client-data.component.scss'],
   encapsulation: ViewEncapsulation.None
@@ -68,7 +68,7 @@ export class ModalClientDataComponent implements OnInit {
     }
     this.qraphqlService.createParametersClient(data).subscribe({
       next: (v: any) => {
-        console.log(v)
+        // console.log(v)
       },
       error: (e: any) => {
         console.dir(e.networkError || e)
@@ -104,13 +104,13 @@ export class ModalClientDataComponent implements OnInit {
     if (index < 0) this.daysSelected.push(date);
     else this.daysSelected.splice(index, 1);
     calendar.updateTodaysDate();
-
-    console.log(this.trainSelected)
-    console.log(this.daysSelected)
+    // console.log(this.trainSelected)
+    // console.log(this.daysSelected)
   }
 
   // ====заменить типизацию эни
   createTrainingDays() {
+    // ==== после того как расписание добавляектся снимать выделение со дней
     let schedules: any = []
     this.daysSelected.forEach((itemDate: string) => {
       schedules.push({
@@ -125,7 +125,7 @@ export class ModalClientDataComponent implements OnInit {
     console.log(data)
     this.qraphqlService.createTrainingDays(data).subscribe({
       next: (v: any) => {
-        console.log(v)
+        // console.log(v)
       },
       error: (e: any) => {
         console.dir(e.networkError || e)

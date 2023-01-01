@@ -31,7 +31,11 @@
           <mat-button-toggle value="test"
                              *ngIf="StoreService.USER.roleId === 2"
                              (click)="setTabsPage(TabsPage.updateParameters)"
-          >Изменить клиенту Замеры</mat-button-toggle>
+          >Детализация по клиентам</mat-button-toggle>
+          <mat-button-toggle value="test"
+                             *ngIf="StoreService.USER.roleId === 2"
+                             (click)="setTabsPage(TabsPage.beforeAfterCreate)"
+          >Фото До\После</mat-button-toggle>
         </mat-button-toggle-group>
       </mat-drawer>
 
