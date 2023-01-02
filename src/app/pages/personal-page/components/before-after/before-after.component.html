@@ -1,1 +1,85 @@
-<p>before-after works!</p>
+<div class="before-after">
+
+
+  <div class="before-after__content">
+
+
+    <div class="before-after__content-after">
+      <mat-form-field appearance="fill">
+        <mat-label>Выбрать первую дату</mat-label>
+        <mat-select [(ngModel)]="photoAfter" required>
+          <mat-option *ngFor="let item of dateForSelect" [value]="item">
+            {{item | date:'dd-MM-YYYY'}}
+          </mat-option>
+          <mat-option *ngIf="dateForSelect.length === 0">
+            У Вас пока нет фото
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!photoAfter">Необходимо выбрать первую дату</mat-error>
+      </mat-form-field>
+
+      <ng-container *ngIf="photoAfter">
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Фронт</p>
+            <div><img src="http://localhost:4300/{{findPhoto('front', 'after').file_name}}"></div>
+          </div>
+        </div>
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Спина</p>
+            <div><img src="http://localhost:4300/{{findPhoto('side', 'after').file_name}}"></div>
+          </div>
+        </div>
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Профиль</p>
+            <div><img src="http://localhost:4300/{{findPhoto('back', 'after').file_name}}"></div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+
+    <div class="before-after__content-before">
+      <mat-form-field appearance="fill">
+        <mat-label>Выбрать вторую дату</mat-label>
+        <mat-select [(ngModel)]="photoBefore" required>
+          <mat-option *ngFor="let item of generateForSecondSelect()" [value]="item">
+            {{ item | date:'dd-MM-YYYY'}}
+          </mat-option>
+          <mat-option *ngIf="generateForSecondSelect().length === 0 && photoAfter">
+            Вам пока не с чем сравнить
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!photoBefore">Необходимо выбрать вторую дату</mat-error>
+      </mat-form-field>
+
+      <ng-container *ngIf="photoBefore">
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Фронт</p>
+            <div><img src="http://localhost:4300/{{findPhoto('front', 'before').file_name}}"></div>
+          </div>
+        </div>
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Спина</p>
+            <div><img src="http://localhost:4300/{{findPhoto('side', 'before').file_name}}"></div>
+          </div>
+        </div>
+        <div class="before-after__content-after-photos">
+          <div class="before-after__content-after-photos-item">
+            <p>Профиль</p>
+            <div><img src="http://localhost:4300/{{findPhoto('back', 'before').file_name}}"></div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+
+  </div>
+
+
+
+</div>

@@ -20,11 +20,13 @@ export class StoreService {
   constructor() { }
 
   saveUser(data: User){
+    this.USER.id = data.id
     this.USER.roleId = data.roleId
     this.USER.token = data.token
     this.USER.username = data.username
     this.USER.first_name = data.first_name
     this.USER.last_name = data.last_name
+    localStorage.setItem('id', String(data.id));
     localStorage.setItem('roleId', String(data.roleId));
     localStorage.setItem('token', String(data.token));
     localStorage.setItem('username', String(data.username));
@@ -34,6 +36,7 @@ export class StoreService {
   }
 
   getUser() {
+    this.USER.id = Number(localStorage.getItem('id'));
     this.USER.roleId = Number(localStorage.getItem('roleId'));
     this.USER.token = localStorage.getItem('token');
     this.USER.username = localStorage.getItem('username');
@@ -45,6 +48,7 @@ export class StoreService {
 
   deleteUser() {
     this.USER = {} as User;
+    localStorage.removeItem('id');
     localStorage.removeItem('roleId');
     localStorage.removeItem('token');
     localStorage.removeItem('username');

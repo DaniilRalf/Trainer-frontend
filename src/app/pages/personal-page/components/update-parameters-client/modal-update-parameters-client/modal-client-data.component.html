@@ -119,7 +119,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Выбрать тип тренировки</mat-label>
     <mat-select [(ngModel)]="trainSelected" required>
-      <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.value">
+      <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.key">
         {{train.value}}
       </mat-option>
     </mat-select>

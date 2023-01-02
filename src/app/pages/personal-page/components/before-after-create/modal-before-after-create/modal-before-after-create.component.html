@@ -4,6 +4,16 @@
 
     <input type="file" (change)="setPhoto($event)" multiple>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Выбрать тип фотографии</mat-label>
+      <mat-select [(ngModel)]="angle" required>
+        <mat-option *ngFor="let train of TypePhoto | keyvalue" [value]="train.key">
+          {{train.value}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!angle">Необходимо выбрать тип тренироки</mat-error>
+    </mat-form-field>
+
     <mat-form-field class="create-client__item" appearance="fill">
       <mat-label>Дата создания фоот</mat-label>
       <input matInput [matDatepicker]="picker" [(ngModel)]="dateNewPhoto">
@@ -12,7 +22,7 @@
     </mat-form-field>
 
     <div class="flex-center mt-10">
-      <button mat-raised-button color="primary" (click)="test()">Сохранить замер</button>
+      <button mat-raised-button color="primary" (click)="saveNewPhoto()">Сохранить замер</button>
     </div>
 
 

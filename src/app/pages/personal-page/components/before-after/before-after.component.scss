@@ -1,0 +1,40 @@
+@import '../../../../../assets/scss/index.scss';
+
+.before-after{
+
+  &__content{
+    display: flex;
+    justify-content: space-around;
+
+    &-after, &-before{
+      width: 46%;
+
+
+    }
+  }
+}
+
+
+.before-after__content-after-photos-item,
+.before-after__content-after-photos-item{
+  margin-bottom: 10px;
+  p{
+    text-align: center;
+  }
+  div{
+    overflow: hidden;
+    border-radius: $border-radius-2;
+    display: flex;
+    justify-content: center;
+
+    img{
+      min-width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+mat-form-field{
+  width: 100%;
+}

@@ -17,6 +17,7 @@ export class BeforeAfterCreateComponent implements OnInit {
   // ==== поправить типизацию any
   allClients: any = [];
 
+  // ==== сортировать фотки по дате
   allPhotos: any = []
 
   hideToggle = false
@@ -32,7 +33,7 @@ export class BeforeAfterCreateComponent implements OnInit {
   }
 
   //====поправить типизацию data
-  getAllClients() {
+  getAllClients(): void {
     this.graphqlService.getAllClientsWithPhoto()
       .subscribe(({data}: any) => {
         this.allClients = data.getAllClients
@@ -51,7 +52,7 @@ export class BeforeAfterCreateComponent implements OnInit {
     });
   }
 
-  onCloseOpenItemPanel() {
+  onCloseOpenItemPanel(): void {
     this.hideToggle = false
   }
   openedItemPanel(id: number) {

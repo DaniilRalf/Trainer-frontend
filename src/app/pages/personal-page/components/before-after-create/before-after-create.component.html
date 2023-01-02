@@ -3,18 +3,20 @@
   <mat-accordion>
 
 
-    <mat-expansion-panel *ngFor="let item of allClients" (opened)="openedItemPanel(item.id)" [hideToggle]="hideToggle">
+    <mat-expansion-panel *ngFor="let item of allClients"
+                         (opened)="openedItemPanel(item.id)"
+                         [hideToggle]="hideToggle">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <div class="before-after-create__header">{{item.first_name}} {{item.last_name}}</div>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-
-      <div class="mt-10">
-        <img class="before-after-create__photo-item"
-             *ngFor="let photo of allPhotos"
-             src="http://localhost:4300/{{photo.file_name}}">
+      <div class="before-after-create__box mt-10">
+        <div class="before-after-create__item" *ngFor="let photo of allPhotos">
+          <div class="before-after-create__item-photo"><img src="http://localhost:4300/{{photo.file_name}}"></div>
+          <p class="before-after-create__item-desc">{{photo.date | date:'dd-MM-YYYY'}}</p>
+        </div>
       </div>
 
       <div class="flex-center mt-10">
@@ -22,6 +24,7 @@
                 (click)="openModal(item.id)"
         >Добавить фото</button>
       </div>
+
 
     </mat-expansion-panel>
 

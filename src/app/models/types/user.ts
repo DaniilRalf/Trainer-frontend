@@ -1,4 +1,5 @@
 export interface User{
+  id: number;
   roleId: number | null;
   token: string | null;
   username: string | null;

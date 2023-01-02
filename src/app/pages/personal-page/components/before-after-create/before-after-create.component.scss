@@ -2,11 +2,36 @@
 
 .before-after-create{
 
-  &__photo-item{
-    width: 100px;
-    height: 100px;
+  &__box{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item{
     margin: 5px;
-    border-radius: $border-radius-3;
+
+    &-photo{
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      width: 130px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: $border-radius-3;
+
+      img{
+        height: 100%;
+        position: center;
+      }
+    }
+
+    &-desc{
+      text-align: center;
+      padding: 3px;
+      margin-top: 5px;
+      background-color: $blue-light;
+      border-radius: 10px;
+    }
   }
 }
 

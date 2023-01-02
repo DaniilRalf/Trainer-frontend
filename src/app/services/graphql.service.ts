@@ -16,6 +16,7 @@ export class GraphqlService {
       mutation: gql`
         mutation loginUser($input: UserInput){
           loginUser(input: $input){
+            id
             username
             first_name
             last_name

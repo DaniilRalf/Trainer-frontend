@@ -15,6 +15,10 @@ export class HttpService {
     return this.http.post('http://localhost:4300/api/get_client_photos', {id: data})
   }
 
+  getItemPhotoBeforeAfter(data: number): Observable<Object> {
+    return this.http.post('http://localhost:4300/api/get_client_item_photos', {id: data})
+  }
+
   // ==== вынестти урлы в енвацйромент
   // ==== изменить типизацию эни
   createBeforeAfter(data: any) {
