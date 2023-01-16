@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, take} from "rxjs";
 import {User} from "../../../../models/types/user";
 
 @Component({
@@ -15,7 +15,7 @@ export class TrainingScheduleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.user.subscribe((i: any) => {
+    this.user.pipe(take(1)).subscribe((i: any) => {
       this.generateCalendarData(i)
     })
   }

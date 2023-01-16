@@ -7,5 +7,6 @@ export enum TabsPageEnum {
   // admin
   createClient = 5,
   updateParameters = 6,
-  beforeAfterCreate
+  beforeAfterCreate = 7,
+  adminSchedule = 8,
 }

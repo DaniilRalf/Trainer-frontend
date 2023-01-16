@@ -2,11 +2,6 @@
 
 <div class="client-online">
 
-  <div class="spinner" *ngIf="!user.value.parameters && !user.value.personal">
-    <mat-spinner class="spinner-active"></mat-spinner>
-  </div>
-
-
   <app-personal-data
     *ngIf="StoreService.TabsPage === TabsPage.personalData"
     [user]="user">

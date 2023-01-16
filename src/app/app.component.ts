@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
     private storeService: StoreService
   ) { }
 
+  // ==== убрать все console.log
   ngOnInit(): void {
     this.storeService.getUser();
   }

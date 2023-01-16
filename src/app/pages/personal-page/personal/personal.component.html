@@ -34,6 +34,10 @@
           >Детализация по клиентам</mat-button-toggle>
           <mat-button-toggle value="test"
                              *ngIf="StoreService.USER.roleId === 2"
+                             (click)="setTabsPage(TabsPage.adminSchedule)"
+          >Мой график</mat-button-toggle>
+          <mat-button-toggle value="test"
+                             *ngIf="StoreService.USER.roleId === 2"
                              (click)="setTabsPage(TabsPage.beforeAfterCreate)"
           >Фото До\После</mat-button-toggle>
         </mat-button-toggle-group>

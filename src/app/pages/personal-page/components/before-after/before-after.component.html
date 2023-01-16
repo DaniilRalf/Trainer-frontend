@@ -22,19 +22,19 @@
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Фронт</p>
-            <div><img src="http://localhost:4300/{{findPhoto('front', 'after').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('front', 'after').file_name}}"></div>
           </div>
         </div>
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Спина</p>
-            <div><img src="http://localhost:4300/{{findPhoto('side', 'after').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('side', 'after').file_name}}"></div>
           </div>
         </div>
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Профиль</p>
-            <div><img src="http://localhost:4300/{{findPhoto('back', 'after').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('back', 'after').file_name}}"></div>
           </div>
         </div>
       </ng-container>
@@ -59,19 +59,19 @@
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Фронт</p>
-            <div><img src="http://localhost:4300/{{findPhoto('front', 'before').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('front', 'before').file_name}}"></div>
           </div>
         </div>
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Спина</p>
-            <div><img src="http://localhost:4300/{{findPhoto('side', 'before').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('side', 'before').file_name}}"></div>
           </div>
         </div>
         <div class="before-after__content-after-photos">
           <div class="before-after__content-after-photos-item">
             <p>Профиль</p>
-            <div><img src="http://localhost:4300/{{findPhoto('back', 'before').file_name}}"></div>
+            <div><img src="{{env.apiUrl + findPhoto('back', 'before').file_name}}"></div>
           </div>
         </div>
       </ng-container>

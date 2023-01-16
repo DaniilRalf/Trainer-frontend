@@ -2,21 +2,21 @@
 
 <div class="admin">
 
-  <div class="spinner" *ngIf="!user.value.parameters && !user.value.personal">
-    <mat-spinner class="spinner-active"></mat-spinner>
-  </div>
-
-
   <app-create-client
     *ngIf="StoreService.TabsPage === TabsPage.createClient"
-    [user]="user">
-  </app-create-client>
+    [user]="user"
+  ></app-create-client>
   <app-update-parameters-client
     *ngIf="StoreService.TabsPage === TabsPage.updateParameters"
-    [user]="user">
-  </app-update-parameters-client>
+    [user]="user"
+  ></app-update-parameters-client>
   <app-before-after-create
     *ngIf="StoreService.TabsPage === TabsPage.beforeAfterCreate"
-    [user]="user">
-  </app-before-after-create>
+    [user]="user"
+  ></app-before-after-create>
+  <app-admin-schedule
+    *ngIf="StoreService.TabsPage === TabsPage.adminSchedule"
+    [user]="user"
+  ></app-admin-schedule>
+
 </div>

@@ -33,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from "@angular/material/menu";
 import { BeforeAfterCreateComponent } from './components/before-after-create/before-after-create.component';
 import { ModalBeforeAfterCreateComponent } from './components/before-after-create/modal-before-after-create/modal-before-after-create.component';
+import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ModalBeforeAfterCreateComponent } from './components/before-after-creat
     UpdateParametersClientComponent,
     ModalClientDataComponent,
     BeforeAfterCreateComponent,
-    ModalBeforeAfterCreateComponent
+    ModalBeforeAfterCreateComponent,
+    AdminScheduleComponent
   ],
     imports: [
         CommonModule,

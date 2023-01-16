@@ -5,6 +5,7 @@ import {GraphqlService} from "../../../../services/graphql.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal-before-after-create.component";
 import {HttpService} from "../../../../services/http.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-before-after-create',
@@ -12,6 +13,7 @@ import {HttpService} from "../../../../services/http.service";
   styleUrls: ['./before-after-create.component.scss']
 })
 export class BeforeAfterCreateComponent implements OnInit {
+  env = environment
   @Input() public user!: BehaviorSubject<User>
 
   // ==== поправить типизацию any
@@ -59,6 +61,8 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.httpService.getAllPhotoBeforeAfter(id)
       .subscribe(item => {
         this.allPhotos = item
+        console.log(this.env.apiUrl + this.allPhotos[1].file_name)
+        console.log(this.allPhotos)
       })
   }
 

@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
 import {HttpLink} from 'apollo-angular/http';
+import {environment} from "../environments/environment";
 
-// ====засунуть в энвайромент
-const uri = 'http://localhost:4300/graphql'; // <-- add the URL of the GraphQL server here
+const uri = `${environment.apiUrl}graphql`; // <-- add the URL of the GraphQL server here
 
 //==== поправить типизацию опций
 // const defaultOptions: DefaultOptions = {

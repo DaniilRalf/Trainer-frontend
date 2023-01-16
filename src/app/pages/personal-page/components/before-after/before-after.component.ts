@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, retry} from "rxjs";
 import {User} from "../../../../models/types/user";
 import {HttpService} from "../../../../services/http.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-before-after',
@@ -9,6 +10,7 @@ import {HttpService} from "../../../../services/http.service";
   styleUrls: ['./before-after.component.scss']
 })
 export class BeforeAfterComponent implements OnInit {
+  env = environment
   @Input() public user!: BehaviorSubject<User>
 
   allItemPhoto?: any
