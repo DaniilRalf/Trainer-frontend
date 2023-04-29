@@ -1,20 +1,47 @@
-<!-- //TODO: добавить возможность изменять сущетвуюшие параметры -->
-<div class="parameters-update" *ngIf="data.tag === 'parameters'">
+
+<div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
+  <form class="create-parameters_form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
+    <mat-form-field class="create-parameters__item" appearance="fill">
+      <mat-label>Вес</mat-label>
+      <input matInput formControlName="weight">
+    </mat-form-field>
+    <mat-form-field class="create-parameters__item" appearance="fill">
+      <mat-label>Обхват груди</mat-label>
+      <input matInput formControlName="shoulder_bust">
+    </mat-form-field>
+    <mat-form-field class="create-parameters__item" appearance="fill">
+      <mat-label>Обхват плеч</mat-label>
+      <input matInput formControlName="shoulder_girth">
+    </mat-form-field>
+    <mat-form-field class="create-parameters__item" appearance="fill">
+      <mat-label>Обхват бедер</mat-label>
+      <input matInput formControlName="shoulder_hips">
+    </mat-form-field>
+    <mat-form-field class="create-parameters__item" appearance="fill">
+      <mat-label>Обхват бедра</mat-label>
+      <input matInput formControlName="shoulder_hip">
+    </mat-form-field>
+    <mat-form-field class="create-parameters__item" appearance="fill">
+<!--      <mat-label>Дата замера</mat-label>-->
+<!--      <input matInput formControlName="date_metering">-->
+      <mat-label>Дата замера</mat-label>
+      <input matInput formControlName="date_metering" [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="flex-center mt-10">
+      <button mat-raised-button color="primary">Сохранить замер</button>
+    </div>
+  </form>
+</div>
+
+<div class="update-parameters" *ngIf="data.tag === 'parameters'">
     <mat-accordion>
         <mat-expansion-panel *ngFor="let item of data.eventData">
           <mat-expansion-panel-header>
             <mat-panel-title>{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
           </mat-expansion-panel-header>
-          <form class="parameters-update-form"
-                (ngSubmit)="onUpdateParameter({
-                    id: item.id,
-                    shoulder_bust: shoulder_bust.value,
-                    shoulder_girth: shoulder_girth.value,
-                    shoulder_hip: shoulder_hip.value,
-                    shoulder_hips: shoulder_hips.value,
-                    weight: weight.value
-                })">
-
+          <form class="update-parameters-form">
             <div class="item">
               <p class="item-name">Обхват груди (см.)</p>
               <mat-form-field class="item-value" appearance="fill">
@@ -55,8 +82,23 @@
                        matInput>
               </mat-form-field>
             </div>
-            <div class="flex-center mt-10">
-              <button mat-raised-button color="primary">Сохранить изменения</button>
+            <div class="update-parameters-form-btn">
+              <div class="flex-center mt-10">
+                <button (click)="onRemoveParameter(item.id)"
+                        type="button" mat-raised-button
+                        color="warn">Удалить замер</button>
+              </div>
+              <div class="flex-center mt-10">
+                <button (click)="onUpdateParameter({
+                        id: item.id,
+                        shoulder_bust: shoulder_bust.value,
+                        shoulder_girth: shoulder_girth.value,
+                        shoulder_hip: shoulder_hip.value,
+                        shoulder_hips: shoulder_hips.value,
+                        weight: weight.value
+                      })" type="button" mat-raised-button
+                        color="primary">Сохранить изменения</button>
+              </div>
             </div>
           </form>
         </mat-expansion-panel>
@@ -70,37 +112,7 @@
 
 
 
-<div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
-    <form class="create-parameters_form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Вес</mat-label>
-          <input matInput formControlName="weight">
-        </mat-form-field>
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Обхват груди</mat-label>
-          <input matInput formControlName="shoulder_bust">
-        </mat-form-field>
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Обхват плеч</mat-label>
-          <input matInput formControlName="shoulder_girth">
-        </mat-form-field>
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Обхват бедер</mat-label>
-          <input matInput formControlName="shoulder_hips">
-        </mat-form-field>
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Обхват бедра</mat-label>
-          <input matInput formControlName="shoulder_hip">
-        </mat-form-field>
-        <mat-form-field class="create-parameters__item" appearance="fill">
-          <mat-label>Дата замера</mat-label>
-          <input matInput formControlName="date_metering">
-        </mat-form-field>
-      <div class="flex-center mt-10">
-          <button mat-raised-button color="primary">Сохранить замер</button>
-      </div>
-    </form>
-</div>
+
 
 
 
@@ -117,9 +129,6 @@
         <button mat-raised-button color="primary">Сохранить изменения</button>
     </div>
 </ng-container>
-
-
-
 
 
 
@@ -143,8 +152,6 @@
     <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить тренировочные дни</button>
   </div>
 </ng-container>
-
-
 
 
 

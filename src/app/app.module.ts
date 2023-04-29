@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PersonalModule} from "./pages/personal-page/personal.module";
 import {DirectivesModule} from "./helpers/directives/directives.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {DirectivesModule} from "./helpers/directives/directives.module";
     HttpClientModule,
     BrowserAnimationsModule,
     DirectivesModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

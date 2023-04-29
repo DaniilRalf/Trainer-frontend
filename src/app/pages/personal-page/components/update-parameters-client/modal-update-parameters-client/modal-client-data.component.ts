@@ -1,16 +1,17 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {GraphqlService} from 'src/app/helpers/services/graphql.service';
-import {MatCalendarCellClassFunction} from "@angular/material/datepicker";
-import {TrainingEnum} from "../../../../../models/enums/training-enum";
-import {take} from "rxjs";
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core'
+import {MAT_DIALOG_DATA} from '@angular/material/dialog'
+import {FormControl, FormGroup, Validators} from "@angular/forms"
+import {GraphqlService} from 'src/app/helpers/services/graphql.service'
+import {MatCalendarCellClassFunction} from "@angular/material/datepicker"
+import {TrainingEnum} from "../../../../../models/enums/training-enum"
+import {take} from "rxjs"
+import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
 
 @Component({
   selector: 'app-modal-update-parameters-client',
   templateUrl: './modal-client-data.component.html',
   styleUrls: ['./modal-client-data.component.scss'],
-  // encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class ModalClientDataComponent implements OnInit {
 
@@ -18,62 +19,70 @@ export class ModalClientDataComponent implements OnInit {
 
   createPersonalForm!: FormGroup
 
+  // TODO: types
   daysSelected: any[] = []
   trainSelected: string | null = null
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public qraphqlService: GraphqlService,
-  ) { }
+    private qraphqlService: GraphqlService,
+    private notificationService: NotificationsService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.formBuildCreatePersonal()
-    console.log(this.data)
   }
 
-  /** Personal methods========================================*/
+  public changeTag(tag: string): void {
+    this.data.tag = tag
+  }
+
+  /** Parameters=====================================================*/
   public formBuildCreatePersonal(): void {
     this.createPersonalForm = new FormGroup({
-      weight: new FormControl('123',[
+      weight: new FormControl('123', [
         Validators.required,
       ]),
-      shoulder_bust: new FormControl('123',[
+      shoulder_bust: new FormControl('123', [
         Validators.required,
       ]),
-      shoulder_girth: new FormControl('123',[
+      shoulder_girth: new FormControl('123', [
         Validators.required,
       ]),
-      shoulder_hips: new FormControl('123',[
+      shoulder_hips: new FormControl('123', [
         Validators.required,
       ]),
-      shoulder_hip: new FormControl('123',[
+      shoulder_hip: new FormControl('123', [
         Validators.required,
       ]),
-      date_metering: new FormControl('1668621600000',[
+      date_metering: new FormControl('1668621600000', [
         Validators.required,
       ]),
     })
   }
+
   /** Create new item Parameter for user*/
-  public onCreateParameter(){
+  public onCreateParameter() {
     const data = {
       id: Number(this.data.id),
       parameters: {
+        event: 'add',
         weight: Number(this.createPersonalForm.value.weight),
         shoulder_bust: Number(this.createPersonalForm.value.shoulder_bust),
         shoulder_girth: Number(this.createPersonalForm.value.shoulder_girth),
         shoulder_hips: Number(this.createPersonalForm.value.shoulder_hips),
         shoulder_hip: Number(this.createPersonalForm.value.shoulder_hip),
-        date_metering: Number(this.createPersonalForm.value.date_metering),
+        date_metering: Date.parse(this.createPersonalForm.value.date_metering),
       }
     }
-    this.qraphqlService.createOrUpdateParametersClient(data)
+    this.qraphqlService.eventWithParameterClient(data)
       .pipe(take(1))
-      .subscribe((res) => {
-      // console.log(res)
-        // TODO: делать уведомление
-    })
+      .subscribe(() => {
+        this.notificationService.eventNotification('Параметры клиента сохранены')
+      })
   }
+
   /** Update item Parameter*/
   public onUpdateParameter(inputData: {
     id: string | null,
@@ -86,6 +95,7 @@ export class ModalClientDataComponent implements OnInit {
     const data = {
       id: Number(this.data.id),
       parameters: {
+        event: 'update',
         id: Number(inputData.id),
         weight: Number(inputData.weight),
         shoulder_bust: Number(inputData.shoulder_bust),
@@ -94,36 +104,58 @@ export class ModalClientDataComponent implements OnInit {
         shoulder_hip: Number(inputData.shoulder_hip),
       }
     }
-    this.qraphqlService.createOrUpdateParametersClient(data)
+    this.qraphqlService.eventWithParameterClient(data)
       .pipe(take(1))
-      .subscribe((res) => {
-        // console.log(res)
-        // TODO: делать уведомление
+      .subscribe(() => {
+        this.notificationService.eventNotification('Параметры клиента изменены')
       })
   }
-  /** Personal methods========================================*/
 
-
-
-
-
-  changeTag(tag: string) {
-    this.data.tag = tag
+  /** Remove item Parameter*/
+  public onRemoveParameter(inputData: string):void {
+    const data = {
+      id: Number(inputData),
+      parameters: {
+        event: 'remove',
+      }
+    }
+    this.qraphqlService.eventWithParameterClient(data)
+      .pipe(take(1))
+      .subscribe(() => {
+        // TODO: types
+        this.data.eventData = this.data.eventData.filter((item: any) => item.id !== inputData)
+        this.notificationService.eventNotification('Параметры клиента удалены')
+      })
   }
+
+  /** Parameters=====================================================*/
+
+
+  /** Personal-data==================================================*/
+
+  /** Personal-data==================================================*/
+
+
+
+
+
+
 
 
 
 
   isSelected: MatCalendarCellClassFunction<any> = (cellDate) => {
-      const date =
-        cellDate.getFullYear() +
-        "-" +
-        ("00" + (cellDate.getMonth() + 1)).slice(-2) +
-        "-" +
-        ("00" + cellDate.getDate()).slice(-2);
-      return this.daysSelected.includes(date) ? "test" : '';
+    const date =
+      cellDate.getFullYear() +
+      "-" +
+      ("00" + (cellDate.getMonth() + 1)).slice(-2) +
+      "-" +
+      ("00" + cellDate.getDate()).slice(-2);
+    return this.daysSelected.includes(date) ? "test" : '';
   };
 
+
+  // TODO: types
   select(event: any, calendar: any) {
     const date =
       event.getFullYear() +
@@ -143,8 +175,8 @@ export class ModalClientDataComponent implements OnInit {
     let schedules: any = []
     this.daysSelected.forEach((itemDate: string) => {
       schedules.push({
-          date: Date.parse(itemDate),
-          description: this.trainSelected
+        date: Date.parse(itemDate),
+        description: this.trainSelected
       })
     })
     const data = {
