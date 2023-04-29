@@ -34,6 +34,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import { BeforeAfterCreateComponent } from './components/before-after-create/before-after-create.component';
 import { ModalBeforeAfterCreateComponent } from './components/before-after-create/modal-before-after-create/modal-before-after-create.component';
 import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {DirectivesModule} from "../../helpers/directives/directives.module";
 
 
 @NgModule({
@@ -76,7 +78,9 @@ import { AdminScheduleComponent } from './components/admin-schedule/admin-schedu
         MatExpansionModule,
         MatCardModule,
         MatMenuModule,
-        FormsModule
+        FormsModule,
+        MatChipsModule,
+        DirectivesModule
     ],
 })
 export class PersonalModule { }

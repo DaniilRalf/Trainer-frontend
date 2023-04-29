@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../models/types/user";
-import {StoreService} from "../../../services/store.service";
+import {StoreService} from "../../../helpers/services/store.service";
 import {BehaviorSubject} from "rxjs";
 import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
 
@@ -15,7 +15,7 @@ export class ClientOnlineComponent implements OnInit {
   user = new BehaviorSubject<User>({} as User);
 
   constructor(
-    public StoreService: StoreService,
+    public storeService: StoreService,
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class ClientOnlineComponent implements OnInit {
   }
 
   getUserFromStore(){
-    this.user.next(this.StoreService.USER)
+    this.user.next(this.storeService.USER)
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from "./services/store.service";
+import {StoreService} from "./helpers/services/store.service";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,6 @@ export class AppComponent implements OnInit{
     private storeService: StoreService
   ) { }
 
-  // ==== убрать все console.log
   ngOnInit(): void {
     this.storeService.getUser();
   }

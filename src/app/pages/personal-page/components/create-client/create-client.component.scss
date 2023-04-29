@@ -6,10 +6,10 @@
   &_form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 
     .create-client__item{
-      width: 400px;
+      width: 600px;
       border-radius: $border-radius-2;
     }
   }

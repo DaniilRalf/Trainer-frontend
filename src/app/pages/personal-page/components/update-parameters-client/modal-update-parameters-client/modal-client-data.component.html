@@ -1,37 +1,77 @@
-
-<!-- ====добавить expansion panel material -->
-<!-- ====поправить пайп даты -->
-<!-- ====добавить возможность изменять сущетвуюшие параметры -->
-<!-- ====измененить минимальную высоту модального окна -->
-<ng-container *ngIf="data.tag === 'parameters'">
+<!-- //TODO: добавить возможность изменять сущетвуюшие параметры -->
+<div class="parameters-update" *ngIf="data.tag === 'parameters'">
     <mat-accordion>
         <mat-expansion-panel *ngFor="let item of data.eventData">
           <mat-expansion-panel-header>
-            <mat-panel-title>{{item.date_metering | date}}</mat-panel-title>
+            <mat-panel-title>{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="personal-data_list mt-10">
-            <div>Обхват груди</div><div class="text-right">{{item.shoulder_bust}} см.</div>
-            <div>Обхват плеч</div><div class="text-right">{{item.shoulder_girth}} см.</div>
-            <div>Обхват берда</div><div class="text-right">{{item.shoulder_hip}} см.</div>
-            <div>Обхват бедер</div><div class="text-right">{{item.shoulder_hips}} см.</div>
-            <div>Вес</div><div class="text-right">{{item.weight}} кг.</div>
-          </div>
-          <div class="flex-center mt-10">
-            <button mat-raised-button color="primary">Сохранить изменения</button>
-          </div>
+          <form class="parameters-update-form"
+                (ngSubmit)="onUpdateParameter({
+                    id: item.id,
+                    shoulder_bust: shoulder_bust.value,
+                    shoulder_girth: shoulder_girth.value,
+                    shoulder_hip: shoulder_hip.value,
+                    shoulder_hips: shoulder_hips.value,
+                    weight: weight.value
+                })">
+
+            <div class="item">
+              <p class="item-name">Обхват груди (см.)</p>
+              <mat-form-field class="item-value" appearance="fill">
+                <input #shoulder_bust
+                       [value]="item.shoulder_bust"
+                       matInput numbersOnly>
+              </mat-form-field>
+            </div>
+            <div class="item">
+              <p class="item-name">Обхват плеч (см.)</p>
+              <mat-form-field class="item-value" appearance="fill">
+                <input #shoulder_girth
+                       [value]="item.shoulder_girth"
+                       matInput numbersOnly>
+              </mat-form-field>
+            </div>
+            <div class="item">
+              <p class="item-name">Обхват берда (см.)</p>
+              <mat-form-field class="item-value" appearance="fill">
+                <input #shoulder_hip
+                       [value]="item.shoulder_hip"
+                       matInput numbersOnly>
+              </mat-form-field>
+            </div>
+            <div class="item">
+              <p class="item-name">Обхват бедер (см.)</p>
+              <mat-form-field class="item-value" appearance="fill">
+                <input #shoulder_hips
+                       [value]="item.shoulder_hips"
+                       matInput numbersOnly>
+              </mat-form-field>
+            </div>
+            <div class="item">
+              <p class="item-name">Вес (кг.)</p>
+              <mat-form-field class="item-value" appearance="fill">
+                <input #weight
+                       [value]="item.weight"
+                       matInput>
+              </mat-form-field>
+            </div>
+            <div class="flex-center mt-10">
+              <button mat-raised-button color="primary">Сохранить изменения</button>
+            </div>
+          </form>
         </mat-expansion-panel>
     </mat-accordion>
     <div class="flex-center mt-10">
         <button (click)="changeTag('parameters_add')" mat-raised-button color="primary">Добавить замер</button>
     </div>
-</ng-container>
+</div>
 
 
 
 
 
 <div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
-    <form class="create-parameters_form" [formGroup]="createForm" (ngSubmit)="onCreateParameter()">
+    <form class="create-parameters_form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
         <mat-form-field class="create-parameters__item" appearance="fill">
           <mat-label>Вес</mat-label>
           <input matInput formControlName="weight">
@@ -68,10 +108,10 @@
 
 <ng-container *ngIf="data.tag === 'personal'">
     <div class="personal-data_list mt-10">
-        <div>День рождения</div><div class="text-right">{{data.eventData.birth_day | date}}</div>
+        <div>День рождения</div><div class="text-right">{{data.eventData.birth_day | date: 'dd-MM-yyyy'}}</div>
         <div>Гендер</div><div class="text-right">{{data.eventData.gender}}</div>
         <div>Рост</div><div class="text-right">{{data.eventData.height}}</div>
-        <div>Дата начала тренировок</div><div class="text-right">{{data.eventData.start_train | date}}</div>
+        <div>Дата начала тренировок</div><div class="text-right">{{data.eventData.start_train | date: 'dd-MM-yyyy'}}</div>
     </div>
     <div class="flex-center mt-10">
         <button mat-raised-button color="primary">Сохранить изменения</button>
@@ -88,7 +128,7 @@
   <mat-accordion>
     <mat-expansion-panel *ngFor="let item of data.eventData">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{item.date| date:'dd-MM-YYY'}}</mat-panel-title>
+        <mat-panel-title>{{item.date| date:'dd-MM-yyyy'}}</mat-panel-title>
       </mat-expansion-panel-header>
       <div class="mt-10">
         <div>Длбавить изменить день тренировки</div>

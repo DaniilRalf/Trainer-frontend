@@ -1,21 +1,21 @@
-<!--====сделать спиннер отдельным компонентом-->
+<!--//TODO: сделать спиннер отдельным компонентом-->
 
 <div class="client-online">
 
   <app-personal-data
-    *ngIf="StoreService.TabsPage === TabsPage.personalData"
+    *ngIf="storeService.TabsPage === TabsPage.personalData"
     [user]="user">
   </app-personal-data>
   <app-training-schedule
-    *ngIf="StoreService.TabsPage === TabsPage.trainingSchedule"
+    *ngIf="storeService.TabsPage === TabsPage.trainingSchedule"
     [user]="user">
   </app-training-schedule>
   <app-my-parameters
-    *ngIf="StoreService.TabsPage === TabsPage.myParameters"
+    *ngIf="storeService.TabsPage === TabsPage.myParameters"
     [user]="user">
   </app-my-parameters>
   <app-before-after
-    *ngIf="StoreService.TabsPage === TabsPage.beforeAfter"
+    *ngIf="storeService.TabsPage === TabsPage.beforeAfter"
     [user]="user">
   </app-before-after>
 </div>

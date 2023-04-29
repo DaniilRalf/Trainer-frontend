@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, take} from "rxjs";
 import {User} from "../../../../models/types/user";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {GraphqlService} from "../../../../services/graphql.service";
-import {StoreService} from "../../../../services/store.service";
+import {GraphqlService} from "../../../../helpers/services/graphql.service";
+import {StoreService} from "../../../../helpers/services/store.service";
 import {RoleEnum} from "../../../../models/enums/role-enum";
 import {GenderEnum} from "../../../../models/enums/gender-enum";
 
@@ -18,11 +18,10 @@ export class CreateClientComponent implements OnInit {
   RoleEnum = RoleEnum;
   GenderEnum = GenderEnum;
 
-  //====приватнуть сервис
-  //====сделать отдельный обработкик ошибок
-  //====сделать обработку валидации при заполнении полей
+  //TODO: сделать отдельный обработкик ошибок
+  //TODO: сделать обработку валидации при заполнении полей
   constructor(
-    public qraphqlService: GraphqlService,
+    private qraphqlService: GraphqlService,
     private storeService: StoreService
   ) { }
 
@@ -64,6 +63,9 @@ export class CreateClientComponent implements OnInit {
       start_train: new FormControl('', [
         Validators.required,
       ]),
+      test: new FormControl('', [
+        Validators.required,
+      ]),
     });
   }
 
@@ -82,14 +84,11 @@ export class CreateClientComponent implements OnInit {
       }
     }
     console.log(data)
-    this.qraphqlService.createClient(data).subscribe({
-      next: (v: any) => {
-        console.log(v)
-      },
-      error: (e: any) => {
-        console.dir(e.networkError || e)
-      },
-    })
+    this.qraphqlService.createClient(data)
+      .pipe(take(1))
+      .subscribe((res) => {
+        // console.log(res)
+      })
   }
 
 }

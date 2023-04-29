@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GraphqlService} from "../../../services/graphql.service";
+import {GraphqlService} from "../../../helpers/services/graphql.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../models/types/user";
-import {StoreService} from "../../../services/store.service";
+import {StoreService} from "../../../helpers/services/store.service";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   hidePassword: boolean = true;
 
-  //====приватнуть сервис
+  //TODO: приватнуть сервис
   constructor(
     public qraphqlService: GraphqlService,
     private storeService: StoreService

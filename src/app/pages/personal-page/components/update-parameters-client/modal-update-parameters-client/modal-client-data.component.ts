@@ -1,25 +1,25 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {GraphqlService} from 'src/app/services/graphql.service';
+import {GraphqlService} from 'src/app/helpers/services/graphql.service';
 import {MatCalendarCellClassFunction} from "@angular/material/datepicker";
 import {TrainingEnum} from "../../../../../models/enums/training-enum";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-modal-update-parameters-client',
   templateUrl: './modal-client-data.component.html',
   styleUrls: ['./modal-client-data.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class ModalClientDataComponent implements OnInit {
-  createForm!: FormGroup;
-
 
   TrainingEnum = TrainingEnum
-  daysSelected: any[] = [];
+
+  createPersonalForm!: FormGroup
+
+  daysSelected: any[] = []
   trainSelected: string | null = null
-
-
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -27,12 +27,13 @@ export class ModalClientDataComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formBuildCreate();
+    this.formBuildCreatePersonal()
     console.log(this.data)
   }
 
-  public formBuildCreate(): void {
-    this.createForm = new FormGroup({
+  /** Personal methods========================================*/
+  public formBuildCreatePersonal(): void {
+    this.createPersonalForm = new FormGroup({
       weight: new FormControl('123',[
         Validators.required,
       ]),
@@ -51,30 +52,60 @@ export class ModalClientDataComponent implements OnInit {
       date_metering: new FormControl('1668621600000',[
         Validators.required,
       ]),
-    });
+    })
   }
-
-  onCreateParameter(){
+  /** Create new item Parameter for user*/
+  public onCreateParameter(){
     const data = {
       id: Number(this.data.id),
       parameters: {
-        weight: Number(this.createForm.value.weight),
-        shoulder_bust: Number(this.createForm.value.shoulder_bust),
-        shoulder_girth: Number(this.createForm.value.shoulder_girth),
-        shoulder_hips: Number(this.createForm.value.shoulder_hips),
-        shoulder_hip: Number(this.createForm.value.shoulder_hip),
-        date_metering: Number(this.createForm.value.date_metering),
+        weight: Number(this.createPersonalForm.value.weight),
+        shoulder_bust: Number(this.createPersonalForm.value.shoulder_bust),
+        shoulder_girth: Number(this.createPersonalForm.value.shoulder_girth),
+        shoulder_hips: Number(this.createPersonalForm.value.shoulder_hips),
+        shoulder_hip: Number(this.createPersonalForm.value.shoulder_hip),
+        date_metering: Number(this.createPersonalForm.value.date_metering),
       }
     }
-    this.qraphqlService.createParametersClient(data).subscribe({
-      next: (v: any) => {
-        // console.log(v)
-      },
-      error: (e: any) => {
-        console.dir(e.networkError || e)
-      },
+    this.qraphqlService.createOrUpdateParametersClient(data)
+      .pipe(take(1))
+      .subscribe((res) => {
+      // console.log(res)
+        // TODO: делать уведомление
     })
   }
+  /** Update item Parameter*/
+  public onUpdateParameter(inputData: {
+    id: string | null,
+    shoulder_bust: string | null,
+    shoulder_girth: string | null,
+    shoulder_hip: string | null,
+    shoulder_hips: string | null,
+    weight: string | null,
+  }) {
+    const data = {
+      id: Number(this.data.id),
+      parameters: {
+        id: Number(inputData.id),
+        weight: Number(inputData.weight),
+        shoulder_bust: Number(inputData.shoulder_bust),
+        shoulder_girth: Number(inputData.shoulder_girth),
+        shoulder_hips: Number(inputData.shoulder_hips),
+        shoulder_hip: Number(inputData.shoulder_hip),
+      }
+    }
+    this.qraphqlService.createOrUpdateParametersClient(data)
+      .pipe(take(1))
+      .subscribe((res) => {
+        // console.log(res)
+        // TODO: делать уведомление
+      })
+  }
+  /** Personal methods========================================*/
+
+
+
+
 
   changeTag(tag: string) {
     this.data.tag = tag
@@ -104,13 +135,11 @@ export class ModalClientDataComponent implements OnInit {
     if (index < 0) this.daysSelected.push(date);
     else this.daysSelected.splice(index, 1);
     calendar.updateTodaysDate();
-    // console.log(this.trainSelected)
-    // console.log(this.daysSelected)
   }
 
-  // ====заменить типизацию эни
+  // TODO: заменить типизацию эни
   createTrainingDays() {
-    // ==== после того как расписание добавляектся снимать выделение со дней
+    // TODO: после того как расписание добавляектся снимать выделение со дней
     let schedules: any = []
     this.daysSelected.forEach((itemDate: string) => {
       schedules.push({

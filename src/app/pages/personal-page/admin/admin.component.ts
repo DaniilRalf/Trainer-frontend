@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from "../../../services/store.service";
+import {StoreService} from "../../../helpers/services/store.service";
 import {BehaviorSubject} from "rxjs";
 import {User} from "../../../models/types/user";
 import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
   user = new BehaviorSubject<User>({} as User);
 
   constructor(
-    public StoreService: StoreService,
+    public storeService: StoreService,
   ) { }
 
   ngOnInit(): void {
@@ -24,10 +24,10 @@ export class AdminComponent implements OnInit {
   }
 
   getUserFromStore(): void{
-    this.user.next(this.StoreService.USER)
+    this.user.next(this.storeService.USER)
   }
 
 }
 
 
-// ==== везде поставить take(1) чтобы не плоджить подписки
+//TODO:  везде поставить take(1) чтобы не плоджить подписки

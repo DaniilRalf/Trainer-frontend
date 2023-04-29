@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, take} from "rxjs";
 import {User} from "../../../../models/types/user";
-import {GraphqlService} from "../../../../services/graphql.service";
+import {GraphqlService} from "../../../../helpers/services/graphql.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal-before-after-create.component";
-import {HttpService} from "../../../../services/http.service";
+import {HttpService} from "../../../../helpers/services/http.service";
 import {environment} from "../../../../../environments/environment";
 
 @Component({
@@ -16,10 +16,10 @@ export class BeforeAfterCreateComponent implements OnInit {
   env = environment
   @Input() public user!: BehaviorSubject<User>
 
-  // ==== поправить типизацию any
+  //TODO:  поправить типизацию any
   allClients: any = [];
 
-  // ==== сортировать фотки по дате
+  //TODO:  сортировать фотки по дате
   allPhotos: any = []
 
   hideToggle = false
@@ -34,7 +34,6 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.getAllClients()
   }
 
-  //====поправить типизацию data
   getAllClients(): void {
     this.graphqlService.getAllClientsWithPhoto()
       .subscribe(({data}: any) => {
@@ -48,7 +47,6 @@ export class BeforeAfterCreateComponent implements OnInit {
       width: '550px',
       data: {clientId},
     }).afterClosed().pipe(take(1)).subscribe(result => {
-      // console.log(result);
       this.getAllClients()
       this.onCloseOpenItemPanel()
     });
@@ -61,8 +59,6 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.httpService.getAllPhotoBeforeAfter(id)
       .subscribe(item => {
         this.allPhotos = item
-        console.log(this.env.apiUrl + this.allPhotos[1].file_name)
-        console.log(this.allPhotos)
       })
   }
 

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, retry} from "rxjs";
 import {User} from "../../../../models/types/user";
-import {HttpService} from "../../../../services/http.service";
+import {HttpService} from "../../../../helpers/services/http.service";
 import {environment} from "../../../../../environments/environment";
 
 @Component({
@@ -24,7 +24,7 @@ export class BeforeAfterComponent implements OnInit {
     private httpService: HttpService,
   ) { }
 
-  // ==== поправить типизацию any
+  //TODO:  поправить типизацию any
   ngOnInit(): void {
     // console.log(this.user.value)
 

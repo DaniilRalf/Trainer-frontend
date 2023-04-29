@@ -9,6 +9,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {PersonalModule} from "./pages/personal-page/personal.module";
+import {DirectivesModule} from "./helpers/directives/directives.module";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {PersonalModule} from "./pages/personal-page/personal.module";
     WidgetsModule,
     GraphQLModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DirectivesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {HttpService} from "../../../../../services/http.service";
+import {HttpService} from "../../../../../helpers/services/http.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {TypePhoto} from "../../../../../models/enums/typePhoto";
 
@@ -37,7 +37,7 @@ export class ModalBeforeAfterCreateComponent implements OnInit {
     newPhotoFormData.append('date', String(dateString))
     newPhotoFormData.append('angle', this.angle)
 
-    // ==== тут сделать оповещения красывые
+    //TODO:  тут сделать оповещения красывые
     this.httpService.createBeforeAfter(newPhotoFormData)
       .subscribe((data) => {
         // console.log(data)

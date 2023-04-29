@@ -3,42 +3,40 @@
     <app-header [title]="'Личный кабинет'"></app-header>
 
     <mat-drawer-container class="personal-box" autosize>
-<!--      ====переделать значение value-->
-<!--      ====переделать айди ролей в енам-->
       <mat-drawer #drawer class="personal-box__sidenav" mode="side" opened="opened">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style" vertical="vertical">
           <mat-button-toggle checked value="test"
-                             *ngIf="StoreService.USER.roleId === 1"
-                             (click)="setTabsPage(TabsPage.personalData)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.user"
+                             (click)="setTabsPage(TabsPageEnum.personalData)"
           >Личные данные</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 1"
-                             (click)="setTabsPage(TabsPage.trainingSchedule)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.user"
+                             (click)="setTabsPage(TabsPageEnum.trainingSchedule)"
           >График тренировок</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 1"
-                             (click)="setTabsPage(TabsPage.myParameters)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.user"
+                             (click)="setTabsPage(TabsPageEnum.myParameters)"
           >Мои параметры</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 1"
-                             (click)="setTabsPage(TabsPage.beforeAfter)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.user"
+                             (click)="setTabsPage(TabsPageEnum.beforeAfter)"
           >До/После</mat-button-toggle>
 
           <mat-button-toggle checked value="test"
-                             *ngIf="StoreService.USER.roleId === 2"
-                             (click)="setTabsPage(TabsPage.createClient)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
+                             (click)="setTabsPage(TabsPageEnum.createClient)"
           >Создать клиента</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 2"
-                             (click)="setTabsPage(TabsPage.updateParameters)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
+                             (click)="setTabsPage(TabsPageEnum.updateParameters)"
           >Детализация по клиентам</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 2"
-                             (click)="setTabsPage(TabsPage.adminSchedule)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
+                             (click)="setTabsPage(TabsPageEnum.adminSchedule)"
           >Мой график</mat-button-toggle>
           <mat-button-toggle value="test"
-                             *ngIf="StoreService.USER.roleId === 2"
-                             (click)="setTabsPage(TabsPage.beforeAfterCreate)"
+                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
+                             (click)="setTabsPage(TabsPageEnum.beforeAfterCreate)"
           >Фото До\После</mat-button-toggle>
         </mat-button-toggle-group>
       </mat-drawer>

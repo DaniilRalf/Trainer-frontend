@@ -9,7 +9,7 @@ import {User} from "../../../../models/types/user";
 })
 export class TrainingScheduleComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
-  //====поправить типизацию, отменить все подписки
+  //TODO: поправить типизацию, отменить все подписки
   calendarData: any[] = []
 
   constructor() { }
@@ -20,7 +20,7 @@ export class TrainingScheduleComponent implements OnInit {
     })
   }
 
-  //====типизироватьвсе нормально
+  //TODO: типизироватьвсе нормально
   generateCalendarData(data: any) {
     const nowYear = new Date().getFullYear()
     const nextMonth = new Date().getMonth() + 1

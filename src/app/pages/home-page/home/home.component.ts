@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from "../../../services/store.service";
+import {StoreService} from "../../../helpers/services/store.service";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   public userIs: string | null = '';
 
   constructor(
-    private StoreServise:StoreService
+    private storeService: StoreService
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   getUser(){
-    this.userIs = this.StoreServise.getUser().username;
+    this.userIs = this.storeService.getUser().username;
   }
 
 }

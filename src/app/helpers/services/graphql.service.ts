@@ -10,7 +10,7 @@ export class GraphqlService {
     private apollo: Apollo
   ) { }
 
-  //====изменить тип эни на конкретные
+  //TODO: изменить тип эни на конкретные
   loginUser(data: any){
     return this.apollo.mutate({
       mutation: gql`
@@ -29,9 +29,9 @@ export class GraphqlService {
     })
   }
 
-  //====переделать с юзернэймв на айди
-  //====переименовать с учетом того что тут есть график
-  getUserPersonalParameters(username: string | null){
+  //TODO: переделать с юзернэймв на айди
+  //TODO: переименовать с учетом того что тут есть график
+  getItemClientAllData(username: string | null){
     return this.apollo.query({
       query : gql`
         query getUserPersonalParameters($username: String){
@@ -60,52 +60,7 @@ export class GraphqlService {
       variables: { username: username },
     })
   }
-
-  createClient(data: any){
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation createClient($input: UserInput){
-          createClient(input: $input){
-            username
-            first_name
-            last_name
-            password
-            roleId
-            personal {
-              gender
-              height
-              birth_day
-              start_train
-            }
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-
-  createParametersClient(data: any){
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation createParametersClient($input: UserInput){
-          createParametersClient(input: $input){
-            id
-            parameters {
-              weight
-              shoulder_bust
-              shoulder_girth
-              shoulder_hips
-              shoulder_hip
-              date_metering
-            }
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-
-  getAllClients(){
+  getAllClientsAllData(){
     return this.apollo.query({
         query: gql`
           query {
@@ -122,6 +77,7 @@ export class GraphqlService {
                 start_train
               }
               parameters {
+                id
                 weight
                 shoulder_bust
                 shoulder_girth
@@ -165,6 +121,40 @@ export class GraphqlService {
               date
               description
             }
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  createClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createClient($input: UserInput){
+          createClient(input: $input){
+            username
+            first_name
+            last_name
+            password
+            roleId
+            personal {
+              gender
+              height
+              birth_day
+              start_train
+            }
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  createOrUpdateParametersClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createParametersClient($input: UserInput){
+          createParametersClient(input: $input){
+            id
           }
         }
       `,

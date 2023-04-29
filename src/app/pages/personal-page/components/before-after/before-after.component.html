@@ -9,7 +9,7 @@
         <mat-label>Выбрать первую дату</mat-label>
         <mat-select [(ngModel)]="photoAfter" required>
           <mat-option *ngFor="let item of dateForSelect" [value]="item">
-            {{item | date:'dd-MM-YYYY'}}
+            {{item | date:'dd-MM-yyyy'}}
           </mat-option>
           <mat-option *ngIf="dateForSelect.length === 0">
             У Вас пока нет фото
@@ -46,7 +46,7 @@
         <mat-label>Выбрать вторую дату</mat-label>
         <mat-select [(ngModel)]="photoBefore" required>
           <mat-option *ngFor="let item of generateForSecondSelect()" [value]="item">
-            {{ item | date:'dd-MM-YYYY'}}
+            {{ item | date:'dd-MM-yyyy'}}
           </mat-option>
           <mat-option *ngIf="generateForSecondSelect().length === 0 && photoAfter">
             Вам пока не с чем сравнить

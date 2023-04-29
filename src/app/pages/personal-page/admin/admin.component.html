@@ -3,19 +3,19 @@
 <div class="admin">
 
   <app-create-client
-    *ngIf="StoreService.TabsPage === TabsPage.createClient"
+    *ngIf="storeService.TabsPage === TabsPage.createClient"
     [user]="user"
   ></app-create-client>
   <app-update-parameters-client
-    *ngIf="StoreService.TabsPage === TabsPage.updateParameters"
+    *ngIf="storeService.TabsPage === TabsPage.updateParameters"
     [user]="user"
   ></app-update-parameters-client>
   <app-before-after-create
-    *ngIf="StoreService.TabsPage === TabsPage.beforeAfterCreate"
+    *ngIf="storeService.TabsPage === TabsPage.beforeAfterCreate"
     [user]="user"
   ></app-before-after-create>
   <app-admin-schedule
-    *ngIf="StoreService.TabsPage === TabsPage.adminSchedule"
+    *ngIf="storeService.TabsPage === TabsPage.adminSchedule"
     [user]="user"
   ></app-admin-schedule>
 

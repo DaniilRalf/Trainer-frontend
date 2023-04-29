@@ -1,5 +1,27 @@
 @import '../../../../../../assets/scss/index.scss';
 
+.parameters-update {
+
+  &-form{
+    padding: 10px 0 10px 0;
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-name {}
+      &-value {
+        width: 100px;
+      }
+    }
+  }
+}
+
+
+
+
+
 .personal-data_list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
