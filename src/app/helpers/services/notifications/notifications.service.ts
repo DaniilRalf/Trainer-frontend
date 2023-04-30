@@ -15,6 +15,7 @@ export class NotificationsService {
   public eventNotification(message: string): void {
     this.snackBar.open(
       message,
-      'Понятно',)
+      'Понятно',
+      {duration: 3000})
   }
 }

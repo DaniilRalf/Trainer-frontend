@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, take} from "rxjs";
-import {User} from "../../../../models/types/user";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {GraphqlService} from "../../../../helpers/services/graphql.service";
-import {StoreService} from "../../../../helpers/services/store.service";
-import {RoleEnum} from "../../../../models/enums/role-enum";
-import {GenderEnum} from "../../../../models/enums/gender-enum";
+import {Component, Input, OnInit} from '@angular/core'
+import {BehaviorSubject, take} from "rxjs"
+import {User} from "../../../../models/types/user"
+import {FormControl, FormGroup, Validators} from "@angular/forms"
+import {GraphqlService} from "../../../../helpers/services/graphql.service"
+import {RoleEnum} from "../../../../models/enums/role-enum"
+import {GenderEnum} from "../../../../models/enums/gender-enum"
+import {NotificationsService} from "../../../../helpers/services/notifications/notifications.service"
 
 @Component({
   selector: 'app-create-client',
@@ -18,15 +18,14 @@ export class CreateClientComponent implements OnInit {
   RoleEnum = RoleEnum;
   GenderEnum = GenderEnum;
 
-  //TODO: сделать отдельный обработкик ошибок
   //TODO: сделать обработку валидации при заполнении полей
   constructor(
     private qraphqlService: GraphqlService,
-    private storeService: StoreService
+    private notificationService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
-    this.formBuildCreate();
+    this.formBuildCreate()
   }
 
   public formBuildCreate(): void {
@@ -46,11 +45,9 @@ export class CreateClientComponent implements OnInit {
       password: new FormControl('111', [
         Validators.required,
       ]),
-
       roleId: new FormControl('', [
         Validators.required,
       ]),
-
       gender: new FormControl('', [
         Validators.required,
       ]),
@@ -66,7 +63,7 @@ export class CreateClientComponent implements OnInit {
       test: new FormControl('', [
         Validators.required,
       ]),
-    });
+    })
   }
 
   onSubmitLogin(){
@@ -83,11 +80,11 @@ export class CreateClientComponent implements OnInit {
         start_train: Number(this.createForm.value.start_train)
       }
     }
-    console.log(data)
     this.qraphqlService.createClient(data)
       .pipe(take(1))
-      .subscribe((res) => {
-        // console.log(res)
+      .subscribe(() => {
+        this.notificationService
+          .eventNotification('Пользователь успешно создан')
       })
   }
 

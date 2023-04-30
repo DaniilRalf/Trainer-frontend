@@ -6,6 +6,8 @@ import {MatCalendarCellClassFunction} from "@angular/material/datepicker"
 import {TrainingEnum} from "../../../../../models/enums/training-enum"
 import {take} from "rxjs"
 import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
+import {GenderEnum} from "../../../../../models/enums/gender-enum"
+import moment from "moment"
 
 @Component({
   selector: 'app-modal-update-parameters-client',
@@ -15,6 +17,7 @@ import {NotificationsService} from "../../../../../helpers/services/notification
 })
 export class ModalClientDataComponent implements OnInit {
 
+  GenderEnum = GenderEnum
   TrainingEnum = TrainingEnum
 
   createPersonalForm!: FormGroup
@@ -32,6 +35,7 @@ export class ModalClientDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBuildCreatePersonal()
+    console.log(this.data)
   }
 
   public changeTag(tag: string): void {
@@ -132,7 +136,33 @@ export class ModalClientDataComponent implements OnInit {
 
 
   /** Personal-data==================================================*/
-
+  public test(inputData: {
+    birth_day: number | string,
+    start_train: number | string,
+    gender: number,
+    height: string,
+  }):void {
+    const data = {
+      id: Number(this.data.eventData.id),
+      birth_day: typeof inputData.birth_day === 'string'
+        ? Date.parse(inputData.birth_day)
+        : inputData.birth_day,
+      start_train: typeof inputData.start_train === 'string'
+        ? Date.parse(inputData.start_train)
+        : inputData.start_train,
+      gender: Number(inputData.gender),
+      height: Number(inputData.height),
+    }
+    console.log('==================')
+    console.log(data)
+    console.log('==================')
+    this.qraphqlService.updatePersonalClient(data)
+      .pipe(take(1))
+      .subscribe(() => {
+        // TODO: types
+        this.notificationService.eventNotification('Персональные данные клиента обновлены')
+      })
+  }
   /** Personal-data==================================================*/
 
 

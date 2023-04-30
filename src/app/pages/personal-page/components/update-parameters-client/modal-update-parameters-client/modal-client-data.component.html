@@ -22,8 +22,6 @@
       <input matInput formControlName="shoulder_hip">
     </mat-form-field>
     <mat-form-field class="create-parameters__item" appearance="fill">
-<!--      <mat-label>Дата замера</mat-label>-->
-<!--      <input matInput formControlName="date_metering">-->
       <mat-label>Дата замера</mat-label>
       <input matInput formControlName="date_metering" [matDatepicker]="picker">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -118,17 +116,57 @@
 
 
 
-<ng-container *ngIf="data.tag === 'personal'">
-    <div class="personal-data_list mt-10">
-        <div>День рождения</div><div class="text-right">{{data.eventData.birth_day | date: 'dd-MM-yyyy'}}</div>
-        <div>Гендер</div><div class="text-right">{{data.eventData.gender}}</div>
-        <div>Рост</div><div class="text-right">{{data.eventData.height}}</div>
-        <div>Дата начала тренировок</div><div class="text-right">{{data.eventData.start_train | date: 'dd-MM-yyyy'}}</div>
+<div class="update-personal" *ngIf="data.tag === 'personal'">
+  <form class="update-personal-form">
+    <div class="item">
+      <p class="item-name">Дата начала тренировок</p>
+      <mat-form-field class="item-date" appearance="fill">
+        <input #start_train matInput
+               placeholder="{{(data.eventData.birth_day | date:'dd/MM/yyyy')}}"
+               [matDatepicker]="picker_birth_day">
+        <mat-datepicker-toggle matIconSuffix [for]="picker_birth_day"></mat-datepicker-toggle>
+        <mat-datepicker #picker_birth_day></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="item">
+      <p class="item-name">День рождения</p>
+      <mat-form-field class="item-date" appearance="fill">
+        <input #birth_day matInput
+               placeholder="{{(data.eventData.start_train | date:'dd/MM/yyyy')}}"
+               [matDatepicker]="picker_start_train">
+        <mat-datepicker-toggle matIconSuffix [for]="picker_start_train"></mat-datepicker-toggle>
+        <mat-datepicker #picker_start_train></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="item">
+      <p class="item-name">Гендер</p>
+      <mat-form-field class="item-select" appearance="fill">
+        <mat-select #gender [value]="data.eventData.gender">
+          <mat-option [value]="GenderEnum.female">Женщина</mat-option>
+          <mat-option [value]="GenderEnum.male">Мужчина</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="item">
+      <p class="item-name">Рост (см.)</p>
+      <mat-form-field class="item-value" appearance="fill">
+        <input #height
+               [value]="data.eventData.height"
+               matInput numbersOnly>
+      </mat-form-field>
     </div>
     <div class="flex-center mt-10">
-        <button mat-raised-button color="primary">Сохранить изменения</button>
+      <button type="button" mat-raised-button
+              color="primary"
+              (click)="test({
+                        birth_day: birth_day.value || data.eventData.birth_day,
+                        start_train: start_train.value || data.eventData.start_train,
+                        gender: gender.value,
+                        height: height.value})"
+      >Сохранить изменения</button>
     </div>
-</ng-container>
+  </form>
+</div>
 
 
 

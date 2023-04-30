@@ -71,6 +71,7 @@ export class GraphqlService {
               last_name
               roleId
               personal {
+                id
                 gender
                 height
                 birth_day
@@ -154,6 +155,18 @@ export class GraphqlService {
       mutation: gql`
         mutation createParametersClient($input: UserInput){
           createParametersClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  updatePersonalClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updatePersonalClient($input: PersonalInput){
+          updatePersonalClient(input: $input){
             id
           }
         }

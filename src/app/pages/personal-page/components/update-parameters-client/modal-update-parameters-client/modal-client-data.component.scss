@@ -13,6 +13,22 @@
       &-name {}
       &-value {
         width: 100px;
+
+        .mat-form-field-flex {
+          height: 40px;
+          border-radius: 20px!important;
+        }
+        .mat-input-element {
+          transform: translateY(-10px)!important;
+        }
+        .mat-form-field-underline {
+          width: 75% !important;
+          bottom: 10px!important;
+          left: 10px!important;
+        }
+        .mat-form-field-wrapper {
+          padding-bottom: 5px!important;
+        }
       }
     }
     &-btn {
@@ -20,60 +36,131 @@
       justify-content: space-between;
     }
   }
-  .mat-form-field-flex {
-    height: 40px;
-    border-radius: 20px!important;
-  }
-  .mat-input-element {
-    transform: translateY(-10px)!important;
-  }
-  .mat-form-field-underline {
-    width: 75% !important;
-    bottom: 10px!important;
-    left: 10px!important;
-  }
-  .mat-form-field-wrapper {
-    padding-bottom: 5px!important;
-  }
 }
 
+.update-personal {
 
+  &-form{
+    padding: 10px 0 10px 0;
 
-
-
-
-
-
-.personal-data_list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 8px;
-}
-
-.create-parameters{
-    width: 100%;
-
-    &_form{
+    .item {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: space-between;
 
-      .create-parameters__item{
-        width: 450px;
-        border-radius: $border-radius-2;
+      &-name {}
+      &-value {}
+      &-date {}
+
+      .item-value {
+        width: 100px!important;
+
+        .mat-form-field-flex {
+          height: 40px!important;
+          border-radius: 20px!important;
+        }
+        .mat-input-element {
+          transform: translateY(-10px)!important;
+        }
+        .mat-form-field-underline {
+          width: 75% !important;
+          bottom: 10px!important;
+          left: 10px!important;
+        }
+        .mat-form-field-wrapper {
+          padding-bottom: 5px!important;
+        }
+      }
+      .item-date {
+        width: 200px!important;
+
+        .mat-form-field-flex {
+          height: 40px!important;
+          border-radius: 20px!important;
+        }
+        .mat-input-element {
+          transform: translateY(-10px)!important;
+        }
+        .mat-form-field-underline {
+          width: 75% !important;
+          bottom: 10px!important;
+          left: 10px!important;
+        }
+        .mat-form-field-wrapper {
+          padding-bottom: 5px!important;
+        }
+        .mat-focus-indicator{
+          transform: translateY(-40px) translateX(150px) !important;
+        }
+      }
+      .item-select {
+        width: 200px!important;
+
+        .mat-form-field-flex {
+          height: 40px!important;
+          border-radius: 20px!important;
+        }
+        .mat-input-element {
+          transform: translateY(-10px)!important;
+        }
+        .mat-form-field-underline {
+          width: 75% !important;
+          bottom: 10px!important;
+          left: 10px!important;
+        }
+        .mat-form-field-wrapper {
+          padding-bottom: 5px!important;
+        }
+        .mat-form-field-infix {
+          transform: translateY(-10px)!important;
+        }
       }
     }
+
+    &-btn {
+      display: flex;
+      justify-content: space-between;
+    }
   }
-
-
-
-.mat-calendar-body-cell.test
-{
-  background-color: $yellow !important;
-  border-radius: 50%
 }
-.mat-form-field{
-  width: 100%;
-}
+
+
+
+
+
+
+
+
+//.personal-data_list {
+//    display: grid;
+//    grid-template-columns: repeat(2, 1fr);
+//    grid-template-rows: repeat(5, 1fr);
+//    grid-column-gap: 0px;
+//    grid-row-gap: 8px;
+//}
+//
+//.create-parameters{
+//    width: 100%;
+//
+//    &_form{
+//      display: flex;
+//      flex-direction: column;
+//      align-items: center;
+//
+//      .create-parameters__item{
+//        width: 450px;
+//        border-radius: $border-radius-2;
+//      }
+//    }
+//  }
+//
+//
+//
+//.mat-calendar-body-cell.test
+//{
+//  background-color: $yellow !important;
+//  border-radius: 50%
+//}
+//.mat-form-field{
+//  width: 100%;
+//}
