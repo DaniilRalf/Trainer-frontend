@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core'
 import {StoreService} from "../../../helpers/services/store.service"
 import {GraphqlService} from "../../../helpers/services/graphql.service"
 import {Router} from "@angular/router"
-import {TabsPageEnum} from "../../../models/enums/tabs-page-enum"
 import {RoleEnum} from "../../../models/enums/role-enum"
 
 @Component({
@@ -12,7 +11,6 @@ import {RoleEnum} from "../../../models/enums/role-enum"
 })
 export class PersonalComponent implements OnInit, OnDestroy {
 
-  TabsPageEnum = TabsPageEnum
   RoleEnum = RoleEnum
 
 
@@ -47,9 +45,9 @@ export class PersonalComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTabsPage(itemTabs: number): void {
-    this.storeService.TabsPage = itemTabs
-  }
+  // setTabsPage(itemTabs: number): void {
+  //   this.storeService.TabsPage = itemTabs
+  // }
 
   //TODO: менять таб в зависимости от роли
   ngOnDestroy(): void {

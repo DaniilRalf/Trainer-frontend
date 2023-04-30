@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../../models/types/user";
-import {StoreService} from "../../../helpers/services/store.service";
-import {BehaviorSubject} from "rxjs";
-import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
+import { Component, OnInit } from '@angular/core'
+import {User} from "../../../models/types/user"
+import {StoreService} from "../../../helpers/services/store.service"
+import {BehaviorSubject} from "rxjs"
 
 @Component({
   selector: 'app-client-online',
@@ -10,7 +9,6 @@ import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
   styleUrls: ['./client-online.component.scss']
 })
 export class ClientOnlineComponent implements OnInit {
-  TabsPage = TabsPageEnum
 
   user = new BehaviorSubject<User>({} as User);
 

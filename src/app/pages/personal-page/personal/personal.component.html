@@ -1,61 +1,6 @@
 <div class="personal">
-  <div class="container">
-    <app-header [title]="'Личный кабинет'"></app-header>
+    <app-header [title]="'Личный кабинет'" [darkStyle]="true"></app-header>
 
-    <mat-drawer-container class="personal-box" autosize>
-      <mat-drawer #drawer class="personal-box__sidenav" mode="side" opened="opened">
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" vertical="vertical">
-          <mat-button-toggle checked value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.user"
-                             (click)="setTabsPage(TabsPageEnum.personalData)"
-          >Личные данные</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.user"
-                             (click)="setTabsPage(TabsPageEnum.trainingSchedule)"
-          >График тренировок</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.user"
-                             (click)="setTabsPage(TabsPageEnum.myParameters)"
-          >Мои параметры</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.user"
-                             (click)="setTabsPage(TabsPageEnum.beforeAfter)"
-          >До/После</mat-button-toggle>
+    <router-outlet></router-outlet>
 
-          <mat-button-toggle checked value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
-                             (click)="setTabsPage(TabsPageEnum.createClient)"
-          >Создать клиента</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
-                             (click)="setTabsPage(TabsPageEnum.updateParameters)"
-          >Детализация по клиентам</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
-                             (click)="setTabsPage(TabsPageEnum.adminSchedule)"
-          >Мой график</mat-button-toggle>
-          <mat-button-toggle value="test"
-                             *ngIf="storeService.USER.roleId === RoleEnum.admin"
-                             (click)="setTabsPage(TabsPageEnum.beforeAfterCreate)"
-          >Фото До\После</mat-button-toggle>
-        </mat-button-toggle-group>
-      </mat-drawer>
-
-      <div class="personal-box__content">
-        <button
-          class="personal-box__content-btn"
-          mat-mini-fab
-          color="primary"
-          type="button"
-          (click)="drawer.toggle(); (sidebarIs === 'keyboard_arrow_left' ?
-                                     sidebarIs = 'keyboard_arrow_right' :
-                                     sidebarIs = 'keyboard_arrow_left')"
-        ><mat-icon>{{sidebarIs}}</mat-icon></button>
-        <div class="personal-box__content-rout">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </mat-drawer-container>
-
-  </div>
 </div>

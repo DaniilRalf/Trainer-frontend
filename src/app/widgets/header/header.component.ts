@@ -8,9 +8,11 @@ import {User} from "../../models/types/user";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() title: string = '';
 
-  public logout: string = '';
+  public logout: string = ''
+
+  @Input() title: string = ''
+  @Input() darkStyle: boolean = false
 
   constructor(
     private storeService: StoreService,

@@ -1,22 +1,31 @@
 <!--сделать спиннер отдельным компонентом-->
 
-<div class="admin">
+<div class="admin container">
+  <mat-tab-group [(selectedIndex)]="storeService.tabsOnPersonalPage">
 
-  <app-create-client
-    *ngIf="storeService.TabsPage === TabsPage.createClient"
-    [user]="user"
-  ></app-create-client>
-  <app-update-parameters-client
-    *ngIf="storeService.TabsPage === TabsPage.updateParameters"
-    [user]="user"
-  ></app-update-parameters-client>
-  <app-before-after-create
-    *ngIf="storeService.TabsPage === TabsPage.beforeAfterCreate"
-    [user]="user"
-  ></app-before-after-create>
-  <app-admin-schedule
-    *ngIf="storeService.TabsPage === TabsPage.adminSchedule"
-    [user]="user"
-  ></app-admin-schedule>
+    <mat-tab label="Создать клиента">
+      <app-create-client
+        [user]="user"
+      ></app-create-client>
+    </mat-tab>
 
+    <mat-tab label="Детализация по клиентам">
+      <app-update-parameters-client
+        [user]="user"
+      ></app-update-parameters-client>
+    </mat-tab>
+
+    <mat-tab label="Фото клиентов До/После">
+      <app-before-after-create
+        [user]="user"
+      ></app-before-after-create>
+    </mat-tab>
+
+    <mat-tab label="Мой график">
+      <app-admin-schedule
+        [user]="user"
+      ></app-admin-schedule>
+    </mat-tab>
+
+  </mat-tab-group>
 </div>

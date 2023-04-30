@@ -1,8 +1,8 @@
 <div class="before-after-create">
 
+  <h2 class="mt-20">Фото До/После: </h2>
+
   <mat-accordion>
-
-
     <mat-expansion-panel *ngFor="let item of allClients"
                          (opened)="openedItemPanel(item.id)"
                          [hideToggle]="hideToggle">
@@ -27,8 +27,6 @@
 
 
     </mat-expansion-panel>
-
-
   </mat-accordion>
 
 </div>

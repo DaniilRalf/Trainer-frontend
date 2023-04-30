@@ -8,13 +8,25 @@ import {RoleEnum} from "../../models/enums/role-enum";
 })
 export class StoreService {
 
-  public USER: User = {} as User;
+  public USER: User = {} as User
   public USER_CHANGE = new BehaviorSubject<boolean>(false)
 
-  //TODO: change on enum
-  public TabsPage: number = this.USER.roleId === RoleEnum.user ? 1 : 5;
+  private _tabsOnPersonalPage: number = 0
 
   constructor() { }
+
+  public set tabsOnPersonalPage(event: any) {
+    localStorage.setItem('tab_page', String(event))
+    this._tabsOnPersonalPage = event
+  }
+
+  public get tabsOnPersonalPage(): number {
+    const tab = localStorage.getItem('tab_page')
+    if (tab) {
+      this._tabsOnPersonalPage = Number(tab)
+    }
+    return this._tabsOnPersonalPage
+  }
 
   saveUser(data: User): void {
     this.USER = data

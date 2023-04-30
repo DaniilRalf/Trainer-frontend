@@ -42,6 +42,7 @@ import {
 import {AdminScheduleComponent} from './components/admin-schedule/admin-schedule.component'
 import {MatChipsModule} from "@angular/material/chips"
 import {DirectivesModule} from "../../helpers/directives/directives.module"
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -60,33 +61,34 @@ import {DirectivesModule} from "../../helpers/directives/directives.module"
     ModalBeforeAfterCreateComponent,
     AdminScheduleComponent,
   ],
-  imports: [
-    CommonModule,
-    PersonalRoutingModule,
-    WidgetsModule,
-    PlotlyModule,
+    imports: [
+        CommonModule,
+        PersonalRoutingModule,
+        WidgetsModule,
+        PlotlyModule,
 
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatButtonToggleModule,
-    MatProgressSpinnerModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatCardModule,
-    MatMenuModule,
-    FormsModule,
-    MatChipsModule,
-    DirectivesModule
-  ],
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatButtonToggleModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatCardModule,
+        MatMenuModule,
+        FormsModule,
+        MatChipsModule,
+        DirectivesModule,
+        MatTabsModule
+    ],
 })
 export class PersonalModule {
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {StoreService} from "../../../helpers/services/store.service";
-import {BehaviorSubject} from "rxjs";
-import {User} from "../../../models/types/user";
-import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
+import { Component, OnInit } from '@angular/core'
+import {StoreService} from "../../../helpers/services/store.service"
+import {BehaviorSubject} from "rxjs"
+import {User} from "../../../models/types/user"
 
 @Component({
   selector: 'app-admin',
@@ -10,8 +9,6 @@ import {TabsPageEnum} from "../../../models/enums/tabs-page-enum";
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
-  TabsPage = TabsPageEnum
 
   user = new BehaviorSubject<User>({} as User);
 
@@ -23,7 +20,7 @@ export class AdminComponent implements OnInit {
     this.getUserFromStore();
   }
 
-  getUserFromStore(): void{
+  private getUserFromStore(): void{
     this.user.next(this.storeService.USER)
   }
 

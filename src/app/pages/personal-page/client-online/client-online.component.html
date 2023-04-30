@@ -1,21 +1,29 @@
-<!--//TODO: сделать спиннер отдельным компонентом-->
+<div class="client-online container">
+  <mat-tab-group [(selectedIndex)]="storeService.tabsOnPersonalPage">
 
-<div class="client-online">
+    <mat-tab label="Персональная информция">
+      <app-personal-data
+        [user]="user">
+      </app-personal-data>
+    </mat-tab>
 
-  <app-personal-data
-    *ngIf="storeService.TabsPage === TabsPage.personalData"
-    [user]="user">
-  </app-personal-data>
-  <app-training-schedule
-    *ngIf="storeService.TabsPage === TabsPage.trainingSchedule"
-    [user]="user">
-  </app-training-schedule>
-  <app-my-parameters
-    *ngIf="storeService.TabsPage === TabsPage.myParameters"
-    [user]="user">
-  </app-my-parameters>
-  <app-before-after
-    *ngIf="storeService.TabsPage === TabsPage.beforeAfter"
-    [user]="user">
-  </app-before-after>
+    <mat-tab label="График тренировок">
+      <app-training-schedule
+        [user]="user">
+      </app-training-schedule>
+    </mat-tab>
+
+    <mat-tab label="Мои параметры">
+      <app-my-parameters
+        [user]="user">
+      </app-my-parameters>
+    </mat-tab>
+
+    <mat-tab label="До/После">
+      <app-before-after
+        [user]="user">
+      </app-before-after>
+    </mat-tab>
+
+  </mat-tab-group>
 </div>
