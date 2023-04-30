@@ -7,7 +7,6 @@ import {TrainingEnum} from "../../../../../models/enums/training-enum"
 import {take} from "rxjs"
 import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
 import {GenderEnum} from "../../../../../models/enums/gender-enum"
-import moment from "moment"
 
 @Component({
   selector: 'app-modal-update-parameters-client',
@@ -24,6 +23,7 @@ export class ModalClientDataComponent implements OnInit {
 
   // TODO: types
   daysSelected: any[] = []
+  daySelectedDetails: any = {}
   trainSelected: string | null = null
 
   constructor(
@@ -40,6 +40,10 @@ export class ModalClientDataComponent implements OnInit {
 
   public changeTag(tag: string): void {
     this.data.tag = tag
+  }
+
+  public getToString(event: any): string {
+    return event.toString()
   }
 
   /** Parameters=====================================================*/
@@ -116,7 +120,7 @@ export class ModalClientDataComponent implements OnInit {
   }
 
   /** Remove item Parameter*/
-  public onRemoveParameter(inputData: string):void {
+  public onRemoveParameter(inputData: string): void {
     const data = {
       id: Number(inputData),
       parameters: {
@@ -136,12 +140,12 @@ export class ModalClientDataComponent implements OnInit {
 
 
   /** Personal-data==================================================*/
-  public test(inputData: {
+  public onUpdatePersonal(inputData: {
     birth_day: number | string,
     start_train: number | string,
     gender: number,
     height: string,
-  }):void {
+  }): void {
     const data = {
       id: Number(this.data.eventData.id),
       birth_day: typeof inputData.birth_day === 'string'
@@ -153,9 +157,6 @@ export class ModalClientDataComponent implements OnInit {
       gender: Number(inputData.gender),
       height: Number(inputData.height),
     }
-    console.log('==================')
-    console.log(data)
-    console.log('==================')
     this.qraphqlService.updatePersonalClient(data)
       .pipe(take(1))
       .subscribe(() => {
@@ -163,67 +164,70 @@ export class ModalClientDataComponent implements OnInit {
         this.notificationService.eventNotification('Персональные данные клиента обновлены')
       })
   }
+
   /** Personal-data==================================================*/
 
 
-
-
-
-
-
-
-
-
-  isSelected: MatCalendarCellClassFunction<any> = (cellDate) => {
+  /** Schedules======================================================*/
+  public isSelected: MatCalendarCellClassFunction<any> = (cellDate) => {
     const date =
       cellDate.getFullYear() +
       "-" +
       ("00" + (cellDate.getMonth() + 1)).slice(-2) +
       "-" +
       ("00" + cellDate.getDate()).slice(-2);
-    return this.daysSelected.includes(date) ? "test" : '';
+    return this.daysSelected.includes(date) ? "active_date" : '';
   };
 
-
   // TODO: types
-  select(event: any, calendar: any) {
+  public select(event: any, calendar: any) {
     const date =
       event.getFullYear() +
       "-" +
       ("00" + (event.getMonth() + 1)).slice(-2) +
       "-" +
-      ("00" + event.getDate()).slice(-2);
-    const index = this.daysSelected.findIndex(x => x == date);
-    if (index < 0) this.daysSelected.push(date);
-    else this.daysSelected.splice(index, 1);
-    calendar.updateTodaysDate();
+      ("00" + event.getDate()).slice(-2)
+    const index = this.daysSelected.findIndex(x => x == date)
+    if (index < 0) this.daysSelected.push(date)
+    else this.daysSelected.splice(index, 1)
+    calendar.updateTodaysDate()
+    this.generateFieldForSchedules()
   }
 
-  // TODO: заменить типизацию эни
-  createTrainingDays() {
-    // TODO: после того как расписание добавляектся снимать выделение со дней
-    let schedules: any = []
+  private generateFieldForSchedules(): void {
+    const daySelectedDetailsNew: any = {}
     this.daysSelected.forEach((itemDate: string) => {
-      schedules.push({
-        date: Date.parse(itemDate),
-        description: this.trainSelected
-      })
+      daySelectedDetailsNew[Date.parse(itemDate)] = {time_start: '', time_duration: '', description: ''}
     })
+    this.daySelectedDetails = daySelectedDetailsNew
+  }
+
+  public createTrainingDays() {
+    let schedules: { date: number, description: string, time_start: string, time_duration: string }[] = []
+    for (let [key, value] of Object.entries(this.daySelectedDetails)) {
+      schedules.push({
+        date: Number(key),
+        // @ts-ignore
+        description: value['description'] || '',
+        // @ts-ignore
+        time_start: value['time_start'] || '',
+        // @ts-ignore
+        time_duration: value['time_duration'] || '',
+      })
+    }
     const data = {
       id: Number(this.data.id),
       schedules: schedules
     }
-    console.log(data)
-    this.qraphqlService.createTrainingDays(data).subscribe({
-      next: (v: any) => {
-        // console.log(v)
-      },
-      error: (e: any) => {
-        console.dir(e.networkError || e)
-      },
+    this.qraphqlService.createTrainingDays(data).subscribe(() => {
+      this.notificationService.eventNotification('Тренировочные дни успешно сохранены')
+      this.daysSelected = []
+      this.daySelectedDetails = {}
+      this.trainSelected = null
     })
-    this.daysSelected = []
-    this.trainSelected = null
   }
+
+  /** Schedules======================================================*/
+
 
 }

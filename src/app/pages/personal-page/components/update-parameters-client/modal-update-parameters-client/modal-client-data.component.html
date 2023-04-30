@@ -1,27 +1,27 @@
 
 <div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
-  <form class="create-parameters_form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
-    <mat-form-field class="create-parameters__item" appearance="fill">
+  <form class="create-parameters-form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Вес</mat-label>
       <input matInput formControlName="weight">
     </mat-form-field>
-    <mat-form-field class="create-parameters__item" appearance="fill">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Обхват груди</mat-label>
       <input matInput formControlName="shoulder_bust">
     </mat-form-field>
-    <mat-form-field class="create-parameters__item" appearance="fill">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Обхват плеч</mat-label>
       <input matInput formControlName="shoulder_girth">
     </mat-form-field>
-    <mat-form-field class="create-parameters__item" appearance="fill">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Обхват бедер</mat-label>
       <input matInput formControlName="shoulder_hips">
     </mat-form-field>
-    <mat-form-field class="create-parameters__item" appearance="fill">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Обхват бедра</mat-label>
       <input matInput formControlName="shoulder_hip">
     </mat-form-field>
-    <mat-form-field class="create-parameters__item" appearance="fill">
+    <mat-form-field class="item" appearance="fill">
       <mat-label>Дата замера</mat-label>
       <input matInput formControlName="date_metering" [matDatepicker]="picker">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -106,16 +106,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <div class="update-personal" *ngIf="data.tag === 'personal'">
   <form class="update-personal-form">
     <div class="item">
@@ -158,7 +148,7 @@
     <div class="flex-center mt-10">
       <button type="button" mat-raised-button
               color="primary"
-              (click)="test({
+              (click)="onUpdatePersonal({
                         birth_day: birth_day.value || data.eventData.birth_day,
                         start_train: start_train.value || data.eventData.start_train,
                         gender: gender.value,
@@ -166,6 +156,45 @@
       >Сохранить изменения</button>
     </div>
   </form>
+</div>
+
+<div class="create-schedule" *ngIf="data.tag === 'schedule_add'">
+  Добавить расписание
+  <div (click)="$event.stopPropagation()">
+    <mat-calendar #calendar
+                  (selectedChange)="select($event,calendar)"
+                  [dateClass]="isSelected"
+    ></mat-calendar>
+  </div>
+  <div class="create-schedule-details">
+    <div class="item" *ngFor="let item of daySelectedDetails | keyvalue">
+      <div>{{ getToString(item.key) | date:'dd-MM-yyyy'}}</div>
+      <mat-form-field class="item-select" appearance="fill">
+        <mat-select [(ngModel)]="daySelectedDetails[getToString(item.key)].description" required>
+          <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.key">
+            {{train.value}}
+          </mat-option>
+        </mat-select>
+        <mat-hint align="start"><strong>Тип тренировки</strong> </mat-hint>
+      </mat-form-field>
+      <mat-form-field class="item-select" appearance="fill">
+        <input [(ngModel)]="daySelectedDetails[getToString(item.key)].time_start" matInput type="time">
+        <mat-hint align="start"><strong>Начало</strong> </mat-hint>
+      </mat-form-field>
+      <mat-form-field class="item-select" appearance="fill">
+        <mat-select [(ngModel)]="daySelectedDetails[getToString(item.key)].time_duration" required>
+          <mat-option [value]="'1:00'">1:00</mat-option>
+          <mat-option [value]="'1:30'">1:30</mat-option>
+        </mat-select>
+        <mat-hint align="start"><strong>Длительность</strong> </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="flex-center mt-10">
+      <button mat-raised-button color="primary"
+              (click)="createTrainingDays()"
+      >Сохранить тренировочные дни</button>
+    </div>
+  </div>
 </div>
 
 
@@ -193,27 +222,4 @@
 
 
 
-<ng-container *ngIf="data.tag === 'schedule_add'">
-  Добавить расписание
-  <div (click)="$event.stopPropagation()">
-    <mat-calendar #calendar
-                  (selectedChange)="select($event,calendar)"
-                  [dateClass]="isSelected"
-    ></mat-calendar>
-  </div>
-  <mat-form-field appearance="fill">
-    <mat-label>Выбрать тип тренировки</mat-label>
-    <mat-select [(ngModel)]="trainSelected" required>
-      <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.key">
-        {{train.value}}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="!trainSelected">Необходимо выбрать тип тренироки</mat-error>
-  </mat-form-field>
-  <div class="flex-center mt-10">
-    <button [disabled]="!trainSelected || daysSelected.length == 0"
-            mat-raised-button color="primary"
-            (click)="createTrainingDays()"
-    >Сохранить тренировочные дни</button>
-  </div>
-</ng-container>
+

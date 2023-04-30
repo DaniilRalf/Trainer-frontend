@@ -117,11 +117,6 @@ export class GraphqlService {
         mutation createTrainingDays($input: UserInput){
           createTrainingDays(input: $input){
             id
-            schedules {
-              id
-              date
-              description
-            }
           }
         }
       `,
