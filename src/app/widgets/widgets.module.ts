@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderComponent} from "./header/header.component";
 import {RouterLink} from "@angular/router";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 
@@ -15,6 +17,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     CommonModule,
     RouterLink,
+    MatIconModule,
+    MatTooltipModule,
   ]
 })
 export class WidgetsModule { }

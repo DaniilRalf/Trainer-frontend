@@ -11,9 +11,19 @@ table{
     cursor: pointer;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.06);
+    color: #565656;
+    background-color: rgba(255, 152, 219, 0.13);
     border-radius: 5px;
     margin: 0 10px 0 10px;
     padding: 5px;
   }
+}
+
+.mat-column-first_name,
+.mat-column-last_name,
+.mat-column-username,
+.mat-column-parameters,
+.mat-column-personal,
+.mat-column-schedule {
+  width: 16% !important;
 }

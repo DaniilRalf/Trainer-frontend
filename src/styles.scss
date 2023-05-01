@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$Trainer-frontend-primary: mat.define-palette(mat.$indigo-palette);
+$Trainer-frontend-primary: mat.define-palette(mat.$pink-palette);
 $Trainer-frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -52,7 +52,7 @@ $Trainer-frontend-theme: mat.define-light-theme((
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #3f51b5;
+  background-color: #ff8fcc;
   border-radius: 10px;
 }
 //SCROLLBAR============================================
@@ -63,7 +63,7 @@ $Trainer-frontend-theme: mat.define-light-theme((
 
   .mat-tab-label-active {
     border-radius: 0px 0px 20px 20px;
-    background-color: #3f51b5!important;
+    background-color: #ff8fcc!important;
     opacity: 1!important;
     color: white;
   }

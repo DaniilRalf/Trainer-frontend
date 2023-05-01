@@ -1,0 +1,70 @@
+
+.modal-admin-schedule {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden !important;
+
+  .time {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .all-client {
+    position: absolute;
+    bottom: 0;
+
+    &-item {
+      display: flex;
+      margin-bottom: 5px;
+    }
+  }
+
+  .house {
+    z-index: 100;
+    position: relative;
+    transform: translateX(238px);
+
+
+    .house-12 {
+      position: absolute; top: 50px; left: -15px;
+    }
+    .house-13 {
+      position: absolute; top: 65px; left: 30px;
+    }
+    .house-14 {
+      position: absolute; top: 97px; left: 60px;
+    }
+    .house-15 {
+      position: absolute; top: 145px; left: 75px;
+    }
+    .house-16 {
+      position: absolute; top: 190px; left: 60px;
+    }
+    .house-17 {
+      position: absolute; top: 223px; left: 30px;
+    }
+    .house-18 {
+      position: absolute; top: 240px; left: -15px;
+    }
+    .house-19 {
+      position: absolute; top: 223px; left: -70px;
+    }
+    .house-20 {
+      position: absolute; top: 190px; left: -100px;
+    }
+    .house-21 {
+      position: absolute; top: 145px; left: -115px;
+    }
+    .house-22 {
+      position: absolute; top: 97px; left: -100px;
+    }
+    .house-23 {
+      position: absolute; top: 65px; left: -70px;
+    }
+  }
+}

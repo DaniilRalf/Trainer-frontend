@@ -3,9 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class HttpService {
 
   constructor(
@@ -20,7 +18,7 @@ export class HttpService {
     return this.http.post(`${environment.apiUrl}api/get_client_item_photos`, {id: data})
   }
 
-  //TODO: изменить типизацию эни
+  // TODO: types
   createBeforeAfter(data: any) {
     return this.http.post(`${environment.apiUrl}api/set_client_photos`, data)
   }

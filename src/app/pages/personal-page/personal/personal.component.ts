@@ -27,11 +27,9 @@ export class PersonalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.GraphqlService.getItemClientAllData(this.storeService.getUser().username)
       .subscribe((i: any) => {
-        console.log(i)
         this.storeService.saveUserDetalization(i.data.getUserPersonalParameters)
         this.navigate();
       })
-    console.log(this.storeService.USER)
   }
 
   //TODO: переделать на свич-кейс

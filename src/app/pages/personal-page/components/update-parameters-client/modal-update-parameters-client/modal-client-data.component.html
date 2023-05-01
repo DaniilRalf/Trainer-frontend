@@ -93,9 +93,9 @@
                         shoulder_girth: shoulder_girth.value,
                         shoulder_hip: shoulder_hip.value,
                         shoulder_hips: shoulder_hips.value,
-                        weight: weight.value
-                      })" type="button" mat-raised-button
-                        color="primary">Сохранить изменения</button>
+                        weight: weight.value})" type="button"
+                        color="primary" mat-raised-button
+                >Сохранить изменения</button>
               </div>
             </div>
           </form>
@@ -178,7 +178,8 @@
         <mat-hint align="start"><strong>Тип тренировки</strong> </mat-hint>
       </mat-form-field>
       <mat-form-field class="item-select" appearance="fill">
-        <input [(ngModel)]="daySelectedDetails[getToString(item.key)].time_start" matInput type="time">
+        <input required [(ngModel)]="daySelectedDetails[getToString(item.key)].time_start"
+               matInput type="time" >
         <mat-hint align="start"><strong>Начало</strong> </mat-hint>
       </mat-form-field>
       <mat-form-field class="item-select" appearance="fill">
@@ -200,7 +201,6 @@
 
 
 <ng-container *ngIf="data.tag === 'schedule'">
-
   <mat-accordion>
     <mat-expansion-panel *ngFor="let item of data.eventData">
       <mat-expansion-panel-header>
@@ -219,7 +219,3 @@
     <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить тренировочные дни</button>
   </div>
 </ng-container>
-
-
-
-

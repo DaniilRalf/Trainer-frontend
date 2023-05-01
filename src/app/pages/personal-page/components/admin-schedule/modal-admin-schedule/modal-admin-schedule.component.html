@@ -1,0 +1,49 @@
+<div class="modal-admin-schedule">
+
+  <ng-container *ngIf="showCircle">
+    <div class="time" *ngFor="let item of modalInputData.data.details"
+         [style]="{'transform': 'rotate(' + (item.rotate) + 'deg)', 'transformOrigin': 'center center'}">
+      <circle-progress [percent]="item.length"
+                       [radius]="130"
+                       [outerStrokeWidth]="16"
+                       [innerStrokeWidth]="6"
+                       [outerStrokeColor]="item.color"
+                       [innerStrokeColor]="'#e1e1e1'"
+
+                       [animation]="true"
+                       [animationDuration]="500"
+                       [backgroundOpacity]="0"
+                       [showTitle] = false
+                       [showUnits] = false
+                       [showSubtitle] = false
+      ></circle-progress>
+    </div>
+  </ng-container>
+  <div class="all-client">
+    <div class="all-client-item" *ngFor="let client of modalInputData.data.details">
+      <div [style]="{'backgroundColor': client.color, 'width': '15px', 'height': '15px', 'borderRadius': '3px'}"></div>&nbsp;&nbsp;
+      <div> - {{client.clientFirstName}} {{client.clientLastName}}</div>
+      <div> (Начало - {{client.time_start}}, Продолжительность - {{client.time_duration}})</div>
+    </div>
+  </div>
+  <div class="house">
+    <div class="house-12">12</div>
+    <div class="house-13">13</div>
+    <div class="house-14">14</div>
+    <div class="house-15">15</div>
+    <div class="house-16">16</div>
+    <div class="house-17">17</div>
+    <div class="house-18">18</div>
+    <div class="house-19">19</div>
+    <div class="house-20">20</div>
+    <div class="house-21">21</div>
+    <div class="house-22">22</div>
+    <div class="house-23">23</div>
+  </div>
+</div>
+
+
+<!--percent - длина линии-->
+<!--radius - радиус общий-->
+<!--outerStrokeWidth - ширина главной линии-->
+<!--outerStrokeWidth - ширина побочной линии-->

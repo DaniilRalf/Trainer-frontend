@@ -4,10 +4,10 @@ import {User} from "../../../../models/types/user";
 
 @Component({
   selector: 'app-training-schedule',
-  templateUrl: './training-schedule.component.html',
-  styleUrls: ['./training-schedule.component.scss']
+  templateUrl: './client-schedule.component.html',
+  styleUrls: ['./client-schedule.component.scss']
 })
-export class TrainingScheduleComponent implements OnInit {
+export class ClientScheduleComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
   //TODO: поправить типизацию, отменить все подписки
   calendarData: any[] = []

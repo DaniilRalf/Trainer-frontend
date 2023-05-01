@@ -170,5 +170,27 @@ export class GraphqlService {
     })
   }
 
+  getAllClientsSchedules(){
+    return this.apollo.query({
+      query: gql`
+          query {
+            getAllClients {
+              id
+              username
+              first_name
+              last_name
+              schedules {
+                id
+                date
+                description
+                time_start
+                time_duration
+              }
+            }
+          }
+        `
+    })
+  }
+
 
 }

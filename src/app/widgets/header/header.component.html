@@ -1,14 +1,22 @@
 <div [ngClass]="{'header': true, 'dark': darkStyle}">
+
   <div class="header_back fnt-bold-1" [routerLink]="'/home'">
-    < на главную
+    <mat-icon matTooltip="Перейти на главную страницу"
+              [matTooltipPosition]="'above'"
+    >keyboard_return</mat-icon>
   </div>
+
   <div class="header_title fnt-bold-2">
     {{title}}
   </div>
+
   <div
     class="header_logout fnt-bold-1"
-    (click)="deleteUserData()"
-  >
-    {{logout}}
+    (click)="deleteUserData()">
+    <mat-icon matTooltip="Выйти из личного кабинета"
+              [matTooltipPosition]="'above'"
+              *ngIf="logout"
+    >exit_to_app</mat-icon>
   </div>
+
 </div>

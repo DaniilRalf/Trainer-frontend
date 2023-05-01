@@ -35,7 +35,7 @@ export class StoreService {
   }
 
   getUser(): User {
-    const userFromLocalStorage: User = JSON.parse(localStorage.getItem('user')  || '')
+    const userFromLocalStorage: User = JSON.parse(localStorage.getItem('user')  || '{}')
     this.USER.id = userFromLocalStorage.id
     this.USER.roleId = userFromLocalStorage.roleId
     this.USER.token = userFromLocalStorage.token

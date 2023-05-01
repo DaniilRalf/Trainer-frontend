@@ -16,7 +16,7 @@ import {ClientOfflineComponent} from './client-offline/client-offline.component'
 import {AdminComponent} from './admin/admin.component'
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner"
 import {PersonalDataComponent} from './components/personal-data/personal-data.component'
-import {TrainingScheduleComponent} from './components/training-schedule/training-schedule.component'
+import {ClientScheduleComponent} from './components/client-schedule/client-schedule.component'
 import {MyParametersComponent} from './components/my-parameters/my-parameters.component'
 import {BeforeAfterComponent} from './components/before-after/before-after.component'
 import {MatTableModule} from "@angular/material/table"
@@ -43,6 +43,9 @@ import {AdminScheduleComponent} from './components/admin-schedule/admin-schedule
 import {MatChipsModule} from "@angular/material/chips"
 import {DirectivesModule} from "../../helpers/directives/directives.module"
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { ModalAdminScheduleComponent } from './components/admin-schedule/modal-admin-schedule/modal-admin-schedule.component';
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 @NgModule({
   declarations: [
@@ -51,7 +54,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     ClientOfflineComponent,
     AdminComponent,
     PersonalDataComponent,
-    TrainingScheduleComponent,
+    ClientScheduleComponent,
     MyParametersComponent,
     BeforeAfterComponent,
     CreateClientComponent,
@@ -60,6 +63,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     BeforeAfterCreateComponent,
     ModalBeforeAfterCreateComponent,
     AdminScheduleComponent,
+    ModalAdminScheduleComponent,
   ],
     imports: [
         CommonModule,
@@ -87,7 +91,9 @@ import {MatTabsModule} from "@angular/material/tabs";
         FormsModule,
         MatChipsModule,
         DirectivesModule,
-        MatTabsModule
+        MatTabsModule,
+        MatTooltipModule,
+        NgCircleProgressModule
     ],
 })
 export class PersonalModule {

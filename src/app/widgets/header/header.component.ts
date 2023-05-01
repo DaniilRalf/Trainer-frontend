@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {StoreService} from "../../helpers/services/store.service";
-import {User} from "../../models/types/user";
+import {Component, Input, OnInit} from '@angular/core'
+import {StoreService} from "../../helpers/services/store.service"
 
 @Component({
   selector: 'app-header',
@@ -9,7 +8,7 @@ import {User} from "../../models/types/user";
 })
 export class HeaderComponent implements OnInit {
 
-  public logout: string = ''
+  public logout: boolean = false
 
   @Input() title: string = ''
   @Input() darkStyle: boolean = false
@@ -21,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.storeService.USER_CHANGE
       .subscribe(change => {
-        change ? this.logout = 'Выйти' : this.logout = '';
+        change ? this.logout = true : this.logout = false;
       })
   }
 

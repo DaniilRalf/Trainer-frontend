@@ -27,7 +27,7 @@ export class BeforeAfterCreateComponent implements OnInit {
   constructor(
     private graphqlService: GraphqlService,
     private httpService: HttpService,
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.graphqlService.getAllClientsWithPhoto()
       .subscribe(({data}: any) => {
         this.allClients = data.getAllClients
-        console.log(this.allClients)
       })
   }
 
@@ -46,7 +45,7 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.dialog.open(ModalBeforeAfterCreateComponent, {
       width: '550px',
       data: {clientId},
-    }).afterClosed().pipe(take(1)).subscribe(result => {
+    }).afterClosed().pipe(take(1)).subscribe(() => {
       this.getAllClients()
       this.onCloseOpenItemPanel()
     });

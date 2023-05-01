@@ -1,3 +1,26 @@
-<h2 class="mt-20">Мой график: </h2>
+<div class="admin-schedule">
 
-<p>admin-schedule works!</p>
+  <h2 class="mt-20">Мой график: </h2>
+
+  <div class="mat-elevation-z8 mr-20">
+    <div class="calendar">
+      <div class="calendar-item"
+           *ngFor="let item of calendarData"
+           (click)="openModal(item)">
+
+        <span class="calendar-item-data">{{item.data}}</span>
+        <div class="calendar-item-details">
+          <div class="item"
+               *ngFor="let clientTrain of item.details"
+               matTooltip="{{clientTrain.clientFirstName}} {{clientTrain.clientLastName}} {{clientTrain.time_start}}"
+               [matTooltipPosition]="'above'"
+          ></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
