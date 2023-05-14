@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, take} from "rxjs";
-import {User} from "../../../../models/types/user";
-import {GraphqlService} from "../../../../helpers/services/graphql.service";
-import {MatDialog} from "@angular/material/dialog";
-import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal-before-after-create.component";
-import {HttpService} from "../../../../helpers/services/http.service";
-import {environment} from "../../../../../environments/environment";
+import {Component, Input, OnInit} from '@angular/core'
+import {BehaviorSubject, take} from "rxjs"
+import {User} from "../../../../models/types/user"
+import {GraphqlService} from "../../../../helpers/services/graphql.service"
+import {MatDialog} from "@angular/material/dialog"
+import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal-before-after-create.component"
+import {HttpService} from "../../../../helpers/services/http.service"
+import {environment} from "../../../../../environments/environment"
+import {GeneratorsService} from "../../../../helpers/services/generators.service"
 
 @Component({
   selector: 'app-before-after-create',
@@ -13,18 +14,21 @@ import {environment} from "../../../../../environments/environment";
   styleUrls: ['./before-after-create.component.scss']
 })
 export class BeforeAfterCreateComponent implements OnInit {
+
   env = environment
-  @Input() public user!: BehaviorSubject<User>
 
   //TODO:  поправить типизацию any
   allClients: any = [];
 
-  //TODO:  сортировать фотки по дате
-  allPhotos: any = []
-
   hideToggle = false
 
+  // TODO: types
+  allPhotos: any = {}
+
+  @Input() public user!: BehaviorSubject<User>
+
   constructor(
+    public generatorsService: GeneratorsService,
     private graphqlService: GraphqlService,
     private httpService: HttpService,
     private dialog: MatDialog
@@ -34,31 +38,45 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.getAllClients()
   }
 
-  getAllClients(): void {
+  private getAllClients(): void {
     this.graphqlService.getAllClientsWithPhoto()
       .subscribe(({data}: any) => {
         this.allClients = data.getAllClients
       })
   }
 
-  openModal(clientId: number): void {
+  public openModal(clientId: number): void {
     this.dialog.open(ModalBeforeAfterCreateComponent, {
       width: '550px',
       data: {clientId},
     }).afterClosed().pipe(take(1)).subscribe(() => {
       this.getAllClients()
       this.onCloseOpenItemPanel()
-    });
+    })
   }
 
-  onCloseOpenItemPanel(): void {
+  private onCloseOpenItemPanel(): void {
     this.hideToggle = false
   }
-  openedItemPanel(id: number) {
+
+  public openedItemPanel(id: number) {
+    this.allPhotos = {} /** очищаем обьект актуальных фоток*/
     this.httpService.getAllPhotoBeforeAfter(id)
       .subscribe(item => {
-        this.allPhotos = item
+        this.generateGroupsPhoto(item)
       })
+  }
+
+  // TODO: types
+  private generateGroupsPhoto(inputData: any): void {
+    inputData.forEach((itemData: any) => {
+      if (this.allPhotos[itemData.date]) {
+        this.allPhotos[itemData.date].push(itemData)
+      } else {
+        this.allPhotos[itemData.date] = []
+        this.allPhotos[itemData.date].push(itemData)
+      }
+    })
   }
 
 }

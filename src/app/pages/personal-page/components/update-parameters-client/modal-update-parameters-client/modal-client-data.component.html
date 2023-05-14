@@ -112,7 +112,7 @@
       <p class="item-name">Дата начала тренировок</p>
       <mat-form-field class="item-date" appearance="fill">
         <input #start_train matInput
-               placeholder="{{(data.eventData.birth_day | date:'dd/MM/yyyy')}}"
+               placeholder="{{(data.eventData.start_train  | date:'dd/MM/yyyy')}}"
                [matDatepicker]="picker_birth_day">
         <mat-datepicker-toggle matIconSuffix [for]="picker_birth_day"></mat-datepicker-toggle>
         <mat-datepicker #picker_birth_day></mat-datepicker>
@@ -122,7 +122,7 @@
       <p class="item-name">День рождения</p>
       <mat-form-field class="item-date" appearance="fill">
         <input #birth_day matInput
-               placeholder="{{(data.eventData.start_train | date:'dd/MM/yyyy')}}"
+               placeholder="{{(data.eventData.birth_day| date:'dd/MM/yyyy')}}"
                [matDatepicker]="picker_start_train">
         <mat-datepicker-toggle matIconSuffix [for]="picker_start_train"></mat-datepicker-toggle>
         <mat-datepicker #picker_start_train></mat-datepicker>
@@ -198,9 +198,7 @@
   </div>
 </div>
 
-
-
-<ng-container *ngIf="data.tag === 'schedule'">
+<div *ngIf="data.tag === 'schedule'">
   <mat-accordion>
     <mat-expansion-panel *ngFor="let item of data.eventData">
       <mat-expansion-panel-header>
@@ -218,4 +216,4 @@
   <div class="flex-center mt-10">
     <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить тренировочные дни</button>
   </div>
-</ng-container>
+</div>

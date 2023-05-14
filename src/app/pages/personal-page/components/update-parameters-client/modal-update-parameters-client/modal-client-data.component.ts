@@ -35,7 +35,6 @@ export class ModalClientDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBuildCreatePersonal()
-    console.log(this.data)
   }
 
   public changeTag(tag: string): void {
@@ -49,22 +48,22 @@ export class ModalClientDataComponent implements OnInit {
   /** Parameters=====================================================*/
   public formBuildCreatePersonal(): void {
     this.createPersonalForm = new FormGroup({
-      weight: new FormControl('123', [
+      weight: new FormControl('', [
         Validators.required,
       ]),
-      shoulder_bust: new FormControl('123', [
+      shoulder_bust: new FormControl('', [
         Validators.required,
       ]),
-      shoulder_girth: new FormControl('123', [
+      shoulder_girth: new FormControl('', [
         Validators.required,
       ]),
-      shoulder_hips: new FormControl('123', [
+      shoulder_hips: new FormControl('', [
         Validators.required,
       ]),
-      shoulder_hip: new FormControl('123', [
+      shoulder_hip: new FormControl('', [
         Validators.required,
       ]),
-      date_metering: new FormControl('1668621600000', [
+      date_metering: new FormControl('', [
         Validators.required,
       ]),
     })
@@ -72,23 +71,28 @@ export class ModalClientDataComponent implements OnInit {
 
   /** Create new item Parameter for user*/
   public onCreateParameter() {
-    const data = {
-      id: Number(this.data.id),
-      parameters: {
-        event: 'add',
-        weight: Number(this.createPersonalForm.value.weight),
-        shoulder_bust: Number(this.createPersonalForm.value.shoulder_bust),
-        shoulder_girth: Number(this.createPersonalForm.value.shoulder_girth),
-        shoulder_hips: Number(this.createPersonalForm.value.shoulder_hips),
-        shoulder_hip: Number(this.createPersonalForm.value.shoulder_hip),
-        date_metering: Date.parse(this.createPersonalForm.value.date_metering),
+    if (this.createPersonalForm.status === 'VALID') {
+      const data = {
+        id: Number(this.data.id),
+        parameters: {
+          event: 'add',
+          weight: Number(this.createPersonalForm.value.weight),
+          shoulder_bust: Number(this.createPersonalForm.value.shoulder_bust),
+          shoulder_girth: Number(this.createPersonalForm.value.shoulder_girth),
+          shoulder_hips: Number(this.createPersonalForm.value.shoulder_hips),
+          shoulder_hip: Number(this.createPersonalForm.value.shoulder_hip),
+          date_metering: Date.parse(this.createPersonalForm.value.date_metering),
+        }
       }
+      this.qraphqlService.eventWithParameterClient(data)
+        .pipe(take(1))
+        .subscribe(() => {
+          this.notificationService.onEventNotification('Параметры клиента сохранены')
+          this.createPersonalForm.reset()
+        })
+    } else {
+      this.notificationService.onEventNotification('Заполнены не все поля')
     }
-    this.qraphqlService.eventWithParameterClient(data)
-      .pipe(take(1))
-      .subscribe(() => {
-        this.notificationService.eventNotification('Параметры клиента сохранены')
-      })
   }
 
   /** Update item Parameter*/
@@ -100,6 +104,12 @@ export class ModalClientDataComponent implements OnInit {
     shoulder_hips: string | null,
     weight: string | null,
   }) {
+    if (!inputData.weight || !inputData.shoulder_hip
+      || !inputData.shoulder_hips || !inputData.shoulder_bust
+      || !inputData.shoulder_girth) {
+      this.notificationService.onEventNotification('Вы не можете сохранить пустые данные')
+      return
+    }
     const data = {
       id: Number(this.data.id),
       parameters: {
@@ -115,7 +125,7 @@ export class ModalClientDataComponent implements OnInit {
     this.qraphqlService.eventWithParameterClient(data)
       .pipe(take(1))
       .subscribe(() => {
-        this.notificationService.eventNotification('Параметры клиента изменены')
+        this.notificationService.onEventNotification('Параметры клиента изменены')
       })
   }
 
@@ -132,10 +142,9 @@ export class ModalClientDataComponent implements OnInit {
       .subscribe(() => {
         // TODO: types
         this.data.eventData = this.data.eventData.filter((item: any) => item.id !== inputData)
-        this.notificationService.eventNotification('Параметры клиента удалены')
+        this.notificationService.onEventNotification('Параметры клиента удалены')
       })
   }
-
   /** Parameters=====================================================*/
 
 
@@ -146,6 +155,11 @@ export class ModalClientDataComponent implements OnInit {
     gender: number,
     height: string,
   }): void {
+    if (!inputData.birth_day || !inputData.start_train
+      || !inputData.gender || !inputData.height) {
+      this.notificationService.onEventNotification('Вы не можете сохранить пустые данные')
+      return
+    }
     const data = {
       id: Number(this.data.eventData.id),
       birth_day: typeof inputData.birth_day === 'string'
@@ -160,11 +174,9 @@ export class ModalClientDataComponent implements OnInit {
     this.qraphqlService.updatePersonalClient(data)
       .pipe(take(1))
       .subscribe(() => {
-        // TODO: types
-        this.notificationService.eventNotification('Персональные данные клиента обновлены')
+        this.notificationService.onEventNotification('Персональные данные клиента обновлены')
       })
   }
-
   /** Personal-data==================================================*/
 
 
@@ -219,15 +231,14 @@ export class ModalClientDataComponent implements OnInit {
       id: Number(this.data.id),
       schedules: schedules
     }
-    this.qraphqlService.createTrainingDays(data).subscribe(() => {
-      this.notificationService.eventNotification('Тренировочные дни успешно сохранены')
-      this.daysSelected = []
-      this.daySelectedDetails = {}
-      this.trainSelected = null
-    })
+    this.qraphqlService.createTrainingDays(data)
+      .subscribe(() => {
+        this.notificationService.onEventNotification('Тренировочные дни успешно сохранены')
+        this.daysSelected = []
+        this.daySelectedDetails = {}
+        this.trainSelected = null
+      })
   }
 
   /** Schedules======================================================*/
-
-
 }

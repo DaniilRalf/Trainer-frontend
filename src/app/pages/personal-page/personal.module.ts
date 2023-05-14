@@ -21,7 +21,6 @@ import {MyParametersComponent} from './components/my-parameters/my-parameters.co
 import {BeforeAfterComponent} from './components/before-after/before-after.component'
 import {MatTableModule} from "@angular/material/table"
 import {MatPaginatorModule} from "@angular/material/paginator"
-import {PlotlyModule} from "angular-plotly.js"
 import {CreateClientComponent} from './components/create-client/create-client.component'
 import {
   UpdateParametersClientComponent
@@ -46,6 +45,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { ModalAdminScheduleComponent } from './components/admin-schedule/modal-admin-schedule/modal-admin-schedule.component';
 import {NgCircleProgressModule} from "ng-circle-progress";
+import {NgChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -69,7 +69,6 @@ import {NgCircleProgressModule} from "ng-circle-progress";
         CommonModule,
         PersonalRoutingModule,
         WidgetsModule,
-        PlotlyModule,
 
         MatFormFieldModule,
         MatSelectModule,
@@ -93,7 +92,8 @@ import {NgCircleProgressModule} from "ng-circle-progress";
         DirectivesModule,
         MatTabsModule,
         MatTooltipModule,
-        NgCircleProgressModule
+        NgCircleProgressModule,
+        NgChartsModule
     ],
 })
 export class PersonalModule {

@@ -1,70 +1,107 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {ChangeDetectorRef, Component, HostListener, Input, OnInit} from '@angular/core'
 import {User} from "../../../../models/types/user"
-import * as PlotlyJS from 'plotly.js-dist-min'
-import {PlotlyModule} from 'angular-plotly.js'
+import {ChartConfiguration, ChartOptions, ChartType} from "chart.js";
+import {DatePipe} from "@angular/common";
 
-PlotlyModule.plotlyjs = PlotlyJS
 
 @Component({
   selector: 'app-my-parameters',
   templateUrl: './my-parameters.component.html',
-  styleUrls: ['./my-parameters.component.scss']
+  styleUrls: ['./my-parameters.component.scss'],
+  providers: [DatePipe],
 })
 export class MyParametersComponent implements OnInit {
+
+  public displayedKey = ['date_metering', 'weight', 'shoulder_bust', 'shoulder_girth', 'shoulder_hip', 'shoulder_hips'];
+
+  public graphData!: ChartConfiguration<'line'>['data']
+  public graphDataOptions: ChartOptions<'line'> = {
+    responsive: false,
+    maintainAspectRatio: false,
+  }
+  public graphDataLegend = true
+  public graphWidth!: number
+
   @Input() public user!: User
 
-  public displayedKey = ['date_metering', 'shoulder_bust', 'shoulder_girth', 'shoulder_hip', 'shoulder_hips'];
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.graphWidth = window.innerWidth;
+  }
 
-  public graph = {
-    data: [
-      {
-        x: [new Date(1680282000000), new Date(1681059600000), new Date(1681923600000)],
-        y: [2, 12, 3],
-        name: 'Обхват груди',
-        type: 'scatter',
-        mode: 'lines+markers',
-        line: {
-          shape: 'spline'
-        },
-        marker: {
-          size: 8,
-          color: 'red'
-        },
-        fill: 'tozeroy', // добавлен параметр fill
-        fillcolor: 'rgba(255, 0, 0, 0.2)', // задан цвет заливки
-      },
-      {
-        x: [new Date(1680282000000), new Date(1681059600000), new Date(1681923600000)],
-        y: [4, 8, 6],
-        name: 'Бицепс',
-        type: 'scatter',
-        mode: 'lines+markers',
-        line: {},
-        marker: {
-          size: 8,
-          color: 'blue'
-        },
-        fill: 'tozeroy', // добавлен параметр fill
-        fillcolor: 'rgba(0, 0, 255, 0.2)' // задан цвет заливки
-      },
-    ],
-    layout: {
-      width: 1000,
-      height: 400,
-      hovermode: 'closest',
-      clickmode: 'none',
-      dragmode: false,
-      transition: {
-        duration: 1000,
-        easing: 'cubic-in-out'
-      }
-    }
-  };
-
-  constructor() {
+  constructor(
+    private datePipe: DatePipe,
+  ) {
   }
 
   ngOnInit(): void {
+    this.graphWidth = window.innerWidth - 120;
+    this.graphInit()
   }
+
+  private graphInit(): void {
+    this.graphData = {
+      labels: [],
+      datasets: [
+        {
+          label: 'Бицепс (см.)',
+          data: [],
+          fill: true, tension: 0.5,
+          borderColor: 'rgb(53,213,0)',
+          backgroundColor: 'rgba(13,187,0,0.3)'
+        },
+        {
+          label: 'Обхват бедра (см.)',
+          data: [],
+          fill: true, tension: 0.5,
+          borderColor: 'rgb(255,210,65)',
+          backgroundColor: 'rgba(255,204,0,0.3)'
+        },
+        {
+          label: 'Вес (см.)',
+          data: [],
+          fill: true, tension: 0.5,
+          borderColor: 'rgb(164,0,0)',
+          backgroundColor: 'rgba(255,0,0,0.3)'
+        },
+        {
+          label: 'Обхват груди (см.)',
+          data: [],
+          fill: true, tension: 0.5,
+          borderColor: 'rgb(0,69,213)',
+          backgroundColor: 'rgba(0,81,255,0.3)'
+        },
+        {
+          label: 'Обхват бёдер (см.)',
+          data: [],
+          fill: true, tension: 0.5,
+          borderColor: 'rgb(213,82,0)',
+          backgroundColor: 'rgba(255,115,0,0.3)'
+        },
+      ]
+    }
+
+    if (this.user.parameters!.length > 0) {
+      const dataSort = this.user.parameters?.sort(
+        (a, b) => Number(a.date_metering) - Number(b.date_metering)
+      )
+      dataSort!.forEach((parameter) => {
+        /** заполение данных Бицепса*/
+        this.graphData.datasets[0].data.push(Number(parameter.shoulder_girth))
+        /** заполение данных Обхвата бедра*/
+        this.graphData.datasets[1].data.push(Number(parameter.shoulder_hip))
+        /** заполнение оси даты*/
+        this.graphData.labels?.push(this.datePipe.transform(parameter.date_metering, 'dd-MM-yyyy'))
+        /** заполение данных веса*/
+        this.graphData.datasets[2].data.push(Number(parameter.weight))
+        /** заполение данных Обхвата груди*/
+        this.graphData.datasets[3].data.push(Number(parameter.shoulder_bust))
+        /** заполение данных Обхвата бёдер*/
+        this.graphData.datasets[4].data.push(Number(parameter.shoulder_hips))
+      })
+    }
+
+  }
+
 
 }

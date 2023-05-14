@@ -12,7 +12,7 @@ export class NotificationsService {
   // TODO: потом разбить разные оповещения на разные компоненты а не передавать в тупую как сейчас
   // TODO: это для того чтобы сделать message разными цветами
 
-  public eventNotification(message: string): void {
+  public onEventNotification(message: string): void {
     this.snackBar.open(
       message,
       'Понятно',

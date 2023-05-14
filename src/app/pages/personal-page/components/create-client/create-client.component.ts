@@ -13,16 +13,19 @@ import {NotificationsService} from "../../../../helpers/services/notifications/n
   styleUrls: ['./create-client.component.scss']
 })
 export class CreateClientComponent implements OnInit {
-  @Input() public user!: BehaviorSubject<User>
-  createForm!: FormGroup;
+
   RoleEnum = RoleEnum;
   GenderEnum = GenderEnum;
 
-  //TODO: сделать обработку валидации при заполнении полей
+  createForm!: FormGroup;
+
+  @Input() public user!: BehaviorSubject<User>
+
   constructor(
     private qraphqlService: GraphqlService,
     private notificationService: NotificationsService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.formBuildCreate()
@@ -30,20 +33,21 @@ export class CreateClientComponent implements OnInit {
 
   public formBuildCreate(): void {
     this.createForm = new FormGroup({
-      first_name: new FormControl('111',[
+      first_name: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
       ]),
-      last_name: new FormControl('111', [
+      last_name: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
       ]),
-      username: new FormControl('111', [
+      username: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
       ]),
-      password: new FormControl('111', [
+      password: new FormControl('', [
         Validators.required,
+        Validators.minLength(6),
       ]),
       roleId: new FormControl('', [
         Validators.required,
@@ -51,7 +55,7 @@ export class CreateClientComponent implements OnInit {
       gender: new FormControl('', [
         Validators.required,
       ]),
-      height: new FormControl(111, [
+      height: new FormControl(null, [
         Validators.required,
       ]),
       birth_day: new FormControl('', [
@@ -60,32 +64,34 @@ export class CreateClientComponent implements OnInit {
       start_train: new FormControl('', [
         Validators.required,
       ]),
-      test: new FormControl('', [
-        Validators.required,
-      ]),
     })
   }
 
-  onSubmitLogin(){
-    const data = {
-      first_name: this.createForm.value.first_name,
-      last_name: this.createForm.value.last_name,
-      username: this.createForm.value.username,
-      password: this.createForm.value.password,
-      roleId: Number(this.createForm.value.roleId),
-      personal: {
-        gender: Number(this.createForm.value.gender),
-        height: this.createForm.value.height,
-        birth_day: Number(this.createForm.value.birth_day),
-        start_train: Number(this.createForm.value.start_train)
+  onSubmitLogin() {
+    if (this.createForm.status === 'VALID') {
+      const data = {
+        first_name: this.createForm.value.first_name,
+        last_name: this.createForm.value.last_name,
+        username: this.createForm.value.username,
+        password: this.createForm.value.password,
+        roleId: Number(this.createForm.value.roleId),
+        personal: {
+          gender: Number(this.createForm.value.gender),
+          height: this.createForm.value.height,
+          birth_day: Number(this.createForm.value.birth_day),
+          start_train: Number(this.createForm.value.start_train)
+        }
       }
+      this.qraphqlService.createClient(data)
+        .pipe(take(1))
+        .subscribe(() => {
+          this.notificationService
+            .onEventNotification('Пользователь успешно создан')
+          this.createForm.reset()
+        })
+    } else {
+      this.notificationService.onEventNotification('Заполнены не все поля')
     }
-    this.qraphqlService.createClient(data)
-      .pipe(take(1))
-      .subscribe(() => {
-        this.notificationService
-          .eventNotification('Пользователь успешно создан')
-      })
   }
 
 }
