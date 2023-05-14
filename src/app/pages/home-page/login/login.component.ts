@@ -39,12 +39,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin(){
-    this.qraphqlService.loginUser(this.loginForm.value).subscribe({
-      next: (v: any) => this.saveUserData(v.data.loginUser),
-      error: (e: any) => {
-        console.dir(e.networkError || e)
-      },
-    })
+    this.qraphqlService.loginUser(this.loginForm.value)
+      .subscribe((v: any) => this.saveUserData(v.data.loginUser))
   }
 
   saveUserData(data: User){

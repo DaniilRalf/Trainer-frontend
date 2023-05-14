@@ -11,7 +11,7 @@ import {environment} from "../../../../../environments/environment";
 })
 export class BeforeAfterComponent implements OnInit {
   env = environment
-  @Input() public user!: BehaviorSubject<User>
+  @Input() public user!: User
 
   allItemPhoto?: any
 
@@ -26,14 +26,10 @@ export class BeforeAfterComponent implements OnInit {
 
   //TODO:  поправить типизацию any
   ngOnInit(): void {
-    // console.log(this.user.value)
-
-    this.httpService.getItemPhotoBeforeAfter(this.user.value.id)
+    this.httpService.getItemPhotoBeforeAfter(this.user.id)
       .subscribe((item: any) => {
         this.allItemPhoto = item
         this.generateForDisplayed()
-
-        console.log(this.allItemPhoto)
       })
   }
 

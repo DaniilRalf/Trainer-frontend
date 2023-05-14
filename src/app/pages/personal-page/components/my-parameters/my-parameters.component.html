@@ -1,6 +1,6 @@
 <h2>Таблица замеров параметров тела</h2>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="userParameters">
+<div class="mat-elevation-z8" *ngIf="user.parameters! && user.parameters!.length > 0">
+  <table mat-table [dataSource]="user.parameters!">
 
     <ng-container matColumnDef="date_metering">
       <th mat-header-cell *matHeaderCellDef>Дата замера</th>

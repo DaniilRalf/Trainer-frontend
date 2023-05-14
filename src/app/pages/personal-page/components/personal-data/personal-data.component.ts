@@ -8,7 +8,7 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./personal-data.component.scss']
 })
 export class PersonalDataComponent implements OnInit {
-  @Input() public user!: BehaviorSubject<User>
+  @Input() public user!: User;
 
   constructor() { }
 

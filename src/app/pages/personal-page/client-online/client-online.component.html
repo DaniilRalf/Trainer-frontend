@@ -2,25 +2,25 @@
   <mat-tab-group [(selectedIndex)]="storeService.tabsOnPersonalPage">
 
     <mat-tab label="Персональная информция">
-      <app-personal-data
+      <app-personal-data *ngIf="storeService.tabsOnPersonalPage === 0"
         [user]="user">
       </app-personal-data>
     </mat-tab>
 
     <mat-tab label="График тренировок">
-      <app-training-schedule
+      <app-training-schedule *ngIf="storeService.tabsOnPersonalPage === 1"
         [user]="user">
       </app-training-schedule>
     </mat-tab>
 
     <mat-tab label="Мои параметры">
-      <app-my-parameters
+      <app-my-parameters *ngIf="storeService.tabsOnPersonalPage === 2"
         [user]="user">
       </app-my-parameters>
     </mat-tab>
 
     <mat-tab label="До/После">
-      <app-before-after
+      <app-before-after *ngIf="storeService.tabsOnPersonalPage === 3"
         [user]="user">
       </app-before-after>
     </mat-tab>

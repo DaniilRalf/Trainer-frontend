@@ -1,20 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {StoreService} from "../../../helpers/services/store.service"
 import {GraphqlService} from "../../../helpers/services/graphql.service"
 import {Router} from "@angular/router"
-import {RoleEnum} from "../../../models/enums/role-enum"
 
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
   styleUrls: ['./personal.component.scss']
 })
-export class PersonalComponent implements OnInit, OnDestroy {
-
-  RoleEnum = RoleEnum
-
-
-  sidebarIs: string = 'keyboard_arrow_left'
+export class PersonalComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -41,15 +35,6 @@ export class PersonalComponent implements OnInit, OnDestroy {
     if (this.storeService.USER.roleId === 2) {
       this.router.navigate(['/personal', 'admin']);
     }
-  }
-
-  // setTabsPage(itemTabs: number): void {
-  //   this.storeService.TabsPage = itemTabs
-  // }
-
-  //TODO: менять таб в зависимости от роли
-  ngOnDestroy(): void {
-    // this.StoreService.TabsPage = TabsPage.personalData
   }
 
 }

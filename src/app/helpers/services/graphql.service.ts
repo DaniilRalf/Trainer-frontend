@@ -148,8 +148,8 @@ export class GraphqlService {
   eventWithParameterClient(data: any){
     return this.apollo.mutate({
       mutation: gql`
-        mutation createParametersClient($input: UserInput){
-          createParametersClient(input: $input){
+        mutation eventWithParameterClient($input: UserInput){
+          eventWithParameterClient(input: $input){
             id
           }
         }

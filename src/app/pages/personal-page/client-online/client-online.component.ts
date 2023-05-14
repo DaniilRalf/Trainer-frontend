@@ -10,7 +10,7 @@ import {BehaviorSubject} from "rxjs"
 })
 export class ClientOnlineComponent implements OnInit {
 
-  user = new BehaviorSubject<User>({} as User);
+  user!: User;
 
   constructor(
     public storeService: StoreService,
@@ -21,7 +21,7 @@ export class ClientOnlineComponent implements OnInit {
   }
 
   getUserFromStore(){
-    this.user.next(this.storeService.USER)
+    this.user = this.storeService.USER
   }
 
 }

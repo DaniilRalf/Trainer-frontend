@@ -8,16 +8,14 @@ import {User} from "../../../../models/types/user";
   styleUrls: ['./client-schedule.component.scss']
 })
 export class ClientScheduleComponent implements OnInit {
-  @Input() public user!: BehaviorSubject<User>
+  @Input() public user!: User
   //TODO: поправить типизацию, отменить все подписки
   calendarData: any[] = []
 
   constructor() { }
 
   ngOnInit(): void {
-    this.user.pipe(take(1)).subscribe((i: any) => {
-      this.generateCalendarData(i)
-    })
+    this.generateCalendarData(this.user)
   }
 
   //TODO: типизироватьвсе нормально
@@ -40,17 +38,15 @@ export class ClientScheduleComponent implements OnInit {
       actualDay === 8 ? actualDay = 1 : ''
     }
 
-    data.schedules.forEach((itemDay: any) => {
-      this.calendarData.forEach(i => {
-        if (new Date(itemDay.date).getDate() == i.data) {
-          i.description = itemDay.description
-        }
+    if (data && data.schedules?.length > 0) {
+      data.schedules.forEach((itemDay: any) => {
+        this.calendarData.forEach(i => {
+          if (new Date(itemDay.date).getDate() == i.data) {
+            i.description = itemDay.description
+          }
+        })
       })
-    })
-
-
-    console.log(this.calendarData)
-
+    }
   }
 
 }

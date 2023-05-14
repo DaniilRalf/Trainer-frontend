@@ -3,13 +3,13 @@
   <div class="personal-data_photo"></div>
   <div class="personal-data_data">
     <div class="personal-data_data__item-name fnt-bold-1">Имя:</div>
-    <div class="personal-data_data__item-desc">{{user.value.first_name}}</div>
+    <div class="personal-data_data__item-desc">{{user.first_name}}</div>
     <div class="personal-data_data__item-name fnt-bold-1">Фамилия:</div>
-    <div class="personal-data_data__item-desc">{{user.value.last_name}}</div>
+    <div class="personal-data_data__item-desc">{{user.last_name}}</div>
     <div class="personal-data_data__item-name fnt-bold-1">Дата рождения:</div>
-    <div class="personal-data_data__item-desc">{{user.value.personal?.birth_day}}</div>
+    <div class="personal-data_data__item-desc">{{user.personal?.birth_day | date:'dd-MM-yyyy'}}</div>
     <div class="personal-data_data__item-name fnt-bold-1">Дата начала тренировок:</div>
-    <div class="personal-data_data__item-desc">{{user.value.personal?.start_train | date:'dd-MM-yyyy'}}</div>
+    <div class="personal-data_data__item-desc">{{user.personal?.start_train | date:'dd-MM-yyyy'}}</div>
   </div>
 
 </div>

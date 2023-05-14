@@ -70,7 +70,7 @@ export class ModalAdminScheduleComponent implements OnInit {
       /** Высчитываем на сколько необходимо вращать интервал*/
       itemTrain.rotate = hoursRotate + minutesRotate
       /** Высчитываем длину временного отрезка*/
-      itemTrain.length = itemTrain.time_duration === '1:30' ? 12.1 : 8.3
+      itemTrain.length = itemTrain.time_duration === '1:30' ? 12 : 7
       /** Задаем цвет для отрезка*/
       // @ts-ignore
       itemTrain.color = colorList[index > 8 ? 0 : index]
