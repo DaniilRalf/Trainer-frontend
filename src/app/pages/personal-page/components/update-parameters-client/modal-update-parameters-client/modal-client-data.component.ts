@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core'
+import {ChangeDetectorRef, Component, Inject, OnInit, ViewEncapsulation} from '@angular/core'
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {GraphqlService} from 'src/app/helpers/services/graphql.service'
@@ -35,6 +35,7 @@ export class ModalClientDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBuildCreatePersonal()
+    console.log(this.data)
   }
 
   public changeTag(tag: string): void {

@@ -1,44 +1,48 @@
-<!-- //TODO: поправить расположение иконок в таблице -->
-<!-- //TODO: добавить slide togle для запроса показывать ли ушедих клиентов -->
 
-<div class="mat-elevation-z8 mr-20" *ngIf="allClients.length > 0">
-  <table mat-table [dataSource]="allClients">
+<p class="fnt-normal-1 mt-20" *ngIf="allClients.length === 0">Пока нет зарегестрированых клиентов</p>
 
-    <ng-container matColumnDef="first_name">
-      <th mat-header-cell *matHeaderCellDef>Имя</th>
-      <td mat-cell *matCellDef="let element">{{element.first_name }}</td>
-    </ng-container>
-    <ng-container matColumnDef="last_name">
+<div class="update-parameters-client">
+
+  <div class="mat-elevation-z8 mr-20" *ngIf="allClients.length > 0">
+    <table mat-table [dataSource]="allClients">
+
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef>Имя</th>
+        <td mat-cell *matCellDef="let element">{{element.first_name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="last_name">
         <th mat-header-cell *matHeaderCellDef>Фамилия</th>
         <td mat-cell *matCellDef="let element">{{element.last_name }}</td>
       </ng-container>
-    <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef>Логин</th>
-      <td mat-cell *matCellDef="let element">{{element.username}}</td>
-    </ng-container>
-    <ng-container matColumnDef="parameters">
-      <th mat-header-cell *matHeaderCellDef>Параметры</th>
-      <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.parameters, 'parameters')">
-        <div class="icon-active"><mat-icon>donut_large</mat-icon></div>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="personal">
-      <th mat-header-cell *matHeaderCellDef>Персональные данные</th>
-      <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.personal, 'personal')">
-        <div class="icon-active"><mat-icon>person</mat-icon></div>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="schedule">
-      <th mat-header-cell *matHeaderCellDef>График</th>
-      <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.schedules, 'schedule')">
-        <div class="icon-active"><mat-icon>schedule</mat-icon></div>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Логин</th>
+        <td mat-cell *matCellDef="let element">{{element.username}}</td>
+      </ng-container>
+      <ng-container matColumnDef="parameters">
+        <th mat-header-cell *matHeaderCellDef>Параметры</th>
+        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.parameters, 'parameters')">
+          <div class="icon-active"><mat-icon>donut_large</mat-icon></div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="personal">
+        <th mat-header-cell *matHeaderCellDef>Персональные данные</th>
+        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.personal, 'personal')">
+          <div class="icon-active"><mat-icon>person</mat-icon></div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="schedule">
+        <th mat-header-cell *matHeaderCellDef>График</th>
+        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.schedules, 'schedule')">
+          <div class="icon-active"><mat-icon>schedule</mat-icon></div>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedKey"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedKey;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedKey"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedKey;"></tr>
 
-  </table>
-  <!--//TODO: потом добавить пагинатор-->
-<!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
+    </table>
+    <!--//TODO: потом добавить пагинатор-->
+    <!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
+  </div>
+
 </div>

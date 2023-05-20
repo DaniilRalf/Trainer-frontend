@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, take} from "rxjs";
-import { GraphqlService } from 'src/app/helpers/services/graphql.service';
+import {GraphqlService} from 'src/app/helpers/services/graphql.service';
 import {User} from "../../../../models/types/user";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ModalClientDataComponent } from './modal-update-parameters-client/modal-client-data.component';
+import {ModalClientDataComponent} from './modal-update-parameters-client/modal-client-data.component';
 
 @Component({
   selector: 'app-update-parameters-client',
@@ -21,7 +21,8 @@ export class UpdateParametersClientComponent implements OnInit {
   constructor(
     public qraphqlService: GraphqlService,
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getAllClients()
@@ -30,9 +31,9 @@ export class UpdateParametersClientComponent implements OnInit {
   //TODO: поправить типизацию data
   getAllClients() {
     this.qraphqlService.getAllClientsAllData()
-    .subscribe(({data}: any) => {
-      this.allClients = data.getAllClients
-    })
+      .subscribe(({data}: any) => {
+        this.allClients = data.getAllClients
+      })
   }
 
   //TODO: поправить типизацию event

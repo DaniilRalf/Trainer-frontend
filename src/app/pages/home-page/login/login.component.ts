@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   // TODO: types
-  onSubmitLogin(){
+  public onSubmitLogin(): void{
     this.qraphqlService.loginUser(this.loginForm.value)
       .subscribe((v: any) => {
         this.saveUserData(v.data.loginUser)
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  saveUserData(data: User){
+  private saveUserData(data: User): void{
     this.storeService.saveUser(data);
   }
 }

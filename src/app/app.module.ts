@@ -5,12 +5,13 @@ import {AppComponent} from './app.component'
 import {HomeModule} from "./pages/home-page/home.module"
 import {WidgetsModule} from "./widgets/widgets.module"
 import {GraphQLModule} from './graphql.module'
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {PersonalModule} from "./pages/personal-page/personal.module"
 import {DirectivesModule} from "./helpers/directives/directives.module"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
 import {NgCircleProgressModule} from "ng-circle-progress"
+import {ErrorInterceptor} from "./helpers/interceptors/error.interceptor"
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import {NgCircleProgressModule} from "ng-circle-progress"
     MatSnackBarModule,
     NgCircleProgressModule.forRoot({})
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

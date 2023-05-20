@@ -41,11 +41,15 @@ import {
 import {AdminScheduleComponent} from './components/admin-schedule/admin-schedule.component'
 import {MatChipsModule} from "@angular/material/chips"
 import {DirectivesModule} from "../../helpers/directives/directives.module"
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import { ModalAdminScheduleComponent } from './components/admin-schedule/modal-admin-schedule/modal-admin-schedule.component';
-import {NgCircleProgressModule} from "ng-circle-progress";
-import {NgChartsModule} from "ng2-charts";
+import {MatTabsModule} from "@angular/material/tabs"
+import {MatTooltipModule} from "@angular/material/tooltip"
+import {
+  ModalAdminScheduleComponent
+} from './components/admin-schedule/modal-admin-schedule/modal-admin-schedule.component'
+import {NgCircleProgressModule} from "ng-circle-progress"
+import {NgChartsModule} from "ng2-charts"
+import {HTTP_INTERCEPTORS} from "@angular/common/http"
+import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor"
 
 @NgModule({
   declarations: [
@@ -65,36 +69,38 @@ import {NgChartsModule} from "ng2-charts";
     AdminScheduleComponent,
     ModalAdminScheduleComponent,
   ],
-    imports: [
-        CommonModule,
-        PersonalRoutingModule,
-        WidgetsModule,
-
-        MatFormFieldModule,
-        MatSelectModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatSidenavModule,
-        MatButtonToggleModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatCardModule,
-        MatMenuModule,
-        FormsModule,
-        MatChipsModule,
-        DirectivesModule,
-        MatTabsModule,
-        MatTooltipModule,
-        NgCircleProgressModule,
-        NgChartsModule
-    ],
+  imports: [
+    CommonModule,
+    PersonalRoutingModule,
+    WidgetsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatMenuModule,
+    FormsModule,
+    MatChipsModule,
+    DirectivesModule,
+    MatTabsModule,
+    MatTooltipModule,
+    NgCircleProgressModule,
+    NgChartsModule
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
 })
 export class PersonalModule {
 }

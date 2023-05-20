@@ -11,7 +11,7 @@
       <input matInput formControlName="last_name">
     </mat-form-field>
     <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Никнейм</mat-label>
+      <mat-label>Никнейм (английскими буквами)</mat-label>
       <input matInput formControlName="username">
     </mat-form-field>
     <mat-form-field class="create-client__item" appearance="fill">
@@ -32,10 +32,11 @@
       <mat-select formControlName="gender">
         <mat-option type="number" value="{{GenderEnum.female}}">Женщина</mat-option>
         <mat-option type="number" value="{{GenderEnum.male}}">Мужчина</mat-option>
+        <mat-option type="number" value="{{GenderEnum.non_binary}}">Небинарная личность</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Рост (см)</mat-label>
+      <mat-label>Рост (см.)</mat-label>
       <input type="number" matInput formControlName="height">
     </mat-form-field>
     <mat-form-field class="create-client__item" appearance="fill">

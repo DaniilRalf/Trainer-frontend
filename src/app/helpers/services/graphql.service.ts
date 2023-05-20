@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import {Apollo, gql} from "apollo-angular";
+import { Injectable } from '@angular/core'
+import {Apollo, gql} from "apollo-angular"
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class GraphqlService {
 
   constructor(
@@ -191,6 +189,4 @@ export class GraphqlService {
         `
     })
   }
-
-
 }

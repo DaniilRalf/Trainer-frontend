@@ -2,24 +2,24 @@
 <div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
   <form class="create-parameters-form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
     <mat-form-field class="item" appearance="fill">
-      <mat-label>Вес</mat-label>
-      <input matInput formControlName="weight">
+      <mat-label>Вес (кг.)</mat-label>
+      <input numbersOnly matInput formControlName="weight">
     </mat-form-field>
     <mat-form-field class="item" appearance="fill">
-      <mat-label>Обхват груди</mat-label>
-      <input matInput formControlName="shoulder_bust">
+      <mat-label>Обхват груди (см.)</mat-label>
+      <input numbersOnly matInput formControlName="shoulder_bust">
     </mat-form-field>
     <mat-form-field class="item" appearance="fill">
-      <mat-label>Обхват плеч</mat-label>
-      <input matInput formControlName="shoulder_girth">
+      <mat-label>Обхват плеч (см.)</mat-label>
+      <input numbersOnly matInput formControlName="shoulder_girth">
     </mat-form-field>
     <mat-form-field class="item" appearance="fill">
-      <mat-label>Обхват бедер</mat-label>
-      <input matInput formControlName="shoulder_hips">
+      <mat-label>Обхват бедер (см.)</mat-label>
+      <input numbersOnly matInput formControlName="shoulder_hips">
     </mat-form-field>
     <mat-form-field class="item" appearance="fill">
-      <mat-label>Обхват бедра</mat-label>
-      <input matInput formControlName="shoulder_hip">
+      <mat-label>Обхват бедра (см.)</mat-label>
+      <input numbersOnly matInput formControlName="shoulder_hip">
     </mat-form-field>
     <mat-form-field class="item" appearance="fill">
       <mat-label>Дата замера</mat-label>
@@ -159,7 +159,6 @@
 </div>
 
 <div class="create-schedule" *ngIf="data.tag === 'schedule_add'">
-  Добавить расписание
   <div (click)="$event.stopPropagation()">
     <mat-calendar #calendar
                   (selectedChange)="select($event,calendar)"

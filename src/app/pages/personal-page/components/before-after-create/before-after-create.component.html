@@ -1,6 +1,9 @@
+
+<p class="fnt-normal-1 mt-20" *ngIf="allClients.length === 0">Пока нет зарегестрированых клиентов</p>
+
 <div class="before-after-create">
 
-  <div class="mat-elevation-z8 mr-20">
+  <div class="mat-elevation-z8 mr-20" *ngIf="allClients.length > 0">
     <mat-accordion>
       <mat-expansion-panel *ngFor="let item of allClients"
                            (opened)="openedItemPanel(item.id)"
