@@ -3,6 +3,7 @@ import {GraphqlService} from "../../../helpers/services/graphql.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../models/types/user";
 import {StoreService} from "../../../helpers/services/store.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   //TODO: приватнуть сервис
   constructor(
+    private router: Router,
     public qraphqlService: GraphqlService,
     private storeService: StoreService
   ) { }
@@ -33,37 +35,21 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(6),
       ]),
     });
   }
 
+  // TODO: types
   onSubmitLogin(){
     this.qraphqlService.loginUser(this.loginForm.value)
-      .subscribe((v: any) => this.saveUserData(v.data.loginUser))
+      .subscribe((v: any) => {
+        this.saveUserData(v.data.loginUser)
+        this.router.navigate(['/personal'])
+      })
   }
 
   saveUserData(data: User){
     this.storeService.saveUser(data);
   }
-
-
-
-  // click(){
-  //     this.qraphqlService.getAllUsers().subscribe({
-  //       next: (v) => console.log(v),
-  //       error: (e) => {
-  //         console.log(e.networkError)
-  //       },
-  //       complete: () => console.info('complete')
-  //     })
-  // }
-  // create(){
-  //   this.qraphqlService.createUser().subscribe({
-  //     next: (v) => console.log(v),
-  //     error: (e) => {
-  //       console.dir(e.networkError || e)
-  //     },
-  //   })
-  // }
 }

@@ -22,7 +22,6 @@ export class BeforeAfterCreateComponent implements OnInit {
 
   hideToggle = false
 
-  // TODO: types
   allPhotos: any = {}
 
   @Input() public user!: BehaviorSubject<User>

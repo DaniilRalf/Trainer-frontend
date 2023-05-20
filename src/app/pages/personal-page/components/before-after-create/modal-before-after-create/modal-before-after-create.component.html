@@ -1,25 +1,38 @@
 <div class="modal-before-after-create">
 
+    <p>На каждый день можно добавлять до 3-х фотографий(виды сперези, сзади, сбоку),
+      для этого необходимо соответствующий тип в выпадающей вкладке.</p>
 
+    <div class="body">
 
-    <input type="file" (change)="setPhoto($event)" multiple>
+      <div class="custom-input">
+        <input #fileInput multiple
+               type="file" [hidden]="true"
+               (change)="setPhoto($event)">
+        <button mat-button color="primary"
+                (click)="fileInput.click()"
+        >{{fileNewPhoto?.name ? fileNewPhoto?.name : 'Добавить фотографию'}}</button>
+      </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Выбрать тип фотографии</mat-label>
-      <mat-select [(ngModel)]="angle" required>
-        <mat-option *ngFor="let train of TypePhoto | keyvalue" [value]="train.key">
-          {{train.value}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="!angle">Необходимо выбрать тип тренироки</mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Выбрать тип фотографии</mat-label>
+        <mat-select [(ngModel)]="angle" required>
+          <mat-option *ngFor="let train of TypePhoto | keyvalue" [value]="train.key">
+            {{train.value}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!angle">Необходимо выбрать тип тренироки</mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Дата создания фоот</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="dateNewPhoto">
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field class="create-client__item" appearance="fill">
+        <mat-label>Дата создания фотографии</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dateNewPhoto">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </div>
+
 
     <div class="flex-center mt-10">
       <button mat-raised-button color="primary" (click)="saveNewPhoto()">Сохранить замер</button>

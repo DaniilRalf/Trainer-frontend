@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {StoreService} from "../../helpers/services/store.service"
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   @Input() darkStyle: boolean = false
 
   constructor(
+    private router: Router,
     private storeService: StoreService,
   ) { }
 
@@ -26,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   deleteUserData(){
     this.storeService.deleteUser();
+    this.router.navigate(['home'])
   }
 
 }
