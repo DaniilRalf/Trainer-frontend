@@ -1,35 +1,43 @@
 @import "../../../../../assets/scss/index";
 
-.calendar{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 3px;
-  grid-row-gap: 3px;
-  padding: 10px;
+.admin-schedule {
 
-  &-item {
-    height: 50px;
-    border: 1px solid $black;
-    border-radius: 3px;
-    padding: 5px;
-    position: relative;
+  .month-now {
+    text-align: center;
+  }
 
-    &-data {
-      position: absolute;
-    }
-    &-details {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: 20px;
+  .calendar{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+    padding: 10px;
 
-      .item {
-        width: 15px;
-        height: 15px;
-        background-color: $yellow;
-        border-radius: 3px;
-        margin: 2px;
+    &-item {
+      height: 50px;
+      border: 1px solid $black;
+      border-radius: 3px;
+      padding: 5px;
+      position: relative;
+
+      &-data {
+        position: absolute;
+      }
+      &-details {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 20px;
+
+        .item {
+          width: 15px;
+          height: 15px;
+          background-color: $yellow;
+          border-radius: 3px;
+          margin: 2px;
+        }
       }
     }
   }
 }
+

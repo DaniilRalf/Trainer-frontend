@@ -1,8 +1,7 @@
 <div class="admin-schedule">
 
-  <h2 class="mt-20">Мой график: </h2>
-
   <div class="mat-elevation-z8 mr-20">
+    <h2 class="month-now mt-20">{{monthEnum[nowMonth]}}</h2>
     <div class="calendar">
       <div class="calendar-item"
            *ngFor="let item of calendarData"
@@ -22,5 +21,3 @@
   </div>
 
 </div>
-
-
