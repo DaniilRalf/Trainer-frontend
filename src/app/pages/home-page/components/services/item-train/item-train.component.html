@@ -1,0 +1,118 @@
+<div class="item-train">
+
+  <div class="item-train-title fnt-400-gilroy">{{title}}</div>
+
+  <div class="item-train-region fnt-400-gilroy" [style]="serviceType === TrainTypeEnum.Offline ? {'opacity': '1'} : {'opacity': '0'}"
+  >Новосибирск</div>
+
+  <div class="item-train-img">
+    <ng-container *ngIf="serviceType === TrainTypeEnum.Offline">
+      <ng-container *ngTemplateOutlet="templateOffline"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="serviceType === TrainTypeEnum.Online">
+      <ng-container *ngTemplateOutlet="templateOnline"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="serviceType === TrainTypeEnum.OneTime">
+      <ng-container *ngTemplateOutlet="templateOneTime"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="serviceType === TrainTypeEnum.Diet">
+      <ng-container *ngTemplateOutlet="templateDiet"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="serviceType === TrainTypeEnum.Distance">
+      <ng-container *ngTemplateOutlet="templateDistance"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="serviceType === TrainTypeEnum.Program">
+      <ng-container *ngTemplateOutlet="templateProgram"></ng-container>
+    </ng-container>
+
+  </div>
+
+  <div class="item-train-detail">
+    <div class="item-train-detail-price fnt-400-gilroy">{{price}} ₽</div>
+    <div class="item-train-detail-vector">
+      <ng-container *ngTemplateOutlet="templateVector"></ng-container>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<ng-template #templateVector>
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M21.36 1.585C21.1824 1.15739 20.8426 0.817581 20.415 0.64C20.2046 0.550328 19.9787 0.502765 19.75 0.5H2.25002C1.78589 0.5 1.34077 0.684375 1.01258 1.01256C0.68439 1.34075 0.500015 1.78587 0.500015 2.25C0.500015 2.71413 0.68439 3.15925 1.01258 3.48744C1.34077 3.81563 1.78589 4 2.25002 4H15.5325L1.00752 18.5075C0.84349 18.6702 0.713301 18.8637 0.624456 19.077C0.535611 19.2902 0.489868 19.519 0.489868 19.75C0.489868 19.981 0.535611 20.2098 0.624456 20.423C0.713301 20.6363 0.84349 20.8298 1.00752 20.9925C1.1702 21.1565 1.36375 21.2867 1.57701 21.3756C1.79026 21.4644 2.01899 21.5101 2.25002 21.5101C2.48104 21.5101 2.70977 21.4644 2.92302 21.3756C3.13628 21.2867 3.32983 21.1565 3.49252 20.9925L18 6.4675V19.75C18 20.2141 18.1844 20.6593 18.5126 20.9874C18.8408 21.3156 19.2859 21.5 19.75 21.5C20.2141 21.5 20.6593 21.3156 20.9875 20.9874C21.3156 20.6593 21.5 20.2141 21.5 19.75V2.25C21.4972 2.02131 21.4497 1.79539 21.36 1.585Z"
+      fill="#666B7D"/>
+  </svg>
+</ng-template>
+
+<ng-template #templateOffline>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M105 95H181M105 95V19M105 95L173 27" stroke="#DADDDA" stroke-width="4" stroke-linecap="round"
+          stroke-linejoin="round"/>
+    <path d="M95 105H19M95 105V181M95 105L27 173" stroke="#666B7D" stroke-width="4" stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </svg>
+</ng-template>
+
+<ng-template #templateOnline>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M100 175C141.421 175 175 141.421 175 100C175 58.5786 141.421 25 100 25C58.5786 25 25 58.5786 25 100C25 141.421 58.5786 175 100 175Z"
+      stroke="#DADDDA" stroke-width="4"/>
+    <path
+      d="M100 112C106.627 112 112 106.627 112 100C112 93.3726 106.627 88 100 88C93.3726 88 88 93.3726 88 100C88 106.627 93.3726 112 100 112Z"
+      fill="#666B7D"/>
+  </svg>
+</ng-template>
+
+<ng-template #templateOneTime>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="21" y="21" width="74" height="72" rx="22" fill="#666B7D" stroke="#666B7D" stroke-width="4"/>
+    <rect x="21" y="103" width="74" height="72" rx="22" stroke="#DADDDA" stroke-width="4"/>
+    <rect x="105" y="21" width="74" height="72" rx="22" stroke="#DADDDA" stroke-width="4"/>
+    <rect x="105" y="103" width="74" height="72" rx="22" stroke="#DADDDA" stroke-width="4"/>
+  </svg>
+</ng-template>
+
+<ng-template #templateDiet>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_30_458" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="24" y="24" width="152" height="152">
+      <path d="M100 100C100 271 271 100 100 100C-71 100 100 271 100 100C100 -71 -71 100 100 100C271 100 100 -71 100 100Z"
+            fill="#666B7D"/>
+    </mask>
+    <g mask="url(#mask0_30_458)">
+      <path
+        d="M96 100C96 121.673 98.7045 138.213 103.264 150.489C107.829 162.78 114.329 170.975 121.989 175.571C137.52 184.89 155.537 178.37 166.953 166.954C178.369 155.537 184.889 137.521 175.57 121.989C170.975 114.33 162.78 107.83 150.488 103.264C138.213 98.7046 121.673 96.0001 100 96.0001V104C121.077 104 136.599 106.64 147.703 110.764C158.79 114.882 165.29 120.405 168.71 126.105C175.423 137.292 171.255 151.338 161.296 161.297C151.338 171.256 137.292 175.423 126.105 168.711C120.405 165.291 114.881 158.79 110.763 147.703C106.639 136.6 104 121.077 104 100H96ZM100 96.0001C78.327 96.0001 61.787 98.7046 49.5115 103.264C37.2198 107.83 29.025 114.33 24.4294 121.989C15.1105 137.521 21.6303 155.537 33.0465 166.954C44.4628 178.37 62.4795 184.89 78.011 175.571C85.6705 170.975 92.1705 162.78 96.736 150.489C101.295 138.213 104 121.673 104 100H96C96 121.077 93.3605 136.6 89.2365 147.703C85.1185 158.79 79.595 165.291 73.895 168.711C62.708 175.423 48.6621 171.256 38.7034 161.297C28.7447 151.338 24.577 137.292 31.2893 126.105C34.7093 120.405 41.2098 114.882 52.297 110.764C63.4005 106.64 78.923 104 100 104V96.0001ZM104 100C104 78.3271 101.295 61.7871 96.736 49.5117C92.1705 37.2199 85.6705 29.0252 78.011 24.4295C62.4795 15.1106 44.4628 21.6304 33.0465 33.0467C21.6303 44.463 15.1105 62.4796 24.4294 78.0111C29.025 85.6706 37.2198 92.1706 49.5115 96.7361C61.787 101.296 78.327 104 100 104V96.0001C78.923 96.0001 63.4005 93.3606 52.297 89.2366C41.2098 85.1186 34.7093 79.5951 31.2893 73.8951C24.577 62.7081 28.7447 48.6623 38.7034 38.7036C48.6621 28.7448 62.708 24.5771 73.895 31.2895C79.595 34.7095 85.1185 41.21 89.2365 52.2971C93.3605 63.4006 96 78.9231 96 100H104ZM100 104C121.673 104 138.213 101.296 150.488 96.7361C162.78 92.1706 170.975 85.6706 175.57 78.0111C184.889 62.4796 178.369 44.463 166.953 33.0467C155.537 21.6304 137.52 15.1106 121.989 24.4295C114.329 29.0252 107.829 37.2199 103.264 49.5117C98.7045 61.7871 96 78.3271 96 100H104C104 78.9231 106.639 63.4006 110.763 52.2971C114.881 41.21 120.405 34.7095 126.105 31.2895C137.292 24.5771 151.338 28.7448 161.296 38.7036C171.255 48.6623 175.423 62.7081 168.71 73.8951C165.29 79.5951 158.79 85.1186 147.703 89.2366C136.599 93.3606 121.077 96.0001 100 96.0001V104Z"
+        fill="#666B7D"/>
+    </g>
+  </svg>
+</ng-template>
+
+<ng-template #templateDistance>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_30_451)">
+      <path
+        d="M99.7403 140.74L153.48 87.0001M99.7403 140.74L46.0002 87.0001M99.7403 140.74L99.7403 44.5737M99.7403 140.74C64.1088 140.74 44.1317 140.74 8.50018 140.74M99.7403 140.74L191.5 140.74"
+        stroke="#DADDDA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M145.24 165.62C109.609 165.62 89.6315 165.62 54 165.62" stroke="#666B7D" stroke-width="4"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+      <clipPath id="clip0_30_451">
+        <rect width="200" height="200" fill="white"/>
+      </clipPath>
+    </defs>
+  </svg>
+</ng-template>
+
+<ng-template #templateProgram>
+  <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="21" y="21" width="158" height="154" rx="22" stroke="#DADDDA" stroke-width="4"/>
+    <path
+      d="M44.5 53.5C87.8482 53.5 112.152 53.5 155.5 53.5M44.5 65.5C84.1382 65.5 106.362 65.5 146 65.5M44.5 77.5C84.1382 77.5 106.362 77.5 146 77.5M44.5 89.5C84.1382 89.5 106.362 89.5 146 89.5M44.5 101.5C84.1382 101.5 82.3618 101.5 122 101.5"
+      stroke="#DADDDA" stroke-width="4" stroke-linecap="round"/>
+    <path d="M44.5 53.5C87.8482 53.5 112.152 53.5 155.5 53.5" stroke="#666B7D" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</ng-template>

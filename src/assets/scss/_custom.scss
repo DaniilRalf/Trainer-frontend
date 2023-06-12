@@ -27,7 +27,6 @@
   .mr-20 {
     margin: 20px;
   }
-
   .mb-10{
     margin-bottom: 10px;
   }
@@ -37,27 +36,33 @@
   .mb-20{
     margin-bottom: 20px;
   }
-  .mb-40{
-    margin-bottom: 40px;
-  }
-
   .mt-10{
     margin-top: 10px;
   }
   .mt-20{
     margin-top: 20px;
   }
-
   .margin-auto{
     margin: auto;
   }
   .text-right{
     text-align: right;
   }
-
   .flex-center{
     display: flex;
     justify-content: center;
   }
 
 //CUSTOM==============================
+
+
+
+.container-m-20 {
+  margin: 20px;
+}
+.container-p-20 {
+  padding: 20px;
+}
+.mb-40{
+  margin-bottom: 40px;
+}

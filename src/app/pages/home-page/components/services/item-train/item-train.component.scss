@@ -1,0 +1,41 @@
+@import "../../../../../../styles";
+
+.item-train {
+  padding: 20px;
+  border: 1px solid #DADDDA;
+  border-radius: 5px;
+
+  &-title {
+    font-size: 36px;
+    line-height: 36px;
+    color: $static-grey-middle;
+  }
+
+  &-region {
+    margin-top: 14px;
+    font-size: 16px;
+    display: inline-block;
+    padding: 4px 7px;
+    border-radius: 12px;
+    background-color: $static-grey-strong;
+    color: $static-white-middle;
+  }
+
+  &-img {
+    margin: auto;
+    width: 200px;
+  }
+
+  &-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-price {
+      font-size: 36px;
+      line-height: 36px;
+      color: $static-grey-middle;
+    }
+    &-vector {}
+  }
+}

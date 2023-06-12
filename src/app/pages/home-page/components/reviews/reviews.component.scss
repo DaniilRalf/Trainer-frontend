@@ -1,0 +1,15 @@
+@import "../../../../../styles";
+
+.reviews {
+
+  &-title {
+    font-size: 64px;
+    color: $static-grey-strong;
+    margin-bottom: 90px;
+    @media (max-width: 1550px) {
+      font-size: 42px;
+    }
+  }
+
+  &-content {}
+}

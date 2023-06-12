@@ -1,0 +1,22 @@
+<div class="faq">
+
+  <h1 class="fnt-400-gilroy">Частые вопросы</h1>
+
+  <div class="faq-list">
+    <mat-accordion>
+
+      <ng-container *ngFor="let item of faqList">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="fnt-400-gilroy">
+            <mat-panel-title>
+              {{item.question}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="faq-list-item-answer fnt-400-gilroy">{{item.answer}}</p>
+        </mat-expansion-panel>
+      </ng-container>
+
+    </mat-accordion>
+  </div>
+
+</div>

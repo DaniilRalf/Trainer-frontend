@@ -1,0 +1,53 @@
+<div class="services">
+
+  <div class="services-content mb-20">
+    <div class="services-content-text">
+      <h1 class="fnt-400-gilroy">Услуги</h1>
+      <p class="fnt-300-gilroy">Мои тренировки отличаются чутким контролем техники выполнения упражнений,
+        чтобы вы могли получить максимальную пользу от каждого движения. Тебе будет предоставлен удобный личный кабинет,
+        где вы сможете отслеживать свой прогресс с помощью графиков тренировок и инфографики результатов.
+      </p>
+    </div>
+  </div>
+
+  <div class="services-list">
+    <comp-first-train class="services-list_1"></comp-first-train>
+    <comp-item-train class="services-list-personal services-list_2"
+                      [title]="'Персональные\n'+'офлайн-тренировки'"
+                      [description]="ServicesData.offline.description"
+                      [serviceType]="TrainTypeEnum.Offline"
+                      [price]="6000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_3"
+                     [title]="'Персональные\n'+'онлайн-тренировки'"
+                     [description]="ServicesData.online.description"
+                     [serviceType]="TrainTypeEnum.Online"
+                     [price]="6000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_4"
+                     [title]="'Разовая\n'+'тренировка'"
+                     [description]="ServicesData.oneTime.description"
+                     [serviceType]="TrainTypeEnum.OneTime"
+                     [price]="1000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_5"
+                     [title]="'Рацион питания'"
+                     [description]="ServicesData.diet.description"
+                     [serviceType]="TrainTypeEnum.Diet"
+                     [price]="3500"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_6"
+                     [title]="'Дистанционное\n'+'ведение'"
+                     [description]="ServicesData.distance.description"
+                     [serviceType]="TrainTypeEnum.Distance"
+                     [price]="4000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_7"
+                     [title]="'Программа\n'+'тренировок'"
+                     [description]="ServicesData.program.description"
+                     [serviceType]="TrainTypeEnum.Program"
+                     [price]="6000"
+    ></comp-item-train>
+  </div>
+
+</div>

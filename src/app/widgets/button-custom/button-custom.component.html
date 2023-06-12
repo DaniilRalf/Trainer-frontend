@@ -1,0 +1,10 @@
+
+<button *ngIf="type === 'flat'" mat-flat-button class="fnt-400-gilroy"
+        color="primary"
+>{{text}}</button>
+
+<button *ngIf="type === 'stoked'" mat-stroked-button class="fnt-400-gilroy"
+        [style]="{'backgroundColor': bgColor, 'color': color}"
+>{{text}}
+  <mat-icon *ngIf="icon" [style]="{'color': color, 'marginLeft': '10px'}">{{icon}}</mat-icon>
+</button>

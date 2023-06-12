@@ -1,39 +1,62 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$Trainer-frontend-primary: mat.define-palette(mat.$pink-palette);
-$Trainer-frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+$custom-pink-palette: (
+  50: #fff2f9,
+  100: #ffddf0,
+  200: #ffc7e6,
+  300: #ffb1db,
+  400: #ffa0d4,
+  500: #ff8fcc,
+  600: #ff87c7,
+  700: #ff7cc0,
+  800: #ff72b9,
+  900: #ff60ad,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffeaf4,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
 
-// The warn palette is optional (defaults to red).
+$Trainer-frontend-primary: mat.define-palette($custom-pink-palette);
+$Trainer-frontend-grey: #666B7D;
+$Trainer-frontend-accent: mat.define-palette($custom-pink-palette, A200, A100, A400);
 $Trainer-frontend-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $Trainer-frontend-theme: mat.define-light-theme((
   color: (
     primary: $Trainer-frontend-primary,
+    grey: $Trainer-frontend-grey,
     accent: $Trainer-frontend-accent,
     warn: $Trainer-frontend-warn,
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($Trainer-frontend-theme);
 
-/* You can add global styles to this file, and also import other style files */
+
+$static-grey-middle: #666B7D;
+$static-grey-strong: #2B2F3C;
+$static-pink-middle: #FF8FCC;
+$static-white-middle: #ffffff;
 
 *{
   margin: 0;
@@ -75,3 +98,5 @@ $Trainer-frontend-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "assets/scss/index";

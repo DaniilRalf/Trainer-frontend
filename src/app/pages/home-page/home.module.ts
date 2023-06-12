@@ -1,44 +1,51 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HomeComponent} from "./home/home.component";
-import {HomeRoutingModule} from "./home-routing.module";
-import { LoginComponent } from './login/login.component';
-import { ProductsComponent } from './products/products.component';
-import { HomeTitleComponent } from './home/home-title/home-title.component';
-import { AboutComponent } from './about/about.component';
-import { ResultComponent } from './result/result.component';
+import {HomeComponent} from "./home.component";
+import {HomeRoutingModule} from "./home-routing.module"
 import {WidgetsModule} from "../../widgets/widgets.module";
-import { ProductItemComponent } from './products/product-item/product-item.component';
-
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
+import { HeaderComponent } from './components/header/header.component';
+import { HeaderStickyComponent } from './components/header-sticky/header-sticky.component';
+import { AboutComponent } from './components/about/about.component';
+import { LoginModalComponent } from './components/header-sticky/login-modal/login-modal.component';
+import { ServicesComponent } from './components/services/services.component';
+import { FirstTrainComponent } from './components/services/first-train/first-train.component';
+import { ItemTrainComponent } from './components/services/item-train/item-train.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { FaqComponent } from './components/faq/faq.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginComponent,
-    ProductsComponent,
-    HomeTitleComponent,
+    HeaderComponent,
+    HeaderStickyComponent,
     AboutComponent,
-    ResultComponent,
-    ProductItemComponent
+    LoginModalComponent,
+    ServicesComponent,
+    FirstTrainComponent,
+    ItemTrainComponent,
+    ReviewsComponent,
+    FaqComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    WidgetsModule,
-
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        WidgetsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatExpansionModule
+    ]
 })
 export class HomeModule { }
