@@ -5,7 +5,8 @@ import {GraphqlService} from "../../../../../helpers/services/graphql.service";
 import {Router} from "@angular/router";
 import {StoreService} from "../../../../../helpers/services/store.service";
 import {MatDialogRef} from "@angular/material/dialog";
-import {MutationResult} from "apollo-angular";
+import {MutationResult} from "apollo-angular"
+import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service";
 
 @Component({
   selector: 'app-login-modal',
@@ -21,6 +22,7 @@ export class LoginModalComponent implements OnInit {
     private router: Router,
     private graphqlService: GraphqlService,
     private storeService: StoreService,
+    private notificationService: NotificationsService,
     private dialogRef: MatDialogRef<LoginModalComponent>,
   ) {
   }
@@ -41,15 +43,19 @@ export class LoginModalComponent implements OnInit {
       ]),
     });
   }
-  
+
   public onSubmitLogin(): void {
-    this.graphqlService.loginUser(this.loginForm.value)
-      .subscribe((v: MutationResult ) => {
-        console.log(v)
-        this.saveUserData(v.data.loginUser)
-        this.dialogRef.close()
-        this.router.navigate(['/personal'])
-      })
+    if (this.loginForm.status === 'VALID') {
+      this.graphqlService.loginUser(this.loginForm.value)
+        .subscribe((v: MutationResult ) => {
+          this.saveUserData(v.data.loginUser)
+          this.dialogRef.close()
+          this.router.navigate(['/personal'])
+        })
+    } else {
+      this.notificationService.onEventNotification('Заполнены не все поля')
+    }
+
   }
 
   private saveUserData(data: User): void {

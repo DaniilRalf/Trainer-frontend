@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StoreService} from "../../helpers/services/store.service";
+import {HomeControlService} from "./home-control.service";
 
 @Component({
   selector: 'app-home',
@@ -7,19 +8,25 @@ import {StoreService} from "../../helpers/services/store.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public activeSection: string = '';
-  public userIs: string | null = '';
+
+  public userIs: string | null = ''
 
   constructor(
-    private storeService: StoreService
-  ) { }
+    private storeService: StoreService,
+    private homeScrollService: HomeControlService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser()
   }
 
-  getUser(){
-    this.userIs = this.storeService.getUser().username;
+  private getUser(): void {
+    this.userIs = this.storeService.getUser().username
+  }
+
+  public scroll(elem: HTMLElement): void {
+    this.homeScrollService.scroll(elem)
   }
 
 }

@@ -1,32 +1,41 @@
 <div class="home">
 
-  <div class="home-header container-m-20">
+  <div #upElement class="home-header container-m-20">
     <comp-header></comp-header>
   </div>
 
   <div class="home-header-sticky container-p-20">
-    <comp-header-sticky></comp-header-sticky>
+    <comp-header-sticky
+      (scrollAbout)="scroll(aboutElement)"
+      (scrollServices)="scroll(servicesElement)"
+      (scrollQuestions)="scroll(questionsElement)"
+      (scrollUp)="scroll(upElement)"
+    ></comp-header-sticky>
     <hr>
   </div>
 
-  <div class="home-about mb-40">
+  <div #aboutElement class="home-about mb-40">
     <comp-about></comp-about>
   </div>
 
-  <div class="home-services container-p-20 mb-40">
+  <div #servicesElement class="home-services container-p-20 mb-40">
     <comp-services></comp-services>
   </div>
 
-  <div class="home-reviews container-p-20 mb-40">
+  <div #reviewsElement class="home-reviews container-p-20 mb-40">
     <comp-reviews></comp-reviews>
   </div>
 
-  <div class="home-faq container-p-20 mb-40">
+  <div #questionsElement class="home-faq container-p-20 mb-40">
     <comp-faq></comp-faq>
   </div>
 
   <div class="home-footer container-p-20">
-    <comp-footer></comp-footer>
+    <comp-footer (scrollAbout)="scroll(aboutElement)"
+                 (scrollServices)="scroll(servicesElement)"
+                 (scrollQuestions)="scroll(questionsElement)"
+                 (scrollReviews)="scroll(reviewsElement)"
+    ></comp-footer>
   </div>
 
 

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LoginModalComponent} from "../header-sticky/login-modal/login-modal.component";
-import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {StoreService} from "../../../../helpers/services/store.service";
+import {HomeControlService} from "../../home-control.service";
 
 @Component({
   selector: 'comp-footer',
@@ -13,10 +13,15 @@ export class FooterComponent implements OnInit {
 
   private auth = false
 
+  @Output() scrollAbout: EventEmitter<void> = new EventEmitter<void>()
+  @Output() scrollServices: EventEmitter<void> = new EventEmitter<void>()
+  @Output() scrollQuestions: EventEmitter<void> = new EventEmitter<void>()
+  @Output() scrollReviews: EventEmitter<void> = new EventEmitter<void>()
+
   constructor(
-    private router: Router,
     private dialog: MatDialog,
     private soreService: StoreService,
+    private homeControl: HomeControlService,
   ) { }
 
   ngOnInit(): void {
@@ -33,8 +38,19 @@ export class FooterComponent implements OnInit {
         width: '500px',
       })
     } else {
-      this.router.navigate(['/personal'])
+      this.homeControl.navigate('/personal')
     }
+  }
 
+  public onScroll(event: 'about' | 'services' | 'questions' | 'reviews'): void {
+    if (event === 'about') {
+      this.scrollAbout.emit()
+    } else if (event === 'services') {
+      this.scrollServices.emit()
+    } else if (event === 'questions') {
+      this.scrollQuestions.emit()
+    } else if (event === 'reviews') {
+      this.scrollReviews.emit()
+    }
   }
 }
