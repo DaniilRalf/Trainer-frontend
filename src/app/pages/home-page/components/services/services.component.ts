@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TrainTypeEnum} from "./train-type.enum";
-import ServicesData from "../../../../../assets/img/home/services/data.json"
+import ServicesData from "../../../../../assets/data.json"
 
 @Component({
   selector: 'comp-services',

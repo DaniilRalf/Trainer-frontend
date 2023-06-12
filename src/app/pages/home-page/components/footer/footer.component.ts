@@ -1,24 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {LoginModalComponent} from "./login-modal/login-modal.component";
+import { Component, OnInit } from '@angular/core';
+import {LoginModalComponent} from "../header-sticky/login-modal/login-modal.component";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
 import {StoreService} from "../../../../helpers/services/store.service";
 
 @Component({
-  selector: 'comp-header-sticky',
-  templateUrl: './header-sticky.component.html',
-  styleUrls: ['./header-sticky.component.scss']
+  selector: 'comp-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss']
 })
-export class HeaderStickyComponent implements OnInit {
+export class FooterComponent implements OnInit {
 
   private auth = false
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private soreService: StoreService
-  ) {
-  }
+    private soreService: StoreService,
+  ) { }
 
   ngOnInit(): void {
     this.checkAuth()
@@ -36,6 +35,6 @@ export class HeaderStickyComponent implements OnInit {
     } else {
       this.router.navigate(['/personal'])
     }
-  }
 
+  }
 }

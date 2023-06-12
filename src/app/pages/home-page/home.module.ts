@@ -19,6 +19,7 @@ import { ItemTrainComponent } from './components/services/item-train/item-train.
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { FaqComponent } from './components/faq/faq.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -34,6 +35,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ItemTrainComponent,
     ReviewsComponent,
     FaqComponent,
+    FooterComponent,
   ],
     imports: [
         CommonModule,
