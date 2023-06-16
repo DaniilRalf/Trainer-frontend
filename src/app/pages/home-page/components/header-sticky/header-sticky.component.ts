@@ -13,6 +13,8 @@ export class HeaderStickyComponent implements OnInit {
 
   private auth = false
 
+  public openMenu = false
+
   @Output() scrollAbout: EventEmitter<void> = new EventEmitter<void>()
   @Output() scrollServices: EventEmitter<void> = new EventEmitter<void>()
   @Output() scrollQuestions: EventEmitter<void> = new EventEmitter<void>()
@@ -53,6 +55,10 @@ export class HeaderStickyComponent implements OnInit {
     } else if (event === 'up') {
       this.scrollUp.emit()
     }
+  }
+
+  public onClickBurger(): void {
+    this.openMenu = !this.openMenu
   }
 
 }

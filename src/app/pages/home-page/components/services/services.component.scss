@@ -6,6 +6,10 @@
 
     &-text {
       display: flex;
+      @media (max-width: 500px) {
+        flex-direction: column;
+      }
+
       h1 {
         width: 25%;
         font-size: 40px;
@@ -14,7 +18,13 @@
         @media (max-width: 1550px) {
           font-size: 28px;
           line-height: 28px;
-          mat-icon {transform: translateY(5px) scale(1); margin-left: 5px}
+        }
+        @media (max-width: 1000px) {
+          font-size: 20px;
+          line-height: 20px;
+        }
+        @media (max-width: 500px) {
+          width: 100%;
         }
       }
       p {
@@ -25,7 +35,15 @@
         @media (max-width: 1550px) {
           font-size: 36px;
           line-height: 42px;
-          mat-icon {transform: translateY(5px) scale(1); margin-left: 5px}
+        }
+        @media (max-width: 1000px) {
+          font-size: 26px;
+          line-height: 30px;
+        }
+        @media (max-width: 500px) {
+          font-size: 18px;
+          line-height: 22px;
+          width: 100%;
         }
       }
     }
@@ -45,6 +63,40 @@
     &_5 { grid-area: 3 / 3 / 4 / 4; }
     &_6 { grid-area: 4 / 2 / 5 / 3; }
     &_7 { grid-area: 4 / 4 / 5 / 5; }
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      &_1 { grid-area: 1 / 1 / 2 / 3; }
+      &_2 { grid-area: 2 / 1 / 3 / 2; }
+      &_3 { grid-area: 2 / 2 / 3 / 3; }
+      &_4 { grid-area: 2 / 3 / 3 / 4; }
+      &_5 { grid-area: 3 / 1 / 4 / 2; }
+      &_6 { grid-area: 3 / 2 / 4 / 3; }
+      &_7 { grid-area: 3 / 3 / 4 / 4; }
+    }
+    @media (max-width: 1000px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      &_1 { grid-area: 1 / 1 / 2 / 3; }
+      &_2 { grid-area: 2 / 1 / 3 / 2; }
+      &_3 { grid-area: 2 / 2 / 3 / 3; }
+      &_4 { grid-area: 3 / 1 / 4 / 2; }
+      &_5 { grid-area: 3 / 2 / 4 / 3; }
+      &_6 { grid-area: 4 / 1 / 5 / 2; }
+      &_7 { grid-area: 4 / 2 / 5 / 3; }
+    }
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(0, auto);
+      &_1 { grid-area: 1 / 1 / 2 / 2; }
+      &_2 { grid-area: 2 / 1 / 3 / 2; }
+      &_3 { grid-area: 3 / 1 / 4 / 2; }
+      &_4 { grid-area: 4 / 1 / 5 / 2; }
+      &_5 { grid-area: 5 / 1 / 6 / 2; }
+      &_6 { grid-area: 6 / 1 / 7 / 2; }
+      &_7 { grid-area: 7 / 1 / 8 / 2; }
+    }
   }
 
 }

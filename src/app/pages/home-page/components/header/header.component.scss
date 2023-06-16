@@ -2,11 +2,17 @@
 
 .header {
   display: flex;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 
   &-heading {
     width: 75%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
 
     &-line_1 {
       display: flex;
@@ -18,6 +24,20 @@
           font-size: 52px;
           line-height: 70px;
         }
+        @media (max-width: 1000px) {
+          font-size: 42px;
+          line-height: 40px;
+        }
+        @media (max-width: 500px) {
+          font-size: 26px;
+          line-height: 26px;
+        }
+      }
+      img {
+        @media (max-width: 1000px) {
+          width: 10%;
+          min-width: 50px;
+        }
       }
     }
     &-line_2 {
@@ -28,6 +48,14 @@
         @media (max-width: 1550px) {
           font-size: 52px;
           line-height: 70px;
+        }
+        @media (max-width: 1000px) {
+          font-size: 42px;
+          line-height: 40px;
+        }
+        @media (max-width: 500px) {
+          font-size: 26px;
+          line-height: 26px;
         }
       }
       i {
@@ -41,5 +69,8 @@
     font-size: 16px;
     line-height: 20px;
     color: $static-grey-middle;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
   }
 }

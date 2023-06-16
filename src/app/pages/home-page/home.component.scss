@@ -4,6 +4,9 @@
 
   &-header {
     margin-bottom: 240px;
+    @media (max-width: 1000px) {
+      margin-bottom: 80px;
+    }
   }
 
   &-header-sticky {

@@ -9,6 +9,10 @@
     font-size: 36px;
     line-height: 36px;
     color: $static-grey-middle;
+    @media (max-width: 1000px) {
+      font-size: 26px;
+      line-height: 30px;
+    }
   }
 
   &-region {
@@ -24,6 +28,10 @@
   &-img {
     margin: auto;
     width: 200px;
+    @media (max-width: 1000px) {
+      width: 180px;
+      transform: scale(0.7);
+    }
   }
 
   &-detail {
@@ -35,6 +43,10 @@
       font-size: 36px;
       line-height: 36px;
       color: $static-grey-middle;
+      @media (max-width: 1000px) {
+        font-size: 26px;
+        line-height: 30px;
+      }
     }
     &-vector {}
   }

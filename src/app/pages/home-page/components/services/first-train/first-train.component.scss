@@ -13,6 +13,15 @@
     line-height: 36px;
     margin-bottom: 80px;
     color: $static-white-middle;
+    @media (max-width: 1000px) {
+      font-size: 26px;
+      line-height: 30px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 500px) {
+      font-size: 20px;
+      line-height: 20px;
+    }
   }
 
   &-content {
@@ -23,11 +32,17 @@
     &-desc {
       color: $static-white-middle;
       width: 50%;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
     }
     &-vector {
       display: flex;
       justify-content: end;
       width: 50%;
+      @media (max-width: 1000px) {
+        display: none;
+      }
     }
   }
 

@@ -3,9 +3,16 @@
 .footer {
   display: flex;
   margin: 50px 0 50px 0;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   &-logo {
-    width: 50%;
+    width: 100%;
+    @media (max-width: 1000px) {
+      transform: scale(0.5);
+    }
   }
 
   &-content {
@@ -14,9 +21,22 @@
 
     &-item-1 {
       width: 50%;
+      @media (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     &-item-2 {
       width: 50%;
+      @media (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    @media (max-width: 1000px) {
+      width: 100%;
     }
   }
 
@@ -26,6 +46,9 @@
     color: $static-grey-middle;
     font-size: 20px;
     line-height: 124%;
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
   }
   .desc {
     margin-bottom: 15px;
@@ -35,6 +58,9 @@
     cursor: pointer;
     mat-icon {
       transform: scale(0.8) translateY(5px);
+    }
+    @media (max-width: 500px) {
+      font-size: 14px;
     }
   }
   .btn {

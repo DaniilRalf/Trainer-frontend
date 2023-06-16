@@ -1,22 +1,35 @@
 <div class="header-sticky">
 
-  <div class="header-sticky-logo" (click)="onScroll('up')">
-    <img src="../../../../../assets/img/logo-1.svg" alt="logo">
+  <div class="desktop">
+    <ng-container *ngTemplateOutlet="templateDesktop"></ng-container>
   </div>
 
-  <div class="header-sticky-active">
-    <div class="header-sticky-active-menu">
-      <p class="header-sticky-active-menu-item fnt-400-gilroy"
+  <div class="mobile">
+    <ng-container *ngTemplateOutlet="templateMobile"></ng-container>
+  </div>
+
+
+</div>
+
+
+
+<ng-template #templateDesktop>
+  <div class="logo" (click)="onScroll('up')">
+    <img src="../../../../../assets/img/logo-1.svg" alt="logo">
+  </div>
+  <div class="active">
+    <div class="active-menu">
+      <p class="active-menu-item fnt-400-gilroy"
          (click)="onScroll('about')"
       >Обо мне</p>
-      <p class="header-sticky-active-menu-item fnt-400-gilroy"
+      <p class="active-menu-item fnt-400-gilroy"
          (click)="onScroll('services')"
       >Услуги</p>
-      <p class="header-sticky-active-menu-item fnt-400-gilroy"
+      <p class="active-menu-item fnt-400-gilroy"
          (click)="onScroll('questions')"
       >Вопросы</p>
     </div>
-    <div class="header-sticky-active-buttons">
+    <div class="active-buttons">
       <el-button-custom [text]="'Личный кабинет'"
                         [type]="'stoked'" [color]="'#666B7D'"
                         [bgColor]="'transparent'" [icon]="'input'"
@@ -27,5 +40,37 @@
       ></el-button-custom>
     </div>
   </div>
+</ng-template>
 
-</div>
+<ng-template #templateMobile>
+  <div class="active">
+    <div class="logo" (click)="onScroll('up')">
+      <img src="../../../../../assets/img/logo-1.svg" alt="logo">
+    </div>
+    <div class="burger" (click)="onClickBurger()">
+      <mat-icon>{{openMenu ? 'close icon' : 'menu'}}</mat-icon>
+    </div>
+  </div>
+
+  <div [ngClass]="{'content-open': openMenu, 'content-close': true, 'content': true}">
+    <p class="item fnt-400-gilroy"
+       (click)="onScroll('about')"
+    >Обо мне</p>
+    <p class="item fnt-400-gilroy"
+       (click)="onScroll('services')"
+    >Услуги</p>
+    <p class="item fnt-400-gilroy"
+       (click)="onScroll('questions')"
+    >Вопросы</p>
+    <el-button-custom class="item"
+                      [text]="'Личный кабинет'"
+                      [type]="'stoked'" [color]="'#666B7D'"
+                      [bgColor]="'transparent'" [icon]="'input'"
+                      (click)="login()"
+    ></el-button-custom>
+    <el-button-custom class="item"
+                      [text]="'Записаться на бесплатную тренировку'"
+                      [type]="'flat'"
+    ></el-button-custom>
+  </div>
+</ng-template>
