@@ -44,12 +44,14 @@
     <img class="footer-logo" src="../../../assets/img/logo-1.svg" alt="logo">
     <div class="footer-link">
 <!--      // TODO: paste actual link-->
-      <div class="tg"><a href="http://localhost:8080" target="_blank"><img class="tg" src="../../../assets/img/login/tg.svg"></a></div>
+      <div class="tg">
+        <a href="http://localhost:8080" target="_blank"><img alt="telegram-icon" class="tg" src="../../../assets/img/login/tg.svg"></a>
+      </div>
       <div class="inst">
         <a href="http://localhost:8080" target="_blank">
-          <img class="tg" src="../../../assets/img/login/inst.svg">
+          <img alt="instagram-icon" class="tg" src="../../../assets/img/login/inst.svg">
         </a>
-        <u class="fnt-400-gilroy">скопировать ссылку</u>
+        <u class="fnt-400-gilroy" (click)="copyLink()">скопировать ссылку</u>
       </div>
     </div>
   </div>

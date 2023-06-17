@@ -7,6 +7,7 @@ import {MatInputModule} from "@angular/material/input";
 import {WidgetsModule} from "../../widgets/widgets.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 
 
@@ -21,7 +22,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     WidgetsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ClipboardModule
   ]
 })
 export class LoginPageModule { }
