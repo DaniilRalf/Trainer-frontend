@@ -6,17 +6,18 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { ButtonCustomComponent } from './button-custom/button-custom.component';
 import {MatButtonModule} from "@angular/material/button";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    ButtonCustomComponent
+    ButtonCustomComponent,
   ],
   exports: [
     HeaderComponent,
-    ButtonCustomComponent
+    ButtonCustomComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    ReactiveFormsModule,
   ]
 })
 export class WidgetsModule { }

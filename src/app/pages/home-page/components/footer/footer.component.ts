@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {LoginModalComponent} from "../header-sticky/login-modal/login-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {StoreService} from "../../../../helpers/services/store.service";
 import {HomeControlService} from "../../home-control.service";
@@ -34,9 +33,7 @@ export class FooterComponent implements OnInit {
 
   public login(): void {
     if (!this.auth) {
-      this.dialog.open(LoginModalComponent, {
-        width: '500px',
-      })
+      this.homeControl.navigate('/login')
     } else {
       this.homeControl.navigate('/personal')
     }

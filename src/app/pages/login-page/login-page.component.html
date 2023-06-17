@@ -1,0 +1,58 @@
+<div class="login">
+
+  <img class="left" src="../../../assets/img/login/left.svg" alt="decor">
+  <img class="right" src="../../../assets/img/login/rigth.svg" alt="decor">
+
+
+  <div class="login-modal container-p-20">
+    <p class="login-modal-title fnt-400-gilroy">авторизация</p><hr>
+    <form class="login-modal-form" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+
+      <div class="input-body">
+        <div class="input-body-label fnt-400-gilroy">логин:</div>
+        <div class="input-body-item">
+          <mat-form-field class="custom-input" appearance="fill">
+            <input matInput formControlName="username">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="input-body">
+        <div class="input-body-label fnt-400-gilroy">пароль:</div>
+        <div class="input-body-item">
+          <mat-form-field class="custom-input" appearance="fill">
+            <input matInput formControlName="password">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="active">
+        <u class="active-pass fnt-400-gilroy"
+           matTooltip="Обратитесь ко мне в Instagram или Telegram"
+           [matTooltipPosition]="'below'"
+        >Забыли пароль?</u>
+        <div class="active-btn">
+          <el-button-custom [text]="'Войти'"
+                            [type]="'flat'"
+          ></el-button-custom>
+        </div>
+      </div><hr>
+
+    </form>
+  </div>
+
+
+  <div class="footer container-p-20">
+    <img class="footer-logo" src="../../../assets/img/logo-1.svg" alt="logo">
+    <div class="footer-link">
+<!--      // TODO: paste actual link-->
+      <div class="tg"><a href="http://localhost:8080" target="_blank"><img class="tg" src="../../../assets/img/login/tg.svg"></a></div>
+      <div class="inst">
+        <a href="http://localhost:8080" target="_blank">
+          <img class="tg" src="../../../assets/img/login/inst.svg">
+        </a>
+        <u class="fnt-400-gilroy">скопировать ссылку</u>
+      </div>
+    </div>
+  </div>
+
+
+</div>

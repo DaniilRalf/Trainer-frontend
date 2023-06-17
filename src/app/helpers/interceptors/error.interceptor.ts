@@ -35,7 +35,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch (err.status) {
           case 403:
             this.notificationService.onEventNotification('Необходима авторизация')
-            this.router.navigate(['/home']).then()
+            this.router.navigate(['/login']).then()
             this.storeService.deleteUser()
             break
         }

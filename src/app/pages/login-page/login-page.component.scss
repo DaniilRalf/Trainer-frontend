@@ -1,0 +1,130 @@
+@import "../../../styles";
+
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $static-pink-light;
+  position: relative;
+  overflow: hidden;
+
+  .left {
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .right {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+  &-modal {
+    width: 900px;
+    z-index: 10;
+    border-radius: 16px;
+    background-color: $static-white-middle;
+    box-shadow: 0px 24px 32px -24px rgba(43, 47, 60, 0.08);
+    margin: 15px;
+
+    &-title {
+      font-size: 60px;
+      line-height: 60px;
+      padding: 20px 0 40px 0;
+      margin: 0;
+      color: $static-grey-middle;
+      @media (max-width: 1000px) {
+        font-size: 48px;
+        line-height: 48px;
+      }
+      @media (max-width: 500px) {
+        font-size: 32px;
+        line-height: 32px;
+      }
+    }
+
+
+    &-form {
+      padding-top: 30px;
+
+      .input-body {
+        display: flex;
+        align-items: start;
+        margin-bottom: 20px;
+        @media (max-width: 500px) {
+          flex-direction: column;
+        }
+        &-label {
+          width: 20%;
+          font-size: 36px;
+          line-height: 30px;
+          color: $static-grey-strong;
+          @media (max-width: 1000px) {
+            font-size: 26px;
+            line-height: 30px;
+          }
+          @media (max-width: 500px) {
+            font-size: 20px;
+            line-height: 20px;
+          }
+        }
+        &-item {
+          width: 80%;
+          @media (max-width: 500px) {
+            width: 100%;
+          }
+        }
+      }
+      .active {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 20px;
+        &-pass {
+          cursor: pointer;
+          color: $static-pink-middle;
+        }
+        &-btn {}
+      }
+    }
+
+
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+
+    &-link {
+      display: flex;
+
+      .tg {
+        cursor: pointer;
+      }
+      .inst {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 10px;
+        height: 48px;
+        width: 220px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 30px;
+        img {transform: translateY(3px)}
+        u {cursor: pointer; margin-left: 10px; color: $static-pink-middle}
+      }
+    }
+  }
+}
+
+hr { opacity: .3; }

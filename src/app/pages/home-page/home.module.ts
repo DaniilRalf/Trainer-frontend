@@ -12,7 +12,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HeaderComponent} from './components/header/header.component';
 import {HeaderStickyComponent} from './components/header-sticky/header-sticky.component';
 import {AboutComponent} from './components/about/about.component';
-import {LoginModalComponent} from './components/header-sticky/login-modal/login-modal.component';
 import {ServicesComponent} from './components/services/services.component';
 import {FirstTrainComponent} from './components/services/first-train/first-train.component';
 import {ItemTrainComponent} from './components/services/item-train/item-train.component';
@@ -29,7 +28,6 @@ import {HomeControlService} from "./home-control.service";
     HeaderComponent,
     HeaderStickyComponent,
     AboutComponent,
-    LoginModalComponent,
     ServicesComponent,
     FirstTrainComponent,
     ItemTrainComponent,

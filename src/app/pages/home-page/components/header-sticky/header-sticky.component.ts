@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {LoginModalComponent} from "./login-modal/login-modal.component";
 import {StoreService} from "../../../../helpers/services/store.service";
 import {HomeControlService} from "../../home-control.service";
 
@@ -21,7 +20,6 @@ export class HeaderStickyComponent implements OnInit {
   @Output() scrollUp: EventEmitter<void> = new EventEmitter<void>()
 
   constructor(
-    private dialog: MatDialog,
     private soreService: StoreService,
     private homeControl: HomeControlService,
   ) {
@@ -37,9 +35,7 @@ export class HeaderStickyComponent implements OnInit {
 
   public login(): void {
     if (!this.auth) {
-      this.dialog.open(LoginModalComponent, {
-        width: '500px',
-      })
+      this.homeControl.navigate('/login')
     } else {
       this.homeControl.navigate('/personal')
     }
