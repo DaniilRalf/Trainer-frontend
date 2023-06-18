@@ -28,7 +28,7 @@ export class ModalClientDataComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private qraphqlService: GraphqlService,
+    private graphqlService: GraphqlService,
     private notificationService: NotificationsService,
   ) {
   }
@@ -85,7 +85,7 @@ export class ModalClientDataComponent implements OnInit {
           date_metering: Date.parse(this.createPersonalForm.value.date_metering),
         }
       }
-      this.qraphqlService.eventWithParameterClient(data)
+      this.graphqlService.eventWithParameterClient(data)
         .pipe(take(1))
         .subscribe(() => {
           this.notificationService.onEventNotification('Параметры клиента сохранены')
@@ -123,7 +123,7 @@ export class ModalClientDataComponent implements OnInit {
         shoulder_hip: Number(inputData.shoulder_hip),
       }
     }
-    this.qraphqlService.eventWithParameterClient(data)
+    this.graphqlService.eventWithParameterClient(data)
       .pipe(take(1))
       .subscribe(() => {
         this.notificationService.onEventNotification('Параметры клиента изменены')
@@ -138,7 +138,7 @@ export class ModalClientDataComponent implements OnInit {
         event: 'remove',
       }
     }
-    this.qraphqlService.eventWithParameterClient(data)
+    this.graphqlService.eventWithParameterClient(data)
       .pipe(take(1))
       .subscribe(() => {
         // TODO: types
@@ -172,7 +172,7 @@ export class ModalClientDataComponent implements OnInit {
       gender: Number(inputData.gender),
       height: Number(inputData.height),
     }
-    this.qraphqlService.updatePersonalClient(data)
+    this.graphqlService.updatePersonalClient(data)
       .pipe(take(1))
       .subscribe(() => {
         this.notificationService.onEventNotification('Персональные данные клиента обновлены')
@@ -232,7 +232,7 @@ export class ModalClientDataComponent implements OnInit {
       id: Number(this.data.id),
       schedules: schedules
     }
-    this.qraphqlService.createTrainingDays(data)
+    this.graphqlService.createTrainingDays(data)
       .subscribe(() => {
         this.notificationService.onEventNotification('Тренировочные дни успешно сохранены')
         this.daysSelected = []

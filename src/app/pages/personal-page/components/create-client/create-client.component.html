@@ -2,7 +2,7 @@
 
   <form class="create-client-form" [formGroup]="createForm" (ngSubmit)="onSubmitLogin()">
 
-    <div class="df-row">
+    <div class="df-row mb-20">
       <div class="block mr-17">
         <div class="block-label fnt-600-gilroy">имя</div>
         <mat-form-field class="custom-input with-330" appearance="fill">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="block">
+    <div class="block mb-20">
       <div class="block-label fnt-600-gilroy">никнейм (латиницей)</div>
       <mat-form-field class="custom-input with-790" appearance="fill">
         <input matInput formControlName="username">
@@ -41,7 +41,7 @@
       </mat-button-toggle-group>
     </div>
 
-    <div class="df-row">
+    <div class="df-row mb-20">
       <div class="block mr-17">
         <div class="block-label fnt-600-gilroy">день рождения</div>
         <mat-form-field class="custom-data-picker with-330" appearance="fill">
@@ -50,7 +50,7 @@
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="block mr-17">
+      <div class="block">
         <div class="block-label fnt-600-gilroy">начало тренировок</div>
         <mat-form-field class="custom-data-picker with-330" appearance="fill">
           <input matInput [matDatepicker]="picker2" class="fnt-400-gilroy" formControlName="start_train">
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div class="block">
+    <div class="block mb-20">
       <div class="block-label fnt-600-gilroy">рост (см)</div>
       <mat-form-field class="custom-input with-330" appearance="fill">
         <input matInput formControlName="height">

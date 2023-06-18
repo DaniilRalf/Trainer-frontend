@@ -20,6 +20,7 @@
 .custom-toggle-group {
   border: none;
   border-radius: 30px;
+  overflow: hidden;
   .mat-button-toggle {
     border-radius: 30px;
     margin-right: 10px;
@@ -31,6 +32,7 @@
     }
   }
   .mat-button-toggle-checked {
+    transition: all .5s ease-in-out;
     background-color: #2B2F3C;
     color: white;
   }
@@ -55,3 +57,18 @@
   }
 }
 
+.custom-table.mat-table {
+  background-color: transparent;
+
+  thead {
+    tr {
+      th {
+        border: none!important;
+        padding-bottom: 20px!important;
+      }
+    }
+  }
+  tbody {
+
+  }
+}

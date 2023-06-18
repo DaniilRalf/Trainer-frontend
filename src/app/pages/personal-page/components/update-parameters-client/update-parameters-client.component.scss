@@ -1,23 +1,34 @@
-@import "../../../../../assets/scss/index";
+@import "../../../../../styles";
 
-h2{
-  color: $black;
-}
-
-table{
+.update-parameters {
   width: 100%;
 
-  .icon-active {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: #565656;
-    background-color: rgba(255, 152, 219, 0.13);
-    border-radius: 5px;
-    margin: 0 10px 0 10px;
-    padding: 5px;
+  &-active {
+    margin-bottom: 40px;
+  }
+
+  &-table{
+    width: 100%;
+    min-width: 810px;
+
+    .icon-active {
+      display: flex;
+      align-items: center;
+      margin: 0 10px 0 10px;
+      border-radius: 15px;
+      padding: 5px;
+      cursor: pointer;
+      color: $static-grey-middle;
+      background-color: rgba(255, 152, 219, 0.13);
+
+      mat-icon {
+        margin-right: 5px;
+      }
+    }
   }
 }
+
+
 
 .mat-column-first_name,
 .mat-column-last_name,
@@ -26,4 +37,15 @@ table{
 .mat-column-personal,
 .mat-column-schedule {
   width: 16% !important;
+}
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+  display: inline-block;
+  background-color: #2B2F3C;
+}
+.indicator-on {
+  background-color: $static-pink-middle;
 }

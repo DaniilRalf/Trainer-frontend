@@ -28,6 +28,6 @@ export interface Parameters {
 }
 
 export interface Schedules {
-  day: number;
+  date: number;
   description: string;
 }

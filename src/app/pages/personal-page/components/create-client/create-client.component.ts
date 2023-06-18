@@ -34,20 +34,16 @@ export class CreateClientComponent implements OnInit {
   public formBuildCreate(): void {
     this.createForm = new FormGroup({
       first_name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
+        Validators.required, Validators.minLength(2),
       ]),
       last_name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
+        Validators.required, Validators.minLength(2),
       ]),
       username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
+        Validators.required, Validators.minLength(2),
       ]),
       password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
+        Validators.required, Validators.minLength(6),
       ]),
       roleId: new FormControl(1, [
         Validators.required,
@@ -77,11 +73,12 @@ export class CreateClientComponent implements OnInit {
         roleId: Number(this.createForm.value.roleId),
         personal: {
           gender: Number(this.createForm.value.gender),
-          height: this.createForm.value.height,
+          height: Number(this.createForm.value.height),
           birth_day: Number(this.createForm.value.birth_day),
           start_train: Number(this.createForm.value.start_train)
         }
       }
+      console.log(data)
       this.graphqlService.createClient(data)
         .pipe(take(1))
         .subscribe(() => {
@@ -91,7 +88,6 @@ export class CreateClientComponent implements OnInit {
         })
     } else {
       this.notificationService.onEventNotification('Заполнены не все поля')
-      console.log(this.createForm.value)
     }
   }
 

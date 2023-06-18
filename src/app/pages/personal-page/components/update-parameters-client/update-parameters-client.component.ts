@@ -2,8 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, take} from "rxjs";
 import {GraphqlService} from 'src/app/helpers/services/graphql.service';
 import {User} from "../../../../models/types/user";
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {ModalClientDataComponent} from './modal-update-parameters-client/modal-client-data.component';
+import {MatButtonToggleChange} from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-update-parameters-client',
@@ -11,15 +12,15 @@ import {ModalClientDataComponent} from './modal-update-parameters-client/modal-c
   styleUrls: ['./update-parameters-client.component.scss']
 })
 export class UpdateParametersClientComponent implements OnInit {
+
+  allClients: User[] = [];
+
+  displayedKey = ['indicator', 'username', 'first_name', 'last_name', 'parameters', 'personal', 'schedule'];
+
   @Input() public user!: BehaviorSubject<User>
 
-  ////TODO: поправить ипизацию эни
-  allClients: any = [];
-  displayedKey = ['first_name', 'last_name', 'username', 'parameters', 'personal', 'schedule'];
-
-
   constructor(
-    public qraphqlService: GraphqlService,
+    public graphqlService: GraphqlService,
     public dialog: MatDialog,
   ) {
   }
@@ -29,22 +30,26 @@ export class UpdateParametersClientComponent implements OnInit {
   }
 
   //TODO: поправить типизацию data
-  getAllClients() {
-    this.qraphqlService.getAllClientsAllData()
+  private getAllClients() {
+    this.graphqlService.getAllClientsAllData()
       .subscribe(({data}: any) => {
         this.allClients = data.getAllClients
       })
   }
 
   //TODO: поправить типизацию event
-  openModal(id: number, event: any, tag: string): void {
+  public openModal(id: number, event: any, tag: string): void {
     this.dialog.open(ModalClientDataComponent, {
       width: '550px',
       maxHeight: '80vh',
       data: {eventData: event, id: id, tag: tag},
-    }).afterClosed().pipe(take(1)).subscribe(result => {
+    }).afterClosed().pipe(take(1)).subscribe(() => {
       this.getAllClients()
     })
+  }
+
+  public changeClientGroup(event: MatButtonToggleChange): void {
+    console.log(event.value)
   }
 
 }
