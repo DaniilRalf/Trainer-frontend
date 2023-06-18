@@ -22,7 +22,7 @@ export class CreateClientComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
 
   constructor(
-    private qraphqlService: GraphqlService,
+    private graphqlService: GraphqlService,
     private notificationService: NotificationsService,
   ) {
   }
@@ -49,10 +49,10 @@ export class CreateClientComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
       ]),
-      roleId: new FormControl('', [
+      roleId: new FormControl(1, [
         Validators.required,
       ]),
-      gender: new FormControl('', [
+      gender: new FormControl(2, [
         Validators.required,
       ]),
       height: new FormControl(null, [
@@ -82,7 +82,7 @@ export class CreateClientComponent implements OnInit {
           start_train: Number(this.createForm.value.start_train)
         }
       }
-      this.qraphqlService.createClient(data)
+      this.graphqlService.createClient(data)
         .pipe(take(1))
         .subscribe(() => {
           this.notificationService
@@ -91,6 +91,7 @@ export class CreateClientComponent implements OnInit {
         })
     } else {
       this.notificationService.onEventNotification('Заполнены не все поля')
+      console.log(this.createForm.value)
     }
   }
 

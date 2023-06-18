@@ -1,0 +1,30 @@
+<div class="sidenav container-p-20">
+
+  <div class="sidenav-header">
+    <p class="sidenav-header-item fnt-400-gilroy">личный кабинет</p>
+    <p class="sidenav-header-item fnt-400-gilroy">{{user.first_name}}</p>
+  </div>
+
+  <div class="sidenav-content">
+<!--    ADMIN============================================================-->
+    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 1, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+       *ngIf="user.roleId === RoleEnum.admin"
+       (click)="setTabsOnPage(1)"
+    >Создать клиента</p>
+    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 2, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+       *ngIf="user.roleId === RoleEnum.admin"
+       (click)="setTabsOnPage(2)"
+    >Детализация по клиентам</p>
+    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 3, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+       *ngIf="user.roleId === RoleEnum.admin"
+       (click)="setTabsOnPage(3)"
+    >Фото клиентов До/После</p>
+    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 4, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+       *ngIf="user.roleId === RoleEnum.admin"
+       (click)="setTabsOnPage(4)"
+    >Мой график</p>
+  </div>
+
+  <div class="sidenav-footer">sdfsdf</div>
+
+</div>

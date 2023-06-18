@@ -15,7 +15,7 @@ export class StoreService {
 
   constructor() { }
 
-  public set tabsOnPersonalPage(event: any) {
+  public set tabsOnPersonalPage(event: number) {
     localStorage.setItem('tab_page', String(event))
     this._tabsOnPersonalPage = event
   }

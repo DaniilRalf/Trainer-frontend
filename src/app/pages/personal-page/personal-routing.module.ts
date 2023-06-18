@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PersonalComponent} from "./personal/personal.component";
+import {PersonalComponent} from "./personal.component";
 import {ClientOnlineComponent} from "./client-online/client-online.component";
 import {ClientOfflineComponent} from "./client-offline/client-offline.component";
 import {AdminComponent} from "./admin/admin.component";

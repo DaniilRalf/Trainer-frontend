@@ -1,0 +1,48 @@
+@import "../../../../styles";
+
+.sidenav {
+  width: 520px;
+  height: 100%;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-color: $static-white-middle;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+
+    &-item {
+    font-size: 14px;
+    line-height: 24px;
+    color: $static-grey-middle;
+  }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-200px);
+
+    &-item {
+      font-size: 28px;
+      line-height: 130%;
+      cursor: pointer;
+      color: $static-grey-strong;
+    }
+  }
+
+  &-footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+
+.active {
+  color: $static-pink-middle;
+  transition: all .2s ease-in-out;
+}

@@ -26,5 +26,3 @@ export class AdminComponent implements OnInit {
 
 }
 
-
-//TODO:  везде поставить take(1) чтобы не плоджить подписки

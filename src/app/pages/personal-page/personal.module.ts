@@ -8,7 +8,7 @@ import {MatInputModule} from "@angular/material/input"
 import {MatIconModule} from "@angular/material/icon"
 import {MatButtonModule} from "@angular/material/button"
 import {FormsModule, ReactiveFormsModule} from "@angular/forms"
-import {PersonalComponent} from './personal/personal.component'
+import {PersonalComponent} from './personal.component'
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatButtonToggleModule} from "@angular/material/button-toggle"
 import {ClientOnlineComponent} from './client-online/client-online.component'
@@ -49,7 +49,8 @@ import {
 import {NgCircleProgressModule} from "ng-circle-progress"
 import {NgChartsModule} from "ng2-charts"
 import {HTTP_INTERCEPTORS} from "@angular/common/http"
-import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor"
+import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor";
+import { SidenavComponent } from './sidenav/sidenav.component'
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor"
     ModalBeforeAfterCreateComponent,
     AdminScheduleComponent,
     ModalAdminScheduleComponent,
+    SidenavComponent,
   ],
   imports: [
     CommonModule,

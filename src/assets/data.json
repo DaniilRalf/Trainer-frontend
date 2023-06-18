@@ -1,6 +1,9 @@
 {
   "online": {
-    "description": ""
+    "title": "",
+    "description": "",
+    "price": 6000,
+    "include": [""]
   },
   "offline": {
     "description": ""

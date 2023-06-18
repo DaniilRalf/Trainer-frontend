@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core'
-import {StoreService} from "../../../helpers/services/store.service"
-import {GraphqlService} from "../../../helpers/services/graphql.service"
+import {StoreService} from "../../helpers/services/store.service"
+import {GraphqlService} from "../../helpers/services/graphql.service"
 import {Router} from "@angular/router"
+import {RoleEnum} from "../../models/enums/role-enum";
+import {User} from "../../models/types/user";
 
 @Component({
   selector: 'app-personal',
@@ -9,6 +11,8 @@ import {Router} from "@angular/router"
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+
+  public user!: User
 
   constructor(
     private router: Router,
@@ -22,18 +26,19 @@ export class PersonalComponent implements OnInit {
     this.GraphqlService.getItemClientAllData(this.storeService.getUser().username)
       .subscribe((i: any) => {
         this.storeService.saveUserDetalization(i.data.getUserPersonalParameters)
+        this.user = this.storeService.USER
         this.navigate();
       })
   }
 
-  //TODO: переделать на свич-кейс
-  //TODO: добавить роли в енамы
-  navigate(): void {
-    if (this.storeService.USER.roleId === 1) {
-      this.router.navigate(['/personal', 'client-online']);
-    }
-    if (this.storeService.USER.roleId === 2) {
-      this.router.navigate(['/personal', 'admin']);
+  private navigate(): void {
+    switch (this.storeService.USER.roleId) {
+      case RoleEnum.user :
+        this.router.navigate(['/personal', 'client-online']);
+        break
+      case RoleEnum.admin :
+        this.router.navigate(['/personal', 'admin']);
+        break
     }
   }
 

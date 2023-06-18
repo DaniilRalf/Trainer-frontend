@@ -1,58 +1,83 @@
 <div class="create-client">
 
-  <form class="create-client_form" [formGroup]="createForm" (ngSubmit)="onSubmitLogin()">
+  <form class="create-client-form" [formGroup]="createForm" (ngSubmit)="onSubmitLogin()">
 
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Имя</mat-label>
-      <input matInput formControlName="first_name">
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Фамилия</mat-label>
-      <input matInput formControlName="last_name">
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Никнейм (английскими буквами)</mat-label>
-      <input matInput formControlName="username">
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Пароль</mat-label>
-      <input matInput formControlName="password">
-    </mat-form-field>
+    <div class="df-row">
+      <div class="block mr-17">
+        <div class="block-label fnt-600-gilroy">имя</div>
+        <mat-form-field class="custom-input with-330" appearance="fill">
+          <input matInput formControlName="first_name">
+        </mat-form-field>
+      </div>
+      <div class="block">
+        <div class="block-label fnt-600-gilroy">фамилия</div>
+        <mat-form-field class="custom-input with-440" appearance="fill">
+          <input matInput formControlName="last_name">
+        </mat-form-field>
+      </div>
+    </div>
 
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Роль пользователя</mat-label>
-      <mat-select formControlName="roleId">
-        <mat-option type="number" value="{{RoleEnum.user}}">Клиент</mat-option>
-        <mat-option type="number" value="{{RoleEnum.admin}}">Администратор</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="block">
+      <div class="block-label fnt-600-gilroy">никнейм (латиницей)</div>
+      <mat-form-field class="custom-input with-790" appearance="fill">
+        <input matInput formControlName="username">
+      </mat-form-field>
+    </div>
 
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Гендер</mat-label>
-      <mat-select formControlName="gender">
-        <mat-option type="number" value="{{GenderEnum.female}}">Женщина</mat-option>
-        <mat-option type="number" value="{{GenderEnum.male}}">Мужчина</mat-option>
-        <mat-option type="number" value="{{GenderEnum.non_binary}}">Небинарная личность</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Рост (см.)</mat-label>
-      <input type="number" matInput formControlName="height">
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>День рождения</mat-label>
-      <input matInput [matDatepicker]="picker1" formControlName="birth_day">
-      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="create-client__item" appearance="fill">
-      <mat-label>Дата начала тренировок</mat-label>
-      <input matInput [matDatepicker]="picker2" formControlName="start_train">
-      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
+    <div class="block mb-20">
+      <div class="block-label fnt-600-gilroy">роль пользователя</div>
+      <mat-button-toggle-group class="custom-toggle-group" formControlName="roleId">
+        <mat-button-toggle [checked]="true" class="fnt-400-gilroy" value="{{RoleEnum.user}}">Клиент</mat-button-toggle>
+        <mat-button-toggle class="fnt-400-gilroy" value="{{RoleEnum.admin}}">Администратор</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-    <button class="create-client__item" mat-raised-button color="primary">Сохранить</button>
+    <div class="block mb-20">
+      <div class="block-label fnt-600-gilroy">гендер</div>
+      <mat-button-toggle-group class="custom-toggle-group" formControlName="gender">
+        <mat-button-toggle class="fnt-400-gilroy" value="{{GenderEnum.male}}">Мужчина</mat-button-toggle>
+        <mat-button-toggle [checked]="true" class="fnt-400-gilroy" value="{{GenderEnum.female}}">Женщина</mat-button-toggle>
+        <mat-button-toggle class="fnt-400-gilroy" value="{{GenderEnum.non_binary}}">Небинарная персона</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="df-row">
+      <div class="block mr-17">
+        <div class="block-label fnt-600-gilroy">день рождения</div>
+        <mat-form-field class="custom-data-picker with-330" appearance="fill">
+          <input matInput [matDatepicker]="picker1" class="fnt-400-gilroy" formControlName="birth_day">
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="block mr-17">
+        <div class="block-label fnt-600-gilroy">начало тренировок</div>
+        <mat-form-field class="custom-data-picker with-330" appearance="fill">
+          <input matInput [matDatepicker]="picker2" class="fnt-400-gilroy" formControlName="start_train">
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label fnt-600-gilroy">рост (см)</div>
+      <mat-form-field class="custom-input with-330" appearance="fill">
+        <input matInput formControlName="height">
+      </mat-form-field>
+    </div>
+
+    <div class="block">
+      <div class="block-label fnt-600-gilroy">пароль</div>
+      <mat-form-field class="custom-input with-330" appearance="fill">
+        <input matInput formControlName="password">
+      </mat-form-field>
+    </div>
+
+    <el-button-custom class="mt-30" [text]="'Сохранить'"
+                      [type]="'flat'"
+    ></el-button-custom>
+
   </form>
 
 
