@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from "../../models/types/user";
-import {BehaviorSubject} from "rxjs";
-import {RoleEnum} from "../../models/enums/role-enum";
+import {BehaviorSubject} from "rxjs"
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +41,7 @@ export class StoreService {
     this.USER.username = userFromLocalStorage.username
     this.USER.first_name = userFromLocalStorage.first_name
     this.USER.last_name = userFromLocalStorage.last_name
+    this.USER.is_active = userFromLocalStorage.is_active
     this.USER.username ? this.USER_CHANGE.next(true) : this.USER_CHANGE.next(false);
     return this.USER
   }

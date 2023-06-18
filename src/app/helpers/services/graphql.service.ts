@@ -19,6 +19,7 @@ export class GraphqlService {
             first_name
             last_name
             roleId
+            is_active
             token
           }
         }
@@ -68,6 +69,7 @@ export class GraphqlService {
               first_name
               last_name
               roleId
+              is_active
               personal {
                 id
                 gender
@@ -103,6 +105,7 @@ export class GraphqlService {
               first_name
               last_name
               roleId
+              is_active
             }
           }
         `
@@ -131,6 +134,7 @@ export class GraphqlService {
             last_name
             password
             roleId
+            is_active
             personal {
               gender
               height
@@ -177,6 +181,7 @@ export class GraphqlService {
               username
               first_name
               last_name
+              is_active
               schedules {
                 id
                 date

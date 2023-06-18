@@ -5,6 +5,7 @@ export interface User{
   username: string | null;
   first_name: string | null;
   last_name: string | null;
+  is_active: boolean;
 
   personal?: Personal;
   parameters?: Parameters[];

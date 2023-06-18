@@ -9,7 +9,7 @@ import {NotificationsService} from "../../../../../helpers/services/notification
 import {GenderEnum} from "../../../../../models/enums/gender-enum"
 
 @Component({
-  selector: 'app-modal-update-parameters-client',
+  selector: 'modal-update-parameters-client',
   templateUrl: './modal-client-data.component.html',
   styleUrls: ['./modal-client-data.component.scss'],
   encapsulation: ViewEncapsulation.None
