@@ -51,7 +51,6 @@ export class SidenavComponent implements OnInit {
     this.subscription.add(
       this.applicationService.getWidthApp().subscribe((data: number) => {
         data > 1000 ? this.windowDesktop = true : this.windowDesktop = false
-        console.log(this.windowDesktop)
       })
     )
   }
@@ -64,7 +63,7 @@ export class SidenavComponent implements OnInit {
     this.windowDesktop = !this.windowDesktop
   }
 
-  public onLogout(): void{
+  public onLogout(): void {
     this.storeService.deleteUser();
     this.router.navigate(['home']).then()
   }

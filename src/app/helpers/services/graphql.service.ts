@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core'
-import {Apollo, gql} from "apollo-angular"
+import {Apollo, gql, MutationResult} from "apollo-angular"
+import {ApolloQueryResult} from "@apollo/client/core";
+import {Observable} from "rxjs";
+import {User} from "../../models/types/user";
+
+
+//TODO: types
 
 @Injectable({providedIn: 'root'})
 export class GraphqlService {
@@ -8,7 +14,6 @@ export class GraphqlService {
     private apollo: Apollo
   ) { }
 
-  //TODO: изменить тип эни на конкретные
   loginUser(data: any){
     return this.apollo.mutate({
       mutation: gql`
@@ -67,6 +72,7 @@ export class GraphqlService {
               first_name
               last_name
               roleId
+              is_active
               is_active
               personal {
                 id
@@ -170,7 +176,20 @@ export class GraphqlService {
     })
   }
 
-  getAllClientsSchedules(){
+  updateActiveClient(data: {id: number, active: boolean}): Observable<MutationResult<{updateActiveClient: User[]}>> {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updateActiveClient($input: UserInput){
+          updateActiveClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+
+  getAllClientsSchedules(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
       query: gql`
           query {

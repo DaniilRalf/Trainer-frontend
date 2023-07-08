@@ -53,6 +53,7 @@ $Trainer-frontend-theme: mat.define-light-theme((
 @include mat.all-component-themes($Trainer-frontend-theme);
 
 
+$static-grey-light: #e4e6ee;
 $static-grey-middle: #666B7D;
 $static-grey-strong: #2B2F3C;
 $static-pink-middle: #FF8FCC;

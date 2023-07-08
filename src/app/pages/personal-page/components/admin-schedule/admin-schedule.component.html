@@ -1,23 +1,52 @@
 <div class="admin-schedule">
 
-  <div class="mat-elevation-z8 mr-20">
-    <h2 class="month-now mt-20">{{monthEnum[nowMonth]}}</h2>
+
+  <div>
+
+    <div class="days-weak fnt-400-gilroy">
+      <p class="days-weak-item">понедельник</p>
+      <p class="days-weak-item">вторник</p>
+      <p class="days-weak-item">среда</p>
+      <p class="days-weak-item">четверг</p>
+      <p class="days-weak-item">пятница</p>
+      <p class="days-weak-item">суббота</p>
+      <p class="days-weak-item">воскресенье</p>
+    </div>
+
     <div class="calendar">
       <div class="calendar-item"
            *ngFor="let item of calendarData"
            (click)="openModal(item)">
-
-        <span class="calendar-item-data">{{item.data}}</span>
+        <div class="calendar-item-data fnt-600-gilroy" *ngIf="item.data">{{item.data}}</div>
         <div class="calendar-item-details">
-          <div class="item"
-               *ngFor="let clientTrain of item.details"
+          <div class="item" *ngFor="let clientTrain of item.details; let index = index"
+               [style]="{'background-color': colorsIcons[index] || '#D2D0D8', 'transform': 'translateX(-' + (index * 12) + 'px)'}"
                matTooltip="{{clientTrain.clientFirstName}} {{clientTrain.clientLastName}} {{clientTrain.time_start}}"
                [matTooltipPosition]="'above'"
-          ></div>
+          >
+            <img src="../../../../../assets/img/personal/admin/leg.svg"
+                 *ngIf="clientTrain.description === 'leg'
+                  || clientTrain.description === 'lowerBody'
+                  || clientTrain.description === 'buttocks'">
+            <img src="../../../../../assets/img/personal/admin/hand.svg"
+                 *ngIf="clientTrain.description === 'hand'
+                  || clientTrain.description === 'shoulder'">
+            <img src="../../../../../assets/img/personal/admin/body.svg"
+                 *ngIf="clientTrain.description === 'fullBody'
+                  || clientTrain.description === 'upBody'
+                  || clientTrain.description === 'breast'
+                  || clientTrain.description === 'back'">
+          </div>
         </div>
-
+        <div class="calendar-item-active fnt-600-gilroy" *ngIf="item.details">{{item.details.length}}&nbsp;тренировок</div>
       </div>
     </div>
+
+
+    <div class="month fnt-600-gilroy">{{monthEnum[nowMonth]}}&nbsp;{{nowYear}}<mat-icon>calendar_today</mat-icon></div>
+
   </div>
+
+
 
 </div>

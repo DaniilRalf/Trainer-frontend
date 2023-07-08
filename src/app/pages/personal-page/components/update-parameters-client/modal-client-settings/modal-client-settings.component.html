@@ -1,0 +1,47 @@
+<div class="settings">
+
+  <div class="settings-info fnt-400-gilroy">
+    <div class="settings-info-photo">
+      <div class="settings-info-photo-img"></div>
+      <div class="settings-info-photo-indicator"
+           [style]="data.is_active ? {'background-color': '#FF8FCC'} : {'background-color': '#666B7D'}"
+      ></div>
+    </div>
+    <div class="settings-info-description">
+      <div class="settings-info-description-name fnt-600-gilroyn">{{data.first_name}}&nbsp;{{data.last_name}}</div>
+      <div class="settings-info-description-username">{{data.username}}</div>
+    </div>
+  </div>
+
+  <div class="settings-activation fnt-400-gilroy">
+    <p class="settings-activation-header header-block fnt-600-gilroy">Активность клиента</p>
+    <div class="settings-activation-active">
+      <div class="settings-activation-active-checkbox">
+        <mat-slide-toggle
+          [color]="'primary'"
+          [checked]="data.is_active"
+          (change)="onChangeActiveClient($event)"
+        ></mat-slide-toggle>
+      </div>
+      <div class="settings-activation-active-description">Клиент активен</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="settings-remove fnt-400-gilroy">
+    <p class="settings-remove-header header-block fnt-600-gilroy">Удаление клиента</p>
+    <p class="settings-remove-description">При удаление клиента безвозвратно потеряются все данные о нем, а также данные о его тренировках.</p>
+    <p class="settings-remove-description">Для удаления клиента наберите его никнейм в поле и нажмите кнопку.</p>
+    <div class="settings-remove-active">
+      <mat-form-field class="custom-input with-250" appearance="fill">
+        <input matInput>
+      </mat-form-field>
+      <el-button-custom [text]="'Удалить клиента из базы'"
+                        [type]="'stoked'" [color]="'#EF466F'"
+                        [bgColor]="'#ffffff'" [icon]="'delete_outline'"
+      ></el-button-custom>
+    </div>
+  </div>
+
+</div>

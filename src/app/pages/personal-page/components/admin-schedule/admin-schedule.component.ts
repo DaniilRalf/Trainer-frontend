@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {BehaviorSubject, take} from "rxjs"
-import {User} from "../../../../models/types/user"
+import {Schedules, User} from "../../../../models/types/user"
 import {GraphqlService} from "../../../../helpers/services/graphql.service"
 import {ModalAdminScheduleComponent} from "./modal-admin-schedule/modal-admin-schedule.component"
 import {MatDialog} from "@angular/material/dialog"
+import {TrainingEnum} from "../../../../models/enums/training-enum";
 
 @Component({
   selector: 'app-admin-schedule',
@@ -12,6 +13,11 @@ import {MatDialog} from "@angular/material/dialog"
 })
 
 export class AdminScheduleComponent implements OnInit {
+
+  //TODO: посмотреть можно ли взять ключи от енама и вставить в верстку
+  TrainingEnum = TrainingEnum
+
+  public colorsIcons = ['#299DDE', '#45B26B', '#F2E186', '#EF466F', '#7B61FF', '#D2D0D8', '#FF8FCC', '#46D1EF']
 
   public monthEnum: {
     0: 'Январь', 1: 'Ферваль', 2: 'Март',
@@ -26,9 +32,16 @@ export class AdminScheduleComponent implements OnInit {
   }
 
   //TODO: поправить типизацию, отменить все подписки
-  calendarData: any[] = []
+  calendarData: {
+    data: number,
+    day: number,
+    month: number | string,
+    details: ({ clientId: number, clientFirstName: string, clientLastName: string } & Schedules)[]
+  }[] = []
 
   nowMonth!: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
+
+  nowYear!: number
 
   @Input() public user!: BehaviorSubject<User>
 
@@ -47,35 +60,34 @@ export class AdminScheduleComponent implements OnInit {
 
   private getSchedule(): void {
     this.graphQlService.getAllClientsSchedules()
-      // TODO: types
-      .subscribe(({data}: any) => {
+      .subscribe(({data}) => {
         this.generateCalendarData(data.getAllClients)
       })
   }
 
-  //TODO: types
-  private generateCalendarData(users: any): void {
-    const nowYear = new Date().getFullYear()
+  private generateCalendarData(users: User[]): void {
+    this.nowYear = new Date().getFullYear()
     //@ts-ignore
     this.nowMonth = new Date().getMonth()
     const nextMonth = new Date().getMonth() + 1
-    const lastDayInMonth = new Date(nowYear, nextMonth, 0).getDate()
-    const indexFirstDayInMonth = new Date(nowYear, new Date().getMonth(), 1).getDay()
+    const lastDayInMonth = new Date(this.nowYear, nextMonth, 0).getDate()
+    const indexFirstDayInMonth = new Date(this.nowYear, new Date().getMonth(), 1).getDay()
 
     let actualDay = 1
     let actualData = 0
     for (let i = 1; i <= 42; i++) {
       if (i >= indexFirstDayInMonth && actualData < lastDayInMonth) {
         actualData++
-        this.calendarData.push({data: actualData, day: actualDay, month: new Date().getMonth(), details: []})
+        this.calendarData.push({data: actualData, day: actualDay, month: new Date().getMonth(), details: [] as any})
       } else {
-        this.calendarData.push({})
+        this.calendarData.push({} as any)
       }
       actualDay++
       actualDay === 8 ? actualDay = 1 : ''
     }
-    users.forEach((user: any) => {
-      user.schedules.forEach((schedule: any) => {
+    //TODO: types
+    users.forEach((user: User) => {
+      user.schedules!.forEach((schedule: Schedules) => {
         this.calendarData.forEach((itemDay: any) => {
           if (itemDay.month === new Date(schedule.date).getMonth() && itemDay.data === new Date(schedule.date).getDate()) {
             itemDay.details.push({

@@ -1,8 +1,11 @@
+@import "../../../../../../styles";
 
 .modal-admin-schedule {
+
   position: relative;
   height: 100%;
   width: 100%;
+  min-width: 450px;
   overflow: hidden !important;
 
   .time {
@@ -21,6 +24,10 @@
     &-item {
       display: flex;
       margin-bottom: 5px;
+
+      .desc {
+        color: $static-grey-middle;
+      }
     }
   }
 

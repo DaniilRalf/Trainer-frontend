@@ -1,3 +1,5 @@
+import {TrainingEnum} from "../enums/training-enum";
+
 export interface User{
   id: number;
   roleId: number | null;
@@ -30,5 +32,7 @@ export interface Parameters {
 
 export interface Schedules {
   date: number;
-  description: string;
+  description: TrainingEnum | string;
+  time_duration: string;
+  time_start: string;
 }

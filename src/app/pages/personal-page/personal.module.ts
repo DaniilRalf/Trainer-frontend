@@ -50,7 +50,9 @@ import {NgCircleProgressModule} from "ng-circle-progress"
 import {NgChartsModule} from "ng2-charts"
 import {HTTP_INTERCEPTORS} from "@angular/common/http"
 import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor";
-import { SidenavComponent } from './sidenav/sidenav.component'
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ModalClientSettingsComponent } from './components/update-parameters-client/modal-client-settings/modal-client-settings.component'
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -70,36 +72,38 @@ import { SidenavComponent } from './sidenav/sidenav.component'
     AdminScheduleComponent,
     ModalAdminScheduleComponent,
     SidenavComponent,
+    ModalClientSettingsComponent,
   ],
-  imports: [
-    CommonModule,
-    PersonalRoutingModule,
-    WidgetsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatButtonToggleModule,
-    MatProgressSpinnerModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatCardModule,
-    MatMenuModule,
-    FormsModule,
-    MatChipsModule,
-    DirectivesModule,
-    MatTabsModule,
-    MatTooltipModule,
-    NgCircleProgressModule,
-    NgChartsModule
-  ],
+    imports: [
+        CommonModule,
+        PersonalRoutingModule,
+        WidgetsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatSidenavModule,
+        MatButtonToggleModule,
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatCardModule,
+        MatMenuModule,
+        FormsModule,
+        MatChipsModule,
+        DirectivesModule,
+        MatTabsModule,
+        MatTooltipModule,
+        NgCircleProgressModule,
+        NgChartsModule,
+        MatSlideToggleModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
