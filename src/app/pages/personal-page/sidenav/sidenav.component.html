@@ -1,31 +1,54 @@
-<div class="sidenav container-p-20">
+<div class="sidenav container-p-20" [style]="{'width': windowDesktop ? '520px' : '65px'}">
 
   <div class="sidenav-header">
-    <p class="sidenav-header-item fnt-400-gilroy">личный кабинет</p>
-    <p class="sidenav-header-item fnt-400-gilroy">{{user.first_name}}</p>
+    <p class="sidenav-header-item fnt-400-gilroy"
+       *ngIf="windowDesktop"
+    >личный кабинет</p>
+    <p class="sidenav-header-item change fnt-400-gilroy" (click)="changeWindowSize()">
+      <mat-icon>{{windowDesktop ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}</mat-icon>
+    </p>
   </div>
 
   <div class="sidenav-content">
 <!--    ADMIN============================================================-->
-    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 1, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
-       *ngIf="user.roleId === RoleEnum.admin"
-       (click)="setTabsOnPage(1)"
-    >Создать клиента</p>
-    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 2, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
-       *ngIf="user.roleId === RoleEnum.admin"
-       (click)="setTabsOnPage(2)"
-    >Детализация по клиентам</p>
-    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 3, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
-       *ngIf="user.roleId === RoleEnum.admin"
-       (click)="setTabsOnPage(3)"
-    >Фото клиентов До/После</p>
-    <p [ngClass]="{'active': storeService.tabsOnPersonalPage === 4, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
-       *ngIf="user.roleId === RoleEnum.admin"
-       (click)="setTabsOnPage(4)"
-    >Мой график</p>
+    <ng-container *ngFor="let item of adminMenuList">
+      <p [ngClass]="{'active': storeService.tabsOnPersonalPage === item.index, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+         *ngIf="user.roleId === RoleEnum.admin"
+         (click)="setTabsOnPage(item.index)"
+      ><span *ngIf="windowDesktop">{{item.label}}</span>
+        <mat-icon *ngIf="!windowDesktop">{{item.icon}}</mat-icon></p>
+    </ng-container>
+
   </div>
 
 
-  <div class="sidenav-footer">sdfsdf</div>
+  <div class="sidenav-footer" *ngIf="windowDesktop">
+    <div class="sidenav-footer-out fnt-400-gilroy"
+         (click)="onLogout()"
+    ><div class="mr-10">Выйти из личного кабинета</div><mat-icon>exit_to_app</mat-icon></div>
+    <div class="sidenav-footer-inmain fnt-400-gilroy"
+         (click)="onMainPage()"
+    >Вернуться на сайт</div>
+    <div class="sidenav-footer-logo fnt-400-gilroy">
+      <div class="sidenav-footer-logo-img"><img src="../../../../assets/img/logo-1.svg"></div>
+      <div class="sidenav-footer-logo-time">{{user.first_name}}&nbsp;&nbsp;{{time}}</div>
+    </div>
+  </div>
+
+  <div class="sidenav-footer" *ngIf="!windowDesktop">
+    <div class="sidenav-footer-out fnt-400-gilroy"
+         (click)="onLogout()"
+         matTooltip="Выйти из личного кабинета"
+         [matTooltipPosition]="'above'"
+    ><mat-icon>exit_to_app</mat-icon></div>
+    <div class="sidenav-footer-inmain fnt-400-gilroy"
+         (click)="onMainPage()"
+         matTooltip="Вернуться на сайт"
+         [matTooltipPosition]="'above'"
+    ><mat-icon>language</mat-icon></div>
+    <div class="sidenav-footer-logo fnt-400-gilroy">
+      <div class="sidenav-footer-logo-img"><img src="../../../../assets/img/logo-3.svg"></div>
+    </div>
+  </div>
 
 </div>

@@ -1,19 +1,19 @@
 <div class="admin">
 
-      <app-create-client *ngIf="storeService.tabsOnPersonalPage === 1"
-                         [user]="user"
-      ></app-create-client>
+  <app-admin-schedule *ngIf="storeService.tabsOnPersonalPage === 1"
+                      [user]="user"
+  ></app-admin-schedule>
 
-      <app-update-parameters-client *ngIf="storeService.tabsOnPersonalPage === 2"
-                                    [user]="user"
-      ></app-update-parameters-client>
+  <app-update-parameters-client *ngIf="storeService.tabsOnPersonalPage === 2"
+                                [user]="user"
+  ></app-update-parameters-client>
 
-      <app-before-after-create *ngIf="storeService.tabsOnPersonalPage === 3"
-                               [user]="user"
-      ></app-before-after-create>
+  <app-before-after-create *ngIf="storeService.tabsOnPersonalPage === 4"
+                           [user]="user"
+  ></app-before-after-create>
 
-      <app-admin-schedule *ngIf="storeService.tabsOnPersonalPage === 4"
-                          [user]="user"
-      ></app-admin-schedule>
+  <app-create-client *ngIf="storeService.tabsOnPersonalPage === 5"
+                     [user]="user"
+  ></app-create-client>
 
 </div>

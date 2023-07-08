@@ -1,7 +1,6 @@
 @import "../../../../styles";
 
 .sidenav {
-  width: 520px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -14,10 +13,13 @@
     justify-content: space-between;
 
     &-item {
-    font-size: 14px;
-    line-height: 24px;
-    color: $static-grey-middle;
-  }
+      font-size: 14px;
+      line-height: 24px;
+      color: $static-grey-middle;
+    }
+    .change {
+      cursor: pointer;
+    }
   }
 
   &-content {
@@ -36,6 +38,25 @@
   &-footer {
     display: flex;
     flex-direction: column;
+    color: $static-grey-middle;
+
+    &-out {
+      margin-bottom: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    &-inmain {
+      margin-bottom: 40px;
+      cursor: pointer;
+    }
+    &-logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-img {opacity: .7;}
+      &-time {}
+    }
   }
 
 }
@@ -45,3 +66,4 @@
   color: $static-pink-middle;
   transition: all .2s ease-in-out;
 }
+

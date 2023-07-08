@@ -28,8 +28,6 @@ export class GraphqlService {
     })
   }
 
-  //TODO: переделать с юзернэймв на айди
-  //TODO: переименовать с учетом того что тут есть график
   getItemClientAllData(username: string | null){
     return this.apollo.query({
       query : gql`
