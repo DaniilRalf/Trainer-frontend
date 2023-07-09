@@ -7,6 +7,7 @@ import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal
 import {HttpService} from "../../../../helpers/services/http.service"
 import {environment} from "../../../../../environments/environment"
 import {GeneratorsService} from "../../../../helpers/services/generators.service"
+import {MatButtonToggleChange} from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-before-after-create',
@@ -17,12 +18,11 @@ export class BeforeAfterCreateComponent implements OnInit {
 
   env = environment
 
-  //TODO:  поправить типизацию any
-  allClients: any = [];
+  public allClients: User[] = []
 
-  hideToggle = false
+  public isShowClientPhotos = false
 
-  allPhotos: any = {}
+  public showClientPhotos!: User
 
   @Input() public user!: BehaviorSubject<User>
 
@@ -39,43 +39,27 @@ export class BeforeAfterCreateComponent implements OnInit {
 
   private getAllClients(): void {
     this.graphqlService.getAllClientsWithPhoto()
-      .subscribe(({data}: any) => {
+      .pipe(take(1))
+      .subscribe(({data}) => {
         this.allClients = data.getAllClients
+        console.log(this.allClients)
       })
   }
 
-  public openModal(clientId: number): void {
-    this.dialog.open(ModalBeforeAfterCreateComponent, {
-      width: '550px',
-      data: {clientId},
-    }).afterClosed().pipe(take(1)).subscribe(() => {
-      this.getAllClients()
-      this.onCloseOpenItemPanel()
-    })
+  public changeClientGroup(event: MatButtonToggleChange): void {
+    console.log(event.value)
   }
 
-  private onCloseOpenItemPanel(): void {
-    this.hideToggle = false
-  }
 
-  public openedItemPanel(id: number) {
-    this.allPhotos = {} /** очищаем обьект актуальных фоток*/
-    this.httpService.getAllPhotoBeforeAfter(id)
-      .subscribe(item => {
-        this.generateGroupsPhoto(item)
-      })
+  /** Actives of item client photos panel======================= */
+  public onShowClientItem(data: User): void {
+    this.isShowClientPhotos = true
+    this.showClientPhotos = data
   }
-
-  // TODO: types
-  private generateGroupsPhoto(inputData: any): void {
-    inputData.forEach((itemData: any) => {
-      if (this.allPhotos[itemData.date]) {
-        this.allPhotos[itemData.date].push(itemData)
-      } else {
-        this.allPhotos[itemData.date] = []
-        this.allPhotos[itemData.date].push(itemData)
-      }
-    })
+  public onCloseClientItem(): void {
+    this.isShowClientPhotos = false
+    this.showClientPhotos = {} as User
   }
+  /** Actives of item client photos panel======================= */
 
 }

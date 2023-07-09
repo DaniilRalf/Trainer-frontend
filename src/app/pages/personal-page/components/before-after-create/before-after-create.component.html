@@ -1,40 +1,75 @@
+<div class="photos">
 
-<p class="fnt-normal-1 mt-20" *ngIf="allClients.length === 0">Пока нет зарегестрированых клиентов</p>
+  <ng-container *ngIf="isShowClientPhotos && showClientPhotos">
+    <div class="photos-details mat-elevation-z8">
 
-<div class="before-after-create">
+      <div class="close" (click)="onCloseClientItem()"><mat-icon>close</mat-icon></div>
 
-  <div class="mat-elevation-z8 mr-20" *ngIf="allClients.length > 0">
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let item of allClients"
-                           (opened)="openedItemPanel(item.id)"
-                           [hideToggle]="hideToggle">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="before-after-create__header">{{item.first_name}} {{item.last_name}}</div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div class="box">
-          <div class="box-item" *ngFor="let photoGroup of allPhotos | keyvalue">
-            <p class="box-item-date">{{generatorsService.generateNumberType(photoGroup!.key!) | date:'dd-MM-yyyy'}}</p>
-            <div class="box-item-box">
-              <ng-container  *ngFor="let photo of generatorsService.generateArrayType(photoGroup!.value!)">
-                <div class="box-item-box-item"><img src="{{env.apiUrl + photo?.file_name}}"></div>
-              </ng-container>
-            </div>
+      <div class="header fnt-400-gilroy">
+        <div class="header-info">
+          <el-avatar-client [active]="showClientPhotos.is_active"></el-avatar-client>
+          <div class="header-info-description">
+            <div class="header-info-description-name fnt-600-gilroy"
+            >{{showClientPhotos.first_name}}&nbsp;{{showClientPhotos.last_name}}</div>
+            <div class="header-info-description-username">{{showClientPhotos.username}}</div>
           </div>
         </div>
+        <div class="header-btn">
+          <el-button-custom class="header-btn-item" [text]="'Удалить фото'"
+                            [type]="'stoked'" [color]="'#666B7D'"
+                            [bgColor]="'transparent'" [icon]="'delete_forever'"
+          ></el-button-custom>
+          <el-button-custom class="header-btn-item" [text]="'Добавить фото'"
+                            [type]="'stoked'" [color]="'#ffffff'"
+                            [bgColor]="'#FF8FCC'" [icon]="'add_a_photo'"
+          ></el-button-custom>
+        </div>
+      </div>
 
-        <div class="flex-center mt-10">
-          <button mat-raised-button color="primary"
-                  (click)="openModal(item.id)"
-          >Добавить фото</button>
+      <hr>
+
+      <div class="content">
+        <el-photos-group [photos]="showClientPhotos.photos"
+        ></el-photos-group>
+      </div>
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!isShowClientPhotos">
+    <div class="photos-active">
+      <el-select-activity-client
+        (changeClientGroupEmitter)="changeClientGroup($event)"
+      ></el-select-activity-client>
+    </div>
+
+    <div class="photos-list">
+      <div class="photos-list-item fnt-400-gilroy"
+           *ngFor="let client of allClients"
+           (click)="onShowClientItem(client)"
+      >
+
+        <div class="header">
+          <div class="header-description">
+            <div class="header-description-txt">последние добавление</div>
+            <div class="header-description-icon"><mat-icon>arrow_upward</mat-icon></div>
+          </div>
+          <div class="header-date">20.06.2023</div>
         </div>
 
+        <div class="content">
+          <el-avatar-client [active]="client.is_active"></el-avatar-client>
+          <p class="content-name">{{client.first_name}}&nbsp;{{client.last_name}}</p>
+          <p class="content-username">{{client.username}}</p>
+        </div>
 
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
+        <div class="footer">
+          <div class="footer-description">всего фото</div>
+          <div class="footer-number">{{client.photos?.length}}</div>
+        </div>
 
+      </div>
+    </div>
+  </ng-container>
 
 </div>

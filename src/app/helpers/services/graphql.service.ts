@@ -14,6 +14,7 @@ export class GraphqlService {
     private apollo: Apollo
   ) { }
 
+  /** FOR ALL USER================================================ */
   loginUser(data: any){
     return this.apollo.mutate({
       mutation: gql`
@@ -32,7 +33,6 @@ export class GraphqlService {
       variables: { input: data },
     })
   }
-
   getItemClientAllData(username: string | null){
     return this.apollo.query({
       query : gql`
@@ -62,9 +62,74 @@ export class GraphqlService {
       variables: { username: username },
     })
   }
+  /** FOR ALL USER================================================ */
+
+  /** FOR ADMIN=================================================== */
+  /** create */
+  createClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createClient($input: UserInput){
+          createClient(input: $input){
+            username
+            first_name
+            last_name
+            password
+            roleId
+            is_active
+            personal {
+              gender
+              height
+              birth_day
+              start_train
+            }
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  createTrainingDays(data: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation createTrainingDays($input: UserInput){
+          createTrainingDays(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  /** update */
+  updateActiveClient(data: {id: number, active: boolean}): Observable<MutationResult<{updateActiveClient: User[]}>> {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updateActiveClient($input: UserInput){
+          updateActiveClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  updatePersonalClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updatePersonalClient($input: PersonalInput){
+          updatePersonalClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
+  /** get */
   getAllClientsAllData(){
     return this.apollo.query({
-        query: gql`
+      query: gql`
           query {
             getAllClients {
               id
@@ -99,96 +164,6 @@ export class GraphqlService {
         `
     })
   }
-  getAllClientsWithPhoto(){
-    return this.apollo.query({
-      query: gql`
-          query {
-            getAllClients {
-              id
-              username
-              first_name
-              last_name
-              roleId
-              is_active
-            }
-          }
-        `
-    })
-  }
-
-  createTrainingDays(data: any) {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation createTrainingDays($input: UserInput){
-          createTrainingDays(input: $input){
-            id
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-  createClient(data: any){
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation createClient($input: UserInput){
-          createClient(input: $input){
-            username
-            first_name
-            last_name
-            password
-            roleId
-            is_active
-            personal {
-              gender
-              height
-              birth_day
-              start_train
-            }
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-  eventWithParameterClient(data: any){
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation eventWithParameterClient($input: UserInput){
-          eventWithParameterClient(input: $input){
-            id
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-  updatePersonalClient(data: any){
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation updatePersonalClient($input: PersonalInput){
-          updatePersonalClient(input: $input){
-            id
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-
-  updateActiveClient(data: {id: number, active: boolean}): Observable<MutationResult<{updateActiveClient: User[]}>> {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation updateActiveClient($input: UserInput){
-          updateActiveClient(input: $input){
-            id
-          }
-        }
-      `,
-      variables: { input: data },
-    })
-  }
-
   getAllClientsSchedules(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
       query: gql`
@@ -209,6 +184,47 @@ export class GraphqlService {
             }
           }
         `
+    })
+  }
+  getAllClientsWithPhoto(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
+    return this.apollo.query({
+      query: gql`
+          query {
+            getAllClients {
+              id
+              username
+              first_name
+              last_name
+              roleId
+              is_active
+              photos {
+                id
+                file_name
+                date
+                angle
+                type
+              }
+            }
+          }
+        `
+    })
+  }
+  /** FOR ADMIN=================================================== */
+
+  /** FOR CLIENT=================================================== */
+  /** FOR CLIENT=================================================== */
+
+
+  eventWithParameterClient(data: any){
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation eventWithParameterClient($input: UserInput){
+          eventWithParameterClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
     })
   }
 }

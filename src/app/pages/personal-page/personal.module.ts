@@ -50,9 +50,12 @@ import {NgCircleProgressModule} from "ng-circle-progress"
 import {NgChartsModule} from "ng2-charts"
 import {HTTP_INTERCEPTORS} from "@angular/common/http"
 import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor";
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavComponent } from './UI/sidenav/sidenav.component';
 import { ModalClientSettingsComponent } from './components/update-parameters-client/modal-client-settings/modal-client-settings.component'
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { SelectActivityClientComponent } from './UI/select-activity-client/select-activity-client.component';
+import { AvatarClientComponent } from './UI/avatar-client/avatar-client.component';
+import { PhotosGroupComponent } from './components/before-after-create/photos-group/photos-group.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     ModalAdminScheduleComponent,
     SidenavComponent,
     ModalClientSettingsComponent,
+    SelectActivityClientComponent,
+    AvatarClientComponent,
+    PhotosGroupComponent,
   ],
     imports: [
         CommonModule,

@@ -12,6 +12,7 @@ export interface User{
   personal?: Personal;
   parameters?: Parameters[];
   schedules? : Schedules[];
+  photos?: Photo[];
 }
 
 export interface Personal {
@@ -35,4 +36,12 @@ export interface Schedules {
   description: TrainingEnum | string;
   time_duration: string;
   time_start: string;
+}
+
+export interface Photo {
+  id: number;
+  file_name: string;
+  date: number;
+  angle: string;
+  type: number;
 }

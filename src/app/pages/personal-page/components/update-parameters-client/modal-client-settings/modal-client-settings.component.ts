@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {User} from "../../../../../models/types/user";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
@@ -11,17 +11,13 @@ import {take} from "rxjs";
   templateUrl: './modal-client-settings.component.html',
   styleUrls: ['./modal-client-settings.component.scss']
 })
-export class ModalClientSettingsComponent implements OnInit {
+export class ModalClientSettingsComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: User,
     private graphqlService: GraphqlService,
     private notificationService: NotificationsService,
   ) { }
-
-  ngOnInit(): void {
-    console.log(this.data)
-  }
 
   onChangeActiveClient(event: MatSlideToggleChange): void {
     this.data.is_active = event.checked

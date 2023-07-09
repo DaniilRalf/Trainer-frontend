@@ -1,12 +1,7 @@
 <div class="settings">
 
   <div class="settings-info fnt-400-gilroy">
-    <div class="settings-info-photo">
-      <div class="settings-info-photo-img"></div>
-      <div class="settings-info-photo-indicator"
-           [style]="data.is_active ? {'background-color': '#FF8FCC'} : {'background-color': '#666B7D'}"
-      ></div>
-    </div>
+    <el-avatar-client [active]="data.is_active"></el-avatar-client>
     <div class="settings-info-description">
       <div class="settings-info-description-name fnt-600-gilroyn">{{data.first_name}}&nbsp;{{data.last_name}}</div>
       <div class="settings-info-description-username">{{data.username}}</div>

@@ -1,11 +1,9 @@
 <div class="update-parameters">
 
   <div class="update-parameters-active">
-    <mat-button-toggle-group class="custom-toggle-group" (change)="changeClientGroup($event)">
-      <mat-button-toggle [checked]="true" class="fnt-400-gilroy" value="all">Все</mat-button-toggle>
-      <mat-button-toggle class="fnt-400-gilroy" value="active">Активные</mat-button-toggle>
-      <mat-button-toggle class="fnt-400-gilroy" value="noactive">Неактивные</mat-button-toggle>
-    </mat-button-toggle-group>
+    <el-select-activity-client
+      (changeClientGroupEmitter)="changeClientGroup($event)"
+    ></el-select-activity-client>
   </div>
 
   <p class="fnt-400-gilroy" *ngIf="allClients.length === 0">Таких клиентов пока нет</p>
