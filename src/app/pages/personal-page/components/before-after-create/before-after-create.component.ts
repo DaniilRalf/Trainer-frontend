@@ -6,8 +6,7 @@ import {MatDialog} from "@angular/material/dialog"
 import {ModalBeforeAfterCreateComponent} from "./modal-before-after-create/modal-before-after-create.component"
 import {HttpService} from "../../../../helpers/services/http.service"
 import {environment} from "../../../../../environments/environment"
-import {GeneratorsService} from "../../../../helpers/services/generators.service"
-import {MatButtonToggleChange} from "@angular/material/button-toggle";
+import {MatButtonToggleChange} from "@angular/material/button-toggle"
 
 @Component({
   selector: 'app-before-after-create',
@@ -18,6 +17,8 @@ export class BeforeAfterCreateComponent implements OnInit {
 
   env = environment
 
+  public removeMode = false
+
   public allClients: User[] = []
 
   public isShowClientPhotos = false
@@ -27,7 +28,6 @@ export class BeforeAfterCreateComponent implements OnInit {
   @Input() public user!: BehaviorSubject<User>
 
   constructor(
-    public generatorsService: GeneratorsService,
     private graphqlService: GraphqlService,
     private httpService: HttpService,
     private dialog: MatDialog
@@ -46,6 +46,10 @@ export class BeforeAfterCreateComponent implements OnInit {
       })
   }
 
+  public changeRemoveMode(): void {
+    this.removeMode = !this.removeMode
+  }
+
   public changeClientGroup(event: MatButtonToggleChange): void {
     console.log(event.value)
   }
@@ -56,9 +60,21 @@ export class BeforeAfterCreateComponent implements OnInit {
     this.isShowClientPhotos = true
     this.showClientPhotos = data
   }
+
   public onCloseClientItem(): void {
     this.isShowClientPhotos = false
     this.showClientPhotos = {} as User
+    if (!this.isShowClientPhotos) this.getAllClients()
+  }
+
+  public onAddPhotos(): void {
+    this.dialog.open(ModalBeforeAfterCreateComponent, {
+      maxWidth: '680px',
+      height: '550px',
+      data: {clientId: this.showClientPhotos.id},
+    }).afterClosed().pipe(take(1)).subscribe(() => {
+      this.onCloseClientItem()
+    })
   }
   /** Actives of item client photos panel======================= */
 

@@ -1,1 +1,48 @@
-<p>photos-group works!</p>
+<div class="photos-group">
+
+  <div class="photos-group-header"></div>
+
+  <div class="photos-group-list fnt-400-gilroy">
+
+
+
+    <div [ngClass]="{'photos-group-list-item': true, 'remove-mode': removeMode}"
+         *ngFor="let group of photosGroup | keyvalue">
+
+      <div class="remove-icon" *ngIf="removeMode" (click)="removeGroupPhoto(group.value, group.key)">
+        <mat-icon>delete_forever</mat-icon>
+      </div>
+
+      <div class="blocks">
+        <div class="blocks-item">
+          <p class="fnt-600-gilroy" *ngIf="!group.value['front']">спереди</p>
+          <img *ngIf="group.value['front']" src="{{env.apiUrl + group.value['front']['file_name']}}">
+        </div>
+
+        <div class="blocks-item">
+          <p class="fnt-600-gilroy" *ngIf="!group.value['back']">сзади</p>
+          <img *ngIf="group.value['back']" src="{{env.apiUrl + group.value['back']['file_name']}}">
+        </div>
+
+        <div class="blocks-item">
+          <p class="fnt-600-gilroy" *ngIf="!group.value['side']">сбоку</p>
+          <img *ngIf="group.value['side']" src="{{env.apiUrl + group.value['side']['file_name']}}">
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-add">добавлены:&nbsp;
+          <span>{{(group.value['front']?.date
+            || group.value['back']?.date
+            || group.value['side']?.date) | date: 'dd.MM.YYYY'}}
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>

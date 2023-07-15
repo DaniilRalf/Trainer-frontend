@@ -10,9 +10,9 @@ export class HttpService {
     private http: HttpClient
   ) { }
 
-  getAllPhotoBeforeAfter(data: number): Observable<Object> {
-    return this.http.post(`${environment.apiUrl}api/get_client_photos`, {id: data})
-  }
+  // getAllPhotoBeforeAfter(data: number): Observable<Object> {
+  //   return this.http.post(`${environment.apiUrl}api/get_client_photos`, {id: data})
+  // }
 
   getItemPhotoBeforeAfter(data: number): Observable<Object> {
     return this.http.post(`${environment.apiUrl}api/get_client_item_photos`, {id: data})
@@ -21,5 +21,9 @@ export class HttpService {
   // TODO: types
   createBeforeAfter(data: any) {
     return this.http.post(`${environment.apiUrl}api/set_client_photos`, data)
+  }
+
+  removePhotosGroup(data: number[]) {
+    return this.http.post(`${environment.apiUrl}api/remove_client_photos_group`, data)
   }
 }

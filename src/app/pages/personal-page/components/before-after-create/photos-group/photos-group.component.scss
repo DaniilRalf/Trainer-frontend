@@ -1,0 +1,86 @@
+@import "../../../../../../styles";
+
+.photos-group {
+
+  &-header {}
+
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &-item {
+      position: relative;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+
+      .blocks {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+          width: 180px;
+          height: 240px;
+          overflow: hidden;
+          margin: 5px;
+          border-radius: 7px;
+          background-color: $static-grey-extralight;
+
+          p {
+            margin-top: 100px;
+            text-align: center;
+          }
+          img {
+            height: 240px;
+          }
+        }
+      }
+
+      .footer {
+        margin-top: 7px;
+        margin-left: 10px;
+
+
+        &-add {
+          color: $static-grey-light;
+          span {
+            font-weight: bold;
+            color: $static-grey-middle;
+          }
+        }
+      }
+    }
+  }
+}
+
+//TODO: вынести цвета для удаления в главный фал
+.remove-mode {
+  border: 1px solid #EF466F;
+}
+.remove-icon {
+  display: inline;
+  padding: 12px 24px;
+  position: absolute;
+  border-radius: 200px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+
+  color: $static-white-middle;
+  background-color: #EF466F;
+
+  mat-icon {
+    animation-duration: .2s;
+    animation-name: swing;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes swing {
+  0% {rotate: 0deg;}
+  25% {rotate: -15deg;}
+  50% {rotate: 0deg;}
+  75% {rotate: 15deg;}
+  100% {rotate: 0deg;}
+}

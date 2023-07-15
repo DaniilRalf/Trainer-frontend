@@ -1,42 +1,69 @@
 <div class="modal-before-after-create">
 
-    <p>На каждый день можно добавлять до 3-х фотографий(виды сперези, сзади, сбоку),
-      для этого необходимо соответствующий тип в выпадающей вкладке.</p>
-
-    <div class="body">
-
-      <div class="custom-input">
-        <input #fileInput multiple
-               type="file" [hidden]="true"
-               (change)="setPhoto($event)">
-        <button mat-button color="primary"
-                (click)="fileInput.click()"
-        >{{fileNewPhoto?.name ? fileNewPhoto?.name : 'Добавить фотографию'}}</button>
+<!--  TODO: подумать как переделать все строковые значение на енам-->
+  <div class="custom-input fnt-600-gilroy">
+    <div class="custom-input-block">
+      <input #fileInputFront multiple
+             type="file" [hidden]="true"
+             (change)="setPhoto($event, 'front')"
+      >
+      <div class="custom-input-block-img" (click)="fileInputFront.click()">
+        <mat-icon *ngIf="!dataForSave['front'].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave['front'].imgForTag">добавить фото спереди</p>
+        <img [src]="dataForSave['front'].imgForTag" *ngIf="dataForSave['front'].imgForTag">
       </div>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Выбрать тип фотографии</mat-label>
-        <mat-select [(ngModel)]="angle" required>
-          <mat-option *ngFor="let train of TypePhoto | keyvalue" [value]="train.key">
-            {{train.value}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="!angle">Необходимо выбрать тип тренироки</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="create-client__item" appearance="fill">
-        <mat-label>Дата создания фотографии</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="dateNewPhoto">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
     </div>
-
-
-    <div class="flex-center mt-10">
-      <button mat-raised-button color="primary" (click)="saveNewPhoto()">Сохранить замер</button>
+    <div class="custom-input-block">
+      <input #fileInputBack multiple
+             type="file" [hidden]="true"
+             (change)="setPhoto($event, 'back')"
+      >
+      <div class="custom-input-block-img" (click)="fileInputBack.click()">
+        <mat-icon *ngIf="!dataForSave['back'].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave['back'].imgForTag">добавить фото сзади</p>
+        <img [src]="dataForSave['back'].imgForTag" *ngIf="dataForSave['back'].imgForTag">
+      </div>
     </div>
+    <div class="custom-input-block">
+      <input #fileInputSide multiple
+             type="file" [hidden]="true"
+             (change)="setPhoto($event, 'side')"
+      >
+      <div class="custom-input-block-img" (click)="fileInputSide.click()">
+        <mat-icon *ngIf="!dataForSave['side'].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave['side'].imgForTag">добавить фото сбоку</p>
+        <img [src]="dataForSave['side'].imgForTag" *ngIf="dataForSave['side'].imgForTag">
+      </div>
+    </div>
+  </div>
+
+
+  <hr>
+
+  <div class="description fnt-400-gilroy">
+    На каждый день можно добавлять до 3-х фотографий<br> (вид спереди, сбоку и сзади)
+  </div>
+
+  <div class="date">
+    <div class="date-label fnt-600-gilroy">начало тренировок</div>
+    <mat-form-field class="custom-data-picker with-all" appearance="fill">
+      <input matInput [matDatepicker]="picker"
+             [(ngModel)]="dateNewPhotos"
+             class="fnt-400-gilroy"
+      >
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <div class="button mt-10">
+    <el-button-custom [text]="'Сохранить фото'"
+                      [type]="'stoked'" [color]="'#666B7D'"
+                      [bgColor]="'transparent'"
+                      (click)="saveNewPhoto()"
+    ></el-button-custom>
+  </div>
 
 
 </div>

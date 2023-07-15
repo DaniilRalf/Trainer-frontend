@@ -41,7 +41,8 @@
     }
 
     .content {
-
+      height: calc(100vh - 285px);
+      overflow-y: auto;
     }
 
     .close {

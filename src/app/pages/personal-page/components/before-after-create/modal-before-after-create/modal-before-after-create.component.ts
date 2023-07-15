@@ -3,6 +3,7 @@ import {HttpService} from "../../../../../helpers/services/http.service"
 import {MAT_DIALOG_DATA} from "@angular/material/dialog"
 import {TypePhoto} from "../../../../../models/enums/typePhoto"
 import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-modal-before-after-create',
@@ -11,11 +12,21 @@ import {NotificationsService} from "../../../../../helpers/services/notification
 })
 export class ModalBeforeAfterCreateComponent implements OnInit {
 
-  fileNewPhoto!: any
-  dateNewPhoto!: any
-  angle!: string
+  //TODO: types
+
   TypePhoto = TypePhoto
 
+  // fileNewPhoto!: any
+  // angle!: string
+
+
+  dateNewPhotos!: any
+
+  dataForSave: any = {
+    'side': {imgForTag: null, imgFile: null},
+    'front': {imgForTag: null, imgFile: null},
+    'back': {imgForTag: null, imgFile: null},
+  }
 
   constructor(
     private httpService: HttpService,
@@ -27,31 +38,38 @@ export class ModalBeforeAfterCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public setPhoto(event: any): void {
-    this.fileNewPhoto = event.target.files[0]
+  public setPhoto(event: any, key: 'side' | 'front' | 'back'): void {
+    if (event.target!.files && event.target.files[0]) {
+      this.dataForSave[key].imgForTag = new FileReader()
+      this.dataForSave[key].imgFile = event.target.files[0]
+      this.dataForSave[key].imgForTag.onload = () => {
+        return this.dataForSave[key].imgForTag = this.dataForSave[key].imgForTag.result
+      }
+      this.dataForSave[key].imgForTag.readAsDataURL(this.dataForSave[key].imgFile)
+    }
   }
 
   public saveNewPhoto(): void {
-    if (!this.fileNewPhoto || !this.dateNewPhoto || !this.angle) {
-      this.notificationService.onEventNotification('Необходимы выбрать фото и заполнить все поля')
-    } else {
+      for (const [key, value] of Object.entries(this.dataForSave)) {
+        // @ts-ignore
+        if (value.imgFile) {
+          const dateString = Date.parse(this.dateNewPhotos.toDateString())
+          let newPhotoFormData = new FormData()
+          newPhotoFormData.append('id', this.data.clientId)
+          // @ts-ignore
+          newPhotoFormData.append('img', value.imgFile)
+          newPhotoFormData.append('date', String(dateString))
+          newPhotoFormData.append('angle', key)
 
-      const dateString = Date.parse(this.dateNewPhoto.toDateString())
+          //TODO:  тут сделать оповещения красывые
+          this.httpService.createBeforeAfter(newPhotoFormData)
+            .pipe(take(1))
+            .subscribe(() => {
+              this.notificationService.onEventNotification('Фотография успешно сохранена')
+            })
+        }
+      }
 
-      let newPhotoFormData = new FormData()
-      newPhotoFormData.append('id', this.data.clientId)
-      newPhotoFormData.append('img', this.fileNewPhoto)
-      newPhotoFormData.append('date', String(dateString))
-      newPhotoFormData.append('angle', this.angle)
-
-      //TODO:  тут сделать оповещения красывые
-      this.httpService.createBeforeAfter(newPhotoFormData)
-        .subscribe((data) => {
-          // console.log(data)
-          this.notificationService.onEventNotification('Фотография успешно сохранена')
-        })
-
-    }
   }
 
 }
