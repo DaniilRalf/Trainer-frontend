@@ -13,6 +13,7 @@ export interface User{
   parameters?: Parameters[];
   schedules? : Schedules[];
   photos?: Photo[];
+  feed?: Feed;
 }
 
 export interface Personal {
@@ -44,4 +45,12 @@ export interface Photo {
   date: number;
   angle: string;
   type: number;
+}
+
+export interface Feed {
+  id: number;
+  protein: string;
+  fat: string;
+  carbohydrates: string;
+  recommendation: string;
 }

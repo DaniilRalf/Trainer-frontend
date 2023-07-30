@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import {Apollo, gql, MutationResult} from "apollo-angular"
 import {ApolloQueryResult} from "@apollo/client/core";
 import {Observable} from "rxjs";
-import {User} from "../../models/types/user";
+import {Feed, User} from "../../models/types/user";
 
 
 //TODO: types
@@ -126,8 +126,20 @@ export class GraphqlService {
       variables: { input: data },
     })
   }
+  updateFeedClient(data: {id: number, feed: Feed}): Observable<MutationResult<{updateFeedClient: User[]}>>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updateFeedClient($input: UserInput){
+          updateFeedClient(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
   /** get */
-  getAllClientsAllData(){
+  getAllClientsAllData(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
       query: gql`
           query {
@@ -137,7 +149,6 @@ export class GraphqlService {
               first_name
               last_name
               roleId
-              is_active
               is_active
               personal {
                 id
@@ -158,6 +169,29 @@ export class GraphqlService {
               schedules {
                 date
                 description
+              }
+            }
+          }
+        `
+    })
+  }
+  getAllClientsFeed(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
+    return this.apollo.query({
+      query: gql`
+          query {
+            getAllClients {
+              id
+              username
+              first_name
+              last_name
+              roleId
+              is_active
+              feed {
+                id
+                protein
+                fat
+                carbohydrates
+                recommendation
               }
             }
           }

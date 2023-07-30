@@ -1,0 +1,47 @@
+<div class="settings">
+
+  <div class="settings-info fnt-400-gilroy">
+    <el-avatar-client [active]="data.is_active"></el-avatar-client>
+    <div class="settings-info-description">
+      <div class="settings-info-description-name fnt-600-gilroyn">{{data.first_name}}&nbsp;{{data.last_name}}</div>
+      <div class="settings-info-description-username">{{data.username}}</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="settings-bzhy fnt-400-gilroy">
+    <p class="settings-bzhy-header header-block fnt-600-gilroy">Белки / Жиры / Углеводы</p>
+    <div class="settings-bzhy-active">
+      <mat-form-field class="custom-input" appearance="fill">
+        <input [(ngModel)]="feedInfo.protein" matInput placeholder="белки">
+      </mat-form-field>
+      <mat-form-field class="custom-input" appearance="fill">
+        <input [(ngModel)]="feedInfo.fat" matInput placeholder="жиры">
+      </mat-form-field>
+      <mat-form-field class="custom-input" appearance="fill">
+        <input [(ngModel)]="feedInfo.carbohydrates" matInput placeholder="углеводы">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="settings-recommendations fnt-400-gilroy">
+    <p class="settings-recommendations-header header-block fnt-600-gilroy">Рекомнации по питанию</p>
+    <div class="settings-recommendations-active">
+      <mat-form-field class="textarea-block">
+        <textarea [(ngModel)]="feedInfo.recommendation" matInput></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="settings-activation">
+    <el-button-custom [text]="'Сохранить рекомендации'"
+                      [type]="'stoked'" [color]="'#2B2F3C'"
+                      [bgColor]="'transparent'"
+                      (click)="saveFeedInfo()"
+    ></el-button-custom>
+  </div>
+
+</div>

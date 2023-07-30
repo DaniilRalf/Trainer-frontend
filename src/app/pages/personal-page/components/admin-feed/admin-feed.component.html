@@ -1,6 +1,6 @@
-<div class="update-parameters">
+<div class="admin-feed">
 
-  <div class="update-parameters-active">
+  <div class="admin-feed-active">
     <el-select-activity-client
       (changeClientGroupEmitter)="changeClientGroup($event)"
     ></el-select-activity-client>
@@ -8,7 +8,9 @@
 
   <p class="fnt-400-gilroy" *ngIf="allClients.length === 0">Таких клиентов пока нет</p>
 
-  <div class="update-parameters-table" *ngIf="allClients.length > 0">
+
+
+  <div class="admin-feed-table" *ngIf="allClients.length > 0">
     <table class="custom-table fnt-400-gilroy" mat-table [dataSource]="allClients">
       <ng-container matColumnDef="indicator">
         <th mat-header-cell *matHeaderCellDef></th>
@@ -30,33 +32,35 @@
         <th mat-header-cell *matHeaderCellDef>фамилия</th>
         <td mat-cell *matCellDef="let element">{{element.last_name }}</td>
       </ng-container>
-      <ng-container matColumnDef="parameters">
-        <th mat-header-cell class="txt-align" *matHeaderCellDef>параметры</th>
-        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.parameters, 'parameters')">
-          <div class="icon-active"><mat-icon>bar_chart</mat-icon>
-            {{element.parameters.length > 0 ? (element.parameters[element.parameters.length - 1].weight + '/'
-            + element.parameters[element.parameters.length - 1].shoulder_bust + '/'
-            + element.parameters[element.parameters.length - 1].shoulder_girth + '/'
-            + element.parameters[element.parameters.length - 1].shoulder_hips + '/'
-            + element.parameters[element.parameters.length - 1].shoulder_hip) : '-'}}
+
+      <ng-container matColumnDef="protein">
+        <th mat-header-cell class="txt-align" *matHeaderCellDef>белки</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="icon-active green">{{element.feed?.protein
+            ? (element.feed?.protein + ' гр.')
+            : 'нет данных'}}
           </div>
         </td>
       </ng-container>
-      <ng-container matColumnDef="personal">
-        <th mat-header-cell class="txt-align" *matHeaderCellDef>персональные данные</th>
-        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.personal, 'personal')">
-          <div class="icon-active"><mat-icon>person</mat-icon>{{element.personal.start_train | date: 'dd/MM/YYYY'}}</div>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="schedule">
-        <th mat-header-cell class="txt-align" *matHeaderCellDef>график</th>
-        <td mat-cell *matCellDef="let element" (click)="openModal(element.id, element.schedules, 'schedule')">
-          <div class="icon-active"><mat-icon>schedule</mat-icon>
-            {{element.schedules.length > 0 ? (element.schedules[element.schedules.length - 1].date | date: 'dd/MM/YYYY') : '-'}}
+      <ng-container matColumnDef="fat">
+        <th mat-header-cell class="txt-align" *matHeaderCellDef>жиры</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="icon-active yellow">{{element.feed?.fat
+            ? (element.feed?.fat + ' гр.')
+            : 'нет данных'}}
           </div>
         </td>
       </ng-container>
-      <ng-container matColumnDef="settings">
+      <ng-container matColumnDef="carbohydrates">
+        <th mat-header-cell class="txt-align" *matHeaderCellDef>углеводы</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="icon-active blue">{{element.feed?.carbohydrates
+            ? (element.feed?.carbohydrates + ' гр.')
+            : 'нет данных'}}
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="recommendation">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element" (click)="openSettingsModal(element)">
           <mat-icon>settings</mat-icon>
@@ -68,5 +72,7 @@
     <!--//TODO: потом добавить пагинатор-->
     <!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
   </div>
+
+
 
 </div>

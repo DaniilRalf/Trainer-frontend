@@ -30,11 +30,10 @@ export class UpdateParametersClientComponent implements OnInit {
     this.getAllClients()
   }
 
-  //TODO: поправить типизацию data
   private getAllClients() {
     this.graphqlService.getAllClientsAllData()
       .pipe(take(1))
-      .subscribe(({data}: any) => {
+      .subscribe(({data}) => {
         this.allClients = data.getAllClients
       })
   }

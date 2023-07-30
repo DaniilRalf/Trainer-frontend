@@ -56,6 +56,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { SelectActivityClientComponent } from './UI/select-activity-client/select-activity-client.component';
 import { AvatarClientComponent } from './UI/avatar-client/avatar-client.component';
 import { PhotosGroupComponent } from './components/before-after-create/photos-group/photos-group.component';
+import { AdminFeedComponent } from './components/admin-feed/admin-feed.component';
+import { AdminFeedSettingsComponent } from './components/admin-feed/admin-feed-settings/admin-feed-settings.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { PhotosGroupComponent } from './components/before-after-create/photos-gr
     SelectActivityClientComponent,
     AvatarClientComponent,
     PhotosGroupComponent,
+    AdminFeedComponent,
+    AdminFeedSettingsComponent,
   ],
     imports: [
         CommonModule,

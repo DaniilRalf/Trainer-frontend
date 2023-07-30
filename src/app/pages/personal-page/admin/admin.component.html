@@ -8,6 +8,10 @@
                                 [user]="user"
   ></app-update-parameters-client>
 
+  <comp-admin-feed *ngIf="storeService.tabsOnPersonalPage === 3"
+                   [user]="user"
+  ></comp-admin-feed>
+
   <app-before-after-create *ngIf="storeService.tabsOnPersonalPage === 4"
                            [user]="user"
   ></app-before-after-create>

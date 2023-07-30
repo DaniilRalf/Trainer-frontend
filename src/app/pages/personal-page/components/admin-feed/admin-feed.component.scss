@@ -1,0 +1,54 @@
+@import "../../../../../styles";
+
+.admin-feed {
+  width: 100%;
+
+  &-active {
+    margin-bottom: 40px;
+  }
+
+  &-table{
+    width: 100%;
+    min-width: 810px;
+
+    .icon-active {
+      display: flex;
+      align-items: center;
+      margin: 0 10px 0 10px;
+      border-radius: 15px;
+      padding: 5px;
+      color: $static-grey-middle;
+
+      mat-icon {
+        margin-right: 5px;
+      }
+    }
+    .green {background-color: rgba(0, 128, 0, 0.1)}
+    .yellow {background-color: rgba(255, 243, 0, 0.1)}
+    .blue {background-color: rgba(0, 196, 255, 0.1)
+    }
+  }
+}
+
+mat-icon {
+  color: $static-grey-middle;
+}
+.mat-column-first_name,
+.mat-column-last_name,
+.mat-column-username,
+.mat-column-parameters,
+.mat-column-personal,
+.mat-column-schedule {
+  width: 16% !important;
+}
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+  display: inline-block;
+  background-color: #2B2F3C;
+}
+.indicator-on {
+  background-color: $static-pink-middle;
+}

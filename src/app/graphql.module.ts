@@ -20,7 +20,9 @@ const uri = `${environment.apiUrl}graphql`; // <-- add the URL of the GraphQL se
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({uri}),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      addTypename: false
+    }),
     defaultOptions: defaultOptions,
   };
 }
