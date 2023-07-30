@@ -24,15 +24,31 @@
 
 .with-330 {
   width: 330px;
+  @media (max-width: 1000px) {
+    width: calc(100vw - 170px);
+  }
 }
 .with-440 {
   width: 440px;
+  @media (max-width: 1000px) {
+    width: calc(100vw - 170px);
+  }
 }
 .with-790 {
   width: 790px;
+  @media (max-width: 1000px) {
+    width: calc(100vw - 170px);
+  }
 }
 .df-row {
   display: flex;
   flex-direction: row;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 }
-
+.custom-toggle-group {
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
+}

@@ -30,7 +30,7 @@ export class AdminFeedSettingsComponent implements OnInit {
       feed: this.feedInfo
     }).pipe(take(1))
       .subscribe(() => {
-        this.notificationService.onEventNotification('Активность клиента изменена')
+        this.notificationService.onEventNotification('Информация по питанию изменена')
       })
   }
 
