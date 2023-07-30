@@ -12,6 +12,8 @@ export class StoreService {
 
   private _tabsOnPersonalPage: number = 0
 
+  private _sidenavStatus!: boolean
+
   constructor() {
   }
 
@@ -26,6 +28,26 @@ export class StoreService {
       this._tabsOnPersonalPage = Number(tab)
     }
     return this._tabsOnPersonalPage
+  }
+
+  public get sidenavStatus(): boolean {
+    const sidenavStatus = localStorage.getItem('sidenav_status')
+    console.log(sidenavStatus)
+    if (sidenavStatus === 'true') {
+      this._sidenavStatus = true
+    } else if (sidenavStatus === 'false') {
+      this._sidenavStatus = false
+    }
+    return this._sidenavStatus
+  }
+
+  public set sidenavStatus(event: boolean) {
+    if (event) {
+      localStorage.setItem('sidenav_status', 'true')
+    } else {
+      localStorage.setItem('sidenav_status', 'false')
+    }
+    this._sidenavStatus = event
   }
 
   saveUser(data: User): void {

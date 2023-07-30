@@ -4,11 +4,11 @@ import {RoleEnum} from "../../../../models/enums/role-enum";
 import {StoreService} from "../../../../helpers/services/store.service";
 import {Router} from "@angular/router";
 import {UntilDestroy} from "@ngneat/until-destroy";
-import {interval, Subscription} from "rxjs";
+import {interval, skip, Subscription} from "rxjs";
 import moment from "moment";
 import {ApplicationService} from "../../../../helpers/services/application.service";
 
-@UntilDestroy({ checkProperties: true })
+@UntilDestroy({checkProperties: true})
 @Component({
   selector: 'comp-sidenav',
   templateUrl: './sidenav.component.html',
@@ -20,11 +20,11 @@ export class SidenavComponent implements OnInit {
 
   public time!: string
 
-  public windowDesktop = true
+  public windowDesktop!: boolean
 
   private subscription: Subscription = new Subscription()
 
-  public adminMenuList: {label: string, icon: string, index: number}[] = [
+  public adminMenuList: { label: string, icon: string, index: number }[] = [
     {label: 'Мой график', icon: 'calendar_today', index: 1},
     {label: 'Детализация по клиентам', icon: 'assessment', index: 2},
     {label: 'Питание клиентов', icon: 'fastfood', index: 3},
@@ -38,20 +38,31 @@ export class SidenavComponent implements OnInit {
     public applicationService: ApplicationService,
     public storeService: StoreService,
     private router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    this.windowDesktop = this.storeService.sidenavStatus
+
     if (!this.storeService.tabsOnPersonalPage) {
-       this.storeService.tabsOnPersonalPage = 1
+      this.storeService.tabsOnPersonalPage = 1
     }
 
     this.subscription = interval(1000)
       .subscribe(() => this.time = moment().format('HH:mm'))
 
     this.subscription.add(
-      this.applicationService.getWidthApp().subscribe((data: number) => {
-        data > 1000 ? this.windowDesktop = true : this.windowDesktop = false
-      })
+      this.applicationService.getWidthApp()
+        .pipe(skip(1))
+        .subscribe((data: number) => {
+          if (data > 1000) {
+            this.windowDesktop = true
+            this.storeService.sidenavStatus = true
+          } else {
+            this.windowDesktop = false
+            this.storeService.sidenavStatus = false
+          }
+        })
     )
   }
 
@@ -61,6 +72,7 @@ export class SidenavComponent implements OnInit {
 
   public changeWindowSize(): void {
     this.windowDesktop = !this.windowDesktop
+    this.storeService.sidenavStatus = this.windowDesktop
   }
 
   public onLogout(): void {
