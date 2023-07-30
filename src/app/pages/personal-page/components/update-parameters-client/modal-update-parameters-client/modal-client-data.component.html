@@ -28,7 +28,9 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <div class="flex-center mt-10">
-      <button mat-raised-button color="primary">Сохранить замер</button>
+      <el-button-custom [text]="'Сохранить замер'"
+                        [type]="'flat'"
+      ></el-button-custom>
     </div>
   </form>
 </div>
@@ -82,27 +84,33 @@
             </div>
             <div class="update-parameters-form-btn">
               <div class="flex-center mt-10">
-                <button (click)="onRemoveParameter(item.id)"
-                        type="button" mat-raised-button
-                        color="warn">Удалить замер</button>
+                <el-button-custom [text]="'Удалить замер'"
+                                  [type]="'stoked'" [color]="'white'"
+                                  [bgColor]="'#F43336'"
+                                  (click)="onRemoveParameter(item.id)"
+                ></el-button-custom>
               </div>
               <div class="flex-center mt-10">
-                <button (click)="onUpdateParameter({
-                        id: item.id,
-                        shoulder_bust: shoulder_bust.value,
-                        shoulder_girth: shoulder_girth.value,
-                        shoulder_hip: shoulder_hip.value,
-                        shoulder_hips: shoulder_hips.value,
-                        weight: weight.value})" type="button"
-                        color="primary" mat-raised-button
-                >Сохранить изменения</button>
+                <el-button-custom [text]="'Сохранить изменения'"
+                                  [type]="'flat'"
+                                  (click)="onUpdateParameter({
+                                    id: item.id,
+                                    shoulder_bust: shoulder_bust.value,
+                                    shoulder_girth: shoulder_girth.value,
+                                    shoulder_hip: shoulder_hip.value,
+                                    shoulder_hips: shoulder_hips.value,
+                                    weight: weight.value})"
+                ></el-button-custom>
               </div>
             </div>
           </form>
         </mat-expansion-panel>
     </mat-accordion>
     <div class="flex-center mt-10">
-        <button (click)="changeTag('parameters_add')" mat-raised-button color="primary">Добавить замер</button>
+      <el-button-custom [text]="'Добавить замер'"
+                        [type]="'flat'"
+                        (click)="changeTag('parameters_add')"
+      ></el-button-custom>
     </div>
 </div>
 
@@ -146,14 +154,14 @@
       </mat-form-field>
     </div>
     <div class="flex-center mt-10">
-      <button type="button" mat-raised-button
-              color="primary"
-              (click)="onUpdatePersonal({
-                        birth_day: birth_day.value || data.eventData.birth_day,
-                        start_train: start_train.value || data.eventData.start_train,
-                        gender: gender.value,
-                        height: height.value})"
-      >Сохранить изменения</button>
+      <el-button-custom [text]="'Сохранить изменения'"
+                        [type]="'flat'"
+                        (click)="onUpdatePersonal({
+                          birth_day: birth_day.value || data.eventData.birth_day,
+                          start_train: start_train.value || data.eventData.start_train,
+                          gender: gender.value,
+                          height: height.value})"
+      ></el-button-custom>
     </div>
   </form>
 </div>
@@ -190,9 +198,10 @@
       </mat-form-field>
     </div>
     <div class="flex-center mt-10">
-      <button mat-raised-button color="primary"
-              (click)="createTrainingDays()"
-      >Сохранить тренировочные дни</button>
+      <el-button-custom [text]="'Сохранить тренировочные дни'"
+                        [type]="'flat'"
+                        (click)="createTrainingDays()"
+      ></el-button-custom>
     </div>
   </div>
 </div>
@@ -213,6 +222,9 @@
   </mat-accordion>
 
   <div class="flex-center mt-10">
-    <button (click)="changeTag('schedule_add')" mat-raised-button color="primary">Добавить тренировочные дни</button>
+    <el-button-custom [text]="'Добавить тренировочные дни'"
+                      [type]="'flat'"
+                      (click)="changeTag('schedule_add')"
+    ></el-button-custom>
   </div>
 </div>

@@ -6,6 +6,8 @@ export class GeneratorsService {
   constructor() {
   }
 
+  //TODO: delete
+
   generateNumberType(data: string | number | unknown): number {
     return Number(data)
   }

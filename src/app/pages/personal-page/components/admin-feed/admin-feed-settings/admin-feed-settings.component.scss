@@ -5,6 +5,9 @@
   &-info {
     display: flex;
     align-items: center;
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
 
     &-description {
       margin-left: 20px;

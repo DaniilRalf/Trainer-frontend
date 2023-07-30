@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 
@@ -8,11 +8,8 @@ export class HttpService {
 
   constructor(
     private http: HttpClient
-  ) { }
-
-  // getAllPhotoBeforeAfter(data: number): Observable<Object> {
-  //   return this.http.post(`${environment.apiUrl}api/get_client_photos`, {id: data})
-  // }
+  ) {
+  }
 
   getItemPhotoBeforeAfter(data: number): Observable<Object> {
     return this.http.post(`${environment.apiUrl}api/get_client_item_photos`, {id: data})

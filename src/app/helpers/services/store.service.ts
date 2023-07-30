@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from "../../models/types/user";
 import {BehaviorSubject} from "rxjs"
 
@@ -12,7 +12,8 @@ export class StoreService {
 
   private _tabsOnPersonalPage: number = 0
 
-  constructor() { }
+  constructor() {
+  }
 
   public set tabsOnPersonalPage(event: number) {
     localStorage.setItem('tab_page', String(event))
@@ -34,7 +35,7 @@ export class StoreService {
   }
 
   getUser(): User {
-    const userFromLocalStorage: User = JSON.parse(localStorage.getItem('user')  || '{}')
+    const userFromLocalStorage: User = JSON.parse(localStorage.getItem('user') || '{}')
     this.USER.id = userFromLocalStorage.id
     this.USER.roleId = userFromLocalStorage.roleId
     this.USER.token = userFromLocalStorage.token
