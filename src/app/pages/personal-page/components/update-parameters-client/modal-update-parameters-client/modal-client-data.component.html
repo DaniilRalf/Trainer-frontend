@@ -1,4 +1,3 @@
-
 <div class="create-parameters" *ngIf="data.tag === 'parameters_add'">
   <form class="create-parameters-form" [formGroup]="createPersonalForm" (ngSubmit)="onCreateParameter()">
     <mat-form-field class="item" appearance="fill">
@@ -36,82 +35,82 @@
 </div>
 
 <div class="update-parameters" *ngIf="data.tag === 'parameters'">
-    <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of data.eventData">
-          <mat-expansion-panel-header>
-            <mat-panel-title>{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
-          </mat-expansion-panel-header>
-          <form class="update-parameters-form">
-            <div class="item">
-              <p class="item-name">Обхват груди (см.)</p>
-              <mat-form-field class="item-value" appearance="fill">
-                <input #shoulder_bust
-                       [value]="item.shoulder_bust"
-                       matInput numbersOnly>
-              </mat-form-field>
-            </div>
-            <div class="item">
-              <p class="item-name">Обхват плеч (см.)</p>
-              <mat-form-field class="item-value" appearance="fill">
-                <input #shoulder_girth
-                       [value]="item.shoulder_girth"
-                       matInput numbersOnly>
-              </mat-form-field>
-            </div>
-            <div class="item">
-              <p class="item-name">Обхват берда (см.)</p>
-              <mat-form-field class="item-value" appearance="fill">
-                <input #shoulder_hip
-                       [value]="item.shoulder_hip"
-                       matInput numbersOnly>
-              </mat-form-field>
-            </div>
-            <div class="item">
-              <p class="item-name">Обхват бедер (см.)</p>
-              <mat-form-field class="item-value" appearance="fill">
-                <input #shoulder_hips
-                       [value]="item.shoulder_hips"
-                       matInput numbersOnly>
-              </mat-form-field>
-            </div>
-            <div class="item">
-              <p class="item-name">Вес (кг.)</p>
-              <mat-form-field class="item-value" appearance="fill">
-                <input #weight
-                       [value]="item.weight"
-                       matInput>
-              </mat-form-field>
-            </div>
-            <div class="update-parameters-form-btn">
-              <div class="flex-center mt-10">
-                <el-button-custom [text]="'Удалить замер'"
-                                  [type]="'stoked'" [color]="'white'"
-                                  [bgColor]="'#F43336'"
-                                  (click)="onRemoveParameter(item.id)"
-                ></el-button-custom>
-              </div>
-              <div class="flex-center mt-10">
-                <el-button-custom [text]="'Сохранить изменения'"
-                                  [type]="'flat'"
-                                  (click)="onUpdateParameter({
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of data.eventData">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <form class="update-parameters-form">
+        <div class="item">
+          <p class="item-name">Обхват груди (см.)</p>
+          <mat-form-field class="item-value" appearance="fill">
+            <input #shoulder_bust
+                   [value]="item.shoulder_bust"
+                   matInput numbersOnly>
+          </mat-form-field>
+        </div>
+        <div class="item">
+          <p class="item-name">Обхват плеч (см.)</p>
+          <mat-form-field class="item-value" appearance="fill">
+            <input #shoulder_girth
+                   [value]="item.shoulder_girth"
+                   matInput numbersOnly>
+          </mat-form-field>
+        </div>
+        <div class="item">
+          <p class="item-name">Обхват берда (см.)</p>
+          <mat-form-field class="item-value" appearance="fill">
+            <input #shoulder_hip
+                   [value]="item.shoulder_hip"
+                   matInput numbersOnly>
+          </mat-form-field>
+        </div>
+        <div class="item">
+          <p class="item-name">Обхват бедер (см.)</p>
+          <mat-form-field class="item-value" appearance="fill">
+            <input #shoulder_hips
+                   [value]="item.shoulder_hips"
+                   matInput numbersOnly>
+          </mat-form-field>
+        </div>
+        <div class="item">
+          <p class="item-name">Вес (кг.)</p>
+          <mat-form-field class="item-value" appearance="fill">
+            <input #weight
+                   [value]="item.weight"
+                   matInput>
+          </mat-form-field>
+        </div>
+        <div class="update-parameters-form-btn">
+          <div class="flex-center mt-10">
+            <el-button-custom [text]="'Удалить замер'"
+                              [type]="'stoked'" [color]="'white'"
+                              [bgColor]="'#F43336'"
+                              (click)="onRemoveParameter(item.id)"
+            ></el-button-custom>
+          </div>
+          <div class="flex-center mt-10">
+            <el-button-custom [text]="'Сохранить изменения'"
+                              [type]="'flat'"
+                              (click)="onUpdateParameter({
                                     id: item.id,
                                     shoulder_bust: shoulder_bust.value,
                                     shoulder_girth: shoulder_girth.value,
                                     shoulder_hip: shoulder_hip.value,
                                     shoulder_hips: shoulder_hips.value,
                                     weight: weight.value})"
-                ></el-button-custom>
-              </div>
-            </div>
-          </form>
-        </mat-expansion-panel>
-    </mat-accordion>
-    <div class="flex-center mt-10">
-      <el-button-custom [text]="'Добавить замер'"
-                        [type]="'flat'"
-                        (click)="changeTag('parameters_add')"
-      ></el-button-custom>
-    </div>
+            ></el-button-custom>
+          </div>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="flex-center mt-10">
+    <el-button-custom [text]="'Добавить замер'"
+                      [type]="'flat'"
+                      (click)="changeTag('parameters_add')"
+    ></el-button-custom>
+  </div>
 </div>
 
 <div class="update-personal" *ngIf="data.tag === 'personal'">
@@ -182,19 +181,19 @@
             {{train.value}}
           </mat-option>
         </mat-select>
-        <mat-hint align="start"><strong>Тип тренировки</strong> </mat-hint>
+        <mat-hint align="start"><strong>Тип тренировки</strong></mat-hint>
       </mat-form-field>
       <mat-form-field class="item-select" appearance="fill">
         <input required [(ngModel)]="daySelectedDetails[getToString(item.key)].time_start"
-               matInput type="time" >
-        <mat-hint align="start"><strong>Начало</strong> </mat-hint>
+               matInput type="time">
+        <mat-hint align="start"><strong>Начало</strong></mat-hint>
       </mat-form-field>
       <mat-form-field class="item-select" appearance="fill">
         <mat-select [(ngModel)]="daySelectedDetails[getToString(item.key)].time_duration" required>
           <mat-option [value]="'1:00'">1:00</mat-option>
           <mat-option [value]="'1:30'">1:30</mat-option>
         </mat-select>
-        <mat-hint align="start"><strong>Длительность</strong> </mat-hint>
+        <mat-hint align="start"><strong>Длительность</strong></mat-hint>
       </mat-form-field>
     </div>
     <div class="flex-center mt-10">

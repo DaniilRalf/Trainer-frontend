@@ -31,6 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
         return res
       }),
+      /** отлавливаем кастомные ошибки*/
       catchError((err: HttpErrorResponse, caught): Observable<any> => {
         switch (err.status) {
           case 403:

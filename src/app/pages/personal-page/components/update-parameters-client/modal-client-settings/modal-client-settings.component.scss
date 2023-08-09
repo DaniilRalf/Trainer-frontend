@@ -15,10 +15,11 @@
 
       &-name {
         font-size: 28px;
+        color: $static-grey-middle;
       }
       &-username {
         margin-top: 10px;
-        color: $static-grey-middle;
+        color: $static-grey-light;
       }
     }
   }

@@ -1,4 +1,4 @@
-@import '../../../../../../assets/scss/index.scss';
+@import "../../../../../../styles";
 
 .create-parameters {
 
@@ -17,8 +17,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @media (max-width: 550px) {
+        flex-direction: column;
+      }
 
-      &-name {}
+      &-name {
+        @media (max-width: 550px) {
+          font-size: 12px;
+        }
+      }
       &-value {
         width: 100px;
 
@@ -42,6 +49,9 @@
     &-btn {
       display: flex;
       justify-content: space-between;
+      @media (max-width: 550px) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -55,6 +65,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @media (max-width: 550px) {
+        flex-direction: column;
+      }
 
       &-name {}
       &-value {}
@@ -141,6 +154,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 0 15px 0;
+      @media (max-width: 550px) {
+        flex-direction: column;
+      }
     }
     .item-select {
       width: 120px!important;
