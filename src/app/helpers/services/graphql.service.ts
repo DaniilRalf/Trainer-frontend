@@ -55,6 +55,8 @@ export class GraphqlService {
             schedules {
               date
               description
+              time_start
+              time_duration
             }
           }
         }

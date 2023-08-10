@@ -32,6 +32,13 @@ export class SidenavComponent implements OnInit {
     {label: 'Создать клиента', icon: 'person_add', index: 5},
   ]
 
+  public clientOfflineMenuList: { label: string, icon: string, index: number }[] = [
+    {label: 'Персональная информация', icon: 'calendar_today', index: 1},
+    {label: 'График тренировок', icon: 'calendar_today', index: 2},
+    {label: 'Мои параметры', icon: 'calendar_today', index: 3},
+    {label: 'До/Псоле', icon: 'calendar_today', index: 4},
+  ]
+
   @Input() user!: User
 
   constructor(

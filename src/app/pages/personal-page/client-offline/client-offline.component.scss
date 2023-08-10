@@ -1,15 +1,5 @@
-@import "../../../../assets/scss/index";
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+@import "../../../../styles";
+
+.client-offline {
+
 }
-
-.client-online{
-  width: 100%;
-
-  &-page {
-    margin: 20px;
-  }
-}
-

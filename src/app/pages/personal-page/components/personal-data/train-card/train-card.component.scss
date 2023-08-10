@@ -1,0 +1,75 @@
+@import "../../../../../../styles";
+
+.train-card {
+  margin-bottom: 20px;
+
+  &-button {
+    width: 270px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    @media (max-width: 500px) {
+      width: 200px;
+      height: 300px;
+    }
+
+    .header {
+      font-size: 24px;
+      line-height: 130%;
+      color: $static-grey-middle;
+    }
+  }
+
+  &-info {
+    width: 270px;
+    height: 370px;
+    background-color: $static-grey-extralight;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+      width: 200px;
+      height: 300px;
+    }
+
+    &-date {
+      .date {
+        font-size: 16px;
+        line-height: 20px;
+        color: $static-grey-middle;
+      }
+      .day {
+        font-size: 16px;
+        line-height: 20px;
+        color: $static-grey-light;
+      }
+    }
+    &-icon {
+      margin: auto;
+      padding: 35px 38px;
+      background-color: $static-pink-light;
+      border-radius: 45px;
+      img {
+        transform: scale(2);
+      }
+    }
+    &-description {
+      .train-name {
+        font-size: 22px;
+        line-height: 32px;
+        margin-bottom: 15px;
+        color: $static-grey-middle;
+      }
+      .time {
+        font-size: 14px;
+        line-height: 24px;
+        color: $static-grey-light;
+      }
+    }
+  }
+
+}

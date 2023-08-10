@@ -1,0 +1,46 @@
+<div class="train-card">
+
+
+  <div class="train-card-button" *ngIf="type === 'button'">
+    <p class="header fnt-400-gilroy">Ближайщие тренировки</p>
+    <el-button-custom [text]="'Посмотреть все тренировки'"
+                      [type]="'stoked'" [color]="'#666B7D'"
+                      [bgColor]="'transparent'"
+    ></el-button-custom>
+  </div>
+
+
+  <div class="train-card-info fnt-600-gilroy" *ngIf="type === 'info'">
+    <div class="train-card-info-date">
+      <p class="date">{{itemTrain?.date | date:'dd-MM'}}</p>
+      <p class="day">{{itemTrain?.keep === 1
+        ? 'Завтра'
+        : ((itemTrain?.keep === 2 || itemTrain?.keep === 3 || itemTrain?.keep === 4)
+          ? 'Через ' +  itemTrain?.keep + ' дня'
+          : 'Через ' +  itemTrain?.keep + ' дней')}}
+      </p>
+    </div>
+    <div class="train-card-info-icon">
+      <img src="../../../../../assets/img/personal/admin/leg.svg"
+           *ngIf="itemTrain?.description === 'leg'
+                  || itemTrain?.description === 'lowerBody'
+                  || itemTrain?.description === 'buttocks'">
+      <img src="../../../../../assets/img/personal/admin/hand.svg"
+           *ngIf="itemTrain?.description === 'hand'
+                  || itemTrain?.description === 'shoulder'">
+      <img src="../../../../../assets/img/personal/admin/body.svg"
+           *ngIf="itemTrain?.description === 'fullBody'
+                  || itemTrain?.description === 'upBody'
+                  || itemTrain?.description === 'breast'
+                  || itemTrain?.description === 'back'">
+    </div>
+    <div class="train-card-info-description">
+      <div class="train-name" *ngIf="itemTrain && itemTrain?.description">
+        {{generateCardName(itemTrain.description || 'fullBody')}}
+      </div>
+      <div class="time">{{itemTrain?.time_start}}-{{itemTrain?.time_end}}</div>
+    </div>
+  </div>
+
+
+</div>

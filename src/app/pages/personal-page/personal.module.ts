@@ -57,6 +57,7 @@ import {AdminFeedComponent} from './components/admin-feed/admin-feed.component';
 import {AdminFeedSettingsComponent} from './components/admin-feed/admin-feed-settings/admin-feed-settings.component';
 import {ClientOfflineComponent} from "./client-offline/client-offline.component";
 import {ClientOnlineComponent} from "./client-online/client-online.component";
+import { TrainCardComponent } from './components/personal-data/train-card/train-card.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import {ClientOnlineComponent} from "./client-online/client-online.component";
     PhotosGroupComponent,
     AdminFeedComponent,
     AdminFeedSettingsComponent,
+    TrainCardComponent,
   ],
   imports: [
     CommonModule,

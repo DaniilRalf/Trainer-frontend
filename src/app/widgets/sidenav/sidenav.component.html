@@ -10,13 +10,26 @@
   </div>
 
   <div class="sidenav-content">
-<!--    ADMIN============================================================-->
-    <ng-container *ngFor="let item of adminMenuList">
-      <p [ngClass]="{'active': storeService.tabsOnPersonalPage === item.index, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
-         *ngIf="user.roleId === RoleEnum.admin"
-         (click)="setTabsOnPage(item.index)"
-      ><span *ngIf="windowDesktop">{{item.label}}</span>
-        <mat-icon *ngIf="!windowDesktop">{{item.icon}}</mat-icon></p>
+<!--ADMIN============================================================-->
+    <ng-container *ngIf="user.roleId === RoleEnum.admin">
+      <ng-container *ngFor="let item of adminMenuList">
+        <p [ngClass]="{'active': storeService.tabsOnPersonalPage === item.index, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+           *ngIf="user.roleId === RoleEnum.admin"
+           (click)="setTabsOnPage(item.index)"
+        ><span *ngIf="windowDesktop">{{item.label}}</span>
+          <mat-icon *ngIf="!windowDesktop">{{item.icon}}</mat-icon></p>
+      </ng-container>
+    </ng-container>
+
+<!--CLIENT-OFFLINE===================================================-->
+    <ng-container *ngIf="user.roleId === RoleEnum.user">
+      <ng-container *ngFor="let item of clientOfflineMenuList">
+        <p [ngClass]="{'active': storeService.tabsOnPersonalPage === item.index, 'sidenav-content-item': true, 'fnt-400-gilroy': true}"
+           *ngIf="user.roleId === RoleEnum.user"
+           (click)="setTabsOnPage(item.index)"
+        ><span *ngIf="windowDesktop">{{item.label}}</span>
+          <mat-icon *ngIf="!windowDesktop">{{item.icon}}</mat-icon></p>
+      </ng-container>
     </ng-container>
 
   </div>

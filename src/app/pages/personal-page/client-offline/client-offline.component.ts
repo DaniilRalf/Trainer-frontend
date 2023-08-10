@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {User} from "../../../models/types/user"
 import {StoreService} from "../../../helpers/services/store.service"
-import {BehaviorSubject} from "rxjs"
 
 @Component({
   selector: 'app-client-online',
@@ -10,17 +9,18 @@ import {BehaviorSubject} from "rxjs"
 })
 export class ClientOfflineComponent implements OnInit {
 
-  user!: User;
+  user!: User
 
   constructor(
     public storeService: StoreService,
-  ) { }
-
-  ngOnInit(): void {
-    this.getUserFromStore();
+  ) {
   }
 
-  getUserFromStore(){
+  ngOnInit(): void {
+    this.getUserFromStore()
+  }
+
+  private getUserFromStore(): void {
     this.user = this.storeService.USER
   }
 

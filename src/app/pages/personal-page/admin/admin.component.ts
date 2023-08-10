@@ -10,14 +10,14 @@ import {User} from "../../../models/types/user"
 })
 export class AdminComponent implements OnInit {
 
-  user = new BehaviorSubject<User>({} as User);
+  user = new BehaviorSubject<User>({} as User)
 
   constructor(
     public storeService: StoreService,
   ) { }
 
   ngOnInit(): void {
-    this.getUserFromStore();
+    this.getUserFromStore()
   }
 
   private getUserFromStore(): void{
