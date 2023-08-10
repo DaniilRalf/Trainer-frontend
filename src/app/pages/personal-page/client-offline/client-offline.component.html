@@ -1,1 +1,37 @@
-<p>client-offline works!</p>
+<div class="client-online container">
+  <mat-tab-group [(selectedIndex)]="storeService.tabsOnPersonalPage">
+
+    <mat-tab label="Персональная информция">
+      <div class="client-online-page">
+        <app-personal-data *ngIf="storeService.tabsOnPersonalPage === 0"
+                           [user]="user">
+        </app-personal-data>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="График тренировок">
+      <div class="client-online-page">
+        <app-training-schedule *ngIf="storeService.tabsOnPersonalPage === 1 && user.schedules"
+                               [user]="user">
+        </app-training-schedule>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Мои параметры">
+      <div class="client-online-page">
+        <app-my-parameters *ngIf="storeService.tabsOnPersonalPage === 2 && user.parameters"
+                           [user]="user">
+        </app-my-parameters>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="До/После">
+      <div class="client-online-page">
+        <app-before-after *ngIf="storeService.tabsOnPersonalPage === 3"
+                          [user]="user">
+        </app-before-after>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

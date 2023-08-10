@@ -11,8 +11,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms"
 import {PersonalComponent} from './personal.component'
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatButtonToggleModule} from "@angular/material/button-toggle"
-import {ClientOnlineComponent} from './client-online/client-online.component'
-import {ClientOfflineComponent} from './client-offline/client-offline.component'
 import {AdminComponent} from './admin/admin.component'
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner"
 import {PersonalDataComponent} from './components/personal-data/personal-data.component'
@@ -50,20 +48,21 @@ import {NgCircleProgressModule} from "ng-circle-progress"
 import {NgChartsModule} from "ng2-charts"
 import {HTTP_INTERCEPTORS} from "@angular/common/http"
 import {AuthInterceptor} from "../../helpers/interceptors/auth.interceptor";
-import { SidenavComponent } from './UI/sidenav/sidenav.component';
-import { ModalClientSettingsComponent } from './components/update-parameters-client/modal-client-settings/modal-client-settings.component'
+import {
+  ModalClientSettingsComponent
+} from './components/update-parameters-client/modal-client-settings/modal-client-settings.component'
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import { SelectActivityClientComponent } from './UI/select-activity-client/select-activity-client.component';
-import { AvatarClientComponent } from './UI/avatar-client/avatar-client.component';
-import { PhotosGroupComponent } from './components/before-after-create/photos-group/photos-group.component';
-import { AdminFeedComponent } from './components/admin-feed/admin-feed.component';
-import { AdminFeedSettingsComponent } from './components/admin-feed/admin-feed-settings/admin-feed-settings.component';
+import {PhotosGroupComponent} from './components/before-after-create/photos-group/photos-group.component';
+import {AdminFeedComponent} from './components/admin-feed/admin-feed.component';
+import {AdminFeedSettingsComponent} from './components/admin-feed/admin-feed-settings/admin-feed-settings.component';
+import {ClientOfflineComponent} from "./client-offline/client-offline.component";
+import {ClientOnlineComponent} from "./client-online/client-online.component";
 
 @NgModule({
   declarations: [
     PersonalComponent,
-    ClientOnlineComponent,
     ClientOfflineComponent,
+    ClientOnlineComponent,
     AdminComponent,
     PersonalDataComponent,
     ClientScheduleComponent,
@@ -76,44 +75,41 @@ import { AdminFeedSettingsComponent } from './components/admin-feed/admin-feed-s
     ModalBeforeAfterCreateComponent,
     AdminScheduleComponent,
     ModalAdminScheduleComponent,
-    SidenavComponent,
     ModalClientSettingsComponent,
-    SelectActivityClientComponent,
-    AvatarClientComponent,
     PhotosGroupComponent,
     AdminFeedComponent,
     AdminFeedSettingsComponent,
   ],
-    imports: [
-        CommonModule,
-        PersonalRoutingModule,
-        WidgetsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatSidenavModule,
-        MatButtonToggleModule,
-        MatProgressSpinnerModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatCardModule,
-        MatMenuModule,
-        FormsModule,
-        MatChipsModule,
-        DirectivesModule,
-        MatTabsModule,
-        MatTooltipModule,
-        NgCircleProgressModule,
-        NgChartsModule,
-        MatSlideToggleModule
-    ],
+  imports: [
+    CommonModule,
+    PersonalRoutingModule,
+    WidgetsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatMenuModule,
+    FormsModule,
+    MatChipsModule,
+    DirectivesModule,
+    MatTabsModule,
+    MatTooltipModule,
+    NgCircleProgressModule,
+    NgChartsModule,
+    MatSlideToggleModule
+  ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],

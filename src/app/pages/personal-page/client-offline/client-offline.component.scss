@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/index";
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.client-online{
+  width: 100%;
+
+  &-page {
+    margin: 20px;
+  }
+}
+

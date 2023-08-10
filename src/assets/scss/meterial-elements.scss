@@ -1,3 +1,4 @@
+//Custom-input========================================
 .custom-input {
   width: 100%;
   .mat-form-field-flex {
@@ -16,7 +17,9 @@
     transform: translateX(1.7%) translateY(20px);
   }
 }
+//END-Custom-input====================================
 
+//Custom-toggle=======================================
 .custom-toggle-group {
   border: none;
   overflow: hidden;
@@ -36,7 +39,9 @@
     color: white;
   }
 }
+//END-Custom-toggle====================================
 
+//Custom-data-picker===================================
 .custom-data-picker {
   .mat-form-field-flex {
     height: 30px;
@@ -55,7 +60,9 @@
     transform: translateY(-27px);
   }
 }
+//END-Custom-data-picker================================
 
+//Custom-table-column===================================
 .custom-table.mat-table {
   background-color: transparent;
   thead {
@@ -68,3 +75,4 @@
   }
   tbody {}
 }
+//END-Custom-table-column================================

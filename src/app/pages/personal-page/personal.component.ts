@@ -5,6 +5,9 @@ import {Router} from "@angular/router"
 import {RoleEnum} from "../../models/enums/role-enum";
 import {User} from "../../models/types/user";
 
+//TODO: нужно переделать структура папоки components
+//TODO: в каждой папке для определенного клиента создать папку components и прекинуть все по ним
+
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -32,10 +35,11 @@ export class PersonalComponent implements OnInit {
       })
   }
 
+  // TODO: надо переделать структуру навигаци после того как добавлю признак клиента
   private navigate(): void {
     switch (this.storeService.USER.roleId) {
       case RoleEnum.user :
-        this.router.navigate(['/personal', 'client-online']);
+        this.router.navigate(['/personal', 'client-offline']);
         break
       case RoleEnum.admin :
         this.router.navigate(['/personal', 'admin']);

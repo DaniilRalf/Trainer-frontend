@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../../../models/types/user";
-import {RoleEnum} from "../../../../models/enums/role-enum";
-import {StoreService} from "../../../../helpers/services/store.service";
+import {User} from "../../models/types/user";
+import {RoleEnum} from "../../models/enums/role-enum";
+import {StoreService} from "../../helpers/services/store.service";
 import {Router} from "@angular/router";
 import {UntilDestroy} from "@ngneat/until-destroy";
 import {interval, skip, Subscription} from "rxjs";
 import moment from "moment";
-import {ApplicationService} from "../../../../helpers/services/application.service";
+import {ApplicationService} from "../../helpers/services/application.service";
 
 @UntilDestroy({checkProperties: true})
 @Component({
