@@ -222,6 +222,29 @@ export class GraphqlService {
         `
     })
   }
+  getItemClientSchedules(data: {id: number}): Observable<ApolloQueryResult<{getItemClient: User}>>{
+    return this.apollo.query({
+      query: gql`
+          query getItemClient($input: UserInput){
+            getItemClient(input: $input){
+              id
+              username
+              first_name
+              last_name
+              is_active
+              schedules {
+                id
+                date
+                description
+                time_start
+                time_duration
+              }
+            }
+          }
+        `,
+      variables: { input: data },
+    })
+  }
   getAllClientsWithPhoto(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
       query: gql`

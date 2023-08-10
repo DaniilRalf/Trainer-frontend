@@ -11,6 +11,7 @@ import {AvatarClientComponent} from "./avatar-client/avatar-client.component";
 import {SelectActivityClientComponent} from "./select-activity-client/select-activity-client.component";
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {ScheduleComponent} from "./schedule/schedule.component";
 
 
 @NgModule({
@@ -19,14 +20,16 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     ButtonCustomComponent,
     AvatarClientComponent,
     SelectActivityClientComponent,
-    SidenavComponent
+    SidenavComponent,
+    ScheduleComponent
   ],
   exports: [
     HeaderComponent,
     ButtonCustomComponent,
     AvatarClientComponent,
     SelectActivityClientComponent,
-    SidenavComponent
+    SidenavComponent,
+    ScheduleComponent
   ],
   imports: [
     CommonModule,

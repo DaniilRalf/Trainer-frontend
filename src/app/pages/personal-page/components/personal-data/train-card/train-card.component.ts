@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Schedules} from "../../../../../models/types/user";
 import {TrainingEnum} from "../../../../../models/enums/training-enum";
+import {GeneratorsService} from "../../../../../helpers/services/generators.service";
 
 @Component({
   selector: 'el-train-card',
@@ -15,15 +16,12 @@ export class TrainCardComponent implements OnInit {
 
   @Input() itemTrain?: Schedules & { time_end?: string, keep?: number }
 
-  constructor() {
+  constructor(
+    public generatorsService: GeneratorsService
+  ) {
   }
 
   ngOnInit(): void {
-  }
-
-  public generateCardName(data: string): string {
-    // @ts-ignore
-    return TrainingEnum[data]
   }
 
 }

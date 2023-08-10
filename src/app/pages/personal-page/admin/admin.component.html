@@ -1,8 +1,9 @@
 <div class="admin">
 
-  <app-admin-schedule *ngIf="storeService.tabsOnPersonalPage === 1"
-                      [user]="user"
-  ></app-admin-schedule>
+  <el-schedule *ngIf="storeService.tabsOnPersonalPage === 1"
+               [user]="user.value"
+               [type]="'admin'"
+  ></el-schedule>
 
   <app-update-parameters-client *ngIf="storeService.tabsOnPersonalPage === 2"
                                 [user]="user"

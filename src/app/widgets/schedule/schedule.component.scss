@@ -1,4 +1,4 @@
-@import "../../../../../styles";
+@import "src/styles";
 
 .admin-schedule {
 
@@ -32,7 +32,7 @@
 
     &-item {
       cursor: pointer;
-      height: 80px;
+      height: 100px;
       min-width: 100px;
       padding: 3px;
       border: 1px solid transparent;
@@ -48,7 +48,7 @@
       &-data {
         padding: 0px 4px;
         border-radius: 7px;
-        background-color: $static-grey-light;
+        background-color: $static-grey-extralight;
       }
 
       &-details {

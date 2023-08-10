@@ -4,9 +4,10 @@
                      [user]="user">
   </app-personal-data>
 
-  <app-training-schedule *ngIf="storeService.tabsOnPersonalPage === 2 && user.schedules"
-                         [user]="user">
-  </app-training-schedule>
+  <el-schedule *ngIf="storeService.tabsOnPersonalPage === 2 && user.schedules"
+               [user]="user"
+               [type]="'client-offline'"
+  ></el-schedule>
 
   <app-my-parameters *ngIf="storeService.tabsOnPersonalPage === 3 && user.parameters"
                      [user]="user">

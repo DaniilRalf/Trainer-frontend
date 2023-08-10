@@ -36,7 +36,7 @@
     </div>
     <div class="train-card-info-description">
       <div class="train-name" *ngIf="itemTrain && itemTrain?.description">
-        {{generateCardName(itemTrain.description || 'fullBody')}}
+        {{generatorsService.generateCardName(itemTrain.description || 'fullBody')}}
       </div>
       <div class="time">{{itemTrain?.time_start}}-{{itemTrain?.time_end}}</div>
     </div>

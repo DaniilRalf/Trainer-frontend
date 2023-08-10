@@ -24,21 +24,29 @@
                matTooltip="{{clientTrain.clientFirstName}} {{clientTrain.clientLastName}} {{clientTrain.time_start}}"
                [matTooltipPosition]="'above'"
           >
-            <img src="../../../../../assets/img/personal/admin/leg.svg"
+            <img src="../../../assets/img/personal/admin/leg.svg"
                  *ngIf=" clientTrain.description === 'leg'
                   || clientTrain.description === 'lowerBody'
                   || clientTrain.description === 'buttocks'">
-            <img src="../../../../../assets/img/personal/admin/hand.svg"
+            <img src="../../../assets/img/personal/admin/hand.svg"
                  *ngIf="clientTrain.description === 'hand'
                   || clientTrain.description === 'shoulder'">
-            <img src="../../../../../assets/img/personal/admin/body.svg"
+            <img src="../../../assets/img/personal/admin/body.svg"
                  *ngIf="clientTrain.description === 'fullBody'
                   || clientTrain.description === 'upBody'
                   || clientTrain.description === 'breast'
                   || clientTrain.description === 'back'">
           </div>
         </div>
-        <div class="calendar-item-active fnt-600-gilroy" *ngIf="item.details">{{item.details.length}}&nbsp;тренировок</div>
+        <div class="calendar-item-active fnt-600-gilroy" *ngIf="item.details && type === 'admin'">
+          {{item.details.length}}&nbsp;тренировок
+        </div>
+        <div class="calendar-item-active fnt-600-gilroy" *ngIf="item.details && type === 'client-offline' && item.details[0]">
+          {{generatorService.generateCardName(item.details[0].description || 'fullBody')}}
+        </div>
+        <div class="calendar-item-active fnt-600-gilroy" *ngIf="item.details && type === 'client-offline' && item.details[0]">
+          {{item.details[0]?.time_start}}-{{item.details[0]?.time_end}}
+        </div>
       </div>
     </div>
 
