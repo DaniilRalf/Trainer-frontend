@@ -5,4 +5,6 @@ export enum TrainTypeEnum {
   Diet = 'diet',
   Distance = 'distance',
   Program = 'program',
+  DistanceDiet = 'distanceDiet',
+  DistanceTrain = 'distanceTrain',
 }
