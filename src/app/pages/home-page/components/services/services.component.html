@@ -13,10 +13,10 @@
   <div class="services-list">
     <comp-first-train class="services-list_1"></comp-first-train>
     <comp-item-train class="services-list-personal services-list_2"
-                      [title]="'Персональные\n'+'офлайн-тренировки'"
+                      [title]="ServicesData.offline.title"
                       [description]="ServicesData.offline.description"
                       [serviceType]="TrainTypeEnum.Offline"
-                      [price]="6000"
+                      [price]="ServicesData.offline.price"
     ></comp-item-train>
     <comp-item-train class="services-list-personal services-list_3"
                      [title]="'Персональные\n'+'онлайн-тренировки'"
@@ -43,7 +43,19 @@
                      [price]="4000"
     ></comp-item-train>
     <comp-item-train class="services-list-personal services-list_7"
-                     [title]="'Программа\n'+'тренировок'"
+                     [title]="'Программа\n'+'ведение питания'"
+                     [description]="ServicesData.program.description"
+                     [serviceType]="TrainTypeEnum.Program"
+                     [price]="6000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_8"
+                     [title]="'Дистанционное\n'+'ведение'"
+                     [description]="ServicesData.distance.description"
+                     [serviceType]="TrainTypeEnum.Distance"
+                     [price]="4000"
+    ></comp-item-train>
+    <comp-item-train class="services-list-personal services-list_9"
+                     [title]="'Дистанционное\n ведение тренировок'"
                      [description]="ServicesData.program.description"
                      [serviceType]="TrainTypeEnum.Program"
                      [price]="6000"

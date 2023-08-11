@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {TrainTypeEnum} from "../train-type.enum";
+import {TrainTypeEnum} from "../../../../../models/enums/train-type.enum";
 
 @Component({
   selector: 'comp-item-train',
@@ -16,7 +16,8 @@ export class ItemTrainComponent implements OnInit {
   @Input() serviceType!: TrainTypeEnum
   @Input() price!: number
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

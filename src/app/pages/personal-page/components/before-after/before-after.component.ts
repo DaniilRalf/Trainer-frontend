@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, retry, take} from "rxjs";
+import {take} from "rxjs";
 import {User} from "../../../../models/types/user";
 import {HttpService} from "../../../../helpers/services/http.service";
 import {environment} from "../../../../../environments/environment";
@@ -14,7 +14,7 @@ export class BeforeAfterComponent implements OnInit {
 
   env = environment
 
-  btnGroup: {value: string, view: string}[] = [
+  btnGroup: { value: string, view: string }[] = [
     {value: 'allPhoto', view: 'Все фото'},
     {value: 'comparePhoto', view: 'Сравнить фото'},
   ]
@@ -25,7 +25,8 @@ export class BeforeAfterComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-  ) { }
+  ) {
+  }
 
   //TODO:  поправить типизацию any
   ngOnInit(): void {

@@ -9,7 +9,9 @@
   }
 
   &-list {
-
+    .not-full {
+      color: $static-grey-middle;
+    }
   }
 
 }

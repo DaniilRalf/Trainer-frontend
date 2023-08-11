@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TrainTypeEnum} from "./train-type.enum";
+import {TrainTypeEnum} from "../../../../models/enums/train-type.enum";
 import ServicesData from "../../../../../assets/data.json"
 
 @Component({
@@ -10,7 +10,7 @@ import ServicesData from "../../../../../assets/data.json"
 export class ServicesComponent implements OnInit {
 
   TrainTypeEnum = TrainTypeEnum
-  ServicesData = ServicesData
+  ServicesData: any = ServicesData
 
   constructor() { }
 

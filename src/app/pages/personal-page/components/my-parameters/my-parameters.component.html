@@ -2,6 +2,9 @@
 
   <h2 class="heading fnt-600-gilroy">Таблица замеров параметров тела</h2>
 
+  <p class="heading fnt-400-gilroy" *ngIf="user.parameters!.length === 0"
+  >Пока нет замеров</p>
+
   <div class="my-parameters-table" *ngIf="user.parameters! && user.parameters!.length > 0">
     <table mat-table [dataSource]="user.parameters!" class="fnt-400-gilroy">
       <ng-container matColumnDef="date_metering">

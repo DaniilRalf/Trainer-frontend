@@ -5,8 +5,8 @@
   <div class="faq-list">
     <mat-accordion>
 
-      <ng-container *ngFor="let item of faqList">
-        <mat-expansion-panel>
+      <ng-container *ngFor="let item of faqList; let index = index">
+        <mat-expansion-panel [ngClass]="{'color-row ': !!(index % 2)}">
           <mat-expansion-panel-header class="fnt-400-gilroy">
             <mat-panel-title>
               {{item.question}}

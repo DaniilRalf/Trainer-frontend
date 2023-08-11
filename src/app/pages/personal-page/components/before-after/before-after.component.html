@@ -9,6 +9,9 @@
   </div>
 
   <div class="before-after-list">
+    <p class="not-full fnt-400-gilroy"
+       *ngIf="!allItemPhoto || allItemPhoto.length === 0"
+    >Пока нет фото</p>
     <el-photos-group *ngIf="allItemPhoto" [photos]="allItemPhoto"
                      [removeMode]="false"
     ></el-photos-group>

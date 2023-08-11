@@ -1,23 +1,38 @@
 {
-  "online": {
-    "title": "",
+  "offline": {
+    "title": "Персональные\n офлайн-тренировки",
     "description": "",
     "price": 6000,
     "include": [""]
   },
-  "offline": {
-    "description": ""
+  "online": {
+    "title": "",
+    "description": "",
+    "price": 0,
+    "include": [""]
   },
   "oneTime": {
-    "description": ""
+    "title": "",
+    "description": "",
+    "price": 0,
+    "include": [""]
   },
   "diet": {
-    "description": ""
+    "title": "",
+    "description": "",
+    "price": 0,
+    "include": [""]
   },
   "distance": {
-    "description": ""
+    "title": "",
+    "description": "",
+    "price": 0,
+    "include": [""]
   },
   "program": {
-    "description": ""
+    "title": "",
+    "description": "",
+    "price": 0,
+    "include": [""]
   }
 }
