@@ -1,0 +1,58 @@
+@import "../../../../../../styles";
+
+.feed-card {
+  background-color: $static-grey-extralight;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 260px;
+  margin-bottom: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      color: $static-grey-middle;
+      font-size: 20px;
+      line-height: 32px; /* 133.333% */
+    }
+    .icon {
+      color: $static-grey-light;
+      cursor: pointer;
+    }
+  }
+
+  &-circle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      color: $static-grey-light;
+      font-size: 14px;
+      line-height: 10px;
+    }
+    .value {
+      color: $static-grey-middle;
+      font-size: 14px;
+      line-height: 10px;
+    }
+  }
+
+}
+
+
+::ng-deep .tooltip-custom {
+  font-size: 12px!important;
+  color: $static-grey-middle!important;
+  background-color: $static-pink-extralight;
+}

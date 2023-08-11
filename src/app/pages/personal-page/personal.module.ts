@@ -50,12 +50,13 @@ import {
   ModalClientSettingsComponent
 } from './components/update-parameters-client/modal-client-settings/modal-client-settings.component'
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {PhotosGroupComponent} from './components/before-after-create/photos-group/photos-group.component';
 import {AdminFeedComponent} from './components/admin-feed/admin-feed.component';
 import {AdminFeedSettingsComponent} from './components/admin-feed/admin-feed-settings/admin-feed-settings.component';
 import {ClientOfflineComponent} from "./client-offline/client-offline.component";
 import {ClientOnlineComponent} from "./client-online/client-online.component";
 import { TrainCardComponent } from './components/personal-data/train-card/train-card.component';
+import { ClientOfflineFeedComponent } from './components/client-offline-feed/client-offline-feed.component';
+import { FeedCardComponent } from './components/client-offline-feed/feed-card/feed-card.component';
 
 @NgModule({
   declarations: [
@@ -73,10 +74,11 @@ import { TrainCardComponent } from './components/personal-data/train-card/train-
     ModalBeforeAfterCreateComponent,
     ModalAdminScheduleComponent,
     ModalClientSettingsComponent,
-    PhotosGroupComponent,
     AdminFeedComponent,
     AdminFeedSettingsComponent,
     TrainCardComponent,
+    ClientOfflineFeedComponent,
+    FeedCardComponent,
   ],
   imports: [
     CommonModule,

@@ -25,6 +25,12 @@ export class BeforeAfterCreateComponent implements OnInit {
 
   public showClientPhotos!: User
 
+  btnGroup: {value: string, view: string}[] = [
+    {value: 'all', view: 'Все'},
+    {value: 'active', view: 'Активные'},
+    {value: 'noactive', view: 'Неактивные'},
+  ]
+
   @Input() public user!: BehaviorSubject<User>
 
   constructor(

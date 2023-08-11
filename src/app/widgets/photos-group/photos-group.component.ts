@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Photo} from "../../../../../models/types/user";
-import {environment} from "../../../../../../environments/environment";
-import {HttpService} from "../../../../../helpers/services/http.service";
+import {Photo} from "../../models/types/user";
+import {environment} from "../../../environments/environment";
+import {HttpService} from "../../helpers/services/http.service";
 import {take} from "rxjs";
-import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service";
+import {NotificationsService} from "../../helpers/services/notifications/notifications.service";
 
 @Component({
   selector: 'el-photos-group',
@@ -30,6 +30,7 @@ export class PhotosGroupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.photos)
     this.generatePhotosGroup()
   }
 

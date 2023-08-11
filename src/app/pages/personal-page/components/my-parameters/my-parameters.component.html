@@ -1,48 +1,56 @@
-<h2>Таблица замеров параметров тела</h2>
-<div class="mat-elevation-z8 block-padding" *ngIf="user.parameters! && user.parameters!.length > 0">
-  <table mat-table [dataSource]="user.parameters!">
+<div class="my-parameters">
 
-    <ng-container matColumnDef="date_metering">
-      <th mat-header-cell *matHeaderCellDef>Дата замера</th>
-      <td mat-cell *matCellDef="let element">{{element.date_metering | date:'dd-MM-yyyy'}}</td>
-    </ng-container>
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef>Вес</th>
-      <td mat-cell *matCellDef="let element">{{element.weight}}</td>
-    </ng-container>
-    <ng-container matColumnDef="shoulder_bust">
-      <th mat-header-cell *matHeaderCellDef>Обхват груди</th>
-      <td mat-cell *matCellDef="let element">{{element.shoulder_bust}}</td>
-    </ng-container>
-    <ng-container matColumnDef="shoulder_girth">
-      <th mat-header-cell *matHeaderCellDef>Бицепс</th>
-      <td mat-cell *matCellDef="let element">{{element.shoulder_girth}}</td>
-    </ng-container>
-    <ng-container matColumnDef="shoulder_hip">
-      <th mat-header-cell *matHeaderCellDef>Обхват бедра</th>
-      <td mat-cell *matCellDef="let element">{{element.shoulder_hip}}</td>
-    </ng-container>
-    <ng-container matColumnDef="shoulder_hips">
-      <th mat-header-cell *matHeaderCellDef>Обхват бедер</th>
-      <td mat-cell *matCellDef="let element">{{element.shoulder_hips}}</td>
-    </ng-container>
+  <h2 class="heading fnt-600-gilroy">Таблица замеров параметров тела</h2>
 
-    <tr mat-header-row *matHeaderRowDef="displayedKey"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedKey;"></tr>
+  <div class="my-parameters-table" *ngIf="user.parameters! && user.parameters!.length > 0">
+    <table mat-table [dataSource]="user.parameters!" class="fnt-400-gilroy">
+      <ng-container matColumnDef="date_metering">
+        <th mat-header-cell *matHeaderCellDef>Дата замера</th>
+        <td mat-cell *matCellDef="let element">{{element.date_metering | date:'dd-MM-yyyy'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Вес</th>
+        <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+      </ng-container>
+      <ng-container matColumnDef="shoulder_bust">
+        <th mat-header-cell *matHeaderCellDef>Обхват груди</th>
+        <td mat-cell *matCellDef="let element">{{element.shoulder_bust}}</td>
+      </ng-container>
+      <ng-container matColumnDef="shoulder_girth">
+        <th mat-header-cell *matHeaderCellDef>Бицепс</th>
+        <td mat-cell *matCellDef="let element">{{element.shoulder_girth}}</td>
+      </ng-container>
+      <ng-container matColumnDef="shoulder_hip">
+        <th mat-header-cell *matHeaderCellDef>Обхват бедра</th>
+        <td mat-cell *matCellDef="let element">{{element.shoulder_hip}}</td>
+      </ng-container>
+      <ng-container matColumnDef="shoulder_hips">
+        <th mat-header-cell *matHeaderCellDef>Обхват бедер</th>
+        <td mat-cell *matCellDef="let element">{{element.shoulder_hips}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedKey"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedKey;"></tr>
+    </table>
+    <!--//TODO: потом добавить пагинатор-->
+    <!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
+  </div>
 
-  </table>
-  <!--//TODO: потом добавить пагинатор-->
-<!--  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
+  <h2 class="heading fnt-600-gilroy">Графики замеров параметров тела</h2>
+
+  <div class="my-parameters-graph"
+       *ngIf="graphData">
+    <canvas baseChart
+            height="400"
+            [width]="'auto'"
+            [type]="'line'"
+            [data]="graphData"
+            [options]="graphDataOptions"
+            [legend]="graphDataLegend">
+    </canvas>
+  </div>
+
 </div>
 
-<h2>Графики замеров параметров тела</h2>
-<div class="mat-elevation-z8 block-padding" *ngIf="graphData">
-  <canvas baseChart [width]="graphWidth" height="400"
-          [type]="'line'"
-          [data]="graphData"
-          [options]="graphDataOptions"
-          [legend]="graphDataLegend">
-  </canvas>
-</div>
+
 
 

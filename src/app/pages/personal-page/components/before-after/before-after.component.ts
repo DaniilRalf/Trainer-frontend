@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BehaviorSubject, retry} from "rxjs";
+import {BehaviorSubject, retry, take} from "rxjs";
 import {User} from "../../../../models/types/user";
 import {HttpService} from "../../../../helpers/services/http.service";
 import {environment} from "../../../../../environments/environment";
+import {MatButtonToggleChange} from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-before-after',
@@ -10,15 +11,17 @@ import {environment} from "../../../../../environments/environment";
   styleUrls: ['./before-after.component.scss']
 })
 export class BeforeAfterComponent implements OnInit {
+
   env = environment
-  @Input() public user!: User
+
+  btnGroup: {value: string, view: string}[] = [
+    {value: 'allPhoto', view: 'Все фото'},
+    {value: 'comparePhoto', view: 'Сравнить фото'},
+  ]
 
   allItemPhoto?: any
 
-  dateForSelect: number[] = []
-
-  photoBefore?: number
-  photoAfter?: number
+  @Input() public user!: User
 
   constructor(
     private httpService: HttpService,
@@ -27,31 +30,13 @@ export class BeforeAfterComponent implements OnInit {
   //TODO:  поправить типизацию any
   ngOnInit(): void {
     this.httpService.getItemPhotoBeforeAfter(this.user.id)
+      .pipe(take(1))
       .subscribe((item: any) => {
         this.allItemPhoto = item
-        this.generateForDisplayed()
       })
   }
 
-  generateForDisplayed(){
-    this.allItemPhoto.sort((a: any, b: any) => a.date - b.date)
-    this.allItemPhoto.map((item: any) => {
-      if (!this.dateForSelect.includes(item.date)) {
-        this.dateForSelect.push(item.date)
-      }
-    })
-  }
+  public changePhotosView(event: MatButtonToggleChange): void {
 
-  generateForSecondSelect(){
-    return this.dateForSelect
-      .filter((item: number) => !!(this.photoAfter && this.photoAfter < item))
-  }
-
-  findPhoto(angle: string, date: string) {
-    return this.allItemPhoto
-      .find((item: any) =>
-        (item.angle === angle && item.date === (date === 'after'
-          ? this.photoAfter
-          : this.photoBefore)))
   }
 }

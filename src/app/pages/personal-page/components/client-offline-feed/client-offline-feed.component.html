@@ -1,0 +1,37 @@
+<div class="feed">
+
+  <div class="feed-heading fnt-600-gilroy">Моя суточная норма</div>
+
+  <div class="feed-cards" *ngIf="clientFeed">
+    <div class="feed-cards-item">
+      <el-feed-card [feedType]="FeedTypeEnum.carbohydrates"
+                    [value]="clientFeed?.carbohydrates"
+                    [allFeedQuantity]="allFeedQuantity"
+                    [color]="'#9747FF'"
+      ></el-feed-card>
+    </div>
+    <div class="feed-cards-item">
+      <el-feed-card [feedType]="FeedTypeEnum.fat"
+                    [value]="clientFeed?.fat"
+                    [allFeedQuantity]="allFeedQuantity"
+                    [color]="'#FFA73F'"
+      ></el-feed-card>
+    </div>
+    <div class="feed-cards-item">
+      <el-feed-card [feedType]="FeedTypeEnum.protein"
+                    [value]="clientFeed?.protein"
+                    [allFeedQuantity]="allFeedQuantity"
+                    [color]="'#45B26B'"
+      ></el-feed-card>
+    </div>
+  </div>
+
+  <div class="feed-heading fnt-600-gilroy">Рекомендации по питанию</div>
+
+  <div class="feed-description fnt-400-gilroy"
+  >{{clientFeed?.recommendation}}</div>
+  <div class="feed-description fnt-400-gilroy"
+       *ngIf="!clientFeed?.recommendation"
+  >Рекомендации пока не заполнены</div>
+
+</div>

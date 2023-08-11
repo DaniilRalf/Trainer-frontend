@@ -1,7 +1,13 @@
 <div class="select">
   <mat-button-toggle-group class="custom-toggle-group" (change)="changeClientGroup($event)">
-    <mat-button-toggle [checked]="true" class="fnt-400-gilroy" value="all">Все</mat-button-toggle>
-    <mat-button-toggle class="fnt-400-gilroy" value="active">Активные</mat-button-toggle>
-    <mat-button-toggle class="fnt-400-gilroy" value="noactive">Неактивные</mat-button-toggle>
+    <mat-button-toggle [checked]="true"
+                       value="{{btnGroup[0].value}}"
+                       class="fnt-400-gilroy"
+    >{{btnGroup[0].view}}</mat-button-toggle>
+    <ng-container *ngFor="let item of btnGroup; let index = index">
+      <mat-button-toggle *ngIf="index !== 0" value="{{item.value}}"
+                         class="fnt-400-gilroy"
+      >{{item.view}}</mat-button-toggle>
+    </ng-container>
   </mat-button-toggle-group>
 </div>

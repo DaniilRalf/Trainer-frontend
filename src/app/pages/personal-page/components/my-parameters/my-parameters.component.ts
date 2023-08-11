@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, HostListener, Input, OnInit} from '@angular/core'
+import {ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core'
 import {User} from "../../../../models/types/user"
 import {ChartConfiguration, ChartOptions, ChartType} from "chart.js";
 import {DatePipe} from "@angular/common";
@@ -16,18 +16,13 @@ export class MyParametersComponent implements OnInit {
 
   public graphData!: ChartConfiguration<'line'>['data']
   public graphDataOptions: ChartOptions<'line'> = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
   }
   public graphDataLegend = true
-  public graphWidth!: number
 
   @Input() public user!: User
 
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.graphWidth = window.innerWidth;
-  }
 
   constructor(
     private datePipe: DatePipe,
@@ -35,7 +30,6 @@ export class MyParametersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.graphWidth = window.innerWidth - 120;
     this.graphInit()
   }
 
@@ -48,35 +42,41 @@ export class MyParametersComponent implements OnInit {
           data: [],
           fill: true, tension: 0.5,
           borderColor: 'rgb(53,213,0)',
-          backgroundColor: 'rgba(13,187,0,0.3)'
+          backgroundColor: 'rgba(13,187,0,0.3)',
+          pointRadius: 6,
         },
         {
           label: 'Обхват бедра (см.)',
           data: [],
           fill: true, tension: 0.5,
           borderColor: 'rgb(255,210,65)',
-          backgroundColor: 'rgba(255,204,0,0.3)'
+          backgroundColor: 'rgba(255,204,0,0.3)',
+          pointRadius: 6,
         },
         {
           label: 'Вес (см.)',
           data: [],
           fill: true, tension: 0.5,
           borderColor: 'rgb(164,0,0)',
-          backgroundColor: 'rgba(255,0,0,0.3)'
+          backgroundColor: 'rgba(255,0,0,0.3)',
+          pointRadius: 6,
+
         },
         {
           label: 'Обхват груди (см.)',
           data: [],
           fill: true, tension: 0.5,
           borderColor: 'rgb(0,69,213)',
-          backgroundColor: 'rgba(0,81,255,0.3)'
+          backgroundColor: 'rgba(0,81,255,0.3)',
+          pointRadius: 6,
         },
         {
           label: 'Обхват бёдер (см.)',
           data: [],
           fill: true, tension: 0.5,
           borderColor: 'rgb(213,82,0)',
-          backgroundColor: 'rgba(255,115,0,0.3)'
+          backgroundColor: 'rgba(255,115,0,0.3)',
+          pointRadius: 6,
         },
       ]
     }
@@ -102,6 +102,5 @@ export class MyParametersComponent implements OnInit {
     }
 
   }
-
 
 }

@@ -1,0 +1,36 @@
+<div class="feed-card">
+
+  <div class="feed-card-header fnt-600-gilroy">
+    <div class="name">{{feedType}}</div>
+    <div class="icon"
+         matTooltip="{{feedDescription}}"
+         [matTooltipPosition]="'below'"
+         [matTooltipClass]="'tooltip-custom'"
+    ><mat-icon>help_outline</mat-icon></div>
+  </div>
+
+  <div class="feed-card-circle fnt-400-gilroy" *ngIf="length">
+    <circle-progress [percent]="length"
+                     [radius]="50"
+                     [outerStrokeWidth]="6"
+                     [innerStrokeWidth]="7"
+                     [outerStrokeColor]="color"
+                     [innerStrokeColor]="'transperent'"
+                     [title]="value + ' гр.'"
+
+                     [animation]="true"
+                     [animationDuration]="500"
+                     [backgroundOpacity]="0"
+                     [showTitle] = "true"
+                     [showUnits] = false
+                     [showSubtitle] = false
+    ></circle-progress>
+  </div>
+
+  <div class="feed-card-footer fnt-400-gilroy">
+    <p class="title">Рекомендовано :</p>
+    <p class="value">{{value}}&nbsp;гр. в день</p>
+  </div>
+
+
+</div>

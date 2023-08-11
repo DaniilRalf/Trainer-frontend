@@ -12,6 +12,7 @@ import {SelectActivityClientComponent} from "./select-activity-client/select-act
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ScheduleComponent} from "./schedule/schedule.component";
+import {PhotosGroupComponent} from "./photos-group/photos-group.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {ScheduleComponent} from "./schedule/schedule.component";
     AvatarClientComponent,
     SelectActivityClientComponent,
     SidenavComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    PhotosGroupComponent
   ],
   exports: [
     HeaderComponent,
@@ -29,7 +31,8 @@ import {ScheduleComponent} from "./schedule/schedule.component";
     AvatarClientComponent,
     SelectActivityClientComponent,
     SidenavComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    PhotosGroupComponent
   ],
   imports: [
     CommonModule,

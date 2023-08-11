@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatButtonToggleChange} from "@angular/material/button-toggle";
 
 @Component({
@@ -8,9 +8,11 @@ import {MatButtonToggleChange} from "@angular/material/button-toggle";
 })
 export class SelectActivityClientComponent implements OnInit {
 
-  constructor() { }
+  @Input() btnGroup!: {value: string, view: string}[]
 
   @Output() changeClientGroupEmitter: EventEmitter<MatButtonToggleChange> = new EventEmitter<MatButtonToggleChange>()
+
+  constructor() { }
 
   ngOnInit(): void {
   }

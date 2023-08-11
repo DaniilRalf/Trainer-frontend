@@ -17,5 +17,9 @@
                     [user]="user">
   </app-before-after>
 
+  <comp-client-offline-feed *ngIf="storeService.tabsOnPersonalPage === 5"
+                            [user]="user"
+  ></comp-client-offline-feed>
+
 </div>
 

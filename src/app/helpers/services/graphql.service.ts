@@ -200,6 +200,25 @@ export class GraphqlService {
         `
     })
   }
+  getItemClientFeed(data: {id: number}): Observable<ApolloQueryResult<{getItemClient: User}>>{
+    return this.apollo.query({
+      query: gql`
+          query getItemClient($input: UserInput){
+            getItemClient(input: $input){
+              id
+              feed {
+                id
+                protein
+                fat
+                carbohydrates
+                recommendation
+              }
+            }
+          }
+        `,
+      variables: { input: data },
+    })
+  }
   getAllClientsSchedules(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
       query: gql`
@@ -228,10 +247,6 @@ export class GraphqlService {
           query getItemClient($input: UserInput){
             getItemClient(input: $input){
               id
-              username
-              first_name
-              last_name
-              is_active
               schedules {
                 id
                 date

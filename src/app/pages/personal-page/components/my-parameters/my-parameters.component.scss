@@ -1,12 +1,48 @@
-@import "../../../../../assets/scss/index";
+@import '../../../../../styles';
 
-h2{
-  color: $black;
+.my-parameters {
+
+  .heading {
+    color: $static-grey-middle;
+  }
+
+  &-table {
+    min-width: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    table{
+      width: 100%;
+    }
+  }
+
+  &-graph {
+    width: 100%;
+    min-width: 500px;
+    overflow: hidden;
+
+    canvas {
+      width: inherit;
+    }
+  }
+
 }
 
-table{
-  width: 100%;
+.mat-column-date_metering {
+  width: 35%;
 }
+.mat-column-shoulder_hips,
+.mat-column-shoulder_hip,
+.mat-column-shoulder_girth,
+.mat-column-weight,
+.mat-column-shoulder_bust {
+  width: 13%;
+}
+
+
+
+
 
 
 
@@ -15,11 +51,4 @@ table{
   margin-bottom: 30px;
 }
 
-.mat-column-shoulder_hips,
-.mat-column-shoulder_hip,
-.mat-column-shoulder_girth,
-.mat-column-date_metering,
-.mat-column-weight,
-.mat-column-shoulder_bust {
-  width: 17%;
-}
+

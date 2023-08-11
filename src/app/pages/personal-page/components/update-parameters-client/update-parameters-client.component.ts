@@ -16,7 +16,13 @@ export class UpdateParametersClientComponent implements OnInit {
 
   allClients: User[] = [];
 
-  displayedKey = ['indicator', 'username', 'first_name', 'last_name', 'parameters', 'personal', 'schedule', 'settings'];
+  displayedKey = ['indicator', 'username', 'first_name', 'last_name', 'parameters', 'personal', 'schedule', 'settings']
+
+  btnGroup: {value: string, view: string}[] = [
+    {value: 'all', view: 'Все'},
+    {value: 'active', view: 'Активные'},
+    {value: 'noactive', view: 'Неактивные'},
+  ]
 
   @Input() public user!: BehaviorSubject<User>
 

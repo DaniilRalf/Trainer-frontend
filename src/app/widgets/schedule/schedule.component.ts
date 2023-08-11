@@ -133,7 +133,6 @@ export class ScheduleComponent implements OnInit {
           }
         })
       })
-      console.log(this.calendarData)
     }
   }
 

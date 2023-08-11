@@ -18,7 +18,13 @@ export class AdminFeedComponent implements OnInit {
 
   allClients: User[] = []
 
-  displayedKey = ['indicator', 'username', 'first_name', 'last_name', 'protein', 'fat', 'carbohydrates', 'recommendation'];
+  displayedKey = ['indicator', 'username', 'first_name', 'last_name', 'protein', 'fat', 'carbohydrates', 'recommendation']
+
+  btnGroup: {value: string, view: string}[] = [
+    {value: 'all', view: 'Все'},
+    {value: 'active', view: 'Активные'},
+    {value: 'noactive', view: 'Неактивные'},
+  ]
 
   @Input() public user!: BehaviorSubject<User>
 
