@@ -20,6 +20,7 @@ import {FaqComponent} from './components/faq/faq.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {FooterComponent} from './components/footer/footer.component';
 import {HomeControlService} from "./home-control.service";
+import { ModalTrainComponent } from './components/services/modal-train/modal-train.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {HomeControlService} from "./home-control.service";
     ReviewsComponent,
     FaqComponent,
     FooterComponent,
+    ModalTrainComponent,
   ],
   imports: [
     CommonModule,

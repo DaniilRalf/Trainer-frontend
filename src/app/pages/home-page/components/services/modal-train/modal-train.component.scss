@@ -1,0 +1,31 @@
+@import "../../../../../../styles";
+
+.modal-train {
+  position: relative;
+
+  &-close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+  }
+
+  &-heading {
+    font-size: 30px;
+    line-height: 116%;
+    margin-bottom: 15px;
+  }
+
+  &-price {
+    font-size: 34px;
+    line-height: 116%;
+    margin-bottom: 20px;
+  }
+
+  &-list {}
+
+  &-description {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

@@ -17,6 +17,7 @@
                      [description]="ServicesData.offline.description"
                      [price]="ServicesData.offline.price"
                      [serviceType]="TrainTypeEnum.Offline"
+                     (click)="openModelTrainCard(ServicesData.offline, TrainTypeEnum.Offline)"
     ></comp-item-train>
     <comp-item-train class="services-list-personal services-list_3"
                      [title]="ServicesData.online.title"
