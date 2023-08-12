@@ -1,0 +1,13 @@
+@import "../../../../../../styles";
+//styles in material-element.scss file
+
+img {
+  //width: inherit;
+  height: inherit;
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0px;
+  }
+}

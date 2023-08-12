@@ -1,3 +1,5 @@
+@import "~swiper/swiper-bundle";
+
 //Custom-input========================================
 .custom-input {
   width: 100%;
@@ -76,3 +78,34 @@
   tbody {}
 }
 //END-Custom-table-column================================
+
+//Custom-swiper==========================================
+.swiper-container {
+  width: 100%;
+  margin: 50px auto;
+  height: 40vw;
+}
+.swiper-slide {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  height: 40vw;
+}
+//.bg-yellow {
+//  background-color: yellow;
+//}
+.transition {
+  transition: background 0.25s ease, color 0.25s ease;
+}
+//.active-slide {
+//  background-color: green;
+//  color: #fff;
+//}
+.bg-blue {
+  background-color: blue;
+  color: #fff;
+}
+
+
+//END-Custom-swiper======================================
+

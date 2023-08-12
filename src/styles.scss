@@ -62,6 +62,12 @@ $static-pink-light: rgb(255, 231, 243);
 $static-pink-extralight: #FAF9FA;
 $static-white-middle: #ffffff;
 
+
+:root {
+  //change default swiper colors
+  --swiper-theme-color: #FF8FCC!important;
+}
+
 *{
   margin: 0;
   padding: 0;

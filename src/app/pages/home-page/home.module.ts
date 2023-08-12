@@ -21,6 +21,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {FooterComponent} from './components/footer/footer.component';
 import {HomeControlService} from "./home-control.service";
 import { ModalTrainComponent } from './components/services/modal-train/modal-train.component';
+import { ModalCertificatesComponent } from './components/about/modal-certificates/modal-certificates.component';
+import {SwiperModule} from "swiper/angular";
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { ModalTrainComponent } from './components/services/modal-train/modal-tra
     FaqComponent,
     FooterComponent,
     ModalTrainComponent,
+    ModalCertificatesComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,8 @@ import { ModalTrainComponent } from './components/services/modal-train/modal-tra
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    SwiperModule,
   ],
   providers: [HomeControlService]
 })

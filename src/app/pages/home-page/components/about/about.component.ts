@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {ModalCertificatesComponent} from "./modal-certificates/modal-certificates.component";
+import {take} from "rxjs";
 
 @Component({
   selector: 'comp-about',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+  ) {
+  }
 
   ngOnInit(): void {
+  }
+
+  public showCertificate(): void {
+    this.dialog.open(ModalCertificatesComponent, {
+      width: 'auto',
+      height: 'auto',
+    }).afterClosed().pipe(take(1)).subscribe()
   }
 
 }
