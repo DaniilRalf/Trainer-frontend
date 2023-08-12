@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TrainTypeEnum} from "../../../../models/enums/train-type.enum";
 import ServicesData from "../../../../../assets/services-data.json"
 import {MatDialog} from "@angular/material/dialog";
@@ -13,11 +13,13 @@ import {ModalTrainComponent} from "./modal-train/modal-train.component";
 export class ServicesComponent implements OnInit {
 
   TrainTypeEnum = TrainTypeEnum
+
   ServicesData: any = ServicesData
 
   constructor(
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -26,7 +28,7 @@ export class ServicesComponent implements OnInit {
     this.dialog.open(ModalTrainComponent, {
       width: '550px',
       maxHeight: '80vh',
-      data: { ...data, type },
+      data: {...data, type},
     }).afterClosed().pipe(take(1)).subscribe()
   }
 

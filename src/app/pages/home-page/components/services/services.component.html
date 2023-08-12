@@ -11,7 +11,11 @@
   </div>
 
   <div class="services-list">
-    <comp-first-train class="services-list_1"></comp-first-train>
+    <comp-first-train class="services-list-personal services-list_1"
+                      [title]="ServicesData.first.title"
+                      [description]="ServicesData.first.description"
+                      (click)="openModelTrainCard(ServicesData.first, TrainTypeEnum.First)"
+    ></comp-first-train>
     <comp-item-train class="services-list-personal services-list_2"
                      [title]="ServicesData.offline.title"
                      [description]="ServicesData.offline.description"

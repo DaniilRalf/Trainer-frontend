@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, Input, OnInit} from '@angular/core'
 
 @Component({
   selector: 'comp-first-train',
@@ -6,6 +6,10 @@ import {Component, OnInit} from '@angular/core'
   styleUrls: ['./first-train.component.scss']
 })
 export class FirstTrainComponent implements OnInit {
+
+  @Input() title!: string
+
+  @Input() description!: string
 
   constructor() { }
 

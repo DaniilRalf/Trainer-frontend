@@ -105,6 +105,10 @@
       &_8 { grid-area: 8 / 1 / 9 / 2; }
       &_9 { grid-area: 9 / 1 / 10 / 2; }
     }
+
+    &-personal {
+      cursor: pointer;
+    }
   }
 
 }
