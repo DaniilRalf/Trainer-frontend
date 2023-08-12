@@ -43,7 +43,6 @@ export class AdminFeedComponent implements OnInit {
       .pipe(take(1))
       .subscribe(({data}) => {
         this.allClients = data.getAllClients
-        console.log(this.allClients)
       })
   }
 
@@ -57,7 +56,6 @@ export class AdminFeedComponent implements OnInit {
   }
 
   public changeClientGroup(event: MatButtonToggleChange): void {
-    console.log(event.value)
   }
 
 }

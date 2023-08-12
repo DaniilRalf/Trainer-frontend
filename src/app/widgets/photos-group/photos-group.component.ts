@@ -30,7 +30,6 @@ export class PhotosGroupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.photos)
     this.generatePhotosGroup()
   }
 

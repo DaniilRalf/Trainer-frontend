@@ -30,8 +30,7 @@ export class PersonalComponent implements OnInit {
       .subscribe((i: any) => {
         this.storeService.saveUserDetalization(i.data.getUserPersonalParameters)
         this.user = this.storeService.USER
-        this.navigate();
-        console.log(this.storeService.getUser())
+        this.navigate()
       })
   }
 

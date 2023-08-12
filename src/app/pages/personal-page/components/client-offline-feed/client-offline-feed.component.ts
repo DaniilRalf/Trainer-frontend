@@ -35,7 +35,6 @@ export class ClientOfflineFeedComponent implements OnInit {
         this.allFeedQuantity = Number(data.getItemClient.feed?.carbohydrates)
           + Number(data.getItemClient.feed?.fat)
           + Number(data.getItemClient.feed?.protein)
-        console.log(this.clientFeed)
       })
   }
 

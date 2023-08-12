@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TrainTypeEnum} from "../../../../models/enums/train-type.enum";
-import ServicesData from "../../../../../assets/data.json"
+import ServicesData from "../../../../../assets/services-data.json"
 import {MatDialog} from "@angular/material/dialog";
 import {take} from "rxjs";
 import {ModalTrainComponent} from "./modal-train/modal-train.component";

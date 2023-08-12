@@ -64,7 +64,7 @@ export class UpdateParametersClientComponent implements OnInit {
   }
 
   public changeClientGroup(event: MatButtonToggleChange): void {
-    console.log(event.value)
+
   }
 
 }

@@ -105,25 +105,25 @@
       }
     }
 
-    &-link {
-      display: flex;
-
-      .tg {
-        cursor: pointer;
-      }
-      .inst {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        margin-left: 10px;
-        height: 48px;
-        width: 220px;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 30px;
-        img {transform: translateY(3px)}
-        u {cursor: pointer; margin-left: 10px; color: $static-pink-middle}
-      }
-    }
+    //&-link {
+    //  display: flex;
+    //
+    //  .tg {
+    //    cursor: pointer;
+    //  }
+    //  .inst {
+    //    display: flex;
+    //    align-items: center;
+    //    cursor: pointer;
+    //    margin-left: 10px;
+    //    height: 48px;
+    //    width: 220px;
+    //    background-color: rgba(255, 255, 255, 0.7);
+    //    border-radius: 30px;
+    //    img {transform: translateY(3px)}
+    //    u {cursor: pointer; margin-left: 10px; color: $static-pink-middle}
+    //  }
+    //}
   }
 }
 

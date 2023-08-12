@@ -13,6 +13,7 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ScheduleComponent} from "./schedule/schedule.component";
 import {PhotosGroupComponent} from "./photos-group/photos-group.component";
+import {ContactComponent} from './contact/contact.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {PhotosGroupComponent} from "./photos-group/photos-group.component";
     SelectActivityClientComponent,
     SidenavComponent,
     ScheduleComponent,
-    PhotosGroupComponent
+    PhotosGroupComponent,
+    ContactComponent
   ],
   exports: [
     HeaderComponent,
@@ -32,7 +34,8 @@ import {PhotosGroupComponent} from "./photos-group/photos-group.component";
     SelectActivityClientComponent,
     SidenavComponent,
     ScheduleComponent,
-    PhotosGroupComponent
+    PhotosGroupComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,

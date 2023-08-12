@@ -14,18 +14,74 @@
     font-size: 30px;
     line-height: 116%;
     margin-bottom: 15px;
+    color: $static-grey-middle;
   }
 
   &-price {
     font-size: 34px;
     line-height: 116%;
     margin-bottom: 20px;
+    color: $static-grey-middle;
   }
 
-  &-list {}
+  &-list {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+
+    &-item {
+      padding: 16px;
+      border-radius: 7px;
+      width: 30%;
+      background-color: $static-grey-extralight;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media (max-width: 700px) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .heading {
+        font-size: 16px;
+        line-height: 116%;
+        margin-bottom: 25px;
+        color: $static-grey-middle;
+      }
+      .info {
+        font-size: 20px;
+        color: $static-grey-middle;
+      }
+    }
+  }
 
   &-description {
     font-size: 16px;
     line-height: 20px;
+    margin-bottom: 15px;
+    color: $static-grey-middle;
   }
+
+  &-include {
+    margin-bottom: 15px;
+
+    &-item {
+      font-size: 14px;
+      text-transform: uppercase!important;
+      color: $static-grey-middle;
+    }
+  }
+
+  &-link {
+    &-desc {
+      font-size: 14px;
+      color: $static-grey-middle;
+      margin-bottom: 10px;
+    }
+  }
+
+
 }

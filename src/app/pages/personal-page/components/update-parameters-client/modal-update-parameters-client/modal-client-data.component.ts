@@ -35,7 +35,6 @@ export class ModalClientDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.formBuildCreatePersonal()
-    console.log(this.data)
   }
 
   public changeTag(tag: string): void {

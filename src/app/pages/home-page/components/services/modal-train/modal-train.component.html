@@ -8,8 +8,36 @@
 
   <div class="modal-train-price fnt-600-gilroy">{{data.price}}&nbsp;₽</div>
 
-  <div class="modal-train-list fnt-600-gilroy"></div>
+  <div class="modal-train-list fnt-600-gilroy">
+    <div class="modal-train-list-item">
+      <div class="heading">Длительность<br> курса</div>
+      <div class="info">{{data.trainDuration}}</div>
+    </div>
+    <div class="modal-train-list-item">
+      <div class="heading">Прод.<br> тренировки</div>
+      <div class="info">{{data.trainPeriod}}</div>
+    </div>
+    <div class="modal-train-list-item">
+      <div class="heading">Длительность<br> курса</div>
+      <div class="info">{{data.trainQuantity}}</div>
+    </div>
+  </div>
 
   <div class="modal-train-description fnt-400-gilroy">{{data.description}}</div>
+
+  <div class="modal-train-include fnt-600-gilroy">
+    <div class="modal-train-include-item fnt-600-gilroy"
+         *ngFor="let item of data.include"
+    >
+      -&nbsp;{{item}}
+    </div>
+  </div>
+
+  <div class="modal-train-link">
+    <div class="modal-train-link-desc fnt-400-gilroy">
+      Чтобы назначить время начала тернировок напишите на одну из социальных сетей указаных ниже
+    </div>
+    <el-contact></el-contact>
+  </div>
 
 </div>

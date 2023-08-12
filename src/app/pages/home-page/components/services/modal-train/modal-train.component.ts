@@ -14,8 +14,8 @@ export class ModalTrainComponent implements OnInit {
       title: string,
       description: string,
       price: number,
-      trainDuration: string,
       trainPeriod: string,
+      trainDuration: string,
       trainQuantity: string,
       include: string[],
     } & TrainTypeEnum,
@@ -24,7 +24,6 @@ export class ModalTrainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   public modalClose(): void {

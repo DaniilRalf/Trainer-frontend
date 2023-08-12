@@ -32,7 +32,6 @@ export class StoreService {
 
   public get sidenavStatus(): boolean {
     const sidenavStatus = localStorage.getItem('sidenav_status')
-    console.log(sidenavStatus)
     if (sidenavStatus === 'true') {
       this._sidenavStatus = true
     } else if (sidenavStatus === 'false') {

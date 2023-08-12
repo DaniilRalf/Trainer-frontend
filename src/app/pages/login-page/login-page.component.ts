@@ -20,7 +20,6 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private router: Router,
     private graphqlService: GraphqlService,
-    private clipboard: Clipboard,
     private storeService: StoreService,
     private notificationService: NotificationsService,
   ) { }
@@ -52,12 +51,6 @@ export class LoginPageComponent implements OnInit {
     } else {
       this.notificationService.onEventNotification('Заполнены не все поля')
     }
-  }
-
-  //TODO: paste actual link
-  public copyLink(): void {
-    this.clipboard.copy('http://localhost:8080');
-    this.notificationService.onEventNotification('Ссылка скопирована')
   }
 
   private saveUserData(data: User): void {

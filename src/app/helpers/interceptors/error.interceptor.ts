@@ -24,7 +24,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       tap((res: any) => {
         /** отлавливаем ошибки GraphQL*/
         if (res?.body?.errors) {
-          // console.log(res?.body?.errors)
           // const codeError = res?.body?.errors[0].message.extensions.code
           const messageError = res?.body?.errors[0].message
           this.notificationService.onEventNotification(messageError)

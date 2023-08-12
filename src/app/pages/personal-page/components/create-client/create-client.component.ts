@@ -78,7 +78,6 @@ export class CreateClientComponent implements OnInit {
           start_train: Number(this.createForm.value.start_train)
         }
       }
-      console.log(data)
       this.graphqlService.createClient(data)
         .pipe(take(1))
         .subscribe(() => {
