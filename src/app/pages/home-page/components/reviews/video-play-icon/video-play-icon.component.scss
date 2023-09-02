@@ -1,0 +1,25 @@
+.video-play-icon {
+
+  vg-overlay-play {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    cursor: pointer;
+
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 80px solid rgba(255, 255, 255, 0.55);
+  }
+
+  .stop {
+    opacity: 0;
+  }
+
+  .start {
+    opacity: 1;
+  }
+}

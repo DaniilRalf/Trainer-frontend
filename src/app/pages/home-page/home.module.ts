@@ -22,7 +22,10 @@ import {FooterComponent} from './components/footer/footer.component';
 import {HomeControlService} from "./home-control.service";
 import { ModalTrainComponent } from './components/services/modal-train/modal-train.component';
 import { ModalCertificatesComponent } from './components/about/modal-certificates/modal-certificates.component';
-import {SwiperModule} from "swiper/angular";
+import {SwiperModule} from "swiper/angular"
+import {VgCoreModule, VgOverlayPlayModule} from "ngx-videogular";
+import { VideoPlayIconComponent } from './components/reviews/video-play-icon/video-play-icon.component';
+
 
 
 @NgModule({
@@ -39,6 +42,7 @@ import {SwiperModule} from "swiper/angular";
     FooterComponent,
     ModalTrainComponent,
     ModalCertificatesComponent,
+    VideoPlayIconComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +56,8 @@ import {SwiperModule} from "swiper/angular";
     ReactiveFormsModule,
     MatExpansionModule,
     SwiperModule,
+    VgCoreModule,
+    VgOverlayPlayModule,
   ],
   providers: [HomeControlService]
 })

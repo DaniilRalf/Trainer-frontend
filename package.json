@@ -28,6 +28,7 @@
     "moment": "^2.29.4",
     "ng-circle-progress": "^1.7.1",
     "ng2-charts": "^4.1.1",
+    "ngx-videogular": "^13.2.4",
     "rxjs": "~7.5.0",
     "swiper": "^6.8.4",
     "tslib": "^2.3.0",

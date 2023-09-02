@@ -12,7 +12,7 @@ import {DirectivesModule} from "./helpers/directives/directives.module"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
 import {NgCircleProgressModule} from "ng-circle-progress"
 import {ErrorInterceptor} from "./helpers/interceptors/error.interceptor"
-import {LoginPageModule} from "./pages/login-page/login-page.module";
+import {LoginPageModule} from "./pages/login-page/login-page.module"
 
 
 @NgModule({

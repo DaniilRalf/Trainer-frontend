@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'comp-reviews',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewsComponent implements OnInit {
 
-  constructor() { }
+  public statusVideo: { status: string }[] = [
+    {status: "pause"},
+    {status: "pause"},
+  ]
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  public changeStatusVideo(event: Event, indexVideo: number): void {
+    this.statusVideo[indexVideo].status = event.type
   }
 
 }
