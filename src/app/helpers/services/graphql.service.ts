@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import {Apollo, gql, MutationResult} from "apollo-angular"
 import {ApolloQueryResult} from "@apollo/client/core";
 import {Observable} from "rxjs";
-import {Feed, User} from "../../models/types/user";
+import {Feed, Schedules, User} from "../../models/types/user"
 
 
 //TODO: types
@@ -140,6 +140,18 @@ export class GraphqlService {
       variables: { input: data },
     })
   }
+  updateItemClientSchedule(data: Schedules & { event: 'remove' | 'update' }): Observable<MutationResult<{updateItemClientSchedule: Schedules[]}>> {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation updateItemClientSchedule($input: ScheduleInput){
+          updateItemClientSchedule(input: $input){
+            id
+          }
+        }
+      `,
+      variables: { input: data },
+    })
+  }
   /** get */
   getAllClientsAllData(): Observable<ApolloQueryResult<{getAllClients: User[]}>>{
     return this.apollo.query({
@@ -169,8 +181,11 @@ export class GraphqlService {
                 date_metering
               }
               schedules {
+                id
                 date
                 description
+                time_start
+                time_duration
               }
             }
           }

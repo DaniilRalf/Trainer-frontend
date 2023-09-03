@@ -59,7 +59,9 @@
       </ng-container>
       <ng-container matColumnDef="settings">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element" (click)="openSettingsModal(element)">
+        <td mat-cell class="c-pointer"
+            *matCellDef="let element"
+            (click)="openSettingsModal(element)">
           <mat-icon>settings</mat-icon>
         </td>
       </ng-container>

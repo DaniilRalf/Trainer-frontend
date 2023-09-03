@@ -35,50 +35,46 @@
 </div>
 
 <div class="update-parameters" *ngIf="data.tag === 'parameters'">
+  <div class="flex-center mb-10">
+    <el-button-custom [text]="'Добавить замер'"
+                      [type]="'flat'"
+                      (click)="changeTag('parameters_add')"
+    ></el-button-custom>
+  </div>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let item of data.eventData">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
+        <mat-panel-title class="fnt-600-gilroy">{{item.date_metering | date: 'dd-MM-yyyy'}}</mat-panel-title>
       </mat-expansion-panel-header>
-      <form class="update-parameters-form">
+      <form class="update-parameters-form fnt-400-gilroy">
         <div class="item">
           <p class="item-name">Обхват груди (см.)</p>
           <mat-form-field class="item-value" appearance="fill">
-            <input #shoulder_bust
-                   [value]="item.shoulder_bust"
-                   matInput numbersOnly>
+            <input #shoulder_bust matInput numbersOnly [value]="item.shoulder_bust">
           </mat-form-field>
         </div>
         <div class="item">
           <p class="item-name">Обхват плеч (см.)</p>
           <mat-form-field class="item-value" appearance="fill">
-            <input #shoulder_girth
-                   [value]="item.shoulder_girth"
-                   matInput numbersOnly>
+            <input #shoulder_girth matInput numbersOnly [value]="item.shoulder_girth">
           </mat-form-field>
         </div>
         <div class="item">
           <p class="item-name">Обхват берда (см.)</p>
           <mat-form-field class="item-value" appearance="fill">
-            <input #shoulder_hip
-                   [value]="item.shoulder_hip"
-                   matInput numbersOnly>
+            <input #shoulder_hip matInput numbersOnly [value]="item.shoulder_hip">
           </mat-form-field>
         </div>
         <div class="item">
           <p class="item-name">Обхват бедер (см.)</p>
           <mat-form-field class="item-value" appearance="fill">
-            <input #shoulder_hips
-                   [value]="item.shoulder_hips"
-                   matInput numbersOnly>
+            <input #shoulder_hips matInput numbersOnly [value]="item.shoulder_hips">
           </mat-form-field>
         </div>
         <div class="item">
           <p class="item-name">Вес (кг.)</p>
           <mat-form-field class="item-value" appearance="fill">
-            <input #weight
-                   [value]="item.weight"
-                   matInput>
+            <input #weight matInput [value]="item.weight">
           </mat-form-field>
         </div>
         <div class="update-parameters-form-btn">
@@ -105,16 +101,10 @@
       </form>
     </mat-expansion-panel>
   </mat-accordion>
-  <div class="flex-center mt-10">
-    <el-button-custom [text]="'Добавить замер'"
-                      [type]="'flat'"
-                      (click)="changeTag('parameters_add')"
-    ></el-button-custom>
-  </div>
 </div>
 
 <div class="update-personal" *ngIf="data.tag === 'personal'">
-  <form class="update-personal-form">
+  <form class="update-personal-form fnt-400-gilroy">
     <div class="item">
       <p class="item-name">Дата начала тренировок</p>
       <mat-form-field class="item-date" appearance="fill">
@@ -205,25 +195,53 @@
   </div>
 </div>
 
-<div *ngIf="data.tag === 'schedule'">
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of data.eventData">
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{item.date| date:'dd-MM-yyyy'}}</mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="mt-10">
-        <div>Длбавить изменить день тренировки</div>
-        <div>Длбавить изменить вид тренировки</div>
-        <div>Длбавить сохранение тренировки</div>
-        <div>Длбавить удаление тренировки</div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-
-  <div class="flex-center mt-10">
+<div class="update-schedule" *ngIf="data.tag === 'schedule'">
+  <div class="flex-center mb-10">
     <el-button-custom [text]="'Добавить тренировочные дни'"
                       [type]="'flat'"
                       (click)="changeTag('schedule_add')"
     ></el-button-custom>
   </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of data.eventData">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="fnt-600-gilroy">{{item.date| date:'dd-MM-yyyy'}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="update-schedule-details mt-10">
+        <div class="item">
+          <mat-form-field class="item-select" appearance="fill">
+            <mat-select required [(value)]="item.description">
+              <mat-option *ngFor="let train of TrainingEnum | keyvalue" [value]="train.key">
+                {{train.value}}
+              </mat-option>
+            </mat-select>
+            <mat-hint align="start"><strong>Тип тренировки</strong></mat-hint>
+          </mat-form-field>
+          <mat-form-field class="item-select" appearance="fill">
+            <input required matInput type="time" [value]="item.time_start">
+            <mat-hint align="start"><strong>Начало</strong></mat-hint>
+          </mat-form-field>
+          <mat-form-field class="item-select" appearance="fill">
+            <mat-select [(value)]="item.time_duration" required>
+              <mat-option [value]="'1:00'">1:00</mat-option>
+              <mat-option [value]="'1:30'">1:30</mat-option>
+            </mat-select>
+            <mat-hint align="start"><strong>Длительность</strong></mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="flex-between mt-10">
+          <el-button-custom [text]="'Удалить тренировку'"
+                            [type]="'stoked'" [color]="'white'"
+                            [bgColor]="'#F43336'"
+                            (click)="updateSchedule(item, 'remove')"
+          ></el-button-custom>
+          <el-button-custom [text]="'Изменить тренировку'"
+                            [type]="'flat'"
+                            (click)="updateSchedule(item, 'update')"
+          ></el-button-custom>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
 </div>

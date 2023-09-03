@@ -7,6 +7,7 @@ import {TrainingEnum} from "../../../../../models/enums/training-enum"
 import {take} from "rxjs"
 import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
 import {GenderEnum} from "../../../../../models/enums/gender-enum"
+import {Schedules} from "../../../../../models/types/user";
 
 @Component({
   selector: 'modal-update-parameters-client',
@@ -189,7 +190,7 @@ export class ModalClientDataComponent implements OnInit {
       "-" +
       ("00" + cellDate.getDate()).slice(-2);
     return this.daysSelected.includes(date) ? "active_date" : '';
-  };
+  }
 
   // TODO: types
   public select(event: any, calendar: any) {
@@ -238,6 +239,19 @@ export class ModalClientDataComponent implements OnInit {
         this.daySelectedDetails = {}
         this.trainSelected = null
       })
+  }
+
+  //TODO: types
+  public updateSchedule(data: Schedules, event: 'remove' | 'update'): void {
+    const dataReq = {...data, event}
+    this.graphqlService.updateItemClientSchedule(dataReq).subscribe(() => {
+      if (event === 'remove') {
+        this.data.eventData = this.data.eventData.filter((item: any) => item.id !== data.id)
+        this.notificationService.onEventNotification('Тренировка удалена')
+      } else if (event === 'update') {
+        this.notificationService.onEventNotification('Тренировка изменена')
+      }
+    })
   }
 
   /** Schedules======================================================*/

@@ -52,8 +52,20 @@
     display: flex;
     justify-content: center;
   }
+  .flex-between{
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+      grid-gap: 20px;
+    }
+  }
   .txt-align {
     text-align: center;
+  }
+  .c-pointer {
+    cursor: pointer;
   }
 
 //CUSTOM==============================

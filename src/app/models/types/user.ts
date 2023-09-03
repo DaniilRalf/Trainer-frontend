@@ -33,6 +33,7 @@ export interface Parameters {
 }
 
 export interface Schedules {
+  id: number;
   date: number;
   description: TrainingEnum | string;
   time_duration: string;
