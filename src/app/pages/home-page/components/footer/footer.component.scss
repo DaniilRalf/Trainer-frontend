@@ -56,6 +56,10 @@
     font-size: 16px;
     line-height: 124%;
     cursor: pointer;
+    a {
+      text-decoration: none;
+      color: $static-grey-middle;
+    }
     mat-icon {
       transform: scale(0.8) translateY(5px);
     }

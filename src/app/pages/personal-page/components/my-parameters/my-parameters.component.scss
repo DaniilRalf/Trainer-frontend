@@ -19,8 +19,11 @@
 
   &-graph {
     width: 100%;
+    padding: 5px;
     min-width: 500px;
     overflow: hidden;
+    background-color: $static-white-middle;
+    border-radius: 10px;
 
     canvas {
       width: inherit;
