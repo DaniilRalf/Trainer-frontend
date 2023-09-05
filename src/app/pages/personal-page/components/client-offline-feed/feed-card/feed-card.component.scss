@@ -2,14 +2,19 @@
 
 .feed-card {
   background-color: $static-grey-extralight;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  min-width: 260px;
+  min-width: 250px;
   margin-bottom: 15px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 500px) {
+    padding: 10px;
+    min-width: 232px;
+  }
 
   &-header {
     display: flex;
