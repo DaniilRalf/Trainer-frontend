@@ -5,8 +5,12 @@ img {
   height: inherit;
 }
 
-//::ng-deep {
-//  .mat-dialog-container {
-//    padding: 0;
-//  }
-//}
+swiper {
+  transform: scale(1.1);
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    overflow: hidden!important;
+  }
+}
