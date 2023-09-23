@@ -1,5 +1,4 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
 import {StoreService} from "../../../../helpers/services/store.service";
 import {HomeControlService} from "../../home-control.service";
 

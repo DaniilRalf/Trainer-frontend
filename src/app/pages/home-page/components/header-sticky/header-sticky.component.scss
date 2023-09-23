@@ -2,8 +2,6 @@
 
 .header-sticky {
 
-
-
   .desktop {
     @media (max-width: 1000px) {
       display: none;
@@ -28,8 +26,6 @@
       }
     }
   }
-
-
 
   .mobile {
     @media (min-width: 1000px) {
