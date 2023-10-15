@@ -1,9 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core'
 import {HttpService} from "../../../../../helpers/services/http.service"
 import {MAT_DIALOG_DATA} from "@angular/material/dialog"
-import {TypePhoto} from "../../../../../models/enums/typePhoto"
 import {NotificationsService} from "../../../../../helpers/services/notifications/notifications.service"
 import {take} from "rxjs";
+
+enum PhotoTypeSide {
+  Side = 'side',
+  Front = 'front',
+  Back = 'back',
+}
 
 @Component({
   selector: 'app-modal-before-after-create',
@@ -12,20 +17,15 @@ import {take} from "rxjs";
 })
 export class ModalBeforeAfterCreateComponent implements OnInit {
 
+  PhotoTypeSide = PhotoTypeSide
+
   //TODO: types
-
-  TypePhoto = TypePhoto
-
-  // fileNewPhoto!: any
-  // angle!: string
-
-
   dateNewPhotos!: any
 
-  dataForSave: any = {
-    'side': {imgForTag: null, imgFile: null},
-    'front': {imgForTag: null, imgFile: null},
-    'back': {imgForTag: null, imgFile: null},
+  dataForSave: Record<PhotoTypeSide, {imgForTag: any, imgFile: File | null}> = {
+    [PhotoTypeSide.Side]: {imgForTag: null, imgFile: null},
+    [PhotoTypeSide.Front]: {imgForTag: null, imgFile: null},
+    [PhotoTypeSide.Back]: {imgForTag: null, imgFile: null},
   }
 
   constructor(
@@ -38,7 +38,7 @@ export class ModalBeforeAfterCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public setPhoto(event: any, key: 'side' | 'front' | 'back'): void {
+  public setPhoto(event: any, key: PhotoTypeSide): void {
     if (event.target!.files && event.target.files[0]) {
       this.dataForSave[key].imgForTag = new FileReader()
       this.dataForSave[key].imgFile = event.target.files[0]

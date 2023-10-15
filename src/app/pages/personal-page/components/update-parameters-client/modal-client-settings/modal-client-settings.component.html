@@ -1,7 +1,10 @@
 <div class="settings">
 
   <div class="settings-info fnt-400-gilroy">
-    <el-avatar-client [active]="data.is_active"></el-avatar-client>
+    <el-avatar-client [active]="data.is_active"
+                      [userId]="data.id"
+                      [isUpdate]="false"
+    ></el-avatar-client>
     <div class="settings-info-description">
       <div class="settings-info-description-name fnt-600-gilroyn">{{data.first_name}}&nbsp;{{data.last_name}}</div>
       <div class="settings-info-description-username">{{data.username}}</div>

@@ -5,34 +5,34 @@
     <div class="custom-input-block">
       <input #fileInputFront multiple
              type="file" [hidden]="true"
-             (change)="setPhoto($event, 'front')"
+             (change)="setPhoto($event, PhotoTypeSide.Front)"
       >
       <div class="custom-input-block-img" (click)="fileInputFront.click()">
-        <mat-icon *ngIf="!dataForSave['front'].imgForTag">add</mat-icon>
-        <p *ngIf="!dataForSave['front'].imgForTag">добавить фото спереди</p>
-        <img [src]="dataForSave['front'].imgForTag" *ngIf="dataForSave['front'].imgForTag">
+        <mat-icon *ngIf="!dataForSave[PhotoTypeSide.Front].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave[PhotoTypeSide.Front].imgForTag">добавить фото спереди</p>
+        <img [src]="dataForSave[PhotoTypeSide.Front].imgForTag" *ngIf="dataForSave[PhotoTypeSide.Front].imgForTag">
       </div>
     </div>
     <div class="custom-input-block">
       <input #fileInputBack multiple
              type="file" [hidden]="true"
-             (change)="setPhoto($event, 'back')"
+             (change)="setPhoto($event, PhotoTypeSide.Back)"
       >
       <div class="custom-input-block-img" (click)="fileInputBack.click()">
-        <mat-icon *ngIf="!dataForSave['back'].imgForTag">add</mat-icon>
-        <p *ngIf="!dataForSave['back'].imgForTag">добавить фото сзади</p>
-        <img [src]="dataForSave['back'].imgForTag" *ngIf="dataForSave['back'].imgForTag">
+        <mat-icon *ngIf="!dataForSave[PhotoTypeSide.Back].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave[PhotoTypeSide.Back].imgForTag">добавить фото сзади</p>
+        <img [src]="dataForSave[PhotoTypeSide.Back].imgForTag" *ngIf="dataForSave[PhotoTypeSide.Back].imgForTag">
       </div>
     </div>
     <div class="custom-input-block">
       <input #fileInputSide multiple
              type="file" [hidden]="true"
-             (change)="setPhoto($event, 'side')"
+             (change)="setPhoto($event, PhotoTypeSide.Side)"
       >
       <div class="custom-input-block-img" (click)="fileInputSide.click()">
-        <mat-icon *ngIf="!dataForSave['side'].imgForTag">add</mat-icon>
-        <p *ngIf="!dataForSave['side'].imgForTag">добавить фото сбоку</p>
-        <img [src]="dataForSave['side'].imgForTag" *ngIf="dataForSave['side'].imgForTag">
+        <mat-icon *ngIf="!dataForSave[PhotoTypeSide.Side].imgForTag">add</mat-icon>
+        <p *ngIf="!dataForSave[PhotoTypeSide.Side].imgForTag">добавить фото сбоку</p>
+        <img [src]="dataForSave[PhotoTypeSide.Side].imgForTag" *ngIf="dataForSave[PhotoTypeSide.Side].imgForTag">
       </div>
     </div>
   </div>

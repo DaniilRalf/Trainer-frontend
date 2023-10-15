@@ -2,7 +2,10 @@
 
   <div class="personal-data-about">
     <div class="personal-data-about-main">
-      <el-avatar-client [active]="user.is_active"></el-avatar-client>
+      <el-avatar-client [active]="user.is_active"
+                        [userId]="user.id"
+                        [isUpdate]="true"
+      ></el-avatar-client>
       <p class="full-name fnt-600-gilroy">{{user.first_name}}&nbsp;{{user.last_name}}</p>
       <p class="user-name fnt-400-gilroy">{{user.username}}</p>
     </div>

@@ -7,7 +7,10 @@
 
       <div class="header fnt-400-gilroy">
         <div class="header-info">
-          <el-avatar-client [active]="showClientPhotos.is_active"></el-avatar-client>
+          <el-avatar-client [active]="showClientPhotos.is_active"
+                            [userId]="showClientPhotos.id"
+                            [isUpdate]="false"
+          ></el-avatar-client>
           <div class="header-info-description">
             <div class="header-info-description-name fnt-600-gilroy"
             >{{showClientPhotos.first_name}}&nbsp;{{showClientPhotos.last_name}}</div>
@@ -62,7 +65,10 @@
         </div>
 
         <div class="content">
-          <el-avatar-client [active]="client.is_active"></el-avatar-client>
+          <el-avatar-client [active]="client.is_active"
+                            [userId]="client.id"
+                            [isUpdate]="false"
+          ></el-avatar-client>
           <p class="content-name">{{client.first_name}}&nbsp;{{client.last_name}}</p>
           <p class="content-username">{{client.username}}</p>
         </div>

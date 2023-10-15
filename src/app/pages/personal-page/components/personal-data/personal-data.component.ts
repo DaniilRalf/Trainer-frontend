@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Schedules, User} from "../../../../models/types/user";
+import {Photo, Schedules, User} from "../../../../models/types/user";
 import moment from "moment";
 import {GeneratorsService} from "../../../../helpers/services/generators.service";
 
@@ -25,7 +25,7 @@ export class PersonalDataComponent implements OnInit {
 
   private generateNearestTrains(): void {
     /** generate array with three train days */
-    if (this.user.schedules && this.user.schedules?.length > 0) {
+    if (this.user.schedules && this.user.schedules?.length) {
       this.user.schedules
         ?.sort((a, b) => b.date + a.date)
       const schedule: Schedules[] = []

@@ -1,5 +1,23 @@
 <div class="avatar">
-  <div class="avatar-img"></div>
+  <div class="avatar-img">
+    <div *ngIf="isUpdate">
+      <input #fileInputFront
+             multiple
+             type="file"
+             [hidden]="true"
+             (change)="setPhoto($event)"
+      >
+      <div (click)="fileInputFront.click()">
+        <mat-icon>edit</mat-icon>
+      </div>
+    </div>
+    <img [src]="!avatarImgName
+                    ? dataForSave.imgForTag
+                    : (env.apiUrl + avatarImgName)"
+         *ngIf="dataForSave.imgForTag || avatarImgName"
+         alt="avatar"
+    >
+  </div>
   <div class="avatar-indicator"
        [style]="active ? {'background-color': '#FF8FCC'} : {'background-color': '#666B7D'}"
   ></div>
